@@ -1,0 +1,71 @@
+﻿
+
+#dasboard .ttw-notification-menu {
+	font-family: Arial, sans-serif; font-size: 8px !important; height: 28px; padding: 0; border: 1px solid #d1d1d1;
+	border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+    background: #f2f2f2 url(images/notification-menu-bg.png) repeat 0 0 scroll ; /**TODO:Delete **/
+	display: block; /*margin: 8px auto;*/
+}
+
+#dasboard .notification-menu-item {
+	display: block; position: relative; float: left; border-right: 1px solid #d1d1d1;
+    background: transparent url(images/item-bg.png) no-repeat left top scroll !important;
+}
+
+#dasboard .first-item, #dasboard .notification-menu-item:first-child { 
+	background: none;  border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px;
+}
+
+#dasboard .notification-menu-item:last-child {  
+	border-right: none;  border-radius: 0 3px 3px 0; -moz-border-radius: 0 3px 3px 0; -webkit-border-radius: 0 3px 3px 0;
+}
+
+#dasboard .notification-menu-item.last-item { border-right: none; }
+
+#dasboard .notification-menu-item a {
+	display: block; color: #000; text-shadow: 0 1px 0 #fff; font-size: 10px; font-weight: bold; 
+	text-decoration: none; line-height: 28px; padding: 0 5px;
+}
+
+#dasboard .notification-menu-item:hover a { color: #333; }
+
+#dasboard .notification-menu-item span.text {
+	display: block; color: #333; text-shadow: 0 1px 0 #fff; font-size: 11px; font-weight: bold; font-family:Calibri, "Calibri Light", sans-serif;
+	text-decoration: none; line-height: 28px; padding: 0 5px;
+}
+
+#dasboard .notification-menu-item span.text:hover {  color: #333; }
+/**Notification Bubble **/
+#dasboard .notification-bubble {
+	height: 18px; width: 18px; background: #f56c7e url(images/notification-bg-clear.png) no-repeat center center scroll;
+    background-image: none; position: absolute; right: 5px; top: -10px; color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .2); text-align: center; font-size: 12px;
+    line-height: 18px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .17), 0 1px 1px rgba(0, 0, 0, .2);
+    -moz-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .17), 0 1px 1px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .17), 0 1px 1px rgba(0, 0, 0, .2);
+    border-radius: 9px; font-weight: bold; cursor: pointer;  display: none;
+}
+
+#dasboard .notification-bubble.show { display: block; }
+
+#dasboard .notification-menu-item:hover .notification-bubble {
+	top: -14px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2), 0 2px 1px rgba(0, 0, 0, .2);
+}
+
+#dasboard .notification-menu-item a { 
+	-webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;
+}
+
+#dasboard .notification-bubble {
+	-webkit-transition: all 0.1s ease; -moz-transition: all 0.1s ease; -o-transition: all 0.1s ease; transition: all 0.1s ease;
+}
+
+#dasboard .ttw-notification-menu { width: auto; }
+
+#dasboard .redbubble { background-color: rgb(245, 108, 126); display: inline; }
+
+#dasboard .greenbuble { background-color: rgb(55, 78, 226); display: inline; }
+
+#dasboard .yellowbubble {  background-color: rgb(254, 193, 81);  display: inline; }
+
+#dasboard .bluebubble { background-color: rgb(122, 210, 244);  display: inline; }

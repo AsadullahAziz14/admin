@@ -1,0 +1,355 @@
+.attendP{
+    box-shadow: 0 2px 3px 0 green;
+}
+.attendA{
+    box-shadow: 0 2px 3px 0 red;
+}
+#table{ 
+    transition-property: all;
+    transition:0.4s;
+    transition-timing-function: ease;
+    cursor: default;
+} 
+#table:hover{ 
+    box-shadow: 0 0 15px lightblue;
+}
+#rotate{
+    position: relative;
+    height: 220px;
+}
+#rotate-main{ 
+    width: 100%;
+    height: 100%;
+    position: relative;
+} 
+#rotate-child{
+    display: none;
+    position: absolute;
+    cursor: default;
+    transition: all 0.6s;
+}
+
+#rotate:hover #rotate-child{
+    display: block;
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    color: black;
+    background-color: rgb(245,245,245,0);
+    background-color: white;
+    box-shadow: 0 0 100px rgb(245,245,245,0.5);
+    border-top: 5px solid white;
+    animation: anime2 0.6s linear;
+    width: 100%;
+}
+@keyframes anime2{
+    0%{
+        height: 0%;
+    }
+    20%{
+        height: 10%;
+    }
+    40%{
+        height: 30%;
+    }
+    60%{
+        height: 50%;
+    }
+    75%{
+        height: 70%;
+    }
+    90%{
+        height: 90%;
+    }
+    100%{
+        height: 100%;
+    }
+}
+#rotate:hover #rotate-main{
+    display: none;
+}
+@media only screen and (max-width: 960px) {
+    #rotate{
+        height: 180px;
+    }
+}
+@media only screen and (max-width: 999px)  and (min-width: 771px) {
+    #rotate-child span,p{
+        width: 100%;
+        font-size: 10px;
+    }
+}
+.resource {
+    background-color: #2A265F;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.resource h6 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.resource h5 {
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.resource-preview {
+    color: #fff;
+    width: 250px;
+    height: 100%;
+    text-align: center;
+}
+
+.resource-info {
+    background-color: white;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.button-resource { 
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+@media only screen and (max-width: 960px){
+    .resource{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 879px){ 
+    .resource-preview {
+        color: #fff;
+        width: 230px;
+        height: 100%;
+        text-align: center;
+    }
+    .resource-info { 
+        padding: 25px; 
+    }
+    .resource-preview img{
+        width: 85px;
+        height: 85pxpx;
+    }
+    .resource-info h5{ 
+        font-size: 15px;
+    }
+    .resource-info h6{
+        font-size: 11px;
+    }
+}
+@media only screen and (max-width: 777px){ 
+    .resource-preview { 
+        width: 200px;
+    }
+    .resource-info { 
+        padding: 30px; 
+    }
+    .resource-info p{
+        font-size: 11px;
+    }
+    .resource-preview img{
+        width: 80px;
+        height: 80px;
+    }
+    .resource-info a img{
+        width: 50px;
+        height: 50px;
+    }
+}
+@media only screen and (max-width: 729px){ 
+    .resource-preview { 
+        width: 170px;
+    }
+    .resource-info { 
+        padding: 25px; 
+    }
+    .resource-preview img{
+        width: 75px;
+        height: 75px;
+    }
+    .resource-info a img{
+        width: 45px;
+        height: 45px;
+    }
+    .resource-info h6{
+        letter-spacing: 0px;
+    }
+    .button-resource { 
+        right: 10px;
+    }
+}
+@media only screen and (max-width: 620px){ 
+    .resource{
+        width: 90%;
+    }
+    .resource-preview { 
+        width: 170px;
+    }
+    .resource-info h6{
+        letter-spacing: 0px;
+    }
+    .button-resource { 
+        right: 10px;
+    }
+}
+@media only screen and (max-width: 580px){ 
+    .resource{
+        width: 90%;
+    }
+    .resource-preview { 
+        width: 150px;
+    }
+    .resource-info { 
+        padding: 20px; 
+    }
+    .resource-preview img{
+        width: 70px;
+        height: 70px;
+    }
+    .resource-info a img{
+        width: 40px;
+        height: 40px;
+    }
+    .resource-info h6{
+        letter-spacing: 0px;
+        font-size: 9px;
+    }
+}
+@media only screen and (max-width: 500px){ 
+    .resource{
+        width: 100%;
+    }
+    .resource-preview { 
+        width: 130px;
+    }
+    .resource-preview img{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media only screen and (max-width: 407px){ 
+    
+    .resource-info { 
+        padding: 15px; 
+    }
+    .resource-preview { 
+        width: 110px;
+    }
+    .resource-info h5{
+        font-size: 12px;
+    }
+    .resource-preview img{
+        width: 50px;
+        height: 50px;
+    }
+    .resource-info a img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+#textarea:focus{
+    border: 1px solid black;
+}
+.week{
+    border-right: 1px solid lightblue;
+}
+.week div{
+    width: 150px; 
+    height: 150px; 
+    margin: auto; 
+    border-radius: 50%;
+}
+.week div h2{
+    line-height: 150px;
+}
+.dis-title{
+    border-right: 1px solid lightblue;
+}
+@media only screen and (max-width: 801px) {
+    .week div{
+        width: 135px;
+        height: 135px;
+    }
+    .week div h2{
+        line-height: 135px;
+    }
+    .dis-detail p{
+        font-size: 9px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .dis-card{
+        box-shadow: 0 0 10px lightblue;
+    }
+    .week{
+        border-right: none;
+        border-bottom: 1px solid lightblue;
+    }
+    .dis-title{
+        padding-top: 10px;
+        border-right: none;
+        border-bottom: 1px solid lightblue;
+    }
+    .dis-detail{
+        padding-top: 10px;
+    }
+    .dis-detail p{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .dis-title h5{
+        font-size: 13px;
+    }
+    .dis-title p{
+        font-size: 13px;
+    }
+    .dis-title{
+        padding-top: 10px;
+        border-right: none;
+        border-bottom: 1px solid lightblue;
+    }
+    .dis-detail{
+        padding-top: 10px;
+    }
+    .dis-detail a{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .dis-detail p{
+        font-size: 12px;
+    }
+}
+#n1{
+    transition-property: all;
+    transition: 0.4s;
+    transition-timing-function: ease;
+    background-color: snow;
+    
+}
+#n1 span:hover{
+    cursor: pointer;
+}
+
+#n1:hover .i1{
+    background-color:;
+}
+
+#n1:hover{
+    transform: translateY(-0.5ch);
+    box-shadow:0 3px 3px 0 gray;
+}
+#n1:hover #t1{
+    color: black;
+}
