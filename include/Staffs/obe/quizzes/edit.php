@@ -8,7 +8,7 @@ if (($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo'
         $formattedDate = date('Y-m-d', strtotime($valueQuiz['quiz_date']));
 		echo '
 		<div class="row">
-            <div class="modal-dialog" style="width:90%;">
+            <div class="modal-dialog" style="width:95%;">
                 <form class="form-horizontal" action="obequizzes.php?id='.$_GET['id'].'" method="post" id="quizForm" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">

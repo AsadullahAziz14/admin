@@ -115,13 +115,13 @@ echo '
 	</li>
 	<li class="has_sub"> <a href="javascript:void(0)"> <i class="icon-file-text"></i> SMS System<span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span></a>
 		<ul>
-			<li> <a href="items.php"> <i class="icon-file-text"></i>Items<span class="pull-right"></span></a> </li>
-			<li> <a href="categories.php"> <i class="icon-file-text"></i>Categories<span class="pull-right"></span></a> </li>
-			<li> <a href="sub_categories.php"> <i class="icon-file-text"></i>Sub Categories<span class="pull-right"></span></a> </li>
-			<li> <a href="vendors.php"> <i class="icon-file-text"></i>Vendors<span class="pull-right"></span></a> </li>
-			<li> <a href="issuance.php"> <i class="icon-file-text"></i>Item Issuance<span class="pull-right"></span></a> </li>
-			<li> <a href="demand.php"> <i class="icon-file-text"></i>Demand<span class="pull-right"></span></a> </li>
-			<li> <a href="purchase_order.php"> <i class="icon-file-text"></i>PO<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-items.php"> <i class="icon-file-text"></i>Items<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-categories.php"> <i class="icon-file-text"></i>Categories<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-sub_categories.php"> <i class="icon-file-text"></i>Sub Categories<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-vendors.php"> <i class="icon-file-text"></i>Vendors<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-issuance.php"> <i class="icon-file-text"></i>Item Issuance<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-demand.php"> <i class="icon-file-text"></i>Demand<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-purchase_order.php"> <i class="icon-file-text"></i>PO<span class="pull-right"></span></a> </li>
 		</ul>
 	</li>
 

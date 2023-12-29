@@ -6,8 +6,8 @@
 //----------------------------------------------------
 
 	define('LMS_HOSTNAME'			, 'localhost');
-	define('LMS_NAME'				, 'obe_database');
-	// define('LMS_NAME'				, 'sms');
+	// define('LMS_NAME'				, 'obe_database');
+	define('LMS_NAME'				, 'sms');
 	// define('LMS_NAME'				, 'mul');
 	define('LMS_USERNAME'			, 'root');
 	define('LMS_USERPASS'			, '');
@@ -34,7 +34,7 @@
 	define('OBE_PLOS' 			        		, 'cms_obe_plos');
 	define('OBE_CLOS'							, 'cms_obe_clo');
 	define('OBE_CLOS_PROGRAMS'           		, 'cms_obe_clo_programs');
-	define('OBE_QUIZZES'							, 'cms_obe_quiz');
+	define('OBE_QUIZZES'						, 'cms_obe_quiz');
 	define('OBE_QUESTIONS'						, 'cms_obe_question');
 	define('OBE_MCQS'							, 'cms_obe_mcq_options');
 	define('OBE_ASSIGNMENTS'					, 'cms_obe_assignment');
@@ -45,23 +45,21 @@
 	define('OBE_PACS'							, 'cms_obe_paractical_assessment_criteria');
 	define('OBE_KPIS'							, 'cms_obe_paractical_kpi');
 	define('OBE_PARACTICAL_PERFORMANCES'		, 'cms_obe_paractical_performance');
-	define('SMS_DEMAND'							, 'cms_sms_demand');
+	define('SMS_DEMANDS'						, 'cms_sms_demand');
 	define('SMS_DEMAND_ITEM_JUNCTION'			, 'cms_sms_demand_item_junction');
 	define('SMS_ITEMS'							, 'cms_sms_item');
 	define('SMS_CATEGORIES' 					, 'cms_sms_category');
 	define('SMS_SUB_CATEGORIES'					, 'cms_sms_sub_category');
-	define('SMS_VENDOR' 						, 'cms_sms_vendor');
-	define('SMS_PO' 							, 'cms_sms_po');
+	define('SMS_VENDORS' 						, 'cms_sms_vendor');
+	define('SMS_POS' 							, 'cms_sms_po');
 	define('SMS_PO_DEMAND_ITEM_JUNCTION' 		, 'cms_sms_po_demand_item_junction');
-	define('SMS_STORE' 							, 'cms_sms_store');
-	define('SMS_WAREHOUSE' 						, 'cms_sms_warehouse');
-	define('SMS_LOCATION' 						, 'cms_sms_location');
-	define('SMS_ITEM_ISSUANCE' 					, 'cms_sms_item_issuance');
+	define('SMS_STORES' 						, 'cms_sms_store');
+	define('SMS_WAREHOUSES' 					, 'cms_sms_warehouse');
+	define('SMS_LOCATIONS' 						, 'cms_sms_location');
+	define('SMS_ITEM_ISSUANCES' 				, 'cms_sms_item_issuance');
 	define('SMS_ISSUANCE_ITEM_JUNCTION'			, 'cms_sms_issuance_item_junction');
 	define('SMS_LOGS' 							, 'cms_sms_logs');
-
-
-
+	
 
 	define("SITE_URL", "https://oric.mul.edu.pk/");
 //--------------------------------------------------

@@ -249,7 +249,7 @@ if(!empty($_FILES['photo']['name'])) {
 echo '
 <!--WI_ADD_NEW_TASK_MODAL-->
 <div class="row">
-<div class="modal-dialog" style="width:90%;">
+<div class="modal-dialog" style="width:95%;">
 <form class="form-horizontal" action="gallery.php?id='.$_GET['id'].'" method="post" enctype="multipart/form-data">
 <div class="modal-content">
 <div class="modal-header">

@@ -3,7 +3,7 @@ if (($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo'
 	if (LMS_VIEW == 'add' && !isset($_GET['id'])) {
 		echo '
 		<div class="row">
-			<div class="modal-dialog" style="width:90%;">
+			<div class="modal-dialog" style="width:95%;">
 				<form class="form-horizontal" action="obequizzes.php" method="POST" id="addNew" enctype="multipart/form-data">
 					<div class="modal-content">
 						<div class="modal-header">

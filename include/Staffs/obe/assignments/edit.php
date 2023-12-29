@@ -8,7 +8,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 		$formattedDate = date('Y-m-d', strtotime($valueAssignment['assignment_date']));
 		echo '
 		<div class="row">
-		   	<div class="modal-dialog" style="width:90%;">
+		   	<div class="modal-dialog" style="width:95%;">
 			  	<form class="form-horizontal" action="obeassignments.php?id='.$_GET['id'].'" method="post" id="" enctype="multipart/form-data">
 					<div class="modal-content">
 						<div class="modal-header">

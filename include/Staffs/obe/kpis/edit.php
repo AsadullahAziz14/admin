@@ -19,7 +19,7 @@ if (($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo'
                                  ");
       echo '
       <div class="row">
-         <div class="modal-dialog" style="width:90%;">
+         <div class="modal-dialog" style="width:95%;">
             <form class="form-horizontal" action="obekpis.php?id='.$_GET['id'].'" method="post" enctype="multipart/form-data">
                <div class="modal-content">
                   <div class="modal-header">
