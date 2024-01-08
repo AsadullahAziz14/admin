@@ -1,10 +1,11 @@
 <?php
 if(!LMS_VIEW && !isset($_GET['id'])) {  
-   $queryDemands = $dblms->querylms("SELECT * 
-                                       FROM ".SMS_DEMAND." 
+   $queryDemands = $dblms->querylms("SELECT demand_id, demand_status, demand_code, demand_type, demand_quantity, 
+                                             demand_date, demand_due_date, id_department, id_added
+                                       FROM ".SMS_DEMANDS." 
                                        WHERE demand_id != ''
                                        $sql2
-                                       ORDER BY demand_id DESC LIMIT ".($page-1)*$Limit .",$Limit");
+                                       ");
    echo'    
    <div class="table-responsive" style="overflow: auto;">
       <table class="footable table table-bordered table-hover table-with-avatar">
@@ -40,7 +41,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                                                    ");
                $valueDepartments = mysqli_fetch_array($queryDepartments);
                echo '<td style="vertical-align: middle;" nowrap="nowrap">'.$valueDepartments['dept_name'].'</td>';
-               $queryEmployees  = $dblms->querylms("SELECT emply_name
+               $queryEmployees  = $dblms->querylms("SELECT emply_id, emply_name
                                                       FROM ".EMPLOYEES." 
                                                       WHERE emply_id = ".$valueDemands['id_added']."
                                                    ");

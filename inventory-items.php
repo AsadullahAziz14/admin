@@ -11,25 +11,22 @@ require_once('functions/functions.php');
 checkCpanelLMSALogin();
 
 //If User Type isn't Admin
-if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) { 
-	
+if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	//Redirects to Index
 	header('location: index.php');
 
 //Check If User has rights
-} else  if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {  
-	
+} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {  
 	include_once("include/Staffs/inventory/items/query.php");
 	include_once("include/header.php");
-            $sql2 		= '';
-            $sqlstring	= "";
-            $srch		= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
+	$sql2 		= '';
+	$sqlstring	= "";
+	$srch		= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
 
-            if(($srch)) { 
-                // $sql2 	.= " b.block_name LIKE '".$stdsrch."%' ";
-                $sqlstring	.= "&srch=".$_GET['srch']."";
-            }
-
+	if(($srch)) { 
+		// $sql2 	.= " b.block_name LIKE '".$stdsrch."%' ";
+		$sqlstring	.= "&srch=".$_GET['srch']."";
+	}
 			echo '
 			<title>Manage Inventory Items - '.TITLE_HEADER.'</title>
 			<!-- Matter -->
@@ -47,9 +44,9 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 								<div class="form-group">
 									<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
 								</div>
-								
+
 								<button type="submit" class="btn btn-primary">Search</button>
-								<a href="alinkagesmous.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
+								<a href="inventory-items.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
 								if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '191', 'add' => '1'))) { 
 									echo ' <a class="btn btn-success" href="inventory-items.php?view=add"><i class="icon-plus"></i> Add Item</a>';
 								}
@@ -106,25 +103,25 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<div class="row">
 		<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<form action="" method="post">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-						<button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
-						<h4 class="modal-title" id="modal-iframe-title">Delete Activity</h4>
-						<div class="clearfix"></div>
-					</div>
-					<div class="modal-body">
-						<h2>Are you sure to delete?</h2>
-						<input type="hidden" id="deleted_id" name="deleted_id" value="">
-						<input type="hidden" id="deleted_val" name="deleted_val" value="">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
-						<button type="submit" id="delete_activity" name="delete_activity" class="btn btn-danger">Delete</button>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+							<button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+							<h4 class="modal-title" id="modal-iframe-title">Delete Activity</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="modal-body">
+							<h2>Are you sure to delete?</h2>
+							<input type="hidden" id="deleted_id" name="deleted_id" value="">
+							<input type="hidden" id="deleted_val" name="deleted_val" value="">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+							<button type="submit" id="delete_activity" name="delete_activity" class="btn btn-danger">Delete</button>
+						</div>
 					</div>
 				</div>
-			</div>
 			</form>
 		</div>
 	</div>
@@ -132,110 +129,6 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<script src="js/jquery.validate.js"></script>
 	<script type="text/javascript" src="js/summer.js"></script>
 	<script type="text/javascript" src="js/ebro_form_validate.js"></script>
-
-	<script type="">
-		function selectSubCategory() { 
-			var selectedValue = document.getElementById("id_category").value;
-			var ajaxReq = new XMLHttpRequest();
-			var method = "GET";
-			var url = "include/ajax/inventory/getSubCategory.php?selectedValue=" + selectedValue;
-			var asynchronous = true;
-
-			ajaxReq.open(method, url, asynchronous);
-			ajaxReq.send();
-
-			ajaxReq.onreadystatechange = function() {
-				if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
-					const options = ajaxReq.responseText;
-					var id_sub_category = document.getElementById("id_sub_category");
-					
-					id_sub_category.innerHTML = options;
-					console.log(options);
-				}
-			};
-		}
-	</script>
-
-	<script>
-		$("#status").select2({
-			allowClear: true
-		});
-		$("#status_edit").select2({
-			allowClear: true
-		});
-		
-		$("#id_cat").select2({
-			allowClear: true
-		});
-		$("#id_cat_edit").select2({
-			allowClear: true
-		});
-	</script>
-
-
-    <script type="text/javascript">
-        $().ready(function() {
-            //USED BY: WI_ADD_NEW_TASK_MODAL
-            //ACTIONS: validates the form and submits it
-            //REQUIRES: jquery.validate.js
-            $("#addNewPost").validate({
-                rules: {
-                    caption	: "required",
-                    metadetail	: "required",
-                    detail		: "required",
-                    status		: "required"
-                },
-                messages: {
-                    caption		: "This field is required",
-                    metadetail	: "This field is required",
-                    brief		: "This field is required",
-                    status		: "This field is required"
-                },
-                submitHandler: function(form) {
-                    //alert("form submitted");
-                    form.submit();
-                }
-            });
-        });
-    </script>
-
-	<script type="text/javascript">
-		$().ready(function() {
-			$("#editBcat").validate({
-				rules: {
-					setup_session_edit	: "required",
-					status_edit: "required"
-				},
-				messages: {
-					setup_session_edit	: "This field is required",
-					status_edit	: "This field is required"
-				},
-				submitHandler: function(form) {
-				//alert("form submitted");
-				form.submit();
-				}
-			});
-		});
-	</script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(".edit-bcat-modal").click(function(){
-			
-				//get variables from "edit link" data attributes
-				var setup_session_edit 			= $(this).attr("data-type-name");
-				var status_edit 		= $(this).attr("data-type-status");
-				var cat_id_edit 			= $(this).attr("data-type-id");
-
-				//set modal input values dynamically
-				$("#setup_session_edit")		.val(setup_session_edit);
-				$("#cat_id_edit")			.val(cat_id_edit);
-
-				//pre-select data in pull down lists
-				$("#status_edit")		.select2().select2("val", status_edit); 
-			});
-		});
-	</script>
 
 	<script type="text/javascript" src="js/custom/all-vendors.js"></script>
 	<script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
@@ -261,7 +154,29 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 
 	<script type="text/javascript" src="js/custom/custom.js"></script>
 	<script type="text/javascript" src="js/custom/custom.general.js"></script>
+	<script type="">
+		function selectSubCategory() { 
+			var selectedValue = document.getElementById("id_category").value;
+			var ajaxReq = new XMLHttpRequest();
+			var method = "GET";
+			var url = "include/ajax/inventory/getSubCategory.php?selectedValue=" + selectedValue;
+			var asynchronous = true;
 
+			ajaxReq.open(method, url, asynchronous);
+			ajaxReq.send();
+
+			ajaxReq.onreadystatechange = function() {
+				if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
+					const options = ajaxReq.responseText;
+					var id_sub_category = document.getElementById("id_sub_category");
+					
+					id_sub_category.innerHTML = options;
+					console.log(options);
+				}
+			};
+		}
+	</script>
+	
 	</body>
 	</html>';
 }

@@ -783,11 +783,11 @@ trait Difference
      *
      * @example
      * ```
-     * echo Carbon::tomorrow()->diffForHumans() . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(['parts' => 2]) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(['parts' => 3, 'join' => true]) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday()) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday(), ['short' => true]) . "\n";
+     * echo Carbon::tomorrow()->diffForHumans() ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(['parts' => 2]) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(['parts' => 3, 'join' => true]) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday()) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday(), ['short' => true]) ."\n";
      * ```
      *
      * @param Carbon|\DateTimeInterface|string|array|null $other   if array passed, will be used as parameters array, see $syntax below;
@@ -1127,8 +1127,8 @@ trait Difference
     }
 
     /**
-     * Returns either day of week + time (e.g. "Last Friday at 3:30 PM") if reference time is within 7 days,
-     * or a calendar date (e.g. "10/29/2017") otherwise.
+     * Returns either day of week + time (e.g."Last Friday at 3:30 PM") if reference time is within 7 days,
+     * or a calendar date (e.g."10/29/2017") otherwise.
      *
      * Language, date and time formats will change according to the current locale.
      *

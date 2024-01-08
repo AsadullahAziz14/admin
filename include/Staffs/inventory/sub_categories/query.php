@@ -1,51 +1,46 @@
 <?php
-
-if(isset($_GET['deleteId']))
-{
-    $sqllms  = $dblms->querylms("DELETE FROM ".SMS_SUB_CATEGORIES." WHERE sub_category_id = '".cleanvars($_GET['deleteId'])."'");
-
-    if($sqllms)
-    {
+if(isset($_GET['deleteId'])) {
+    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_SUB_CATEGORIES." WHERE sub_category_id = '".cleanvars($_GET['deleteId'])."'");
+    
+    if($queryDelete) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
-            'log_date'                          => date('Y-m-d H:i:s')
-            ,'action'                           => "Delete"
-            ,'affected_table'                   => SMS_SUB_CATEGORIES
-            ,'action_detail'                    =>  'sub_category_id: '.cleanvars($_GET['deleteId'])
-            ,'path'                             =>  end($filePath)
-            ,'login_session_start_time'         => $_SESSION['login_time']
-            ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'log_date'                         => date('Y-m-d H:i:s')                                           ,
+            'action'                           => "Delete"                                                      ,
+            'affected_table'                   => SMS_SUB_CATEGORIES                                            ,
+            'action_detail'                    =>  'sub_category_id: '.cleanvars($_GET['deleteId'])             ,
+            'path'                             =>  end($filePath)                                               ,
+            'login_session_start_time'         => $_SESSION['login_time']                                       ,
+            'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
+            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
-        $_SESSION['msg']['status'] = 'toastr.info("Deleted Succesfully");';
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
+
+        $_SESSION['msg']['status'] = '<div class="alert-box danger"><span>Success: </span>Record has been deleted successfully.</div>';
         header("Location: inventory-sub_categories.php");
         exit();
     }
-
 }
 
-if(isset($_POST['submit_sub_category'])) 
-{ 
+if(isset($_POST['submit_sub_category'])) { 
     $data = [
-        'sub_category_name'                         => cleanvars($_POST['sub_category_name'])
-        ,'sub_category_description'                 => cleanvars($_POST['sub_category_description'])
-        ,'sub_category_status'                      => cleanvars($_POST['sub_category_status'])
-        ,'id_category'                              => cleanvars($_POST['id_category'])
-        ,'id_added'                                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-        ,'date_added'                               => date('Y-m-d H:i:s')
+        'sub_category_name'                        => cleanvars($_POST['sub_category_name'])                        ,
+        'sub_category_description'                 => cleanvars($_POST['sub_category_description'])                 ,
+        'sub_category_status'                      => cleanvars($_POST['sub_category_status'])                      ,
+        'id_category'                              => cleanvars($_POST['id_category'])                              ,
+        'id_added'                                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])             ,
+        'date_added'                               => date('Y-m-d H:i:s')
     ];
-    $queryInsert = $dblms->Insert(SMS_SUB_CATEGORIES , $data);
+    $queryInsert = $dblms->Insert(SMS_SUB_CATEGORIES, $data);
     $latest_id = $dblms->lastestid();
     
-    if($queryInsert)
-    {
+    if($queryInsert) {
         $data = [
             'sub_category_code' => 'SUB-CAT-'.str_pad(cleanvars($latest_id), 5, '0', STR_PAD_LEFT)
         ];
         
         $conditions = "WHERE sub_category_id  = ".cleanvars($latest_id)."";
-        $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIES,$data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIES, $data, $conditions);
 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
@@ -65,30 +60,27 @@ if(isset($_POST['submit_sub_category']))
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        $_SESSION['msg']['status'] = 'toastr.success("Inserted Succesfully");';
+        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
         header("Location: inventory-sub_categories.php", true, 301);
         exit(); 
     }
 }
 
-if(isset($_POST['edit_sub_category'])) 
-{    
+if(isset($_POST['edit_sub_category'])) {    
     $data = [
-        'sub_category_name'                         => cleanvars($_POST['sub_category_name'])
-        ,'sub_category_description'                 => cleanvars($_POST['sub_category_description'])
-        ,'sub_category_status'                      => cleanvars($_POST['sub_category_status'])
-        ,'id_category'                              => cleanvars($_POST['id_category'])
-        ,'id_modify'                                => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-        ,'date_modify'                              => date('Y-m-d H:i:s')
+        'sub_category_name'                        => cleanvars($_POST['sub_category_name'])                ,
+        'sub_category_description'                 => cleanvars($_POST['sub_category_description'])         ,
+        'sub_category_status'                      => cleanvars($_POST['sub_category_status'])              ,
+        'id_category'                              => cleanvars($_POST['id_category'])                      ,
+        'id_modify'                                => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'date_modify'                              => date('Y-m-d H:i:s')
     ];
-
     $conditions = "WHERE  sub_category_id  = ".cleanvars($_GET['id'])."";
-    $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIES,$data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIES, $data, $conditions);
 
-    if($queryUpdate) 
-    { 
+    if($queryUpdate) { 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                          => date('Y-m-d H:i:s')
@@ -106,9 +98,9 @@ if(isset($_POST['edit_sub_category']))
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        $_SESSION['msg']['status'] = 'toastr.info("Updated Succesfully");';
+        $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
         header("Location: inventory-sub_categories.php", true, 301);
         exit();
     }

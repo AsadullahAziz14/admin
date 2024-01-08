@@ -381,8 +381,8 @@ trait Converter
      *
      * @example
      * ```
-     * echo Carbon::now()->toRfc3339String() . "\n";
-     * echo Carbon::now()->toRfc3339String(true) . "\n";
+     * echo Carbon::now()->toRfc3339String() ."\n";
+     * echo Carbon::now()->toRfc3339String(true) ."\n";
      * ```
      *
      * @return string
@@ -508,8 +508,8 @@ trait Converter
      *
      * @example
      * ```
-     * echo Carbon::now('America/Toronto')->toISOString() . "\n";
-     * echo Carbon::now('America/Toronto')->toISOString(true) . "\n";
+     * echo Carbon::now('America/Toronto')->toISOString() ."\n";
+     * echo Carbon::now('America/Toronto')->toISOString(true) ."\n";
      * ```
      *
      * @param bool $keepOffset Pass true to keep the date offset. Else forced to UTC.

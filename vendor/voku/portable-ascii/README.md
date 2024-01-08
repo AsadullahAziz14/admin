@@ -64,7 +64,7 @@ but this repo is more modular and portable, because it has no dependencies.
 
 ## Requirements and Recommendations
 
-*   No extensions are required to run this library. Portable ASCII only needs PCRE library that is available by default since PHP 4.2.0 and cannot be disabled since PHP 5.3.0. "\u" modifier support in PCRE for ASCII handling is not a must.
+*   No extensions are required to run this library. Portable ASCII only needs PCRE library that is available by default since PHP 4.2.0 and cannot be disabled since PHP 5.3.0."\u" modifier support in PCRE for ASCII handling is not a must.
 *   PHP 7.0 is the minimum requirement
 *   PHP 8.0 is also supported
 
@@ -117,7 +117,7 @@ var_dump($array['ru']['б']); // 'b'
 </code>
 
 **Parameters:**
-- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>`
+- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>`
 
 **Return:**
 - `array`
@@ -134,7 +134,7 @@ var_dump($array['b']); // ['β', 'б', 'ဗ', 'ბ', 'ب']
 </code>
 
 **Parameters:**
-- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>`
+- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>`
 
 **Return:**
 - `array <p>An array of replacements.</p>`
@@ -157,7 +157,7 @@ echo $array['orig'][$tmpKey]; // 'ё'
 **Parameters:**
 - `ASCII::* $language [optional] <p>Language of the source string e.g.: en, de_at, or de-ch.
 (default is 'en') | ASCII::*_LANGUAGE_CODE</p>`
-- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>`
+- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>`
 - `bool $asOrigReplaceArray [optional] <p>TRUE === return {orig: string[], replace: string[]}
 array</p>`
 
@@ -177,7 +177,7 @@ echo $array['orig'][$tmpKey]; // '၌'
 </code>
 
 **Parameters:**
-- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>`
+- `bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>`
 - `bool $asOrigReplaceArray [optional] <p>TRUE === return {orig: string[], replace: string[]}
 array</p>`
 
@@ -315,7 +315,7 @@ ASCII::to_ascii('�Düsseldorf�', 'en'); // Dusseldorf
 (default is 'en') | ASCII::*_LANGUAGE_CODE</p>`
 - `bool $remove_unsupported_chars [optional] <p>Whether or not to remove the
 unsupported characters.</p>`
-- `bool $replace_extra_symbols [optional]  <p>Add some more replacements e.g. "£" with " pound
+- `bool $replace_extra_symbols [optional]  <p>Add some more replacements e.g."£" with " pound
 ".</p>`
 - `bool $use_transliterate [optional]  <p>Use ASCII::to_transliterate() for unknown chars.</p>`
 - `bool|null $replace_single_chars_only [optional]  <p>Single char replacement is better for the
@@ -382,7 +382,7 @@ also be supplied for language-specific transliteration.
 - `ASCII::* $language [optional] <p>Language of the source string.
 (default is 'en') | ASCII::*_LANGUAGE_CODE</p>`
 - `array<string, string> $replacements [optional] <p>A map of replaceable strings.</p>`
-- `bool $replace_extra_symbols [optional]  <p>Add some more replacements e.g. "£" with "
+- `bool $replace_extra_symbols [optional]  <p>Add some more replacements e.g."£" with "
 pound ".</p>`
 - `bool $use_str_to_lower [optional] <p>Use "string to lower" for the input.</p>`
 - `bool $use_transliterate [optional]  <p>Use ASCII::to_transliterate() for unknown

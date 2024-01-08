@@ -1,7 +1,6 @@
 <?php
 
-if(LMS_VIEW == 'add' && !isset($_GET['id'])) 
-{ 
+if(LMS_VIEW == 'add' && !isset($_GET['id'])) { 
 	echo '
 	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -57,19 +56,18 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 
 						<div class="col-sm-31">
 							<div style="margin-top:5px;">
-							<label for="vendor_status" class="req"><b>Status</b></label>
+								<label for="vendor_status" class="req"><b>Status</b></label>
 								<select id="vendor_status" class="form-control" name="vendor_status" required>
 									<option value="">Select Status</option>';
 									foreach ($status as $adm_status) {
 										echo '<option value="'.$adm_status['id'].'">'.$adm_status['name'].'</option>';
 									}
-						echo '
+									echo '
 								</select>
 							</div>
 						</div>
 
 						<div style="clear:both;"></div>
-
 					</div>
 
 					<div class="modal-footer">
@@ -83,8 +81,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 	</div>
 
 	<script>
-		function updateSecondSelector() 
-		{
+		function updateSecondSelector() {
 			var selectedValue = document.getElementById("id_category").value;
 
 			var ajaxReq = new XMLHttpRequest();
@@ -95,8 +92,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			ajaxReq.open(method, url,asynchronous);
 			ajaxReq.send();
 
-			ajaxReq.onreadystatechange = function() 
-			{
+			ajaxReq.onreadystatechange = function() {
 				if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
 					const options = ajaxReq.responseText;
 					var id_sub_category = document.getElementById("id_sub_category");
@@ -107,19 +103,12 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			};
 		}
 	</script>
-
-
 	<script src="js/select2/jquery.select2.js"></script>
-
 	<script>
 		$(".select2").select2({
-
 			placeholder: "Select Any Option"
-
 		})
-
 	</script>
 	';
 }
-
 ?>

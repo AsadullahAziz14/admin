@@ -902,8 +902,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function betweenIncluded($date1, $date2): bool;
 
     /**
-     * Returns either day of week + time (e.g. "Last Friday at 3:30 PM") if reference time is within 7 days,
-     * or a calendar date (e.g. "10/29/2017") otherwise.
+     * Returns either day of week + time (e.g."Last Friday at 3:30 PM") if reference time is within 7 days,
+     * or a calendar date (e.g."10/29/2017") otherwise.
      *
      * Language, date and time formats will change according to the current locale.
      *
@@ -1299,11 +1299,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
-     * echo Carbon::tomorrow()->diffForHumans() . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(['parts' => 2]) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(['parts' => 3, 'join' => true]) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday()) . "\n";
-     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday(), ['short' => true]) . "\n";
+     * echo Carbon::tomorrow()->diffForHumans() ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(['parts' => 2]) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(['parts' => 3, 'join' => true]) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday()) ."\n";
+     * echo Carbon::tomorrow()->diffForHumans(Carbon::yesterday(), ['short' => true]) ."\n";
      * ```
      *
      * @param Carbon|\DateTimeInterface|string|array|null $other   if array passed, will be used as parameters array, see $syntax below;
@@ -1684,9 +1684,9 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
-     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->endOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek(Carbon::SATURDAY) . "\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->endOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek(Carbon::SATURDAY) ."\n";
      * ```
      *
      * @param int $weekEndsAt optional start allow you to specify the day of week to use to end the week
@@ -4294,9 +4294,9 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
-     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->startOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek(Carbon::SUNDAY) . "\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->startOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek(Carbon::SUNDAY) ."\n";
      * ```
      *
      * @param int $weekStartsAt optional start allow you to specify the day of week to use to start the week
@@ -4606,8 +4606,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
-     * echo Carbon::now('America/Toronto')->toISOString() . "\n";
-     * echo Carbon::now('America/Toronto')->toISOString(true) . "\n";
+     * echo Carbon::now('America/Toronto')->toISOString() ."\n";
+     * echo Carbon::now('America/Toronto')->toISOString(true) ."\n";
      * ```
      *
      * @param bool $keepOffset Pass true to keep the date offset. Else forced to UTC.
@@ -4764,8 +4764,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @example
      * ```
-     * echo Carbon::now()->toRfc3339String() . "\n";
-     * echo Carbon::now()->toRfc3339String(true) . "\n";
+     * echo Carbon::now()->toRfc3339String() ."\n";
+     * echo Carbon::now()->toRfc3339String(true) ."\n";
      * ```
      *
      * @return string

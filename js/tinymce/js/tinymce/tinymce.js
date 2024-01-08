@@ -11186,7 +11186,7 @@ define(
             if (type == 3 && node.nodeValue.length > 0) {
               // If parent element isn't a block or there isn't any useful contents for example "<p>   </p>"
               // Also keep text nodes with only spaces if surrounded by spans.
-              // eg. "<p><span>a</span> <span>b</span></p>" should keep space between a and b
+              // eg."<p><span>a</span> <span>b</span></p>" should keep space between a and b
               var trimmedLength = trim(node.nodeValue).length;
               if (!self.isBlock(node.parentNode) || trimmedLength > 0 || trimmedLength === 0 && surroundedBySpans(node)) {
                 return;
@@ -28854,7 +28854,7 @@ define(
           // Present alert message about clipboard access not being available
           if (failed || !doc.queryCommandSupported(command)) {
             var msg = editor.translate(
-              "Your browser doesn't support direct access to the clipboard. " +
+              "Your browser doesn't support direct access to the clipboard." +
               "Please use the Ctrl+X/C/V keyboard shortcuts instead."
             );
 
@@ -43464,7 +43464,7 @@ define(
         frameBorder: '0',
         allowTransparency: "true",
         title: editor.editorManager.translate(
-          "Rich Text Area. Press ALT-F9 for menu. " +
+          "Rich Text Area. Press ALT-F9 for menu." +
           "Press ALT-F10 for toolbar. Press ALT-0 for help"
         ),
         style: {

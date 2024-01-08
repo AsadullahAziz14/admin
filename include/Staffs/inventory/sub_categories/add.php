@@ -1,7 +1,5 @@
 <?php
-
-if(LMS_VIEW == 'add' && !isset($_GET['id'])) 
-{ 
+if(LMS_VIEW == 'add' && !isset($_GET['id'])) { 
 	echo '
 	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -10,7 +8,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 					<div class="modal-header">
 						<h4 class="modal-title" style="font-weight:700;">Add Sub-Category</h4>
 					</div>
-
 					<div class="modal-body">
 
 						<div class="col-sm-91">
@@ -32,12 +29,12 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 							<label for="id_category" class="req"><b>Mapped Category</b></label>
 								<select id="id_category" class="form-control" name="id_category" required>
 									<option value="">Select Status</option>';
-									$sqllms = $dblms->querylms("SELECT category_id, category_name FROM " .SMS_CATEGORIES. " WHERE category_status = 1");
+									$sqllms = $dblms->querylms("SELECT category_id, category_name FROM " .SMS_CATEGORIES." WHERE category_status = 1");
 									while($rowstd = mysqli_fetch_array($sqllms))
 									{
 										echo '<option value="'.$rowstd['category_id'].'">'.$rowstd['category_name'].'</option>';
 									}
-						echo '
+									echo '
 								</select>
 							</div>
 						</div>
@@ -50,11 +47,10 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 									foreach ($status as $adm_status) {
 										echo '<option value="'.$adm_status['id'].'">'.$adm_status['name'].'</option>';
 									}
-						echo '
+									echo '
 								</select>
 							</div>
 						</div>
-
 						<div style="clear:both;"></div>
 
 					</div>
@@ -65,20 +61,15 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 						<input class="btn btn-primary" type="submit" value="Add Record" id="submit_sub_category" name="submit_sub_category">
 					</div>
 				</div>
-				
 			</form>
 		</div>
 	</div>
 
 	<script src="js/select2/jquery.select2.js"></script>
-
 	<script>
 		$(".select2").select2({
-
 			placeholder: "Select Any Option"
-
 		})
-
 	</script>
 	';
 }

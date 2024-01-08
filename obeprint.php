@@ -147,7 +147,7 @@ checkCpanelLMSALogin();
                               if ($_GET['print'] == 'assignment' && isset($_GET['id'])) 
                               {
                            
-                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_ASSIGNMENTS. " WHERE assignment_id = ".cleanvars($_GET['id'])." ");
+                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_ASSIGNMENTS." WHERE assignment_id = ".cleanvars($_GET['id'])." ");
                                  $value_assignment = mysqli_fetch_assoc($sqllms);
 
                                  if(mysqli_num_rows($sqllms))
@@ -233,7 +233,7 @@ checkCpanelLMSALogin();
                               if ($_GET['print'] == 'midterm' && isset($_GET['id'])) 
                               {
                            
-                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_MIDTERMS. " WHERE mt_id = ".cleanvars($_GET['id'])." ");
+                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_MIDTERMS." WHERE mt_id = ".cleanvars($_GET['id'])." ");
                                  $value_midterm = mysqli_fetch_assoc($sqllms);
 
                                  if(mysqli_num_rows($sqllms))
@@ -319,7 +319,7 @@ checkCpanelLMSALogin();
                               if ($_GET['print'] == 'finalterm' && isset($_GET['id'])) 
                               {
                            
-                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_FINALTERMS. " WHERE ft_id = ".cleanvars($_GET['id'])." ");
+                                 $sqllms = $dblms->querylms("SELECT * FROM " .OBE_FINALTERMS." WHERE ft_id = ".cleanvars($_GET['id'])." ");
                                  $value_finalterm = mysqli_fetch_assoc($sqllms);
 
                                  if(mysqli_num_rows($sqllms))

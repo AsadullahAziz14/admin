@@ -907,7 +907,7 @@ trait Comparison
     public static function hasFormat($date, $format)
     {
         // createFromFormat() is known to handle edge cases silently.
-        // E.g. "1975-5-1" (Y-n-j) will still be parsed correctly when "Y-m-d" is supplied as the format.
+        // E.g."1975-5-1" (Y-n-j) will still be parsed correctly when "Y-m-d" is supplied as the format.
         // To ensure we're really testing against our desired format, perform an additional regex validation.
 
         return self::matchFormatPattern((string) $date, preg_quote((string) $format, '/'), static::$regexFormats);

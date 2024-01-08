@@ -1,7 +1,9 @@
 <?php
 if (!LMS_VIEW && isset($_GET['id'])) {
 
-   $queryDemands = $dblms->querylms("SELECT demand_type, id_department, demand_status,  FROM ".SMS_DEMAND." WHERE demand_id =  ".cleanvars($_GET['id'])." ");
+   $queryDemands = $dblms->querylms("SELECT demand_type, id_department, demand_status
+   										FROM ".SMS_DEMANDS." 
+										WHERE demand_id =  ".cleanvars($_GET['id'])." ");
    $valueDemands = mysqli_fetch_array($queryDemands);
    echo '
 		<div class="row">

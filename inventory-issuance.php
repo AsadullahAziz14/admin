@@ -1,273 +1,158 @@
 <?php 
-	include "dbsetting/lms_vars_config.php";
-	include "dbsetting/classdbconection.php";
-	$dblms = new dblms();
-	include "functions/login_func.php";
-	include "functions/functions.php";
-	checkCpanelLMSALogin();
-	include_once("include/header.php");
-	include ("include/issuance/query.php");
 
-if(isset($_SESSION['msg'])) { 
-    echo'
-    <script>
-        $().ready(function() 
-        {
-            toastr.options = 
-            {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": 300,
-                "hideDuration": 1000,
-                "timeOut": 5000,
-                "extendedTimeOut": 1000,
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            } 
+//Require Vars, DB Connection and Function Files
+require_once('dbsetting/lms_vars_config.php');
+require_once('dbsetting/classdbconection.php');
+$dblms = new dblms();
+require_once('functions/login_func.php');
+require_once('functions/functions.php');
 
-              '.$_SESSION['msg']['status'].'
-        }); 
-    </script>';
-    unset($_SESSION['msg']);
-}
-//---------------------------------------------------
-$sql2 = '';
-$sqlstring	= "";
-if(isset($_GET['srch'])) { 
-	// $sql2 		.= " b.block_name LIKE '".$stdsrch."%' ";
-	$sqlstring	.= "&srch=".$_GET['srch']."";
-}
-if(isset($_GET['campus'])) { 
-	$sql2 		.= " AND b.id_campus = '".$_GET['campus']."'"; 
-	$sqlstring	.= "&campus=".$_GET['campus']."";
-}
-if(isset($_GET['event'])) { 
-	$sql2 		.= " AND b.id_event = '".$_GET['event']."'"; 
-	$sqlstring	.= "&event=".$_GET['event']."";
-}
-//----------------------------------------
-echo '<title>Manage Issuance - '.TITLE_HEADER.'</title>
-<!-- Matter -->
-<div class="matter">
-<!--WI_CLIENTS_SEARCH-->
-<div class="navbar navbar-default" role="navigation">
-<!-- .container-fluid -->
-<div class="container-fluid">
-<div class="navbar-header">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-</div>
-<!-- .navbar-collapse -->
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<form class="navbar-form navbar-left form-small" action="" method="get">
-	<div class="form-group">
-		<input type="text" class="form-control" name="srch" placeholder="Name" style="width:250px;" >
-	</div>
-	<button type="submit" class="btn btn-primary">Search</button>
-	<a href="inventory-issuance.php" class="btn btn-purple"><i class="icon-list"></i> All</a>
-	<a data-toggle="modal" class="btn btn-success" href="inventory-issuance.php?view=add"><i class="icon-plus"></i> Add Issuance</a>
-</form>
-</div>
-<!-- /.navbar-collapse -->
-</div>
-<!-- /.container-fluid -->
-</div>
-<!--WI_CLIENTS_SEARCH END-->
-<div class="container">
-<!--WI_MY_TASKS_TABLE-->
-<div class="row fullscreen-mode">
-<div class="col-lg-12">
-<div class="widget">
-<div class="widget-content">';
+//User Authentication
+checkCpanelLMSALogin();
 
-//---------------------------------------------------
-            include ("include/issuance/list.php");
-            include ("include/issuance/add.php");
-            include ("include/issuance/edit.php");
-//---------------------------------------------------         
-echo'
-        </div>
-        <!-- container-fluid -->
-    </div>
-    <!-- End Page-content -->
+//If User Type isn't Admin
+if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
+	//Redirects to Index
+	header('location: index.php');
 
-</div>
-</div>
-<!--WI_MY_TASKS_TABLE-->
-<!--WI_NOTIFICATION-->       
-<!--WI_NOTIFICATION-->
-</div>
-</div>
-<!-- Matter ends -->
-</div>
-<!-- Mainbar ends -->
-<div class="clearfix"></div>
-</div>
-<!-- Content ends -->
-<!-- Footer starts -->
-<footer>
-	<div class="container">
+//Check If User has rights
+} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {
+	require_once("include/Staffs/inventory/issuance/query.php");
+	require_once("include/header.php");
+	$sql2 = '';
+	$sqlstring	= "";
+	if(isset($_GET['srch'])) { 
+		// $sql2 		.= " b.block_name LIKE '".$stdsrch."%' ";
+		$sqlstring	.= "&srch=".$_GET['srch']."";
+	}
+				echo '
+				<title>Manage Issuance - '.TITLE_HEADER.'</title>
+				<!-- Matter -->
+				<div class="matter">
+					<!--WI_CLIENTS_SEARCH-->
+					<div class="navbar navbar-default" role="navigation">
+						<!-- .container-fluid -->
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+							</div>
+							<!-- .navbar-collapse -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<form class="navbar-form navbar-left form-small" action="" method="get">
+									<div class="form-group">
+										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
+									</div>
+
+									<button type="submit" class="btn btn-primary">Search</button>
+									<a href="inventory-issuance.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
+									if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '191', 'add' => '1'))) { 
+										echo ' <a class="btn btn-success" href="inventory-issuance.php?view=add"><i class="icon-plus"></i> Add Issuance</a>';
+									}
+									echo '
+								</form>
+							</div>
+							<!-- /.navbar-collapse -->
+						</div>
+						<!-- /.container-fluid -->
+					</div>
+					<!--WI_CLIENTS_SEARCH END-->
+					<div class="container">
+					<!--WI_MY_TASKS_TABLE-->
+						<div class="row fullscreen-mode">
+							<div class="col-lg-12">
+									<div class="widget">
+										<div class="widget-content">';
+											if(isset($_SESSION['msg'])) { 
+												echo $_SESSION['msg']['status'];
+												unset($_SESSION['msg']);
+											}
+											require_once("include/Staffs/inventory/issuance/list.php");
+											require_once("include/Staffs/inventory/issuance/add.php");
+											require_once("include/Staffs/inventory/issuance/edit.php");
+										echo'
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Matter ends -->
+			</div>
+			<!-- Mainbar ends -->
+			<div class="clearfix"></div>
+		</div>
+		<!-- Content ends -->
+
+		<!-- Footer starts -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copy">Powered by: | <a href="'.COPY_RIGHTS_URL.'" target="_blank">'.COPY_RIGHTS.'</a> </p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Footer ends -->
+
+		<!-- Scroll to top -->
+		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+		<!--WI_IFRAME_Start_MODAL-->
 		<div class="row">
-			<div class="col-md-12">
-				<p class="copy">Powered by: | <a href="'.COPY_RIGHTS_URL.'" target="_blank">'.COPY_RIGHTS.'</a> </p>
+			<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<form action="" method="post">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+								<button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+								<h4 class="modal-title" id="modal-iframe-title">Delete Activity</h4>
+								<div class="clearfix"></div>
+							</div>
+							<div class="modal-body">
+								<h2>Are you sure to delete?</h2>
+								<input type="hidden" id="deleted_id" name="deleted_id" value="">
+								<input type="hidden" id="deleted_val" name="deleted_val" value="">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+								<button type="submit" id="delete_activity" name="delete_activity" class="btn btn-danger">Delete</button>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-	</div>
-</footer>
-<!-- Footer ends -->
 
-<!-- Scroll to top -->
-<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
-';
-?>
-<!--JS_SELECT_LISTS-->
-<script type="text/javascript">
-// close the div in 5 secs
-window.setTimeout("closeHelpDiv();", 5000, 2500);
+		<script src="js/jquery.validate.js"></script>
+		<script type="text/javascript" src="js/summer.js"></script>
+		<script type="text/javascript" src="js/ebro_form_validate.js"></script>
 
-function closeHelpDiv(){
-	document.getElementById("infoupdated").style.display=" none";
+		<script type="text/javascript" src="js/custom/all-vendors.js"></script>
+		<script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
+
+		<script>
+			//USED BY: All date picking forms
+			$(document).ready(function(){
+				$(".pickadate").datepicker({
+					format: "yyyy-mm-dd",
+					language: "lang",
+					autoclose: true,
+					todayHighlight: true
+				});	
+			});
+		</script>
+
+		<script type="text/javascript" src="js/noty/jquery.noty.packaged.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				$(".footable").footable();
+			});
+		</script>
+
+		<script type="text/javascript" src="js/custom/custom.js"></script>
+		<script type="text/javascript" src="js/custom/custom.general.js"></script>
+	</body>
+</html>';
 }
-</script>
-<script>
-//USED BY: VARIOUS
-//ACTIONS: creates a nice pull down/select for each specified field
-//REQUIRES: select2.js
-//NOTES: no need for '$().ready(function()' as this only need jquery & select2.js which are loaded up top
-    $("#status").select2({
-        allowClear: true
-    });
-	$("#status_edit").select2({
-        allowClear: true
-    });
-    $("#id_cat").select2({
-        allowClear: true
-    });
-	$("#id_cat_edit").select2({
-        allowClear: true
-    });
-</script>
-<!--JS_SELECT_LISTS-->
-
-
-<!--JS_ADD_NEW_TASK_MODAL-->
-<script type="text/javascript">
-$().ready(function() {
-    //USED BY: WI_ADD_NEW_TASK_MODAL
-	//ACTIONS: validates the form and submits it
-	//REQUIRES: jquery.validate.js
-	$("#addNewPost").validate({
-		rules: {
-             caption	: "required",
-		  	 metadetail	: "required",
-			 detail		: "required",
-			 status		: "required"
-		},
-		messages: {
-			caption		: "This field is required",
-			metadetail	: "This field is required",
-			brief		: "This field is required",
-			status		: "This field is required"
-		},
-		submitHandler: function(form) {
-        //alert('form submitted');
-		form.submit();
-        }
-	});
-});
-</script>
-<!--JS_ADD_NEW_TASK_MODAL-->
-
-
-
-<script type="text/javascript" src="js/custom/all-vendors.js"></script>
-<script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
-<script>
-//USED BY: All date picking forms
-$(document).ready(function(){
-    $('.pickadate').datepicker({
-       format: "yyyy-mm-dd",
-       language: "lang",
-       autoclose: true,
-       todayHighlight: true
-    });	
-});
-</script>
-<script type="text/javascript" src="js/noty/jquery.noty.kpikaged.min.js"></script>
-<script type="text/javascript">
-	$(function () {
-		$('.footable').footable();
-	});
-</script>
-<script type="text/javascript" src="js/custom/custom.js"></script>
-<script type="text/javascript" src="js/custom/custom.general.js"></script>
-<!--JS_ADD_NEW_TASK_MODAL-->
-<script type="text/javascript">
-	$().ready(function() {
-		//USED BY: WI_ADD_NEW_TASK_MODAL
-		//ACTIONS: validates the form and submits it
-		//REQUIRES: jquery.validate.js
-		$("#addNewBcat").validate({
-			rules: {
-				 event_name: "required",
-				 event_status: "required"
-			},
-			messages: {
-				event_name: "This field is required",
-				event_status: "This field is required"
-			},
-			submitHandler: function(form) {
-			//alert('form submitted');
-			form.submit();
-			}
-		});
-	});
-	</script>
-
-	<script>
-	$(document).ready(function() {
-	  $('.ajax-delete-record').click(function() {
-		var button = $(this);
-		var recordId = button.data('mysql-record-id');
-		var ajaxUrl = button.data('ajax-url');
-		
-		
-		// Perform the AJAX request
-		$.ajax({
-		  url: ajaxUrl,
-		  method: 'POST', // or 'GET' depending on your server implementation
-		  data: {
-			recordId: recordId,
-		  },
-		 
-		});
-	  });
-	});
-	</script>
-	
-	<!--JS_ADD_NEW_TASK_MODAL-->
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+?>

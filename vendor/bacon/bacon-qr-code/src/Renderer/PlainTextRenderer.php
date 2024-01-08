@@ -76,7 +76,7 @@ final class PlainTextRenderer implements RendererInterface
                 }
             }
 
-            $result .= $horizontalMargin . "\n";
+            $result .= $horizontalMargin ."\n";
         }
 
         $result .= str_repeat("\n", (int) ceil($this->margin / 2));

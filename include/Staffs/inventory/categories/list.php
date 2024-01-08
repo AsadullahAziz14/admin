@@ -5,7 +5,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                                        FROM ".SMS_CATEGORIES." 
                                        WHERE category_id != ''
                                        $sql2
-                                       ORDER BY category_id DESC LIMIT ".($page-1)*$Limit .",$Limit");
+                                       ");
    echo'    
 	   <div style="clear:both;"></div>
          <table class="footable table table-bordered table-hover">
@@ -21,7 +21,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
             </thead>
             <tbody>';
             $srno = 0;
-            while($valueCategory = mysqli_fetch_array($sqllms)) {
+            while($valueCategory = mysqli_fetch_array($queryCategory)) {
                $ctystatus = get_status($valueCategory['category_status']);
                $srno++;
                echo '

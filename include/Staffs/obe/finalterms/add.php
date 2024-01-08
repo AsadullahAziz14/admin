@@ -2,7 +2,7 @@
 if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) { 
 	if(LMS_VIEW == 'add' && !isset($_GET['id'])) { 
 		$queryFinalterm = $dblms->querylms("SELECT ft_id 
-								FROM " .OBE_FINALTERMS. " 
+								FROM " .OBE_FINALTERMS." 
 								WHERE id_teacher = ".ID_TEACHER."AND id_course = ".ID_COURSE."AND theory_paractical = ".COURSE_TYPE."AND id_prg = ".ID_PRG."AND semester = ".SEMESTER."AND section = '".SECTION."'AND timing = ".TIMING."AND academic_session = '".ACADEMIC_SESSION."'AND id_campus = ".cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])."AND id_added = ".cleanvars($_SESSION['userlogininfo']['LOGINIDA'])."
 								");
 		$valueFinalterm = mysqli_fetch_array($queryFinalterm);

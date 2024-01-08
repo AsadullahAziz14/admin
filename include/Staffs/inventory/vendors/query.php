@@ -1,53 +1,49 @@
 <?php
 
-if(isset($_GET['deleteId']))
-{
-    $sqllms  = $dblms->querylms("DELETE FROM ".SMS_VENDORS." WHERE vendor_id = '".cleanvars($_GET['deleteId'])."'");
+if(isset($_GET['deleteId'])) {
+    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_VENDORS." WHERE vendor_id = '".cleanvars($_GET['deleteId'])."'");
 
-    if($sqllms)
-    {
+    if($queryDelete) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
-            'log_date'                          => date('Y-m-d H:i:s')
-            ,'action'                           => "Delete"
-            ,'affected_table'                   => SMS_VENDORS
-            ,'action_detail'                    =>  'vendor_id: '.cleanvars($_GET['deleteId'])
-            ,'path'                             =>  end($filePath)
-            ,'login_session_start_time'         => $_SESSION['login_time']
-            ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'log_date'                         => date('Y-m-d H:i:s')                                           ,
+            'action'                           => "Delete"                                                      ,
+            'affected_table'                   => SMS_VENDORS                                                   ,
+            'action_detail'                    =>  'vendor_id: '.cleanvars($_GET['deleteId'])                   ,
+            'path'                             =>  end($filePath)                                               ,
+            'login_session_start_time'         => $_SESSION['login_time']                                       ,
+            'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
+            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        $_SESSION['msg']['status'] = 'toastr.info("Deleted Succesfully");';
+        $_SESSION['msg']['status'] = '<div class="alert-box danger"><span>Success: </span>Record has been deleted successfully.</div>';
         header("Location: inventory-vendors.php");
         exit();
     }
 }
 
-if(isset($_POST['submit_vendor'])) 
-{ 
+if(isset($_POST['submit_vendor'])) { 
     $data = [
-        'vendor_name'                           => cleanvars($_POST['vendor_name'])
-        ,'vendor_address'                       => cleanvars($_POST['vendor_address'])
-        ,'vendor_contact_name'                  => cleanvars($_POST['vendor_contact_name'])
-        ,'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])
-        ,'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])
-        ,'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])
-        ,'vendor_status'                        => cleanvars($_POST['vendor_status'])
-        ,'id_added'                             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-        ,'date_added'                           => date('Y-m-d H:i:s')     
+        'vendor_name'                          => cleanvars($_POST['vendor_name'])                      ,
+        'vendor_address'                       => cleanvars($_POST['vendor_address'])                   ,
+        'vendor_contact_name'                  => cleanvars($_POST['vendor_contact_name'])              ,
+        'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])            ,
+        'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])            ,
+        'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])             ,
+        'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
+        'id_added'                             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'date_added'                           => date('Y-m-d H:i:s')     
     ];
-    $queryInsert = $dblms->Insert(SMS_VENDORS , $data);
+    $queryInsert = $dblms->Insert(SMS_VENDORS, $data);
     $latest_id = $dblms->lastestid();
     
-    if($queryInsert) 
-    {
+    if($queryInsert) {
         $data = [
             'vendor_code' => 'VENDOR-'.str_pad(cleanvars($latest_id), 5, '0', STR_PAD_LEFT)
         ];
         $conditions = "WHERE vendor_id  = ".cleanvars($latest_id)."";
-        $queryUpdate = $dblms->Update(SMS_VENDORS,$data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_VENDORS, $data, $conditions);
 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
@@ -70,33 +66,30 @@ if(isset($_POST['submit_vendor']))
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        $_SESSION['msg']['status'] = 'toastr.success("Inserted Succesfully");';
+        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
         header("Location: inventory-vendors.php", true, 301);
         exit(); 
     }
 }
 
 if(isset($_POST['edit_vendor'])) { 
-    
     $data = [
-        'vendor_name'                           => cleanvars($_POST['vendor_name'])
-        ,'vendor_address'                       => cleanvars($_POST['vendor_address'])
-        ,'vendor_contact_name'                  => cleanvars($_POST['vendor_contact_name'])
-        ,'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])
-        ,'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])
-        ,'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])
-        ,'vendor_status'                        => cleanvars($_POST['vendor_status']) 
-        ,'id_modify'                            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-        ,'date_modify'                          => date('Y-m-d H:i:s')            
+        'vendor_name'                          => cleanvars($_POST['vendor_name'])                      ,
+        'vendor_address'                       => cleanvars($_POST['vendor_address'])                   ,
+        'vendor_contact_name'                  => cleanvars($_POST['vendor_contact_name'])              ,
+        'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])            ,
+        'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])            ,
+        'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])             ,
+        'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
+        'id_modify'                            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'date_modify'                          => date('Y-m-d H:i:s')            
     ];
+    $conditions = "WHERE vendor_id  = ".cleanvars($_GET['id'])."";
+    $queryUpdate = $dblms->Update(SMS_VENDORS, $data, $conditions);
 
-    $conditions = "WHERE  vendor_id  = ".cleanvars($_GET['id'])."";
-    $queryUpdate = $dblms->Update(SMS_VENDORS,$data, $conditions);
-
-    if($queryUpdate) 
-    { 
+    if($queryUpdate) { 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                          => date('Y-m-d H:i:s')
@@ -117,12 +110,10 @@ if(isset($_POST['edit_vendor'])) {
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS , $data);
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        $_SESSION['msg']['status'] = 'toastr.info("Updated Succesfully");';
+        $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
         header("Location: inventory-vendors.php", true, 301);
         exit();
-
     }
-
 }

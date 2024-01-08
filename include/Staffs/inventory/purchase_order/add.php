@@ -1,6 +1,5 @@
 <?php
-if(LMS_VIEW == 'add' && !isset($_GET['id'])) 
-{ 
+if(LMS_VIEW == 'add' && !isset($_GET['id'])) { 
 	echo '
 	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -11,17 +10,15 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 					</div>
 
 					<div class="modal-body">
-
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="id_vendor" class="req"><b>Vendor</b></label>
 								<select name="id_vendor" class="form-control" id="id_vendor" required>
-									<option value="">Select Vendor</option>
-									';
-									$sqllms = $dblms->querylms("SELECT vendor_id, vendor_name 
-															FROM " .SMS_VENDOR);
-									while($rowstd = mysqli_fetch_array($sqllms)) {
-										echo '<option value="'.$rowstd['vendor_id'].'">'.$rowstd['vendor_name'].'</option>';
+									<option value="">Select Vendor</option>';
+									$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name 
+																		FROM " .SMS_VENDORS);
+									while($valueVendor = mysqli_fetch_array($queryVendor)) {
+										echo '<option value="'.$valueVendor['vendor_id'].'">'.$valueVendor['vendor_name'].'</option>';
 									}
 									echo '
 								</select>
@@ -46,87 +43,51 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 							<div style="margin-top:5px;">
 								<label for="po_delivery_address" class="req"><b>Delivery Adress</b></label>
 								<select name="po_delivery_address" class="form-control" id="po_delivery_address" required>
-									<option value="">Select Address</option>
-									';
-									$sqllms = $dblms->querylms("SELECT ".SMS_STORE.".store_id, ".SMS_STORE.".store_name, ".SMS_WAREHOUSE.".warehouse_id, 
-									".SMS_WAREHOUSE.".warehouse_name, ".SMS_LOCATION.".location_id, ".SMS_LOCATION.".location_address
-									From ".SMS_STORE." 
-									INNER JOIN ".SMS_WAREHOUSE." ON ".SMS_STORE.".id_warehouse = ".SMS_WAREHOUSE.".warehouse_id 
-									INNER JOIN ".SMS_LOCATION." ON ".SMS_WAREHOUSE.".id_location = ".SMS_LOCATION.".location_id");
-									while($rowstd = mysqli_fetch_array($sqllms)) {
-										echo '<option value="'.$rowstd['store_id'].'">'.$rowstd['store_name'].','.$rowstd['warehouse_name'].','.$rowstd['location_address'].'</option>';
+									<option value="">Select Address</option>';
+									$queryStores = $dblms->querylms("SELECT l.location_id, l.location_address
+																	From ".SMS_LOCATIONS." l 
+																");
+									while($valueStore = mysqli_fetch_array($queryStores)) {
+										echo '<option value="'.$valueStore['location_id'].'">'.$valueStore['location_address'].'</option>';
 									}
 									echo '
 								</select>
 							</div>
 						</div>
 
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="po_tax_perc" class="req">Tax %</label>
 								<input class="form-control" type="text" name="po_tax_perc" id="po_tax_perc" required>
 							</div>
 						</div>
 
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="po_payment_terms" class="req"><b>Payment Terms</b></label>
 								<select id="po_payment_terms" class="form-control" name="po_payment_terms" required>
-									<option value="">Select Payment Terms</option>
-									';
-									foreach (PAYMENT_TERMS as $key => $pt) 
-									{
-										if($key === 'cr')
-										{
+									<option value="">Select Payment Terms</option>';
+									foreach (PAYMENT_TERMS as $key => $pt) {
+										if($key === 'cr') {
 											echo '<option value="'.$key.'" selected>'.$pt.'</option>';
-										}
-										else
-										{
+										} else {
 											echo '<option value="'.$key.'">'.$pt.'</option>';
 										}
 									}
-									
 									echo '
 								</select>
 							</div>
 						</div>
 
-						<div class="col-sm-41">
-							<div style="margin-top:5px;">
-								<label for="po_credit_terms" class="req"><b>Credit Terms</b></label>
-								<select id="po_credit_terms" class="form-control" name="po_credit_terms" required>
-									<option value="">Select Credit Terms</option>
-									';
-									for ($i=1; $i < 30; $i++) 
-									{ 
-										if($i == 15)
-										{
-											echo '<option value="'.$i.'" selected>'.$i.' Days After Complete PO Recieving.</option>';
-										}
-										else
-										{
-											echo '<option value="'.$i.'">'.$i.' Days After Complete PO Recieving.</option>';
-										}
-									}
-									echo '
-								</select>
-							</div>
-						</div>
-
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="po_lead_time" class="req"><b>Lead Time</b></label>
 								<select id="po_lead_time" class="form-control" name="po_lead_time" required>
-									<option value="">Select Lead Time</option>
-									';
-									for ($i=1; $i < 30; $i++) 
-									{ 
-										if($i == 15)
-										{
+									<option value="">Select Lead Time</option>';
+									for ($i=1; $i < 30; $i++) { 
+										if($i == 15) {
 											echo '<option value="'.$i.'" selected>'.$i.' Days After PO Placed.</option>';
-										}
-										else
-										{
+										} else {
 											echo '<option value="'.$i.'">'.$i.' Days After PO Placed.</option>';
 										}
 									}
@@ -135,22 +96,20 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 							</div>
 						</div>
 
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 							<label for="po_status" class="req"><b>Status</b></label>
 								<select id="po_status" class="form-control" name="po_status" required>
 									<option value="">Select Status</option>';
 									foreach ($status as $adm_status) {
-										echo '
-											<option value="'. $adm_status['id'].'">'.$adm_status['name'].'</option>
-										';
+										echo '<option value="'. $adm_status['id'].'">'.$adm_status['name'].'</option>';
 									}
-						echo '
+									echo '
 								</select>
 							</div>
 						</div>
 
-						<div class="col-sm-41">
+						<div class="col-sm-91">
 							<div style="margin-top:5px;">
 								<label for="po_remarks" class="req">Remarks</label>
 								<input class="form-control" type="text" name="po_remarks" id="po_remarks" required>
@@ -177,7 +136,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 						<input class="btn btn-primary" type="submit" value="Add Record" id="submit_po" name="submit_po">
 					</div>
 				</div>
-				
 			</form>
 		</div>
 	</div>
@@ -187,42 +145,36 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			placeholder: "Select Any Option"
 		})
 		
-
 		// Add an input event listener to update the amount when unit price or tax percentage changes
 		document.addEventListener("input", function(event) {
-        // Check if the changed input is a unit price or tax percentage input
-        if (event.target && (event.target.matches("input[name^=\'unit_price\']") || event.target.matches("#po_tax_perc"))) {
-            // Extract demand ID and item ID from the unit price input name attribute
-            var unitPriceMatches = event.target.name.match(/unit_price\[(\d+)\]\[(\d+)\]/);
-            if (unitPriceMatches) {
-                var demandId = unitPriceMatches[1];
-                var itemId = unitPriceMatches[2];
+			// Check if the changed input is a unit price or tax percentage input
+			if (event.target && (event.target.matches("input[name^=\'unit_price\']") || event.target.matches("#po_tax_perc"))) {
+				// Extract demand ID and item ID from the unit price input name attribute
+				var unitPriceMatches = event.target.name.match(/unit_price\[(\d+)\]\[(\d+)\]/);
+				if (unitPriceMatches) {
+					var demandId = unitPriceMatches[1];
+					var itemId = unitPriceMatches[2];
 
-                // Get the quantity and unit price input elements
-                var quantityInput = document.querySelector("input[name=\'quantity_ordered[" + demandId + "][" + itemId + "]\']");
-                var unitPriceInput = event.target;
+					// Get the quantity and unit price input elements
+					var quantityInput = document.querySelector("input[name=\'quantity_ordered[" + demandId + "][" + itemId + "]\']");
+					var unitPriceInput = event.target;
 
-                // Calculate the amount and update the corresponding input
-                var amountInput = document.querySelector("input[name=\'amount[" + demandId + "][" + itemId + "]\']");
-                amountInput.value = (parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value)) + ((parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value))) * ((document.getElementById("po_tax_perc").value) / 100) || 0;
-            }
-        }
-    });
+					// Calculate the amount and update the corresponding input
+					var amountInput = document.querySelector("input[name=\'amount[" + demandId + "][" + itemId + "]\']");
+					amountInput.value = (parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value)) + ((parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value))) * ((document.getElementById("po_tax_perc").value) / 100) || 0;
+				}
+			}
+		});
 
-
-		function removeItem(button)
-		{
-		
+		function removeItem(button) {
 			var parentDiv = button.closest("[class*=item]");
-			if (parentDiv) 
-			{
+			if (parentDiv) {
 				parentDiv.parentNode.removeChild(parentDiv);
 			}
 		}	
 		
 		var selectedDemands = [];
-		function addDemand()
-		{
+		function addDemand() {
 			var i = 0;
 			i = i + 1;
 			const itemContainer = document.getElementById("itemContainer");
@@ -243,12 +195,10 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			demandSelectorLabel.textContent = "Demand";
 			demandSelectorLabel.className = "req";
 			
-
 			const demandSelector = document.createElement("select");
 			demandSelector.className = "form-control";
 			demandSelector.name = "id_demand["+i+"]";
-			demandSelector.addEventListener("change", function () 
-			{
+			demandSelector.addEventListener("change", function () {
 				// Fetch items based on the selected demand
 				fetchItems(this.value, itemInputContainer);
 			});
@@ -264,10 +214,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			xhr.open(method,url,asyncronous);
 			xhr.send();
 
-			xhr.onreadystatechange = function()
-			{
-				if(xhr.readyState === 4 && xhr.status === 200)
-				{
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState === 4 && xhr.status === 200) {
 					const options = xhr.responseText;
 					demandSelector.innerHTML = options;
 				}
@@ -289,8 +237,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			removeButton.onclick = "removeItem(this)";
 			removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
 
-			removeButton.addEventListener("click", function () 
-			{
+			removeButton.addEventListener("click", function () {
 				container.remove();
 			});
 
@@ -298,17 +245,14 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 			removeButtonContainer.appendChild(removeButtonDiv);
 			container.appendChild(removeButtonContainer);
 
-
 			// Item Selector Start
 			const itemInputContainer = document.createElement("div");
 			itemInputContainer.className = "col-sm-91";
 			
-			
 			container.appendChild(itemInputContainer);
 		}
 
-		function fetchItems(demandId, itemInputContainer)
-		{
+		function fetchItems(demandId, itemInputContainer) {
 			selectedDemands.push(demandId);
 			var xhr = new XMLHttpRequest();
 			var method = "GET";
@@ -329,9 +273,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id']))
 
 	</script>
 
-<script src="js/select2/jquery.select2.js"></script>
-
-';
+	<script src="js/select2/jquery.select2.js"></script>';
 }
 
 ?>

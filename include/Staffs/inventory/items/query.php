@@ -2,7 +2,6 @@
 <?php
 
 if(isset($_GET['deleteId'])) { 
-
     $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ITEMS." WHERE item_id = '".cleanvars($_GET['deleteId'])."'");
 
     if($queryDelete) { 

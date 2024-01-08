@@ -86,7 +86,7 @@ class PdfCrowd {
         }
 
         $this->fields['src'] = $src;
-        $uri = $this->api_prefix . "/pdf/convert/html/";
+        $uri = $this->api_prefix ."/pdf/convert/html/";
         $postfields = http_build_query($this->fields, '', '&');
         return $this->http_post($uri, $postfields, $outstream);
     }
@@ -131,7 +131,7 @@ Possible reasons:
             $this->fields['src'] = '@' . $src;
         }
 
-        $uri = $this->api_prefix . "/pdf/convert/html/";
+        $uri = $this->api_prefix ."/pdf/convert/html/";
         return $this->http_post($uri, $this->fields, $outstream);
     }
 
@@ -149,7 +149,7 @@ Possible reasons:
         }
 
         $this->fields['src'] = $src;
-        $uri = $this->api_prefix . "/pdf/convert/uri/";
+        $uri = $this->api_prefix ."/pdf/convert/uri/";
         $postfields = http_build_query($this->fields, '', '&');
         return $this->http_post($uri, $postfields, $outstream);
     }
@@ -159,7 +159,7 @@ Possible reasons:
     //
     function numTokens() {
         $username = $this->fields['username'];
-        $uri = $this->api_prefix . "/user/{$username}/tokens/";
+        $uri = $this->api_prefix ."/user/{$username}/tokens/";
         $arr = array('username' => $this->fields['username'],
                      'key' => $this->fields['key']);
         $postfields = http_build_query($arr, '', '&');
@@ -442,10 +442,10 @@ Links:
         }
 
         if ($this->proxy_name) {
-            curl_setopt($c, CURLOPT_PROXY, $this->proxy_name . ":" . $this->proxy_port);
+            curl_setopt($c, CURLOPT_PROXY, $this->proxy_name .":" . $this->proxy_port);
             if ($this->proxy_username) {
                 curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-                curl_setopt($c, CURLOPT_PROXYUSERPWD, $this->proxy_username . ":" . $this->proxy_password);
+                curl_setopt($c, CURLOPT_PROXYUSERPWD, $this->proxy_username .":" . $this->proxy_password);
             }
         }
 
@@ -521,9 +521,9 @@ class Error extends \Exception {
 function create_invalid_value_message($value, $field, $converter, $hint, $id) {
     $message = "Invalid value '$value' for $field.";
     if($hint != null) {
-        $message = $message . " " . $hint;
+        $message = $message ." " . $hint;
     }
-    return $message . " " . "Details: https://www.pdfcrowd.com/api/$converter-php/ref/#$id";
+    return $message ." " ."Details: https://www.pdfcrowd.com/api/$converter-php/ref/#$id";
 }
 
 class ConnectionHelper
@@ -599,11 +599,11 @@ You need to restart your web server after installation.';
     public static $MULTIPART_BOUNDARY = '----------ThIs_Is_tHe_bOUnDary_$';
 
     private function add_file_field($name, $file_name, $data, &$body) {
-        $body .= "--" . self::$MULTIPART_BOUNDARY . "\r\n";
-        $body .= 'Content-Disposition: form-data; name="' . $name . '";' . ' filename="' . $file_name . '"' . "\r\n";
-        $body .= 'Content-Type: application/octet-stream' . "\r\n";
+        $body .= "--" . self::$MULTIPART_BOUNDARY ."\r\n";
+        $body .= 'Content-Disposition: form-data; name="' . $name . '";' . ' filename="' . $file_name . '"' ."\r\n";
+        $body .= 'Content-Type: application/octet-stream' ."\r\n";
         $body .= "\r\n";
-        $body .= $data . "\r\n";
+        $body .= $data ."\r\n";
     }
 
     private function reset_response_data() {
@@ -621,9 +621,9 @@ You need to restart your web server after installation.';
         $body = '';
 
         foreach ($fields as $name => $content) {
-            $body .= "--" . self::$MULTIPART_BOUNDARY . "\r\n";
-            $body .= 'Content-Disposition: form-data; name="' . $name . '"' . "\r\n\r\n";
-            $body .= $content . "\r\n";
+            $body .= "--" . self::$MULTIPART_BOUNDARY ."\r\n";
+            $body .= 'Content-Disposition: form-data; name="' . $name . '"' ."\r\n\r\n";
+            $body .= $content ."\r\n";
         }
 
         foreach ($files as $name => $file_name) {
@@ -634,7 +634,7 @@ You need to restart your web server after installation.';
             $this->add_file_field($name, $name, $data, $body);
         }
 
-        return $body . "--" . self::$MULTIPART_BOUNDARY . "--\r\n";
+        return $body ."--" . self::$MULTIPART_BOUNDARY ."--\r\n";
     }
 
     private function output_body($http_code, $body, $out_stream) {
@@ -823,7 +823,7 @@ You need to restart your web server after installation.';
     }
 
     function custom_error_handler($severity, $message, $file, $line) {
-        $this->error_message .= $message . "\n";
+        $this->error_message .= $message ."\n";
     }
 
     private function exec_request_no_curl($url, $context) {

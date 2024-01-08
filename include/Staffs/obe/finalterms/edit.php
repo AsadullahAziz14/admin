@@ -2,7 +2,7 @@
 if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) {
 	if (!LMS_VIEW && isset($_GET['id'])) {
 		$queryFinalterm = $dblms->querylms("SELECT mt_id, mt_status, mt_number, mt_marks, mt_date, id_ques 
-												FROM " .OBE_FINALTERMS. " 
+												FROM " .OBE_FINALTERMS." 
 												WHERE ft_id = ".cleanvars($_GET['id'])." ");
 		$valueFinalterm = mysqli_fetch_array($queryFinalterm);
 		$formattedDate = date('Y-m-d', strtotime($valueFinalterm['ft_date']));

@@ -1434,8 +1434,8 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
      *     };
      *   }
      * });
-     * echo CarbonInterval::hours(5)->hoursToDays() . "\n";
-     * echo CarbonInterval::days(5)->daysToHours() . "\n";
+     * echo CarbonInterval::hours(5)->hoursToDays() ."\n";
+     * echo CarbonInterval::days(5)->daysToHours() ."\n";
      * ```
      *
      * @param object|string $mixin
@@ -1723,12 +1723,12 @@ class CarbonInterval extends DateInterval implements CarbonConverterInterface
      *
      * @example
      * ```
-     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans() . "\n";
-     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['parts' => 2]) . "\n";
-     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['parts' => 3, 'join' => true]) . "\n";
-     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['short' => true]) . "\n";
-     * echo CarbonInterval::fromString('1d 24h')->forHumans(['join' => ' or ']) . "\n";
-     * echo CarbonInterval::fromString('1d 24h')->forHumans(['minimumUnit' => 'hour']) . "\n";
+     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans() ."\n";
+     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['parts' => 2]) ."\n";
+     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['parts' => 3, 'join' => true]) ."\n";
+     * echo CarbonInterval::fromString('4d 3h 40m')->forHumans(['short' => true]) ."\n";
+     * echo CarbonInterval::fromString('1d 24h')->forHumans(['join' => ' or ']) ."\n";
+     * echo CarbonInterval::fromString('1d 24h')->forHumans(['minimumUnit' => 'hour']) ."\n";
      * ```
      *
      * @param int|array $syntax  if array passed, parameters will be extracted from it, the array may contains:

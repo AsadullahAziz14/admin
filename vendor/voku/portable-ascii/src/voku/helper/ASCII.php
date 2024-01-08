@@ -248,7 +248,7 @@ final class ASCII
      *
      * @psalm-suppress InvalidNullableReturnType - we use the prepare* methods here, so we don't get NULL here
      *
-     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>
+     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>
      *
      * @psalm-pure
      *
@@ -277,7 +277,7 @@ final class ASCII
      * var_dump($array['b']); // ['β', 'б', 'ဗ', 'ბ', 'ب']
      * </code>
      *
-     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>
+     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>
      *
      * @psalm-pure
      *
@@ -334,7 +334,7 @@ final class ASCII
      *
      * @param string $language              [optional] <p>Language of the source string e.g.: en, de_at, or de-ch.
      *                                      (default is 'en') | ASCII::*_LANGUAGE_CODE</p>
-     * @param bool   $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>
+     * @param bool   $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>
      * @param bool   $asOrigReplaceArray    [optional] <p>TRUE === return {orig: string[], replace: string[]}
      *                                      array</p>
      *
@@ -429,7 +429,7 @@ final class ASCII
      * echo $array['orig'][$tmpKey]; // '၌'
      * </code>
      *
-     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g. "£" with " pound ".</p>
+     * @param bool $replace_extra_symbols [optional] <p>Add some more replacements e.g."£" with " pound ".</p>
      * @param bool $asOrigReplaceArray    [optional] <p>TRUE === return {orig: string[], replace: string[]}
      *                                    array</p>
      *
@@ -777,7 +777,7 @@ final class ASCII
      *                                             (default is 'en') | ASCII::*_LANGUAGE_CODE</p>
      * @param bool      $remove_unsupported_chars  [optional] <p>Whether or not to remove the
      *                                             unsupported characters.</p>
-     * @param bool      $replace_extra_symbols     [optional]  <p>Add some more replacements e.g. "£" with " pound
+     * @param bool      $replace_extra_symbols     [optional]  <p>Add some more replacements e.g."£" with " pound
      *                                             ".</p>
      * @param bool      $use_transliterate         [optional]  <p>Use ASCII::to_transliterate() for unknown chars.</p>
      * @param bool|null $replace_single_chars_only [optional]  <p>Single char replacement is better for the
@@ -1052,7 +1052,7 @@ final class ASCII
      * @param string                $language              [optional] <p>Language of the source string.
      *                                                     (default is 'en') | ASCII::*_LANGUAGE_CODE</p>
      * @param array<string, string> $replacements          [optional] <p>A map of replaceable strings.</p>
-     * @param bool                  $replace_extra_symbols [optional]  <p>Add some more replacements e.g. "£" with "
+     * @param bool                  $replace_extra_symbols [optional]  <p>Add some more replacements e.g."£" with "
      *                                                     pound ".</p>
      * @param bool                  $use_str_to_lower      [optional] <p>Use "string to lower" for the input.</p>
      * @param bool                  $use_transliterate     [optional]  <p>Use ASCII::to_transliterate() for unknown
@@ -1288,13 +1288,13 @@ final class ASCII
 
                 // keep for debugging
                 /*
-                echo "file: " . sprintf('x%02x', $bank) . "\n";
-                echo "char: " . $c . "\n";
-                echo "ord: " . $ord . "\n";
-                echo "new_char: " . $new_char . "\n";
-                echo "new_char: " . mb_chr($new_char) . "\n";
-                echo "ascii: " . $UTF8_TO_TRANSLIT[$bank][$new_char] . "\n";
-                echo "bank:" . $bank . "\n\n";
+                echo "file: " . sprintf('x%02x', $bank) ."\n";
+                echo "char: " . $c ."\n";
+                echo "ord: " . $ord ."\n";
+                echo "new_char: " . $new_char ."\n";
+                echo "new_char: " . mb_chr($new_char) ."\n";
+                echo "ascii: " . $UTF8_TO_TRANSLIT[$bank][$new_char] ."\n";
+                echo "bank:" . $bank ."\n\n";
                  */
 
                 $new_char = $UTF8_TO_TRANSLIT[$bank][$new_char];
@@ -1316,12 +1316,12 @@ final class ASCII
 
                 // keep for debugging missing chars
                 /*
-                echo "file: " . sprintf('x%02x', $bank) . "\n";
-                echo "char: " . $c . "\n";
-                echo "ord: " . $ord . "\n";
-                echo "new_char: " . $new_char . "\n";
-                echo "new_char: " . mb_chr($new_char) . "\n";
-                echo "bank:" . $bank . "\n\n";
+                echo "file: " . sprintf('x%02x', $bank) ."\n";
+                echo "char: " . $c ."\n";
+                echo "ord: " . $ord ."\n";
+                echo "new_char: " . $new_char ."\n";
+                echo "new_char: " . mb_chr($new_char) ."\n";
+                echo "bank:" . $bank ."\n\n";
                  */
 
                 $c = $unknown ?? $c;

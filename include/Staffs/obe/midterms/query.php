@@ -323,7 +323,7 @@ if(isset($_POST['edit_result'])) {
 if(isset($_GET['deleteresultId'])) {
     $resultrecordId = $_GET['deleteresultId'];
 
-    $sqllms = $dblms->querylms("SELECT id_ques FROM ".OBE_MIDTERMS." WHERE mt_id =  ".$resultrecordId. "");
+    $sqllms = $dblms->querylms("SELECT id_ques FROM ".OBE_MIDTERMS." WHERE mt_id =  ".$resultrecordId."");
     if(mysqli_num_rows($sqllms) > 0) {
         $value_midterm = mysqli_fetch_array($sqllms);
         if($value_midterm['id_ques'] != "") {

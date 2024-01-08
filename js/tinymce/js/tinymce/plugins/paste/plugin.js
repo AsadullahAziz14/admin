@@ -1551,7 +1551,7 @@ define(
     }
 
     /**
-     * Checks if the specified text starts with "1. " or "a. " etc.
+     * Checks if the specified text starts with "1." or "a." etc.
      */
     function isNumericList(text) {
       var found, patterns;

@@ -262,9 +262,9 @@ trait Boundaries
      *
      * @example
      * ```
-     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->startOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek(Carbon::SUNDAY) . "\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->startOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->startOfWeek(Carbon::SUNDAY) ."\n";
      * ```
      *
      * @param int $weekStartsAt optional start allow you to specify the day of week to use to start the week
@@ -281,9 +281,9 @@ trait Boundaries
      *
      * @example
      * ```
-     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->endOfWeek() . "\n";
-     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek(Carbon::SATURDAY) . "\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->locale('ar')->endOfWeek() ."\n";
+     * echo Carbon::parse('2018-07-25 12:45:16')->endOfWeek(Carbon::SATURDAY) ."\n";
      * ```
      *
      * @param int $weekEndsAt optional start allow you to specify the day of week to use to end the week

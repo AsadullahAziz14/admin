@@ -1,6 +1,5 @@
 <?php
 if(!LMS_VIEW && !isset($_GET['id'])) { 
-
 	$queryItems  = $dblms->querylms("SELECT item_id, item_code, item_image, 
 										item_title, item_status
 										FROM ".SMS_ITEMS." WHERE item_id != '' 

@@ -3,7 +3,7 @@
 
 This skin has been chosen for the **default skin** of CKEditor 4.x, elected from the CKEditor
 [skin contest](http://ckeditor.com/blog/new_ckeditor_4_skin) and further shaped by
-the CKEditor team. "Moono" is maintained by the core developers.
+the CKEditor team."Moono" is maintained by the core developers.
 
 For more information about skins, please check the [CKEditor Skin SDK](http://docs.cksource.com/CKEditor_4.x/Skin_SDK)
 documentation.

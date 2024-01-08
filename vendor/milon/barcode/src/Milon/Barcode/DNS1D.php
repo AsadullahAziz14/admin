@@ -95,11 +95,11 @@ class DNS1D {
         $svg = '';
         if (!$inline)
         {
-            $svg = '<' . '?' . 'xml version="1.0" standalone="no"' . '?' . '>' . "\n";
-            $svg .= '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' . "\n";
+            $svg = '<' . '?' . 'xml version="1.0" standalone="no"' . '?' . '>' ."\n";
+            $svg .= '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' ."\n";
         }
-        $svg .= '<svg width="' . round(($this->barcode_array['maxw'] * $w), 3) . '" height="' . $h . '" version="1.1" xmlns="http://www.w3.org/2000/svg">' . "\n";
-        $svg .= "\t" . '<g id="bars" fill="' . $color . '" stroke="none">' . "\n";
+        $svg .= '<svg width="' . round(($this->barcode_array['maxw'] * $w), 3) . '" height="' . $h . '" version="1.1" xmlns="http://www.w3.org/2000/svg">' ."\n";
+        $svg .= "\t" . '<g id="bars" fill="' . $color . '" stroke="none">' ."\n";
         // print bars
         $x = 0;
         foreach ($this->barcode_array['bcode'] as $k => $v) {
@@ -110,15 +110,15 @@ class DNS1D {
             if ($v['t']) {
                 $y = round(($v['p'] * $h / $this->barcode_array['maxh']), 3);
                 // draw a vertical bar
-                $svg .= "\t\t" . '<rect x="' . $x . '" y="' . $y . '" width="' . $bw . '" height="' . $bh . '" />' . "\n";
+                $svg .= "\t\t" . '<rect x="' . $x . '" y="' . $y . '" width="' . $bw . '" height="' . $bh . '" />' ."\n";
             }
             $x += $bw;
         }
     if($showCode)
-            $svg .= "\t" .'<text x="'. (round(($this->barcode_array['maxw'] * $w), 3)/2)  .'" text-anchor="middle"  y="'.  ($bh + 12) .'" id="code" fill="' . $color . '" font-size ="12px" >'. $code .'</text>'. "\n";
+            $svg .= "\t" .'<text x="'. (round(($this->barcode_array['maxw'] * $w), 3)/2)  .'" text-anchor="middle"  y="'.  ($bh + 12) .'" id="code" fill="' . $color . '" font-size ="12px" >'. $code .'</text>'."\n";
 
-        $svg .= "\t" . '</g>' . "\n";
-        $svg .= '</svg>' . "\n";
+        $svg .= "\t" . '</g>' ."\n";
+        $svg .= '</svg>' ."\n";
         return $svg;
     }
 
@@ -138,8 +138,8 @@ class DNS1D {
             $this->setStorPath(app('config')->get("barcode.store_path"));
         }
         $this->setBarcode($code, $type);
-        $html = '<div style="font-size:0;position:relative;">' . "\n";
-        $html = '<div style="font-size:0;position:relative;width:' . ($this->barcode_array['maxw'] * $w) . 'px;height:' . ($h) . 'px;">' . "\n";
+        $html = '<div style="font-size:0;position:relative;">' ."\n";
+        $html = '<div style="font-size:0;position:relative;width:' . ($this->barcode_array['maxw'] * $w) . 'px;height:' . ($h) . 'px;">' ."\n";
         // print bars
         $x = 0;
         foreach ($this->barcode_array['bcode'] as $k => $v) {
@@ -150,14 +150,14 @@ class DNS1D {
             if ($v['t']) {
                 $y = round(($v['p'] * $h / $this->barcode_array['maxh']), 3);
                 // draw a vertical bar
-                $html .= '<div style="background-color:' . $color . ';width:' . $bw . 'px;height:' . $bh . 'px;position:absolute;left:' . $x . 'px;top:' . $y . 'px;">&nbsp;</div>' . "\n";
+                $html .= '<div style="background-color:' . $color . ';width:' . $bw . 'px;height:' . $bh . 'px;position:absolute;left:' . $x . 'px;top:' . $y . 'px;">&nbsp;</div>' ."\n";
             }
             $x += $bw;
         }
     if($showCode)
             $html .= '<div style="position:absolute;bottom:0; text-align:center;color:' . $color . '; width:' . ($this->barcode_array['maxw'] * $w) . 'px;  font-size: ' . $showCode . 'px;">' . $code . '</div>';
 
-        $html .= '</div>' . "\n";
+        $html .= '</div>' ."\n";
         return $html;
     }
 
@@ -318,7 +318,7 @@ class DNS1D {
             }
 
         $file_name= Str::slug($code);
-        $save_file = $this->checkfile($this->store_path . $file_name . ".png");
+        $save_file = $this->checkfile($this->store_path . $file_name .".png");
 
         if ($imagick) {
             $png->drawimage($bar);

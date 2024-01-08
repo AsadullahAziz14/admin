@@ -30,27 +30,27 @@ final class EpsImageBackEnd implements ImageBackEndInterface
     public function new(int $size, ColorInterface $backgroundColor) : void
     {
         $this->eps = "%!PS-Adobe-3.0 EPSF-3.0\n"
-            . "%%Creator: BaconQrCode\n"
+            ."%%Creator: BaconQrCode\n"
             . sprintf("%%%%BoundingBox: 0 0 %d %d \n", $size, $size)
-            . "%%BeginProlog\n"
-            . "save\n"
-            . "50 dict begin\n"
-            . "/q { gsave } bind def\n"
-            . "/Q { grestore } bind def\n"
-            . "/s { scale } bind def\n"
-            . "/t { translate } bind def\n"
-            . "/r { rotate } bind def\n"
-            . "/n { newpath } bind def\n"
-            . "/m { moveto } bind def\n"
-            . "/l { lineto } bind def\n"
-            . "/c { curveto } bind def\n"
-            . "/z { closepath } bind def\n"
-            . "/f { eofill } bind def\n"
-            . "/rgb { setrgbcolor } bind def\n"
-            . "/cmyk { setcmykcolor } bind def\n"
-            . "/gray { setgray } bind def\n"
-            . "%%EndProlog\n"
-            . "1 -1 s\n"
+            ."%%BeginProlog\n"
+            ."save\n"
+            ."50 dict begin\n"
+            ."/q { gsave } bind def\n"
+            ."/Q { grestore } bind def\n"
+            ."/s { scale } bind def\n"
+            ."/t { translate } bind def\n"
+            ."/r { rotate } bind def\n"
+            ."/n { newpath } bind def\n"
+            ."/m { moveto } bind def\n"
+            ."/l { lineto } bind def\n"
+            ."/c { curveto } bind def\n"
+            ."/z { closepath } bind def\n"
+            ."/f { eofill } bind def\n"
+            ."/rgb { setrgbcolor } bind def\n"
+            ."/cmyk { setcmykcolor } bind def\n"
+            ."/gray { setgray } bind def\n"
+            ."%%EndProlog\n"
+            ."1 -1 s\n"
             . sprintf("0 -%d t\n", $size);
 
         if ($backgroundColor instanceof Alpha && 0 === $backgroundColor->getAlpha()) {
@@ -63,7 +63,7 @@ final class EpsImageBackEnd implements ImageBackEndInterface
             . sprintf(' %s %s l', (string) $size, (string) $size)
             . sprintf(' 0 %s l', (string) $size)
             . ' z'
-            . ' ' .$this->getColorSetString($backgroundColor) . " f\n",
+            . ' ' .$this->getColorSetString($backgroundColor) ." f\n",
             75,
             "\n "
         );
@@ -125,7 +125,7 @@ final class EpsImageBackEnd implements ImageBackEndInterface
         $this->eps .= wordwrap(
             'n '
             . $this->drawPathOperations($path, $fromX, $fromY)
-            . ' ' . $this->getColorSetString($color) . " f\n",
+            . ' ' . $this->getColorSetString($color) ." f\n",
             75,
             "\n "
         );
@@ -146,7 +146,7 @@ final class EpsImageBackEnd implements ImageBackEndInterface
         $fromX = 0;
         $fromY = 0;
         $this->eps .= wordwrap(
-            'q n ' . $this->drawPathOperations($path, $fromX, $fromY) . "\n",
+            'q n ' . $this->drawPathOperations($path, $fromX, $fromY) ."\n",
             75,
             "\n "
         );
@@ -252,7 +252,7 @@ final class EpsImageBackEnd implements ImageBackEndInterface
         }
 
         $this->eps .= " /Extend [ true true ]\n"
-            . " /AntiAlias true\n";
+            ." /AntiAlias true\n";
 
         switch ($startColorType) {
             case Cmyk::class:
@@ -325,13 +325,13 @@ final class EpsImageBackEnd implements ImageBackEndInterface
         }
 
         $this->eps .= " /Function\n"
-            . " <<\n"
-            . "  /FunctionType 2\n"
-            . "  /Domain [ 0 1 ]\n"
+            ." <<\n"
+            ."  /FunctionType 2\n"
+            ."  /Domain [ 0 1 ]\n"
             . sprintf("  /C0 [ %s ]\n", $this->getColorString($startColor))
             . sprintf("  /C1 [ %s ]\n", $this->getColorString($endColor))
-            . "  /N 1\n"
-            . " >>\n>>\nshfill\nQ\n";
+            ."  /N 1\n"
+            ." >>\n>>\nshfill\nQ\n";
     }
 
     private function getColorSetString(ColorInterface $color) : string

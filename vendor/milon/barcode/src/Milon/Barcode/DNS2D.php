@@ -100,10 +100,10 @@ class DNS2D {
         $this->setBarcode($code, $type);
         // replace table for special characters
         $repstr = array("\0" => '', '&' => '&amp;', '<' => '&lt;', '>' => '&gt;');
-        $svg = '<' . '?' . 'xml version="1.0" standalone="no"' . '?' . '>' . "\n";
-        $svg .= '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' . "\n";
-        $svg .= '<svg width="' . round(($this->barcode_array['num_cols'] * $w), 3) . '" height="' . round(($this->barcode_array['num_rows'] * $h), 3) . '" version="1.1" xmlns="http://www.w3.org/2000/svg">' . "\n";
-        $svg .= "\t" . '<g id="elements" fill="' . $color . '" stroke="none">' . "\n";
+        $svg = '<' . '?' . 'xml version="1.0" standalone="no"' . '?' . '>' ."\n";
+        $svg .= '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' ."\n";
+        $svg .= '<svg width="' . round(($this->barcode_array['num_cols'] * $w), 3) . '" height="' . round(($this->barcode_array['num_rows'] * $h), 3) . '" version="1.1" xmlns="http://www.w3.org/2000/svg">' ."\n";
+        $svg .= "\t" . '<g id="elements" fill="' . $color . '" stroke="none">' ."\n";
         // print barcode elements
         $y = 0;
         // for each row
@@ -113,14 +113,14 @@ class DNS2D {
             for ($c = 0; $c < $this->barcode_array['num_cols']; ++$c) {
                 if ($this->barcode_array['bcode'][$r][$c] == 1) {
                     // draw a single barcode cell
-                    $svg .= "\t\t" . '<rect x="' . $x . '" y="' . $y . '" width="' . $w . '" height="' . $h . '" />' . "\n";
+                    $svg .= "\t\t" . '<rect x="' . $x . '" y="' . $y . '" width="' . $w . '" height="' . $h . '" />' ."\n";
                 }
                 $x += $w;
             }
             $y += $h;
         }
-        $svg .= "\t" . '</g>' . "\n";
-        $svg .= '</svg>' . "\n";
+        $svg .= "\t" . '</g>' ."\n";
+        $svg .= '</svg>' ."\n";
         return $svg;
     }
 
@@ -144,7 +144,7 @@ class DNS2D {
         }
         //set barcode code and type
         $this->setBarcode($code, $type);
-        $html = '<div style="font-size:0;position:relative;width:' . ($w * $this->barcode_array['num_cols']) . 'px;height:' . ($h * $this->barcode_array['num_rows']) . 'px;">' . "\n";
+        $html = '<div style="font-size:0;position:relative;width:' . ($w * $this->barcode_array['num_cols']) . 'px;height:' . ($h * $this->barcode_array['num_rows']) . 'px;">' ."\n";
         // print barcode elements
         $y = 0;
         // for each row
@@ -154,13 +154,13 @@ class DNS2D {
             for ($c = 0; $c < $this->barcode_array['num_cols']; ++$c) {
                 if ($this->barcode_array['bcode'][$r][$c] == 1) {
                     // draw a single barcode cell
-                    $html .= '<div style="background-color:' . $color . ';width:' . $w . 'px;height:' . $h . 'px;position:absolute;left:' . $x . 'px;top:' . $y . 'px;">&nbsp;</div>' . "\n";
+                    $html .= '<div style="background-color:' . $color . ';width:' . $w . 'px;height:' . $h . 'px;position:absolute;left:' . $x . 'px;top:' . $y . 'px;">&nbsp;</div>' ."\n";
                 }
                 $x += $w;
             }
             $y += $h;
         }
-        $html .= '</div>' . "\n";
+        $html .= '</div>' ."\n";
         return $html;
     }
 
@@ -317,7 +317,7 @@ class DNS2D {
             $y += $h;
         }
         $file_name= Str::slug($code.$type);
-        $save_file = $this->checkfile($this->store_path . $file_name . ".png");
+        $save_file = $this->checkfile($this->store_path . $file_name .".png");
 
         if ($imagick) {
             $png->drawimage($bar);
