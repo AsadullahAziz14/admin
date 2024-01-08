@@ -37,7 +37,7 @@ if(isset($_POST['submit_demand'])) {
     $queryInsert = $dblms->Insert(SMS_DEMANDS, $data);
 
     if($queryInsert) {
-        $demand_id = $dblms->lastestid();
+        $id_demand = $dblms->lastestid();
 
         if(isset($_POST['item'])) {
             $items = cleanvars($_POST['item']);
@@ -49,7 +49,7 @@ if(isset($_POST['submit_demand'])) {
 
             foreach ($items as $index => $item_id) {
                 $data = [
-                    'id_demand'                            => $demand_id                                        ,
+                    'id_demand'                            => $id_demand                                        ,
                     'id_item'                              => $item_id                                          ,
                     'quantity_requested'                   => cleanvars($_POST['quantity_requested'][$index])   ,
                     'item_due_date'                        => cleanvars($_POST['item_due_date'][$index])        
@@ -63,7 +63,7 @@ if(isset($_POST['submit_demand'])) {
         }
 
         $data = [
-            'demand_code'                                  => 'D'.str_pad($demand_id, 5, '0', STR_PAD_LEFT)     ,
+            'demand_code'                                  => 'D'.str_pad($id_demand, 5, '0', STR_PAD_LEFT)     ,
             'demand_quantity'                              => $demand_quantity                                  ,
             'demand_due_date'                              => $min_demand_due_date
         ];
@@ -130,14 +130,19 @@ if(isset($_POST['update_demand'])) {
     $queryUpdate = $dblms->Update(SMS_DEMANDS, $data, $conditions);
 
     if($queryUpdate) {
+        $demand_quantity = 0;
+        $min_demand_due_date = 0;
+        $demanded_items_str = '';
+
         if(isset($_POST['item'])) {
             if(isset($_POST['deleted_item_ids'])) {
                 $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_DEMAND_ITEM_JUNCTION." WHERE id_demand = ".$demand_id." && id_item IN(".$_POST['deleted_item_ids'].")");
             }
 
             $items = cleanvars($_POST['item']);
-            $demand_quantity = 0;
             $demanded_items = [];
+            $demand_due_date = [];
+
             foreach ($items as $index => $item_id) {
                 if(isset($item_id['u'])) {
                     $data = [
@@ -150,8 +155,8 @@ if(isset($_POST['update_demand'])) {
                     $query = $dblms->update(SMS_DEMAND_ITEM_JUNCTION, $data, $conditions);
 
                     $demand_quantity += cleanvars($_POST['quantity_requested'][$index]['u']);
-                    $demand_due_date = cleanvars($_POST['item_due_date'][$index]['u']);
-                    $demanded_items = $item_id['u'];
+                    $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['u']);
+                    $demanded_items[] = $item_id['u'];
                 } elseif (isset($item_id['n'])) {
                     $data = [
                         'id_demand'                            => $demand_id                                            ,
@@ -162,8 +167,8 @@ if(isset($_POST['update_demand'])) {
                     $queryInsert = $dblms->Insert(SMS_DEMAND_ITEM_JUNCTION, $data);
 
                     $demand_quantity += cleanvars($_POST['quantity_requested'][$index]['n']);
-                    $demand_due_date = cleanvars($_POST['item_due_date'][$index]['n']);
-                    $demanded_items = $item_id['n'];
+                    $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['n']);
+                    $demanded_items[] = $item_id['n'];
 
                 }   
             }

@@ -11,36 +11,13 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 					</div>
 
 					<div class="modal-body">
-
-						<!-- <div class="col-sm-91">
-							<div style="margin-top:5px;">
-								<label for="issuance_quantity" class="req"><b>Issuance Quantity</b></label>
-								<input type="text" class="form-control" id="issuance_quantity" name="issuance_quantity" required>
-							</div>
-						</div> -->
-
-						<div class="col-sm-91">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="issuance_remarks" class="req"><b>Remarks</b></label>
 								<input type="text" class="form-control" id="issuance_remarks" name="issuance_remarks" required>
 							</div>
 						</div>
 						
-						<div class="col-sm-61">
-							<div style="margin-top:5px;">
-								<label for="id_item" class="req"><b>Items</b></label>
-								<select id="id_item" class="select2" style="width: 100%;" name="id_item[]" required multiple>
-									<option value="">Select Item</option>';
-									$sqllms = $dblms->querylms("SELECT item_id, item_title 
-															FROM ".SMS_ITEMS." 
-															WHERE item_status = 1");
-									while($rowstd = mysqli_fetch_array($sqllms)) {
-										echo '<option value="'.$rowstd['item_id'].'">'.$rowstd['item_title'].'</option>';
-									}	
-								echo '
-								</select>
-							</div>
-						</div>
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 							<label for="issuance_status" class="req"><b>Status</b></label>
@@ -53,6 +30,19 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								</select>
 							</div>
 						</div>
+
+						<div class="col-sm-91"  id="itemContainer">
+							<!-- Items will be added here dynamically... -->
+						</div>
+
+						<div class="col-sm-91 item">
+							<div class="form-sep" style="margin-top: 10px; width: 100%">
+								<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
+									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus">&nbsp&nbspAdd Item</i></button>
+								</div>
+							</div>
+						</div>
+
 						<div style="clear:both;"></div>
 					</div>
 					<div class="modal-footer">
@@ -68,13 +58,116 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 	<script>
 		$(".select2").select2({
-
 			placeholder: "Select Any Option"
-
 		})
 
-	</script>
-	';
+
+		function removeItem(button) {
+			var parentDiv = button.closest("[class*=item]");
+			if (parentDiv) {
+				parentDiv.parentNode.removeChild(parentDiv);
+			}
+		}	
+		
+		var selectedDemands = [];
+		function addDemand() {
+			var i = 0;
+			i = i + 1;
+			const itemContainer = document.getElementById("itemContainer");
+
+			const container = document.createElement("div");
+			container.className = "form-sep";
+			container.style.marginTop = "10px";
+			container.style.width = "100%";
+			container.style.border = "1px solid rgb(231, 231, 231)";
+
+			itemContainer.appendChild(container);
+
+			// Demand Selector Start
+			const demandSelectorContanier = document.createElement("div");
+			demandSelectorContanier.className = "col-sm-92";
+
+			const demandSelectorLabel = document.createElement("label");
+			demandSelectorLabel.textContent = "Demand";
+			demandSelectorLabel.className = "req";
+			
+			const demandSelector = document.createElement("select");
+			demandSelector.className = "form-control";
+			demandSelector.name = "id_demand["+i+"]";
+			demandSelector.addEventListener("change", function () {
+				// Fetch items based on the selected demand
+				fetchItems(this.value, itemInputContainer);
+			});
+			demandSelector.required = true;
+
+			var demandsString = selectedDemands.join(',');
+
+			var xhr = new XMLHttpRequest();
+			var method = "GET";
+			var url = "include/ajax/getDemands.php?selectedDemands="+(demandsString);
+			var asyncronous = true;
+
+			xhr.open(method,url,asyncronous);
+			xhr.send();
+
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState === 4 && xhr.status === 200) {
+					const options = xhr.responseText;
+					demandSelector.innerHTML = options;
+				}
+			}
+
+			demandSelectorContanier.appendChild(demandSelectorLabel);
+			demandSelectorContanier.appendChild(demandSelector);
+			container.appendChild(demandSelectorContanier);
+
+			const removeButtonContainer = document.createElement("div");
+			removeButtonContainer.className = "col-sm-21";
+
+			const removeButtonDiv = document.createElement("div");
+			removeButtonDiv.style = "display: flex; justify-content: center; align-items: center; margin: 15px;"
+
+			const removeButton = document.createElement("button");
+			removeButton.className = "btn btn-info";
+			removeButton.style.alignItems = "center";
+			removeButton.onclick = "removeItem(this)";
+			removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
+
+			removeButton.addEventListener("click", function () {
+				container.remove();
+			});
+
+			removeButtonDiv.appendChild(removeButton);
+			removeButtonContainer.appendChild(removeButtonDiv);
+			container.appendChild(removeButtonContainer);
+
+			// Item Selector Start
+			const itemInputContainer = document.createElement("div");
+			itemInputContainer.className = "col-sm-91";
+			
+			container.appendChild(itemInputContainer);
+		}
+
+		function fetchItems(demandId, itemInputContainer) {
+			selectedDemands.push(demandId);
+			var xhr = new XMLHttpRequest();
+			var method = "GET";
+			var url = "include/ajax/getItems.php?selectedDemand=" + demandId;
+			var asyncronous = true;
+
+			xhr.open(method, url, asyncronous);
+			xhr.send();
+
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					const options = xhr.responseText;
+					itemInputContainer.innerHTML = options;
+					// itemInputContainer.appendChild(options)
+				}
+			};
+		}
+
+	</script>';
 }
 
 ?>

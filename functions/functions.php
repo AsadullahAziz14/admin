@@ -1,9 +1,9 @@
 <?php 
 //--------------- Status ------------------
 $status = array (
-						 array('id'=>'1', 'name'=>'Active')		
-						,array('id'=>'0', 'name'=>'Inactive')
-				   );
+					array('id'=>'1', 'name'=>'Active')		,
+					array('id'=>'0', 'name'=>'Inactive')
+				);
 function get_status($id) {
 	$listadmstatus= array (
 							'1' => '<span class="label label-success" id="bns-status-badge">Active</span>', 
@@ -206,10 +206,13 @@ function get_paytypes($id) {
 
 
 
-//-----------------CMS-SMS Variable---------------------
+//-----------------CMS-SMS Variable-----------
+$listadmstatus= array (
+	'1' => '<span class="label label-success" id="bns-status-badge">Active</span>', 
+	'0' => '<span class="label label-danger" id="bns-status-badge">Inactive</span>');
 define('DEMAND_TYPES'	,[
-	'n' 	=> 'Normal'
-	,'u' 	=> 'Urgent'
+	'n' 	=> '<span class="label label-info" id="bns-status-badge">Normal</span>'	,
+	'u' 	=> '<span class="label label-warning" id="bns-status-badge">Urgent</span>'
 ]);
 
 define('PAYMENT_TERMS'	,[

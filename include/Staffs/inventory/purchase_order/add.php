@@ -144,27 +144,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 		$(".select2").select2({
 			placeholder: "Select Any Option"
 		})
-		
-		// Add an input event listener to update the amount when unit price or tax percentage changes
-		document.addEventListener("input", function(event) {
-			// Check if the changed input is a unit price or tax percentage input
-			if (event.target && (event.target.matches("input[name^=\'unit_price\']") || event.target.matches("#po_tax_perc"))) {
-				// Extract demand ID and item ID from the unit price input name attribute
-				var unitPriceMatches = event.target.name.match(/unit_price\[(\d+)\]\[(\d+)\]/);
-				if (unitPriceMatches) {
-					var demandId = unitPriceMatches[1];
-					var itemId = unitPriceMatches[2];
-
-					// Get the quantity and unit price input elements
-					var quantityInput = document.querySelector("input[name=\'quantity_ordered[" + demandId + "][" + itemId + "]\']");
-					var unitPriceInput = event.target;
-
-					// Calculate the amount and update the corresponding input
-					var amountInput = document.querySelector("input[name=\'amount[" + demandId + "][" + itemId + "]\']");
-					amountInput.value = (parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value)) + ((parseFloat(quantityInput.value) * parseFloat(unitPriceInput.value))) * ((document.getElementById("po_tax_perc").value) / 100) || 0;
-				}
-			}
-		});
 
 		function removeItem(button) {
 			var parentDiv = button.closest("[class*=item]");
@@ -271,6 +250,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			};
 		}
 
+		
 	</script>
 
 	<script src="js/select2/jquery.select2.js"></script>';
