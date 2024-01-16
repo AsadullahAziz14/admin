@@ -29,7 +29,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<select name="id_department" class="form-control" id="id_department" required>
 									<option value="">Select Department</option>';
 									$queryDepartments = $dblms->querylms("SELECT dept_id, dept_name 
-															FROM " .DEPARTMENTS);
+															FROM ".DEPARTMENTS);
 									while($valueDepartments = mysqli_fetch_array($queryDepartments)) {
 										echo '<option value="'.$valueDepartments['dept_id'].'">'.$valueDepartments['dept_name'].'</option>';
 									}
@@ -59,7 +59,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 										<select class="form-control" name="item['.($i+1).']" required>
 											<option value="">Select Item</option>';
 											$queryItems = $dblms->querylms("SELECT item_id, item_code, item_title 
-																	FROM " .SMS_ITEMS);
+																	FROM ".SMS_ITEM);
 											while($valueItems = mysqli_fetch_array($queryItems)) {
 												echo '<option value="'.$valueItems['item_id'].'">'.$valueItems['item_code'].' '.$valueItems['item_title'].'</option>';
 											}
@@ -67,8 +67,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 										</select>
 									</div>
 									<div class="col-sm-31">
-										<label for="quantity_requested" class="req">Quantity</label>
-										<input class="form-control quantity_requested" type="number" name="quantity_requested['.($i+1).']" id="quantity_requested" min="0" required>
+										<label for="quantity_demanded" class="req">Quantity</label>
+										<input class="form-control quantity_demanded" type="number" name="quantity_demanded['.($i+1).']" id="quantity_demanded" min="0" required>
 									</div>
 									<div class="col-sm-31">
 										<label for="item_due_date" class="req">Due Date</label>
@@ -127,7 +127,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 		}
 
 		var i = '.json_encode($i, JSON_NUMERIC_CHECK).'
-
 		function addItem() {
 			i = i + 1;
 
@@ -189,8 +188,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			const quantityInput = document.createElement("input");
 			quantityInput.className = "form-control";
 			quantityInput.type = "number";
-			quantityInput.name = "quantity_requested["+i+"]";
-			quantityInput.id = "quantity_requested";
+			quantityInput.name = "quantity_demanded["+i+"]";
+			quantityInput.id = "quantity_demanded";
 			quantityInput.required = true;
 
 			quantityContanier.appendChild(quantityLabel);

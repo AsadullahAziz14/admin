@@ -2,7 +2,7 @@
 if (!LMS_VIEW && isset($_GET['id'])) {
 
    $queryDemands = $dblms->querylms("SELECT demand_type, id_department, demand_status
-   										FROM ".SMS_DEMANDS." 
+   										FROM ".SMS_DEMAND." 
 										WHERE demand_id =  ".cleanvars($_GET['id'])." ");
    $valueDemands = mysqli_fetch_array($queryDemands);
    echo '
@@ -70,11 +70,11 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								</div>
 							</div>';
 
-							$sqllms2 = $dblms->querylms("SELECT id_item, quantity_requested, item_due_date 
+							$queryDemandItem = $dblms->querylms("SELECT id_item, quantity_demanded, item_due_date 
 															FROM ".SMS_DEMAND_ITEM_JUNCTION."
 															WHERE id_demand =  ".cleanvars($_GET['id'])." ");
 							$i = 0;
-							while($valueDemandItemJunction = mysqli_fetch_array($sqllms2)) {
+							while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 								$i++;
 								echo '
 								<div class="col-sm-91 item">
@@ -84,28 +84,28 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 											<select class="form-control" name="item['.($i).'][u]" required>
 												<option value="">Select Item</option>';
 												$queryItems = $dblms->querylms("SELECT item_id,item_code,item_title 
-																				FROM ".SMS_ITEMS);
+																				FROM ".SMS_ITEM);
 												while($valueItems = mysqli_fetch_array($queryItems)) {
-													if($valueDemandItemJunction['id_item'] == $valueItems['item_id']) {
-														echo '<option value="'.$valueDemandItemJunction['id_item'].'" selected>'.$valueItems['item_code'].'-'.$valueItems['item_title'].'</option>';
+													if($valueDemandItem['id_item'] == $valueItems['item_id']) {
+														echo '<option value="'.$valueDemandItem['id_item'].'" selected>'.$valueItems['item_code'].'-'.$valueItems['item_title'].'</option>';
 													} else {
-														echo '<option value="'.$valueDemandItemJunction['id_item'].'">'.$valueItems['item_code'].'-'.$valueItems['item_title'].'</option>';
+														echo '<option value="'.$valueDemandItem['id_item'].'">'.$valueItems['item_code'].'-'.$valueItems['item_title'].'</option>';
 													}
 												}
 												echo '
 											</select>
 										</div>
 										<div class="col-sm-31">
-											<label for="quantity_requested" class="req">Quantity</label>
-											<input class="form-control quantity_requested" type="number" name="quantity_requested['.($i).'][u]" id="quantity_requested" value="'.$valueDemandItemJunction['quantity_requested'].'" min="0" required>
+											<label for="quantity_demanded" class="req">Quantity</label>
+											<input class="form-control quantity_demanded" type="number" name="quantity_demanded['.($i).'][u]" id="quantity_demanded" value="'.$valueDemandItem['quantity_demanded'].'" min="0" required>
 										</div>
 										<div class="col-sm-31">
 											<label for="item_due_date" class="req">Due Date</label>
-											<input class="form-control" type="date" name="item_due_date['.($i).'][u]" id="item_due_date" value="'.date('Y-m-d', strtotime($valueDemandItemJunction['item_due_date'])).'" required>
+											<input class="form-control" type="date" name="item_due_date['.($i).'][u]" id="item_due_date" value="'.date('Y-m-d', strtotime($valueDemandItem['item_due_date'])).'" required>
 										</div>
 										<div class="col-sm-21">
 											<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-												<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valueDemandItemJunction['id_item'].')"><i class="icon-remove"></i></button>									
+												<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valueDemandItem['id_item'].')"><i class="icon-remove"></i></button>									
 											</div>
 										</div>
 									</div>
@@ -151,7 +151,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			}
 	
 			var i = '.json_encode($i, JSON_NUMERIC_CHECK).'
-	
 			function addItem() {
 				i = i + 1;
 				
@@ -214,8 +213,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 				const quantityInput = document.createElement("input");
 				quantityInput.className = "form-control";
 				quantityInput.type = "number";
-				quantityInput.name = "quantity_requested["+i+"][n]";
-				quantityInput.id = "quantity_requested";
+				quantityInput.name = "quantity_demanded["+i+"][n]";
+				quantityInput.id = "quantity_demanded";
 				quantityInput.required = true;
 	
 				quantityContanier.appendChild(quantityLabel);

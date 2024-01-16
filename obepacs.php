@@ -18,8 +18,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
 {   
-	include_once("include/header.php");
-    include_once("include/Staffs/obe/pacs/query.php");
+	require_once("include/header.php");
+    require_once("include/Staffs/obe/pacs/query.php");
 			
 	$srch			= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
 	$status_srch	= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
@@ -70,9 +70,9 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 										echo $_SESSION['msg']['status'];
 										unset($_SESSION['msg']);
 									}
-									include_once("include/Staffs/obe/pacs/list.php");
-									include_once("include/Staffs/obe/pacs/add.php");
-									include_once("include/Staffs/obe/pacs/edit.php");
+									require_once("include/Staffs/obe/pacs/list.php");
+									require_once("include/Staffs/obe/pacs/add.php");
+									require_once("include/Staffs/obe/pacs/edit.php");
 									echo '
 								</div>
 							</div>

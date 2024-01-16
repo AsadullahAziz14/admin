@@ -11,10 +11,20 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 					</div>
 
 					<div class="modal-body">
+
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
-								<label for="issuance_remarks" class="req"><b>Remarks</b></label>
-								<input type="text" class="form-control" id="issuance_remarks" name="issuance_remarks" required>
+								<label for="issuance_to" class="req"><b>Issuance To</b></label>
+								<select id="issuance_to" class="form-control" name="issuance_to" required>
+									<option value="">Select</option>';
+									$queryEmployees  = $dblms->querylms("SELECT emply_id, emply_name
+																			FROM ".EMPLOYEES." 
+																		");
+               						while($valueEmployees = mysqli_fetch_array($queryEmployees)) {
+										echo '<option value="'.$valueEmployees['emply_id'].'">'.$valueEmployees['emply_name'].'</option>';
+									}
+									echo '
+								</select>
 							</div>
 						</div>
 						
@@ -28,6 +38,13 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 									}
 									echo '
 								</select>
+							</div>
+						</div>
+
+						<div class="col-sm-91">
+							<div style="margin-top:5px;">
+								<label for="issuance_remarks" class="req"><b>Remarks</b></label>
+								<input type="text" class="form-control" id="issuance_remarks" name="issuance_remarks" required>
 							</div>
 						</div>
 
@@ -104,7 +121,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 			var xhr = new XMLHttpRequest();
 			var method = "GET";
-			var url = "include/ajax/getDemands.php?selectedDemands="+(demandsString);
+			var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
 			var asyncronous = true;
 
 			xhr.open(method,url,asyncronous);

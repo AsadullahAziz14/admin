@@ -1,9 +1,11 @@
 <?php
 
 if(!LMS_VIEW && !isset($_GET['id'])) {  
-	$queryPO  = $dblms->querylms("SELECT po_id, po_status, po_code, po_date, po_delivery_date, 
-										po_quantity, po_amount, id_vendor, ordered_by, date_ordered, forwarded_by, forwarded_to, date_forwarded 
-										FROM ".SMS_POS." 
+	$queryPO  = $dblms->querylms("SELECT po_id, po_status, po_code, po_date, po_delivery_date,
+										po_quantity, po_amount, id_vendor, ordered_by, date_ordered, po_tax_perc, 
+										po_remarks, po_payment_terms, po_credit_terms, po_lead_time, po_delivery_address,
+										forwarded_by, forwarded_to, date_forwarded
+										FROM ".SMS_PO." 
 										WHERE po_id != ''
 										$sql2
 								");
@@ -46,7 +48,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 						<td style="vertical-align: middle;" nowrap="nowrap">'.date('d-M-Y', strtotime($valuePO['po_delivery_date'])).'</td>';
 						
 						$queryVendor  = $dblms->querylms("SELECT vendor_name
-															FROM ".SMS_VENDORS." 
+															FROM ".SMS_VENDOR." 
 															WHERE vendor_id = ".$valuePO['id_vendor']."
 														");
 						$valueVendor = mysqli_fetch_array($queryVendor);
@@ -64,10 +66,22 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 						<td nowrap="nowrap" style="width:70px; text-align:center;">'.get_status($valuePO['po_status']).'</td>
 						<td nowrap="nowrap" style="text-align:center;">
 						';
-						if($valuePO['forwarded_to'] == NULL){
+						if($valuePO['forwarded_to'] == NULL) {
 							echo '
-								<a class="btn btn-xs btn-info" href="inventory-purchase_order.php?id='.$valuePO['po_id'].'"><i class="icon-pencil"></i></a>
-								<a href="?deleteId='.$valuePO['po_id'].'" class="btn btn-xs btn-danger"><i class="icon-trash"></i></a>';
+							<a class="btn btn-xs btn-warning view-po-modal" data-toggle="modal" data-target="#viewPOModal" 
+								data-modal-window-title="PO Details" data-height="350" data-width="100%" 
+								data-po-id="'.$valuePO['po_id'].'" data-po-code="'.$valuePO['po_code'].'" 
+								data-po-status="'.$valuePO['po_status'].'" data-po-delivery-date="'.$valuePO['po_delivery_date'].'"
+								data-po-delivery-address="'.$valuePO['po_delivery_address'].'" data-po-tax-perc="'.$valuePO['po_tax_perc'].'"
+								data-po-payment-terms="'.$valuePO['po_payment_terms'].'" data-po-lead-time="'.$valuePO['po_lead_time'].'"
+								data-date-ordered="'.$valuePO['date_ordered'].'" data-po-remarks="'.$valuePO['po_remarks'].'"
+								data-id-vendor="'.$valuePO['id_vendor'].'" data-forwarded-by="'.$valuePO['forwarded_by'].'"
+								data-forwarded-to="'.$valuePO['forwarded_to'].'" data-date-forwarded="'.date('d-M-Y', strtotime($valuePO['date_forwarded'])).'"
+								>
+								<i class="icon-zoom-in"></i>
+							</a>
+							<a class="btn btn-xs btn-info" href="inventory-purchase_order.php?id='.$valuePO['po_id'].'"><i class="icon-pencil"></i></a>
+							<a href="?deleteId='.$valuePO['po_id'].'" class="btn btn-xs btn-danger"><i class="icon-trash"></i></a>';
 						}
 						echo '
 						</td>

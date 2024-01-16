@@ -16,11 +16,9 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	header('location: index.php');
 
 //Check If User has rights
-} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
-{   
-
-	include_once("include/header.php");
-    include_once("include/Staffs/obe/domainlevels/query.php");
+} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) {   
+	require_once("include/header.php");
+    require_once("include/Staffs/obe/domainlevels/query.php");
 		
 	$sql2 						= '';
 	$sqlstring					= "";
@@ -43,76 +41,75 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		$sql2 		.= " AND ".OBE_DOMAINS.".domain_level_status = '".$status_srch."'"; 
 		$sqlstring	.= "&status_srch=".$status_srch."";
 	}
-
-	echo '
-	<title>Manage Domains - '.TITLE_HEADER.'</title>
-	<!-- Matter -->
-	<div class="matter">
-	<!--WI_CLIENTS_SEARCH-->
-	<div class="navbar navbar-default" role="navigation">
-	<!-- .container-fluid -->
-	<div class="container-fluid">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-	</div>
-	<!-- .navbar-collapse -->
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	<form class="navbar-form navbar-left form-small" action="" method="get">
-		<div class="form-group">
-			<input type="text" class="form-control" name="srch" placeholder="Domain Name" style="width:250px;">
-		</div>
-		<div class="form-group">
-			<input type="text" class="form-control" name="domain_level_name_srch" placeholder="Domain Level Name" style="width:250px;">
-		</div>
-		<div class="form-group">
-			<select id="list-status" data-placeholder="Status" name="status_srch" style="width:auto;">
-				<option></option>';
-				foreach($status as $valueStatus) { 
-					echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
-				}
 			echo '
-			</select>
+			<title>Manage Domains - '.TITLE_HEADER.'</title>
+			<!-- Matter -->
+			<div class="matter">
+				<!--WI_CLIENTS_SEARCH-->
+				<div class="navbar navbar-default" role="navigation">
+					<!-- .container-fluid -->
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						</div>
+						<!-- .navbar-collapse -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<form class="navbar-form navbar-left form-small" action="" method="get">
+								<div class="form-group">
+									<input type="text" class="form-control" name="srch" placeholder="Domain Name" style="width:250px;">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="domain_level_name_srch" placeholder="Domain Level Name" style="width:250px;">
+								</div>
+								<div class="form-group">
+									<select id="list-status" data-placeholder="Status" name="status_srch" style="width:auto;">
+										<option></option>';
+										foreach($status as $valueStatus) { 
+											echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+										}
+									echo '
+									</select>
+								</div>
+								<button type="submit" class="btn btn-primary">Search</button>
+								<a href="obedomainlevels.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
+								if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) { 
+									echo '<button data-toggle="modal" class="btn btn-success" href="#addNewDOMAINModal"><i class="icon-plus"></i>Add Domain</button>';
+								}
+							echo '
+							</form>
+						</div>
+					<!-- /.navbar-collapse -->
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!--WI_CLIENTS_SEARCH END-->
+				<div class="container">
+					<!--WI_MY_TASKS_TABLE-->
+					<div class="row fullscreen-mode">
+						<div class="col-md-12">
+							<div class="widget">
+								<div class="widget-content">';
+
+								if(isset($_SESSION['msg'])) { 
+									echo $_SESSION['msg']['status'];
+									unset($_SESSION['msg']);
+								} 
+
+								require_once("include/Staffs/obe/domainlevels/list.php");
+
+								echo '
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--WI_MY_TASKS_TABLE-->
+				<!--WI_NOTIFICATION-->
+				</div>
+			</div>
+			<!-- Matter ends -->
 		</div>
-		<button type="submit" class="btn btn-primary">Search</button>
-		<a href="obedomainlevels.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
-		if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) { 
-			echo ' <button data-toggle="modal" class="btn btn-success" href="#addNewDOMAINModal"><i class="icon-plus"></i>Add Domain</button>';
-		}
-	echo '
-	</form>
-	</div>
-	<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid -->
-	</div>
-	<!--WI_CLIENTS_SEARCH END-->
-	<div class="container">
-	<!--WI_MY_TASKS_TABLE-->
-	<div class="row fullscreen-mode">
-	<div class="col-md-12">
-	<div class="widget">
-	<div class="widget-content">';
-
-	if(isset($_SESSION['msg'])) { 
-		echo $_SESSION['msg']['status'];
-		unset($_SESSION['msg']);
-	} 
-
-	include_once("include/Staffs/obe/domainlevels/list.php");
-
-	echo '
-	</div>
-	</div>
-	</div>
-	</div>
-	<!--WI_MY_TASKS_TABLE-->
-	<!--WI_NOTIFICATION-->
-	</div>
-	</div>
-	<!-- Matter ends -->
-	</div>
-	<!-- Mainbar ends -->
-	<div class="clearfix"></div>
+		<!-- Mainbar ends -->
+		<div class="clearfix"></div>
 	</div>
 	<!-- Content ends -->
 	<!-- Footer starts -->
@@ -130,8 +127,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<!-- Scroll to top -->
 	<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>';
 	//------------------------------------------------
-		include_once("include/Staffs/obe/domainlevels/add.php");
-		include_once("include/Staffs/obe/domainlevels/edit.php");
+		require_once("include/Staffs/obe/domainlevels/add.php");
+		require_once("include/Staffs/obe/domainlevels/edit.php");
 	//------------------------------------------------
 	echo '
 	<!--WI_IFRAME_MODAL-->

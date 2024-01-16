@@ -18,8 +18,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
 {   
-	include_once("include/header.php");
-    include_once("include/Staffs/obe/clos/query.php");
+	require_once("include/header.php");
+    require_once("include/Staffs/obe/clos/query.php");
 		
 	$sql2 			= '';
 	$sqlstring		= "";
@@ -90,7 +90,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		unset($_SESSION['msg']);
 	} 
 
-	include_once("include/Staffs/obe/clos/list.php");
+	require_once("include/Staffs/obe/clos/list.php");
 
 	echo '
 	</div>
@@ -122,8 +122,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<!-- Scroll to top -->
 	<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>';
 
-		include_once("include/Staffs/obe/clos/add.php");
-		include_once("include/Staffs/obe/clos/edit.php");
+		require_once("include/Staffs/obe/clos/add.php");
+		require_once("include/Staffs/obe/clos/edit.php");
 		
 	echo '
 	<!--WI_IFRAME_MODAL-->

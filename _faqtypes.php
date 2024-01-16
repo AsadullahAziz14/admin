@@ -5,7 +5,7 @@
 	include "functions/login_func.php";
 	include "functions/functions.php";
 	checkCpanelLMSALogin();
-	include_once("include/header.php");
+	require_once("include/header.php");
 //----------------------------------------
 if(($_GET['srch'])) {
 	$stdsrch	= $_GET['srch'];

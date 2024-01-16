@@ -17,8 +17,7 @@ $next 		= $page + 1;							//next page is page + 1
 $lastpage	= ceil($count/$Limit);					//lastpage is = total pages / items per page, rounded up.
 $lpm1 		= $lastpage - 1;
 
-if(mysqli_num_rows($queryDomain) > 0) 
-{     
+if(mysqli_num_rows($queryDomain) > 0) {     
    $queryDomain  = $dblms->querylms("SELECT domain_level_id, domain_name_code, domain_level_number, domain_level_name, domain_level_code, domain_level_status
                               FROM ".OBE_DOMAINS."
                               WHERE domain_level_id != ''
@@ -47,14 +46,13 @@ if(mysqli_num_rows($queryDomain) > 0)
          <tbody>';
          if($page == 1) { $srno = 0; } else { $srno = ($Limit * ($page-1));}
 
-         while($valueDomain = mysqli_fetch_array($queryDomain)) 
-         {
+         while($valueDomain = mysqli_fetch_array($queryDomain)) {
             $srno++;
 
             $canEdit = ' ';
             if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) 
             { 
-               $canEdit = '<a class="btn btn-xs btn-info edit-domain-level-modal" data-toggle="modal" data-modal-window-title="Edit DOMAIN LEVEL Details" data-height="350" data-width="100%" data-domain-level-id="'.$valueDomain['domain_level_id'].'" data-domain-name-code="'.$valueDomain['domain_name_code'].'" data-domain-level-name="'.$valueDomain['domain_level_name'].'" data-domain-level-status="'.$valueDomain['domain_level_status'].'" data-target="#editDOMAINModal"><i class="icon-pencil"></i></a> ';
+               $canEdit = '<a class="btn btn-xs btn-info edit-domain-level-modal" data-toggle="modal" data-modal-window-title="Edit DOMAIN LEVEL Details" data-height="350" data-width="100%" data-domain-level-id="'.$valueDomain['domain_level_id'].'" data-domain-name-code="'.$valueDomain['domain_name_code'].'" data-domain-level-name="'.$valueDomain['domain_level_name'].'" data-domain-level-status="'.$valueDomain['domain_level_status'].'" data-target="#editDOMAINModal"><i class="icon-pencil"></i></a>';
             }
 
             $canDelete = ' ';

@@ -2,14 +2,14 @@
 
 if(isset($_GET['deleteId'])) {
     $sqllms  = $dblms->querylms("DELETE FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." WHERE id_po = '".cleanvars($_GET['deleteId'])."'");
-    $sqllms  = $dblms->querylms("DELETE FROM ".SMS_POS." WHERE po_id  = '".cleanvars($_GET['deleteId'])."'");
+    $sqllms  = $dblms->querylms("DELETE FROM ".SMS_PO." WHERE po_id  = '".cleanvars($_GET['deleteId'])."'");
 
     if($sqllms) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                           ,
             'action'                           => "Delete"                                                      ,
-            'affected_table'                   => SMS_PO_DEMAND_ITEM_JUNCTION.', '.SMS_POS                      ,
+            'affected_table'                   => SMS_PO_DEMAND_ITEM_JUNCTION.', '.SMS_PO                      ,
             'action_detail'                    => 'po_id: '.cleanvars($_GET['deleteId'])                        ,
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
@@ -46,7 +46,7 @@ if(isset($_POST['submit_po'])) {
         'id_added'                         => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
         'date_added'                       => date('Y-m-d H:i:s')
     ];
-    $queryInsert = $dblms->Insert(SMS_POS, $data);
+    $queryInsert = $dblms->Insert(SMS_PO, $data);
 
     if($queryInsert) {
         $po_id = $dblms->lastestid();
@@ -56,7 +56,7 @@ if(isset($_POST['submit_po'])) {
         $data = [
             'log_date'                      => date('Y-m-d H:i:s')
             ,'action'                       => "Create"
-            ,'affected_table'               => SMS_POS
+            ,'affected_table'               => SMS_PO
             ,'action_detail'                =>  'po_id: '.$po_id.
                                                 PHP_EOL.'po_code: '.'PO'.str_pad($po_id, 5, '0', STR_PAD_LEFT).
                                                 PHP_EOL.'po_date: '.date('Y-m-d H:i:s').
@@ -104,11 +104,11 @@ if(isset($_POST['submit_po'])) {
         $po_amount = $po_amount + ((cleanvars($_POST['po_tax_perc']) / 100) * $po_amount);
         
         $data = [
-            'po_amount'                     => $po_amount
-            ,'po_code'                       => 'PO'.str_pad($po_id, 5, '0', STR_PAD_LEFT)
+            'po_amount'                     => $po_amount                                   ,
+            'po_code'                       => 'PO'.str_pad($po_id, 5, '0', STR_PAD_LEFT)
         ];
         $conditions = "WHERE po_id  = ".$po_id."";
-        $queryUpdate = $dblms->Update(SMS_POS, $data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
         
         $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
         header("Location: inventory-purchase_order.php", true, 301);
@@ -139,7 +139,7 @@ if(isset($_POST['update_po'])) {
         'date_modify'                      => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  po_id  = ".$po_id."";
-    $queryUpdate = $dblms->Update(SMS_POS, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
 
     if($queryUpdate) {
         foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {
@@ -188,9 +188,9 @@ if(isset($_POST["forward_po"])) {
         'date_forwarded'    => date('Y-m-d H:i:s')
     ];
     $conditions = " Where po_id = ".$_POST['po_id']."";
-    $queryUpdate = $dblms->Update(SMS_POS, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
 
     $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Forwarded successfully.</div>';
-    header("Location: inventory-purchase_order.php?view=forward_po", true, 301);
+    header("Location: inventory-purchase_order.php", true, 301);
     exit();
 }

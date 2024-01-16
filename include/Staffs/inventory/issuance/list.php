@@ -5,7 +5,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
       
    $queryIssuance  = $dblms->querylms("SELECT issuance_id, issuance_code, issuance_date, issuance_to, issuance_by,
                                               issuance_remarks, issuance_status 
-                                       FROM ".SMS_ITEM_ISSUANCES." 
+                                       FROM ".SMS_ISSUANCE." 
                                        WHERE issuance_id != ''
                                        $sql2
                                        ");
@@ -41,7 +41,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                   <td style="vertical-align: middle;" nowrap="nowrap">'.$valueIssuance['issuance_date'].'</td>'; 
                   
                   $queryIssuanceItemJunction = $dblms->querylms("SELECT GROUP_CONCAT(item_title) as item_title
-                                                                     FROM ".SMS_ITEMS." it,".SMS_ISSUANCE_ITEM_JUNCTION." itemj  
+                                                                     FROM ".SMS_ITEM." it,".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." itemj  
                                                                      WHERE itemj.id_item = it.item_id
                                                                      AND itemj.id_issuance = ".$valueIssuance['issuance_id']."");
                   $valueIssuanceItemJunction = mysqli_fetch_array($queryIssuanceItemJunction);

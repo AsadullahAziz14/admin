@@ -2,7 +2,7 @@
 if(LMS_VIEW == 'forward_po') {
     $queryPO = $dblms->querylms("SELECT po_id, po_status, po_code, po_date, po_delivery_date, 
                                         ordered_by, date_ordered, forwarded_by, forwarded_to, date_forwarded
-                                        FROM ".SMS_POS." 
+                                        FROM ".SMS_PO." 
                                         WHERE po_id != ''
                                         $sql2
                                         ");
@@ -21,7 +21,7 @@ if(LMS_VIEW == 'forward_po') {
                 <th style="vertical-align: middle;" nowrap="nowrap"> Forward By </th>
                 <th style="vertical-align: middle;" nowrap="nowrap"> Date Forwarded </th>
                 <th style="vertical-align: middle;" nowrap="nowrap"> Forward To </th>
-                <th style="width:70px; text-align:center; font-size:14px;"><i class="icon-reorder"></i> </th>
+                <th style="width:70px; text-align:center; font-size:14px;" nowrap="nowrap"><i class="icon-reorder" ></i> </th>
             </tr>
         </thead>
         <tbody>';
@@ -98,7 +98,7 @@ if(LMS_VIEW == 'forward_po') {
                         echo '
                     </td>
                     <td nowrap="nowrap" style="text-align:center;">
-                        <a class="btn btn-xs btn-info" href="print_sms.php?print=po&id='.$valuePO['po_id'].'"><i class="icon-print"></i></a>
+                        <a class="btn btn-xs btn-info" href="inventory_print.php?print=po&id='.$valuePO['po_id'].'"><i class="icon-print"></i></a>
                     </td>
                 </tr>
                 ';

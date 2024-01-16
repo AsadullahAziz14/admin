@@ -17,7 +17,7 @@ if(LMS_VIEW == 'report' && isset($_GET['id'])) {
   $row = mysqli_fetch_array($sqllms);
   $result_id = $row['result_id'];  
 
-  include_once("include/page_title.php"); 
+  require_once("include/page_title.php"); 
   echo '
   <div class="table-responsive" style="overflow: auto;">
     <table class="footable table table-bordered table-hover table-with-avatar">

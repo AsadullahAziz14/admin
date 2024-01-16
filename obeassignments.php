@@ -19,8 +19,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
 {   
 
-	include_once("include/header.php");
-    include_once("include/Staffs/obe/assignments/query.php");
+	require_once("include/header.php");
+    require_once("include/Staffs/obe/assignments/query.php");
 		
 	$sql2 			= '';
 	$sqlstring		= "";
@@ -99,11 +99,11 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		unset($_SESSION['msg']);
 	} 
 
-	include_once("include/Staffs/obe/assignments/list.php");
-	include_once("include/Staffs/obe/assignments/add.php");
-	include_once("include/Staffs/obe/assignments/edit.php");
-	include_once("include/Staffs/obe/assignments/result/add.php");
-	include_once("include/Staffs/obe/assignments//result/edit.php");
+	require_once("include/Staffs/obe/assignments/list.php");
+	require_once("include/Staffs/obe/assignments/add.php");
+	require_once("include/Staffs/obe/assignments/edit.php");
+	require_once("include/Staffs/obe/assignments/result/add.php");
+	require_once("include/Staffs/obe/assignments//result/edit.php");
 
 
 	echo '

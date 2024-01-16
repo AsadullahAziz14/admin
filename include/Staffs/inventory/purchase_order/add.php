@@ -16,7 +16,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<select name="id_vendor" class="form-control" id="id_vendor" required>
 									<option value="">Select Vendor</option>';
 									$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name 
-																		FROM " .SMS_VENDORS);
+																		FROM " .SMS_VENDOR);
 									while($valueVendor = mysqli_fetch_array($queryVendor)) {
 										echo '<option value="'.$valueVendor['vendor_id'].'">'.$valueVendor['vendor_name'].'</option>';
 									}
@@ -45,7 +45,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<select name="po_delivery_address" class="form-control" id="po_delivery_address" required>
 									<option value="">Select Address</option>';
 									$queryStores = $dblms->querylms("SELECT l.location_id, l.location_address
-																	From ".SMS_LOCATIONS." l 
+																	From ".SMS_LOCATION." l 
 																");
 									while($valueStore = mysqli_fetch_array($queryStores)) {
 										echo '<option value="'.$valueStore['location_id'].'">'.$valueStore['location_address'].'</option>';
@@ -101,8 +101,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 							<label for="po_status" class="req"><b>Status</b></label>
 								<select id="po_status" class="form-control" name="po_status" required>
 									<option value="">Select Status</option>';
-									foreach ($status as $adm_status) {
-										echo '<option value="'. $adm_status['id'].'">'.$adm_status['name'].'</option>';
+									foreach ($status as $poStatus) {
+										echo '<option value="'. $poStatus['id'].'">'.$poStatus['name'].'</option>';
 									}
 									echo '
 								</select>
@@ -177,17 +177,12 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			const demandSelector = document.createElement("select");
 			demandSelector.className = "form-control";
 			demandSelector.name = "id_demand["+i+"]";
-			demandSelector.addEventListener("change", function () {
-				// Fetch items based on the selected demand
-				fetchItems(this.value, itemInputContainer);
-			});
 			demandSelector.required = true;
 
 			var demandsString = selectedDemands.join(',');
-
 			var xhr = new XMLHttpRequest();
 			var method = "GET";
-			var url = "include/ajax/getDemands.php?selectedDemands="+(demandsString);
+			var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
 			var asyncronous = true;
 
 			xhr.open(method,url,asyncronous);
@@ -199,6 +194,11 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 					demandSelector.innerHTML = options;
 				}
 			}
+
+			demandSelector.addEventListener("change", function () {
+				// Fetch items based on the selected demand
+				fetchItems(this.value, itemInputContainer);
+			});
 
 			demandSelectorContanier.appendChild(demandSelectorLabel);
 			demandSelectorContanier.appendChild(demandSelector);
@@ -249,8 +249,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 				}
 			};
 		}
-
-		
 	</script>
 
 	<script src="js/select2/jquery.select2.js"></script>';

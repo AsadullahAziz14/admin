@@ -2,14 +2,14 @@
 
 if(isset($_GET['deleteId'])) {
     $queryDeleteDemadItemJunction  = $dblms->querylms("DELETE FROM ".SMS_DEMAND_ITEM_JUNCTION." WHERE id_demand = '".cleanvars($_GET['deleteId'])."'");
-    $queryDeleteDemand  = $dblms->querylms("DELETE FROM ".SMS_DEMANDS." WHERE demand_id  = '".cleanvars($_GET['deleteId'])."'");
+    $queryDeleteDemand  = $dblms->querylms("DELETE FROM ".SMS_DEMAND." WHERE demand_id  = '".cleanvars($_GET['deleteId'])."'");
 
     if($queryDeleteDemand) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                               ,
             'action'                           => "Delete"                                                          ,
-            'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION.', '.SMS_DEMANDS                         ,
+            'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION.', '.SMS_DEMAND                         ,
             'action_detail'                    => 'demand_id: '.cleanvars($_GET['deleteId'])                        ,
             'path'                             =>  end($filePath)                                                   ,
             'login_session_start_time'         => $_SESSION['login_time']                                           ,
@@ -34,7 +34,7 @@ if(isset($_POST['submit_demand'])) {
         'id_added'                             => cleanvars($_SESSION['LOGINIDA_SSS'])                  ,
         'date_added'                           => date('Y-m-d H:i:s')          
     ];
-    $queryInsert = $dblms->Insert(SMS_DEMANDS, $data);
+    $queryInsert = $dblms->Insert(SMS_DEMAND, $data);
 
     if($queryInsert) {
         $id_demand = $dblms->lastestid();
@@ -51,12 +51,12 @@ if(isset($_POST['submit_demand'])) {
                 $data = [
                     'id_demand'                            => $id_demand                                        ,
                     'id_item'                              => $item_id                                          ,
-                    'quantity_requested'                   => cleanvars($_POST['quantity_requested'][$index])   ,
+                    'quantity_demanded'                   => cleanvars($_POST['quantity'][$index])   ,
                     'item_due_date'                        => cleanvars($_POST['item_due_date'][$index])        
                 ];
                 $queryInsert = $dblms->Insert(SMS_DEMAND_ITEM_JUNCTION, $data);
 
-                $demand_quantity += cleanvars($_POST['quantity_requested'][$index]);
+                $demand_quantity += cleanvars($_POST['quantity'][$index]);
                 $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]);
             }
             $min_demand_due_date = min($demand_due_date);
@@ -69,14 +69,14 @@ if(isset($_POST['submit_demand'])) {
         ];
         
         $conditions = "WHERE demand_id  = ".$demand_id."";
-        $queryUpdate = $dblms->Update(SMS_DEMANDS, $data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
 
         // Logs
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                                           ,
             'action'                           => "Create"                                                                      ,
-            'affected_table'                   => SMS_DEMANDS                                                                   ,
+            'affected_table'                   => SMS_DEMAND                                                                   ,
             'action_detail'                    =>  'demand_id: '.$demand_id.
                                                     PHP_EOL.'demand_code: '.'D'.str_pad($demand_id, 5, '0', STR_PAD_LEFT).
                                                     PHP_EOL.'demand_type: '.cleanvars($_POST['demand_type']).
@@ -100,7 +100,7 @@ if(isset($_POST['submit_demand'])) {
             'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION                                                      ,
             'action_detail'                    =>  'demand_id: '.$demand_id.
                                                     PHP_EOL.implode(',',cleanvars($_POST['item'])).
-                                                    PHP_EOL.implode(',',cleanvars($_POST['quantity_requested'])).
+                                                    PHP_EOL.implode(',',cleanvars($_POST['quantity'])).
                                                     PHP_EOL.implode(',',cleanvars($_POST['item_due_date'])).
                                                     PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')                                 ,
@@ -127,7 +127,7 @@ if(isset($_POST['update_demand'])) {
         'date_modify'                      => date('Y-m-d H:i:s')                
     ];
     $conditions = "WHERE  demand_id  = ".$demand_id."";
-    $queryUpdate = $dblms->Update(SMS_DEMANDS, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
 
     if($queryUpdate) {
         $demand_quantity = 0;
@@ -146,27 +146,27 @@ if(isset($_POST['update_demand'])) {
             foreach ($items as $index => $item_id) {
                 if(isset($item_id['u'])) {
                     $data = [
-                        'id_demand'                            => $demand_id                                                ,
-                        'id_item'                              => $item_id['u']                                             ,
-                        'quantity_requested'                   => cleanvars($_POST['quantity_requested'][$index]['u'])      ,
-                        'item_due_date'                        => cleanvars($_POST['item_due_date'][$index]['u'])
+                        'id_demand'                         => $demand_id                                                ,
+                        'id_item'                           => $item_id['u']                                             ,
+                        'quantity_demanded'                 => cleanvars($_POST['quantity'][$index]['u'])      ,
+                        'item_due_date'                     => cleanvars($_POST['item_due_date'][$index]['u'])
                     ];
                     $conditions = "WHERE id_demand  = ".$demand_id." && id_item = ".$item_id['u'] ;
                     $query = $dblms->update(SMS_DEMAND_ITEM_JUNCTION, $data, $conditions);
 
-                    $demand_quantity += cleanvars($_POST['quantity_requested'][$index]['u']);
+                    $demand_quantity += cleanvars($_POST['quantity'][$index]['u']);
                     $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['u']);
                     $demanded_items[] = $item_id['u'];
                 } elseif (isset($item_id['n'])) {
                     $data = [
-                        'id_demand'                            => $demand_id                                            ,
-                        'id_item'                              => $item_id['n']                                         ,
-                        'quantity_requested'                   => cleanvars($_POST['quantity_requested'][$index]['n'])  ,
-                        'item_due_date'                        => cleanvars($_POST['item_due_date'][$index]['n'])        
+                        'id_demand'                             => $demand_id                                            ,
+                        'id_item'                               => $item_id['n']                                         ,
+                        'quantity_demanded'                     => cleanvars($_POST['quantity'][$index]['n'])   ,
+                        'item_due_date'                         => cleanvars($_POST['item_due_date'][$index]['n'])        
                     ];
                     $queryInsert = $dblms->Insert(SMS_DEMAND_ITEM_JUNCTION, $data);
 
-                    $demand_quantity += cleanvars($_POST['quantity_requested'][$index]['n']);
+                    $demand_quantity += cleanvars($_POST['quantity'][$index]['n']);
                     $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['n']);
                     $demanded_items[] = $item_id['n'];
 
@@ -183,14 +183,14 @@ if(isset($_POST['update_demand'])) {
         ];
         
         $conditions = "WHERE demand_id  = ".$demand_id."";
-        $queryUpdate = $dblms->Update(SMS_DEMANDS, $data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
 
         // Logs
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                                           ,
             'action'                           => "Update"                                                                      ,
-            'affected_table'                   => SMS_DEMANDS                                                                   ,
+            'affected_table'                   => SMS_DEMAND                                                                   ,
             'action_detail'                    =>  'demand_id: '.$demand_id.
                                                     PHP_EOL.'demand_type: '.cleanvars($_POST['demand_type']).
                                                     PHP_EOL.'demand_quantity: '.$demand_quantity.
@@ -212,7 +212,7 @@ if(isset($_POST['update_demand'])) {
             ,'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION
             ,'action_detail'                    =>  'demand_id: '.$demand_id.
                                                     PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item']))).
-                                                    PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['quantity_requested']))).
+                                                    PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['quantity']))).
                                                     PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item_due_date']))).
                                                     PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')

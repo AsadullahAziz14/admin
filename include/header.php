@@ -42,13 +42,13 @@ echo '
 	.col-sm-70 {float:left}
 	.col-sm-70 {width:70%}
 	
-	.col-sm-61 {position:relative;min-height:1px;padding-right:10px;padding-left:10px}
-	.col-sm-61 {float:left}
-	.col-sm-61{width:50%}
-	
 	.col-sm-62 {position:relative;min-height:1px;padding-right:10px;padding-left:10px}
 	.col-sm-62 {float:left}
 	.col-sm-62 {width:60%}
+
+	.col-sm-61 {position:relative;min-height:1px;padding-right:10px;padding-left:10px}
+	.col-sm-61 {float:left}
+	.col-sm-61{width:50%}
 	
 	.col-sm-51 {position:relative;min-height:1px;padding-right:10px;padding-left:10px}
 	.col-sm-51 {float:left}

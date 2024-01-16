@@ -2,7 +2,7 @@
 if(!LMS_VIEW && !isset($_GET['id'])) {  
    $queryDemands = $dblms->querylms("SELECT demand_id, demand_status, demand_code, demand_type, demand_quantity, 
                                              demand_date, demand_due_date, id_department, id_added
-                                       FROM ".SMS_DEMANDS." 
+                                       FROM ".SMS_DEMAND." 
                                        WHERE demand_id != ''
                                        $sql2
                                        ");

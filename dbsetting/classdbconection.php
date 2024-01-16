@@ -20,7 +20,6 @@ class dblms {
 	public function open_connectionlms() {
 		
 		try	{
-
 			$this->connectlms 	= mysqli_connect($this->lms_hostname, $this->lms_username, $this->lms_password, $this->lms_database) or die (print "Class Database: Error while connecting to DB (link)");
 			//$this->select_dblms = mysql_select_db($this->lms_database) or die (print "Class Database: Error while selecting DB");
 
@@ -32,8 +31,7 @@ class dblms {
 
 	}
 
-	public function close_connectionlms()
-	{
+	public function close_connectionlms() {
 		try	{
 			mysqli_close($this->connectlms);
 		}

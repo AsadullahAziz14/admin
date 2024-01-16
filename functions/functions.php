@@ -207,9 +207,7 @@ function get_paytypes($id) {
 
 
 //-----------------CMS-SMS Variable-----------
-$listadmstatus= array (
-	'1' => '<span class="label label-success" id="bns-status-badge">Active</span>', 
-	'0' => '<span class="label label-danger" id="bns-status-badge">Inactive</span>');
+
 define('DEMAND_TYPES'	,[
 	'n' 	=> '<span class="label label-info" id="bns-status-badge">Normal</span>'	,
 	'u' 	=> '<span class="label label-warning" id="bns-status-badge">Urgent</span>'
@@ -219,6 +217,13 @@ define('PAYMENT_TERMS'	,[
 	'cr' 	=> 'Credit'
 	,'ca' 	=> 'Cash'
 ]);
+
+define('REQUISITION_TYPES'	,[
+	'1' 	=> 'Tengible'
+	,'2' 	=> 'Non-Tengible'
+]);
+
+
 
 
 //--------------- Gender ----------

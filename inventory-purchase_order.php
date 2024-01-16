@@ -97,7 +97,10 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		<!-- Footer ends -->
 
 		<!-- Scroll to top -->
-		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>';
+
+		require_once("include/Staffs/inventory/purchase_order/forward.php");
+		echo '
 		<!--WI_IFRAME_Start_MODAL-->
 		<div class="row">
 			<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

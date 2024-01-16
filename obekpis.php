@@ -18,8 +18,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
 {   
-	include_once("include/header.php");
-    include_once("include/Staffs/obe/kpis/query.php");
+	require_once("include/header.php");
+    require_once("include/Staffs/obe/kpis/query.php");
 			
 	$srch			= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
 	$status_srch	= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
@@ -71,9 +71,9 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 										unset($_SESSION['msg']);
 									}
 
-									include_once("include/Staffs/obe/kpis/add.php");
-									include_once("include/Staffs/obe/kpis/list.php");
-									include_once("include/Staffs/obe/kpis/edit.php");
+									require_once("include/Staffs/obe/kpis/add.php");
+									require_once("include/Staffs/obe/kpis/list.php");
+									require_once("include/Staffs/obe/kpis/edit.php");
 			
 									echo '
 								</div>

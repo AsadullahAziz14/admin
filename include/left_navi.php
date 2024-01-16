@@ -75,16 +75,22 @@ if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "dashboard")) {
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "vendors")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Vendors</h2>';
 	$lefttitlename 	= 'Vendors';
-} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "issuance")) { 
-	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Issuance</h2>';
-	$lefttitlename 	= 'Issuance';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "demand")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Demand</h2>';
 	$lefttitlename 	= 'Demand';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "purchase_order")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Purchase Order</h2>';
 	$lefttitlename 	= 'Demand';
-}
+} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "receiving")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>PO Receiving</h2>';
+	$lefttitlename 	= 'PO Receiving';
+} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "requisition")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Requisition</h2>';
+	$lefttitlename 	= 'Requisition';
+} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "issuance")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Issuance</h2>';
+	$lefttitlename 	= 'Issuance';
+} 
 
 //----------------------------------------
 echo '
@@ -108,25 +114,24 @@ echo '
 
 	<li class="has_sub"> <a href="javascript:void(0)"> <i class="icon-file-text"></i> OBE System<span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span></a>
 		<ul>
-			<li> <a href="obe/obedomainlevels.php"> <i class="icon-file-text"></i> Manage Domains<span class="pull-right"></span></a> </li>
+			<li> <a href="obedomainlevels.php"> <i class="icon-file-text"></i> Manage Domains<span class="pull-right"></span></a> </li>
 			<li> <a href="obeplos.php"> <i class="icon-file-text"></i> Manage PLOs<span class="pull-right"></span></a> </li>
 			<li> <a href="obehome.php"> <i class="icon-file-text"></i> OBE Home<span class="pull-right"></span></a> </li>		
 		</ul>
 	</li>
 	<li class="has_sub"> <a href="javascript:void(0)"> <i class="icon-file-text"></i> SMS System<span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span></a>
 		<ul>
-			<li> <a href="inventory-items.php"> <i class="icon-file-text"></i>Items<span class="pull-right"></span></a> </li>
-			<li> <a href="inventory-categories.php"> <i class="icon-file-text"></i>Categories<span class="pull-right"></span></a> </li>
-			<li> <a href="inventory-sub_categories.php"> <i class="icon-file-text"></i>Sub Categories<span class="pull-right"></span></a> </li>
-			<li> <a href="inventory-vendors.php"> <i class="icon-file-text"></i>Vendors<span class="pull-right"></span></a> </li>
-			<li> <a href="inventory-issuance.php"> <i class="icon-file-text"></i>Item Issuance<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-item.php"> <i class="icon-file-text"></i>Items<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-category.php"> <i class="icon-file-text"></i>Categories<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-sub_category.php"> <i class="icon-file-text"></i>Sub Categories<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-vendor.php"> <i class="icon-file-text"></i>Vendors<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-demand.php"> <i class="icon-file-text"></i>Demand<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-purchase_order.php"> <i class="icon-file-text"></i>PO<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-receiving.php"> <i class="icon-file-text"></i>PO Receiving<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-requisition.php"> <i class="icon-file-text"></i>Item Requisition<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-issuance.php"> <i class="icon-file-text"></i>Item Issuance<span class="pull-right"></span></a> </li>
 		</ul>
-	</li>
-
-	
-	';
+	</li>';
 //-------------------------------------------------
 if($_SESSION['userlogininfo']['LOGINIDA_SSS'] == 1 || $_SESSION['userlogininfo']['LOGINIDA_SSS'] == 2) {
 echo '

@@ -1,7 +1,5 @@
 <?php 
-if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1')))
-{ 
-	
+if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) {	
 	echo '
 	<!--WI_ADD_NEW_TASK_MODAL-->
 	<div class="row">
@@ -40,8 +38,8 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 								<div class="col-lg-12">
 									<select id="domain_level_status" name="domain_level_status" style="width:100%" autocomplete="off" required>
 										<option value="">Select Option</option>';
-									foreach($status as $domain_level_status) { 
-										echo '<option value="'.$domain_level_status['id'].'">'.$domain_level_status['name'].'</option>';
+									foreach($status as $domainLevelStatus) { 
+										echo '<option value="'.$domainLevelStatus['id'].'">'.$domainLevelStatus['name'].'</option>';
 									}
 									echo '
 									</select>
@@ -70,12 +68,12 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 		$().ready(function() {
 			$("#addNew").validate({
 				rules: {
-					domain_name_code				: "required",
+					domain_name_code	: "required",
 					domain_level_name	: "required",
 					domain_level_status	: "required"
 					},
 			messages: {
-					domain_name_code				: "This field is required",
+					domain_name_code	: "This field is required",
 					domain_level_name	: "This field is required",
 					domain_level_status	: "This field is required"
 					},

@@ -1,9 +1,9 @@
 <?php
 if (!LMS_VIEW && isset($_GET['id'])) {
-	$queryPO = $dblms->querylms("SELECT po_id, po_status, po_tax_perc, po_remarks, po_tax_perc, 
-										po_payment_terms, po_credit_terms, po_lead_time, po_delivery_address,
-										id_vendor 
-									FROM ".SMS_POS." WHERE po_id =  ".cleanvars($_GET['id'])." ");
+	$queryPO = $dblms->querylms("SELECT po_id, po_status, po_remarks, po_tax_perc, po_payment_terms,
+										po_credit_terms, po_lead_time, po_delivery_date, 
+										po_delivery_address, date_ordered, id_vendor 
+									FROM ".SMS_PO." WHERE po_id =  ".cleanvars($_GET['id'])." ");
 	$valuePO = mysqli_fetch_array($queryPO);
 	$selectedDemands = [];
 	echo '
@@ -22,7 +22,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<select name="id_vendor" class="form-control" id="id_vendor" required>
 									<option value="">Select Vendor</option>';
 									$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name 
-																		FROM ".SMS_VENDORS);
+																		FROM ".SMS_VENDOR);
 									while($valueVendor = mysqli_fetch_array($queryVendor)) {
 										if($valueVendor['vendor_id'] == $valuePO['id_vendor']) {
 											echo '<option value="'.$valueVendor['vendor_id'].'" selected>'.$valueVendor['vendor_name'].'</option>';
@@ -48,7 +48,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<select name="po_delivery_address" class="form-control" id="po_delivery_address" required>
 									<option value="">Select Address</option>';
 										$queryLocation = $dblms->querylms("SELECT l.location_id, l.location_address
-																		From ".SMS_LOCATIONS." l ");
+																		From ".SMS_LOCATION." l ");
 										while($valueLocation = mysqli_fetch_array($queryLocation)) {
 											if($valueLocation['location_id'] == $valuePO['po_delivery_address']){
 												echo '<option value="'.$valueLocation['location_id'].'" selected>'.$valueLocation['location_address'].'</option>';
@@ -114,11 +114,11 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							<label for="po_status" class="req"><b>Status</b></label>
 								<select id="po_status" class="form-control" name="po_status" required>
 									<option value="">Select Status</option>';
-									foreach ($status as $adm_status) {
-										if($valuePO['po_status'] == $adm_status['id']) {
-											echo '<option value="'. $adm_status['id'].'" selected>'.$adm_status['name'].'</option>';
+									foreach ($status as $poStatus) {
+										if($valuePO['po_status'] == $poStatus['id']) {
+											echo '<option value="'. $poStatus['id'].'" selected>'.$poStatus['name'].'</option>';
 										} else {
-											echo '<option value="'. $adm_status['id'].'">'.$adm_status['name'].'</option>';
+											echo '<option value="'. $poStatus['id'].'">'.$poStatus['name'].'</option>';
 										}
 									}
 									echo '
@@ -148,7 +148,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										<select class="form-control" name="id_demand['.$i.']" id="id_demand'.$i.'">
 											<option value=""></option>';
 											$queryDemand = $dblms->querylms("SELECT demand_id, demand_code
-																				FROM ".SMS_DEMANDS);
+																				FROM ".SMS_DEMAND);
 											while($valueDemand = mysqli_fetch_array($queryDemand)) {
 												if($valueDemand['demand_id'] == $valuePoDemand['id_demand']) {
 													$selectedDemands[] = $valueDemand['demand_id'];
@@ -170,7 +170,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 																				Where id_po = ".$valuePO['po_id']." && id_demand = ".$valuePoDemand['id_demand']);
 									while($valuePoDemandJuntion = mysqli_fetch_array($queryPoDemandJuntion)) {
 										$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title
-																		FROM ".SMS_ITEMS." 
+																		FROM ".SMS_ITEM." 
 																		where item_id IN (".$valuePoDemandJuntion['id_item'].")");
 										$valueItem = mysqli_fetch_array($queryItem);
 										echo '
@@ -277,7 +277,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 
 		var xhr = new XMLHttpRequest();
 		var method = "GET";
-		var url = "include/ajax/getDemands.php?selectedDemands="+(demandsString);
+		var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
 		var asyncronous = true;
 
 		xhr.open(method,url,asyncronous);

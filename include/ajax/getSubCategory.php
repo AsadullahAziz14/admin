@@ -13,7 +13,7 @@ $selectedValue = $_GET['selectedValue'];
 
 // Perform a MySQL query to fetch options based on the selected value
 $sqllms = $dblms->querylms("SELECT sub_category_id, sub_category_name 
-                                FROM ".SMS_SUB_CATEGORIES." 
+                                FROM ".SMS_SUB_CATEGORIE." 
                                 WHERE id_category = '$selectedValue'");
 
 echo '<option value = "">Select Sub-Category</option>';
