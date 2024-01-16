@@ -18,7 +18,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 					<div class="modal-body">
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
-								<label for="id_vendor" class="req"><b>Select Vendor</b></label>
+								<label for="id_vendor" class="req"><b>Vendor</b></label>
 								<select name="id_vendor" class="form-control" id="id_vendor" required>
 									<option value="">Select Vendor</option>';
 									$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name 

@@ -1,19 +1,37 @@
 <?php
-if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) {
+if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19'))) {
 	echo '
    	<div class="row">
 		<div id="viewPOModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
-				<form class="form-horizontal" action="inventory-purchase_order.php" method="POST" id="editRecord">
+				<form class="form-horizontal" action="inventory-purchase_order.php" method="POST" id="viewRecord">
 					<div class="modal-content">
 						<div class="modal-header"> 
-							<h4 class="modal-title" style="font-weight:700;">Edit PO</h4>
+							<h4 class="modal-title" style="font-weight:700;">PO Detail</h4>
 						</div>
 
 						<div class="modal-body">
 							<div class="col-sm-61">
 								<div style="margin-top:5px;">
-									<label for="id_vendor"><b>Select Vendor</b></label>
+									<label for="po_code">PO Code</label>
+									<input class="form-control" type="text" name="po_code" id="po_code" readonly>
+								</div>
+							</div>
+							<div class="col-sm-61">
+								<div style="margin-top:5px;">
+									<label for="po_quantity">PO Quantity</label>
+									<input class="form-control" type="text" name="po_quantity" id="po_quantity" readonly>
+								</div>
+							</div>
+							<div class="col-sm-61">
+								<div style="margin-top:5px;">
+									<label for="po_amount">PO Amount</label>
+									<input class="form-control" type="text" name="po_amount" id="po_amount" readonly>
+								</div>
+							</div>
+							<div class="col-sm-61">
+								<div style="margin-top:5px;">
+									<label for="id_vendor"><b>Vendor</b></label>
 									<select name="id_vendor" class="form-control" id="id_vendor" readonly required>
 										<option value="">Select Vendor</option>';
 										$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name 
@@ -118,7 +136,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 								</div>
 							</div>
 
-							<div class="col-sm-91">
+							<div class="col-sm-61">
 								<div style="margin-top:5px;">
 									<label for="po_remarks">Remarks</label>
 									<input class="form-control" type="text" name="po_remarks" id="po_remarks" readonly>
@@ -172,7 +190,8 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 				// get variables from "edit link" ata attributes
 				var po_id                   = $(this).attr("data-po-id");
 				var po_code                 = $(this).attr("data-po-code");
-				var po_status 				= $(this).attr("data-po-status");
+				var po_quantity             = $(this).attr("data-po-quantity");
+				var po_amount               = $(this).attr("data-po-amount");
 				var po_delivery_date 		= $(this).attr("data-po-delivery-date");
 				var po_delivery_address 	= $(this).attr("data-po-delivery-address");
 				var po_tax_perc 			= $(this).attr("data-po-tax-perc");
@@ -189,6 +208,8 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 				// set modal input values dynamically
 				$("#po_id")              	.val(po_id);
 				$("#po_code")         		.val(po_code);
+				$("#po_quantity")         	.val(po_quantity);
+				$("#po_amount")         	.val(po_amount);
 				$("#po_delivery_date")		.val(convertDateToInputFormat(po_delivery_date));
 				$("#po_delivery_address")   .val(po_delivery_address);
 				$("#po_tax_perc")         	.val(po_tax_perc);

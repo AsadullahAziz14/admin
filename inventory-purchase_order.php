@@ -69,7 +69,6 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 											require_once("include/Staffs/inventory/purchase_order/list.php");
 											require_once("include/Staffs/inventory/purchase_order/add.php");
 											require_once("include/Staffs/inventory/purchase_order/edit.php");
-											require_once("include/Staffs/inventory/purchase_order/forward_po.php");
 										echo'
 									</div>
 								</div>

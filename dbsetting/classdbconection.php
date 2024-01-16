@@ -35,7 +35,6 @@ class dblms {
 		try	{
 			mysqli_close($this->connectlms);
 		}
-
 		catch(exception $e)	{
 			return $e;
 		}

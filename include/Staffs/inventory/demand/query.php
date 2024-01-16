@@ -222,9 +222,22 @@ if(isset($_POST['update_demand'])) {
             ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
-
-        $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
-        header("Location: inventory-demand.php", true, 301);
-        exit();
     }
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
+    header("Location: inventory-demand.php", true, 301);
+    exit();
+}
+
+if(isset($_POST["forward_demand"])) {
+    $data = [
+        'forwarded_to'      => $_POST['forwarded_to']                                           ,
+        'forwarded_by'      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                ,
+        'date_forwarded'    => date('Y-m-d H:i:s')
+    ];
+    $conditions = " Where demand_id = ".$_POST['demand_id']."";
+    $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
+
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Forwarded successfully.</div>';
+    header("Location: inventory-demand.php", true, 301);
+    exit();
 }

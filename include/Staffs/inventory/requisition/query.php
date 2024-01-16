@@ -116,14 +116,14 @@ if(isset($_POST['update_requisition'])) {
 
 if(isset($_POST["forward_requisition"])) {
     $data = [
-        'forwarded_to'      => $_POST['forwarded_to']                                           ,
-        'forwarded_by'      => $_SESSION['LOGINIDA_SSS']                                        ,
+        'forwarded_to'      => $_POST['forwarded_to']              ,
+        'forwarded_by'      => $_SESSION['LOGINIDA_SSS']           ,
         'date_forwarded'    => date('Y-m-d H:i:s')
     ];
     $conditions = " Where requisition_id = ".$_POST['requisition_id']."";
     $queryUpdate = $dblms->Update(SMS_REQUISITION, $data, $conditions);
 
     $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Forwarded successfully.</div>';
-    header("Location: inventory-requisition.php?view=forward_requisition", true, 301);
+    header("Location: inventory-requisition.php", true, 301);
     exit();
 }
