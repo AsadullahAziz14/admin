@@ -54,7 +54,7 @@ if(isset($_POST['submit_requisition'])) {
                     'id_requisition'                => $requisition_id                                      ,
                     'id_demand'                     => $id_demand                                           ,
                     'id_item'                       => $id_item                                             ,
-                    'quantity_requested'            => $_POST['quantity'][$id_demand][$id_item]   ,
+                    'quantity_requested'            => $_POST['quantity_requested'][$id_demand][$id_item]   ,
                 ];
                 $queryInsert = $dblms->Insert(SMS_REQUISITION_DEMAND_ITEM_JUNCTION, $data);
             }
@@ -101,7 +101,7 @@ if(isset($_POST['update_requisition'])) {
                         'id_requisition'                    => $requisition_id                              ,
                         'id_demand'                         => $id_demand                                   ,
                         'id_item'                           => $id_item                                     ,
-                        'quantity_requested'                => $_POST['quantity'][$id_demand][$id_item]
+                        'quantity_requested'                => $_POST['quantity_requested'][$id_demand][$id_item]
                     ];
                     $queryInsert = $dblms->Insert(SMS_REQUISITION_DEMAND_ITEM_JUNCTION , $data);   
                 }

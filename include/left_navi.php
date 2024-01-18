@@ -90,6 +90,9 @@ if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "dashboard")) {
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "issuance")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Issuance</h2>';
 	$lefttitlename 	= 'Issuance';
+} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "inventory")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Inventory</h2>';
+	$lefttitlename 	= 'Inventory';
 } 
 
 //----------------------------------------
@@ -130,6 +133,7 @@ echo '
 			<li> <a href="inventory-receiving.php"> <i class="icon-file-text"></i>PO Receiving<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-requisition.php"> <i class="icon-file-text"></i>Item Requisition<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-issuance.php"> <i class="icon-file-text"></i>Item Issuance<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-inventory.php"> <i class="icon-file-text"></i>Inventory<span class="pull-right"></span></a> </li>
 		</ul>
 	</li>';
 //-------------------------------------------------

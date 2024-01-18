@@ -43,10 +43,8 @@ class dblms {
 	public function querylms($sqllms) {
 		// echo $sqllms;
 		try	{
-
 			$this->open_connectionlms();
 			$sqllms = mysqli_query($this->connectlms, $sqllms);
-			
 		}
 
 		catch(exception $e)	{

@@ -55,6 +55,8 @@
 	define('SMS_PO_DEMAND_ITEM_JUNCTION' 				, 'cms_sms_po_demand_item_junction');
 	define('SMS_RECEIVING' 								, 'cms_sms_receiving');
 	define('SMS_RECEIVING_PO_ITEM_JUNCTION'	 			, 'cms_sms_receiving_po_item_junction');
+	define('SMS_INVENTORY' 								, 'cms_sms_inventory');
+	define('SMS_INVENTORY_RECEIVING_ITEM_JUNCTION'		, 'cms_sms_inventory_receiving_item_junction');
 	define('SMS_REQUISITION' 							, 'cms_sms_requisition');
 	define('SMS_REQUISITION_DEMAND_ITEM_JUNCTION'		, 'cms_sms_requisition_demand_item_junction');
 	define('SMS_ISSUANCE' 								, 'cms_sms_issuance');
@@ -163,7 +165,3 @@ define('GRADES'	,[
 ]);
 
 define('LIBREL_ARTS'	, 1);
-
-
-
-?>

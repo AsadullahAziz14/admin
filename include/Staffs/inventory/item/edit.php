@@ -1,7 +1,7 @@
 <?php 
 
 if (!LMS_VIEW && isset($_GET['id'])) {
-	$queryItem = $dblms->querylms("SELECT itm.item_title, itm.item_description, itm.item_article_number, itm.item_image,
+	$queryItem = $dblms->querylms("SELECT itm.item_title, itm.item_status, itm.item_uom, itm.item_description, itm.item_article_number, itm.item_image,
 									itm.item_style_number, itm.item_model_number, itm.item_dimensions, cat.category_id,
 									cat.category_name, sub.sub_category_id, sub.sub_category_name
 									FROM ".SMS_ITEM." itm LEFT JOIN ".SMS_CATEGORIE." cat
@@ -62,7 +62,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 						<div class="col-sm-41">
 							<div style="margin-top:5px;">
 								<label for="id_sub_category" class="req"><b>Sub-Category</b></label>
-								<select id="id_sub_category" class="form-control" name="id_sub_category" required>
+								<select id="id_sub_category" class="form-control" name="id_sub_category" >
 									<option value="'.$valueItem['sub_category_id'].'">'.$valueItem['sub_category_name'].'</option>
 								</select>
 							</div>
@@ -103,9 +103,9 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									<option value="">Select UOM</option>';
 									foreach ($units_of_measurement as $uom) {
 										if($valueItem['item_uom'] == $uom['id']) { 
-											echo '<option value='.$uom['id'].' selected>'.$uom['name'].'</option>';
+											echo "<option value='.$uom[id].' selected>$uom[name]</option>";
 										} else {
-											echo '<option value='.$uom['id'].'>'.$uom['name'].'</option>';
+											echo "<option value='.$uom[id].'>$uom[name]</option>";
 										}
 									}
 									echo '

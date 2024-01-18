@@ -55,7 +55,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-91 item">
 							<div class="form-sep" style="margin-top: 10px; width: 100%">
 								<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus">&nbsp&nbspAdd Item</i></button>
+									<button type="button" class="btn btn-info" onclick="addRequisition()" style="width: 10%;  float: right"><i class="icon-plus">&nbsp&nbspAdd Item</i></button>
 								</div>
 							</div>
 						</div>
@@ -86,8 +86,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			}
 		}	
 		
-		var selectedDemands = [];
-		function addDemand() {
+		var selectedRequisitions = [];
+		function addRequisition() {
 			var i = 0;
 			i = i + 1;
 			const itemContainer = document.getElementById("itemContainer");
@@ -100,44 +100,46 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 			itemContainer.appendChild(container);
 
-			// Demand Selector Start
-			const demandSelectorContanier = document.createElement("div");
-			demandSelectorContanier.className = "col-sm-92";
+			// Requisition Selector Start
+			const requisitionInputContanier = document.createElement("div");
+			requisitionInputContanier.className = "col-sm-70";
 
-			const demandSelectorLabel = document.createElement("label");
-			demandSelectorLabel.textContent = "Demand";
-			demandSelectorLabel.className = "req";
+			const requisitionInputLabel = document.createElement("label");
+			requisitionInputLabel.textContent = "Requisition";
+			requisitionInputLabel.className = "req";
 			
-			const demandSelector = document.createElement("select");
-			demandSelector.className = "form-control";
-			demandSelector.name = "id_demand["+i+"]";
-			demandSelector.addEventListener("change", function () {
-				// Fetch items based on the selected demand
-				fetchItems(this.value, itemInputContainer);
+			const requisitionInput = document.createElement("input");
+			requisitionInput.className = "form-control";
+			requisitionInput.name = "id_requisition["+i+"]";
+			requisitionInput.type = Text;
+			requisitionInput.required = true;
+
+			requisitionInputContanier.appendChild(requisitionInputLabel);
+			requisitionInputContanier.appendChild(requisitionInput);
+			container.appendChild(requisitionInputContanier);
+
+			// Retrieve Button Start
+			const retrieveButtonContainer = document.createElement("div");
+			retrieveButtonContainer.className = "col-sm-31";
+			const retrieveButtonDiv = document.createElement("div");
+			retrieveButtonDiv.style = "display: flex; justify-content: left; align-items: left; margin: 15px;"
+
+			const retrieveButton = document.createElement("button");
+			retrieveButton.className = "btn btn-info";
+			retrieveButton.style.alignItems = "center";
+			retrieveButton.innerHTML = "Retrieve";
+
+			
+			retrieveButton.addEventListener("click", function (event) {
+				event.preventDefault();  // Prevent the default form submission behavior
+				fetchItems(requisitionInput.value, itemInputContainer);
 			});
-			demandSelector.required = true;
 
-			var demandsString = selectedDemands.join(',');
+			retrieveButtonDiv.appendChild(retrieveButton);
+			retrieveButtonContainer.appendChild(retrieveButtonDiv);
+			container.appendChild(retrieveButtonContainer);
 
-			var xhr = new XMLHttpRequest();
-			var method = "GET";
-			var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
-			var asyncronous = true;
-
-			xhr.open(method,url,asyncronous);
-			xhr.send();
-
-			xhr.onreadystatechange = function() {
-				if(xhr.readyState === 4 && xhr.status === 200) {
-					const options = xhr.responseText;
-					demandSelector.innerHTML = options;
-				}
-			}
-
-			demandSelectorContanier.appendChild(demandSelectorLabel);
-			demandSelectorContanier.appendChild(demandSelector);
-			container.appendChild(demandSelectorContanier);
-
+			// Remove Button Start
 			const removeButtonContainer = document.createElement("div");
 			removeButtonContainer.className = "col-sm-21";
 
@@ -158,18 +160,18 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			removeButtonContainer.appendChild(removeButtonDiv);
 			container.appendChild(removeButtonContainer);
 
-			// Item Selector Start
+			// Item Input Start
 			const itemInputContainer = document.createElement("div");
 			itemInputContainer.className = "col-sm-91";
 			
 			container.appendChild(itemInputContainer);
 		}
 
-		function fetchItems(demandId, itemInputContainer) {
-			selectedDemands.push(demandId);
+		function fetchItems(requisitionId, itemInputContainer) {
+			selectedRequisitions.push(requisitionId);
 			var xhr = new XMLHttpRequest();
 			var method = "GET";
-			var url = "include/ajax/getItems.php?selectedDemand=" + demandId;
+			var url = "include/ajax/getItems.php?selectedRequisition=" + requisitionId;
 			var asyncronous = true;
 
 			xhr.open(method, url, asyncronous);

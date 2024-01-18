@@ -14,7 +14,7 @@ if(isset($_GET['deleteId'])) {
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])                     
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -36,7 +36,7 @@ if(isset($_POST['submit_receiving'])) {
         'id_vendor'                         => cleanvars($_POST['id_vendor'])                           ,
         'receiving_remarks'                 => cleanvars($_POST['receiving_remarks'])                   ,
         'receiving_status'                  => cleanvars($_POST['receiving_status'])                    ,
-        'id_added'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])        ,
+        'id_added'                          => cleanvars($_SESSION['LOGINIDA_SSS'])                     ,
         'date_added'                        => date('Y-m-d H:i:s')          
     ];
     $queryInsert = $dblms->Insert(SMS_RECEIVING, $data);
@@ -65,6 +65,20 @@ if(isset($_POST['submit_receiving'])) {
                 ];
                 $conditions = "Where id_po = ".$id_po." AND id_item = ".$id_item."";
                 $queryUpdate = $dblms->Update(SMS_RECEIVING_PO_ITEM_JUNCTION, $data, $conditions);
+
+                $queryInventory = $dblms->querylms("SELECT DISTINCT inventory_id, id_item
+										FROM ".SMS_INVENTORY." 
+										WHERE id_item =  ".$id_item."
+									");
+	            $valueInventory = mysqli_fetch_array($queryInventory);
+
+                $data = [
+                    'id_inventory'              => $valueInventory['inventory_id']     ,
+                    'id_receiving'              => $id_receiving                       ,
+                    'id_item'                   => $id_item                            ,
+                    'quantity_added'            => $_POST['quantity_received'][$id_po][$id_item]
+                ];
+                $queryInsert = $dblms->Insert(SMS_INVENTORY_RECEIVING_ITEM_JUNCTION, $data);
             }
         }
         
@@ -77,17 +91,13 @@ if(isset($_POST['submit_receiving'])) {
 
 if(isset($_POST['update_receiving'])) {
     $receiving_id = cleanvars($_GET['id']);
-    $receiving_quantity = 0;
-    foreach ($_POST['quantity_received'] as $key => $qauntityReceivedArray) {
-        $receiving_quantity += array_sum($qauntityReceivedArray);
-    }
 
     $data = [
         'delivery_chalan_num'               => cleanvars($_POST['delivery_chalan_num'])                 ,
         'id_vendor'                         => cleanvars($_POST['id_vendor'])                           ,
         'receiving_remarks'                 => cleanvars($_POST['receiving_remarks'])                   ,
         'receiving_status'                  => cleanvars($_POST['receiving_status'])                    ,
-        'id_modify'                         => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])        ,
+        'id_modify'                         => cleanvars($_SESSION['LOGINIDA_SSS'])                     ,
         'date_modify'                       => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  receiving_id  = ".$receiving_id."";
@@ -96,8 +106,8 @@ if(isset($_POST['update_receiving'])) {
     if($queryUpdate) {
         foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {
             if($key == "u") {
-                foreach ($id_itemArray as $id_po => $id_itemArray) {
-                    foreach ($id_itemArray as $id_item => $item_title) {
+                foreach ($id_itemArray as $id_po => $itemArray) {
+                    foreach ($itemArray as $id_item => $item_title) {
                         $data = [
                             'quantity_received'             => $_POST['quantity_received'][$id_po][$id_item]     ,
                         ];
@@ -109,20 +119,48 @@ if(isset($_POST['update_receiving'])) {
                         ];
                         $conditions = "Where id_po = ".$id_po." AND id_item = ".$id_item."";
                         $queryUpdate = $dblms->Update(SMS_PO_DEMAND_ITEM_JUNCTION, $data, $conditions);
+
+
+                        $queryInventory = $dblms->querylms("SELECT DISTINCT inventory_id, id_item
+                                                                FROM ".SMS_INVENTORY." 
+                                                                WHERE id_item =  ".$id_item."
+                                                            ");
+                        $valueInventory = mysqli_fetch_array($queryInventory);
+
+                        $data = [
+                            'quantity_added'            => $_POST['quantity_received'][$id_po][$id_item]
+                        ];
+                        $conditions = "Where id_inventory = ".$valueInventory['inventory_id']." AND id_receiving = ".$receiving_id." AND id_item = ".$id_item."";
+                        $queryUpdate = $dblms->Update(SMS_INVENTORY_RECEIVING_ITEM_JUNCTION, $data, $conditions);
                     }   
                 }
             } else {
-                $id_po = $key;
-                foreach ($id_itemArray as $id_item => $itemTitle) {
+                $po_id = $key;
+                foreach ($id_itemArray as $item_id => $itemTitle) {
                     $data = [
                         'id_receiving'                 => $receiving_id                                     ,
-                        'id_po'                        => $id_po                                            ,
-                        'id_item'                      => $id_item                                          ,
-                        'quantity_received'            => $_POST['quantity_received'][$id_po][$id_item]     ,
+                        'id_po'                        => $po_id                                            ,
+                        'id_item'                      => $item_id                                          ,
+                        'quantity_received'            => $_POST['quantity_received'][$po_id][$item_id]     ,
                     ];
-                    $queryInsert = $dblms->Insert(SMS_RECEIVING_PO_ITEM_JUNCTION , $data);   
+                    $queryInsert = $dblms->Insert(SMS_RECEIVING_PO_ITEM_JUNCTION , $data); 
+                    
+                    $queryInventory = $dblms->querylms("SELECT DISTINCT inventory_id, id_item
+                                        FROM ".SMS_INVENTORY." 
+                                        WHERE id_item =  ".$item_id."
+                                    ");
+                    $valueInventory = mysqli_fetch_array($queryInventory);
+
+                    $data = [
+                        'id_inventory'              => $valueInventory['inventory_id']                  ,
+                        'id_receiving'              => $receiving_id                                    ,
+                        'id_item'                   => $item_id                                         ,
+                        'quantity_added'            => $_POST['quantity_received'][$po_id][$item_id]
+                    ];
+                    $queryInsert = $dblms->Insert(SMS_INVENTORY_RECEIVING_ITEM_JUNCTION, $data);
                 }
-            } 
+                
+            }
         }
 
         $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';

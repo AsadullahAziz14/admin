@@ -1,7 +1,7 @@
 <?php
 
 if(!LMS_VIEW && isset($_GET['id'])) {
-	$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_address, vendor_contact_email,
+	$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_address,vendor_contact_name, vendor_contact_email,
 												vendor_contact_phone1, vendor_contact_phone2, vendor_status
 										FROM " .SMS_VENDOR." 
 										WHERE vendor_id =  ".cleanvars($_GET['id'])." ");

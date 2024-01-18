@@ -144,53 +144,44 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								echo '
 								<div class="form-sep" style="margin-top: 10px; width: 100%; border: 1px solid rgb(231, 231, 231);">
 									<div class="col-sm-92">
-										<label for="id_demand" class="req">Demand</label>
-										<select class="form-control" name="id_demand['.$i.']" id="id_demand'.$i.'">
-											<option value=""></option>';
-											$queryDemand = $dblms->querylms("SELECT demand_id, demand_code
-																				FROM ".SMS_DEMAND);
-											while($valueDemand = mysqli_fetch_array($queryDemand)) {
-												if($valueDemand['demand_id'] == $valuePoDemand['id_demand']) {
-													$selectedDemands[] = $valueDemand['demand_id'];
-													echo '<option value="'.$valueDemand['demand_id'].'" selected>'.$valueDemand['demand_code'].'</option>';
-												} else {
-													echo '<option value="'.$valueDemand['demand_id'].'">'.$valueDemand['demand_code'].'</option>';
-												}
-											}
-											echo '
-										</select>
+										<label for="id_demand" class="req">Demand</label>';									
+										$queryDemand = $dblms->querylms("SELECT demand_id, demand_code
+																			FROM ".SMS_DEMAND."
+																			Where demand_id = ".$valuePoDemand['id_demand']."
+																		");
+										$valueDemand = mysqli_fetch_array($queryDemand);
+										echo '
+										<input type="text" class="form-control" value="'.$valueDemand['demand_code'].'" name="id_demand['.$i.']" id="id_demand'.$i.'">
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
 											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
-									$queryPoDemandJuntion = $dblms->querylms("SELECT id_item, quantity_ordered, unit_price 
+									$queryPoDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered, unit_price 
 																				FROM ".SMS_PO_DEMAND_ITEM_JUNCTION."
-																				Where id_po = ".$valuePO['po_id']." && id_demand = ".$valuePoDemand['id_demand']);
-									while($valuePoDemandJuntion = mysqli_fetch_array($queryPoDemandJuntion)) {
+																				Where id_po = ".$valuePO['po_id']." AND id_demand = ".$valuePoDemand['id_demand']."
+																				GROUP BY id_item
+																				");
+									while($valuePoDemandItem = mysqli_fetch_array($queryPoDemandItem)) {
 										$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title
 																		FROM ".SMS_ITEM." 
-																		where item_id IN (".$valuePoDemandJuntion['id_item'].")");
+																		where item_id IN (".$valuePoDemandItem['id_item'].")");
 										$valueItem = mysqli_fetch_array($queryItem);
 										echo '
 											<div class="item">
-												<div class="col-sm-70">
-														<label for="id_item" class="req"><b>Item Name</b></label>
-														<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="id_item'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" required>
+												<div class="col-sm-61">
+														<label for="id_item" class="req"><b>Item</b></label>
+														<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="id_item'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" readonly required>
 												</div>
-												<div class="col-sm-21">
+												<div class="col-sm-31">
 														<label for="quantity_ordered" class="req">Quantity</label>
-														<input class="form-control" type="number"  value="'.$valuePoDemandJuntion['quantity_ordered'].'" name="quantity_ordered['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="quantity_ordered'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
+														<input class="form-control" type="number"  value="'.$valuePoDemandItem['quantity_ordered'].'" name="quantity_ordered['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="quantity_ordered'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
 												</div>
-												<div class="col-sm-21">
+												<div class="col-sm-31">
 														<label for="unit_price" class="req">Rate</label>
-														<input class="form-control" type="number" value="'.$valuePoDemandJuntion['unit_price'].'" name="unit_price['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="unit_price'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
+														<input class="form-control" type="number" value="'.$valuePoDemandItem['unit_price'].'" name="unit_price['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="unit_price'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
 												</div>
-												<!-- <div class="col-sm-21">
-														<label for="amount" class="req">Amount</label>
-														<input class="form-control" type="number" value="'.(($valuePO['po_tax_perc'] / 100) * ($valuePoDemandJuntion['unit_price'] * $valuePoDemandJuntion['quantity_ordered'])) + ($valuePoDemandJuntion['unit_price'] * $valuePoDemandJuntion['quantity_ordered']).'" name="amount['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="amount'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" readonly required>
-												</div> -->
 												<div class="col-sm-21">
 														<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
 																<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this)"><i class="icon-remove"></i></button>									
@@ -242,8 +233,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 	}
 	
 	var selectedDemands = '.json_encode($selectedDemands).'
-
-	function addDemand(){
+	function addDemand() {
 		var i = 0;
 		i = i + 1;
 		const itemContainer = document.getElementById("itemContainer");
@@ -257,43 +247,48 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		itemContainer.appendChild(container);
 
 		// Demand Selector Start
-		const demandSelectorContanier = document.createElement("div");
-		demandSelectorContanier.className = "col-sm-92";
+		const demandInputContanier = document.createElement("div");
+		demandInputContanier.className = "col-sm-70";
 
-		const demandSelectorLabel = document.createElement("label");
-		demandSelectorLabel.textContent = "Demand";
-		demandSelectorLabel.className = "req";
+		const demandInputLabel = document.createElement("label");
+		demandInputLabel.textContent = "Demand";
+		demandInputLabel.className = "req";
 		
-		const demandSelector = document.createElement("select");
-		demandSelector.className = "form-control";
-		demandSelector.name = "id_demand["+i+"]";
-		demandSelector.addEventListener("change", function () {
-			// Fetch items based on the selected demand
-			fetchItems(this.value, itemInputContainer);
+		const demandInput = document.createElement("input");
+		demandInput.className = "form-control";
+		demandInput.name = "id_demand["+i+"]";
+		demandInput.type = Text;
+		demandInput.required = true;
+
+		demandInputContanier.appendChild(demandInputLabel);
+		demandInputContanier.appendChild(demandInput);
+		container.appendChild(demandInputContanier);
+
+		// Retrieve Button Start
+		const retrieveButtonContainer = document.createElement("div");
+		retrieveButtonContainer.className = "col-sm-31";
+
+		const retrieveButtonDiv = document.createElement("div");
+		retrieveButtonDiv.style = "display: flex; justify-content: left; align-items: left; margin: 15px;"
+
+		const retrieveButton = document.createElement("button");
+		
+		retrieveButton.className = "btn btn-info";
+		retrieveButton.style.alignItems = "center";
+		retrieveButton.innerHTML = "Retrieve";
+
+		
+		retrieveButton.addEventListener("click", function (event) {
+			event.preventDefault();  // Prevent the default form submission behavior
+			fetchItems(demandInput.value, itemInputContainer);
 		});
-		demandSelector.required = true;
 
-		var demandsString = selectedDemands.join(',');
-
-		var xhr = new XMLHttpRequest();
-		var method = "GET";
-		var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
-		var asyncronous = true;
-
-		xhr.open(method,url,asyncronous);
-		xhr.send();
-
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState === 4 && xhr.status === 200) {
-				const options = xhr.responseText;
-				demandSelector.innerHTML = options;
-			}
-		}
-
-		demandSelectorContanier.appendChild(demandSelectorLabel);
-		demandSelectorContanier.appendChild(demandSelector);
-		container.appendChild(demandSelectorContanier);
-
+		retrieveButtonDiv.appendChild(retrieveButton);
+		retrieveButtonContainer.appendChild(retrieveButtonDiv);
+		container.appendChild(retrieveButtonContainer);
+		
+		
+		// Remove button Start
 		const removeButtonContainer = document.createElement("div");
 		removeButtonContainer.className = "col-sm-21";
 
@@ -303,7 +298,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		const removeButton = document.createElement("button");
 		removeButton.className = "btn btn-info";
 		removeButton.style.alignItems = "center";
-		removeButton.onclick = "removeItem(this)";
 		removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
 
 		removeButton.addEventListener("click", function () {
@@ -314,7 +308,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		removeButtonContainer.appendChild(removeButtonDiv);
 		container.appendChild(removeButtonContainer);
 
-		// Item Selector Start
+		// Item Input Start
 		const itemInputContainer = document.createElement("div");
 		itemInputContainer.className = "col-sm-91";
 		

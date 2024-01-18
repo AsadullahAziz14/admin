@@ -43,7 +43,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-41">
 							<div style="margin-top:5px;">
 								<label for="id_sub_category" class="req"><b>Sub-Category</b></label>
-								<select id="id_sub_category" class="form-control" name="id_sub_category" required>
+								<select id="id_sub_category" class="form-control" name="id_sub_category">
 									<!-- Options are populated dynamically using AJAx onchange of category_id selector which is above -->
 								</select>
 							</div>

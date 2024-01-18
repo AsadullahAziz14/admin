@@ -69,10 +69,11 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</select>
 								</div>
 							</div>';
-
-							$queryDemandItem = $dblms->querylms("SELECT id_item, quantity_demanded, item_due_date 
-															FROM ".SMS_DEMAND_ITEM_JUNCTION."
-															WHERE id_demand =  ".cleanvars($_GET['id'])." ");
+							$queryDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_demanded) as quantity_demanded, item_due_date 
+																	FROM ".SMS_DEMAND_ITEM_JUNCTION."
+																	WHERE id_demand =  ".cleanvars($_GET['id'])."
+																	GROUP BY id_item
+																");
 							$i = 0;
 							while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 								$i++;
@@ -80,7 +81,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<div class="col-sm-91 item">
 									<div class="form-sep" style="margin-top: 10px; width: 100%; border: 1px solid rgb(231, 231, 231);">
 										<div class="col-sm-61">
-											<label for="" class="req"><b>Item Name</b></label>
+											<label for="" class="req"><b>Item</b></label>
 											<select class="form-control" name="item['.($i).'][u]" required>
 												<option value="">Select Item</option>';
 												$queryItems = $dblms->querylms("SELECT item_id,item_code,item_title 
@@ -97,7 +98,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										</div>
 										<div class="col-sm-31">
 											<label for="quantity_demanded" class="req">Quantity</label>
-											<input class="form-control quantity_demanded" type="number" name="quantity_demanded['.($i).'][u]" id="quantity_demanded" value="'.$valueDemandItem['quantity_demanded'].'" min="0" required>
+											<input class="form-control" type="number" name="quantity_demanded['.($i).'][u]" id="quantity_demanded" value="'.$valueDemandItem['quantity_demanded'].'" min="0" required>
 										</div>
 										<div class="col-sm-31">
 											<label for="item_due_date" class="req">Due Date</label>

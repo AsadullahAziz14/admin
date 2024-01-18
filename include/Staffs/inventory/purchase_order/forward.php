@@ -161,10 +161,8 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									</select>
 								</div>
 							</div>
-							
 							<div style="clear:both;"></div>
 						</div>
-
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" onclick="location.href=\'inventory-purchase_order.php\'">Close</button>
 							<input class="btn btn-primary" type="submit" value="Forward" id="forward_po" name="forward_po">

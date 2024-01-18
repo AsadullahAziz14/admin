@@ -1,7 +1,7 @@
 <?php
 if(!LMS_VIEW && !isset($_GET['id'])) {  
 	$queryPO  = $dblms->querylms("SELECT po_id, po_status, po_code, po_date, po_delivery_date,
-										po_quantity, po_amount, id_vendor, ordered_by, date_ordered, po_tax_perc, 
+										id_vendor, ordered_by, date_ordered, po_tax_perc, 
 										po_remarks, po_payment_terms, po_credit_terms, po_lead_time, po_delivery_address,
 										forwarded_by, forwarded_to, date_forwarded
 										FROM ".SMS_PO." 
@@ -18,8 +18,6 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 					<th style="vertical-align: middle;" nowrap="nowrap"> Sr.# </th>
 					<th style="vertical-align: middle;" nowrap="nowrap"> PO Code </th>
 					<th style="vertical-align: middle;" nowrap="nowrap"> PO Date </th>
-					<th style="vertical-align: middle;" nowrap="nowrap"> PO Quantity </th>
-					<th style="vertical-align: middle;" nowrap="nowrap"> PO Amount </th>
 					<th style="vertical-align: middle;" nowrap="nowrap"> Delivery Date </th>
 					<th style="vertical-align: middle;" nowrap="nowrap"> Vendor </th>
 					<th style="vertical-align: middle;" nowrap="nowrap"> Ordered By </th>
@@ -37,8 +35,6 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 						<td style="vertical-align: middle;" nowrap="nowrap">'.$srno.'</td>
 						<td style="vertical-align: middle;" nowrap="nowrap">'.$valuePO['po_code'].'</td>
 						<td style="vertical-align: middle;" nowrap="nowrap">'.date('d-M-Y', strtotime($valuePO['po_date'])).'</td>
-						<td style="vertical-align: middle;" nowrap="nowrap">'.$valuePO['po_quantity'].'</td>
-						<td style="vertical-align: middle;" nowrap="nowrap">'.$valuePO['po_amount'].'</td>
 						<td style="vertical-align: middle;" nowrap="nowrap">'.date('d-M-Y', strtotime($valuePO['po_delivery_date'])).'</td>';
 						
 						$queryVendor  = $dblms->querylms("SELECT vendor_name
@@ -62,7 +58,6 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 							<a class="btn btn-xs btn-warning view-po-modal" data-toggle="modal" data-target="#viewPOModal" 
 								data-modal-window-title="PO Details" data-height="350" data-width="100%" 
 								data-po-id="'.$valuePO['po_id'].'" data-po-code="'.$valuePO['po_code'].'"
-								data-po-quantity="'.$valuePO['po_quantity'].'" data-po-amount="'.$valuePO['po_amount'].'"
 								data-po-status="'.$valuePO['po_status'].'" data-po-delivery-date="'.$valuePO['po_delivery_date'].'"
 								data-po-delivery-address="'.$valuePO['po_delivery_address'].'" data-po-tax-perc="'.$valuePO['po_tax_perc'].'"
 								data-po-payment-terms="'.$valuePO['po_payment_terms'].'" data-po-lead-time="'.$valuePO['po_lead_time'].'"

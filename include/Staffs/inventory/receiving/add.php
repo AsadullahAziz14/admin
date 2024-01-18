@@ -96,43 +96,46 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			itemContainer.appendChild(container);
 
 			// PO Selector Start
-			const poSelectorContanier = document.createElement("div");
-			poSelectorContanier.className = "col-sm-92";
+			const poInputContanier = document.createElement("div");
+			poInputContanier.className = "col-sm-70";
 
-			const poSelectorLabel = document.createElement("label");
-			poSelectorLabel.textContent = "PO";
-			poSelectorLabel.className = "req";
+			const poInputLabel = document.createElement("label");
+			poInputLabel.textContent = "PO";
+			poInputLabel.className = "req";
 			
-			const poSelector = document.createElement("select");
-			poSelector.className = "form-control";
-			poSelector.name = "id_po["+i+"]";
-			poSelector.addEventListener("change", function () {
-				// Fetch items based on the selected PO
-				fetchItems(this.value, itemInputContainer);
+			const poInput = document.createElement("input");
+			poInput.className = "form-control";
+			poInput.name = "id_po["+i+"]";
+			poInput.type = Text;
+			poInput.required = true;
+
+			poInputContanier.appendChild(poInputLabel);
+			poInputContanier.appendChild(poInput);
+			container.appendChild(poInputContanier);
+
+			// Retrieve Button Start
+			const retrieveButtonContainer = document.createElement("div");
+			retrieveButtonContainer.className = "col-sm-31";
+			const retrieveButtonDiv = document.createElement("div");
+			retrieveButtonDiv.style = "display: flex; justify-content: left; align-items: left; margin: 15px;"
+
+			const retrieveButton = document.createElement("button");
+			retrieveButton.className = "btn btn-info";
+			retrieveButton.style.alignItems = "center";
+			retrieveButton.innerHTML = "Retrieve";
+
+			
+			retrieveButton.addEventListener("click", function (event) {
+				event.preventDefault();  // Prevent the default form submission behavior
+				fetchItems(poInput.value, itemInputContainer);
 			});
-			poSelector.required = true;
 
-			var poString = selectedPOs.join(',');
+			retrieveButtonDiv.appendChild(retrieveButton);
+			retrieveButtonContainer.appendChild(retrieveButtonDiv);
+			container.appendChild(retrieveButtonContainer);
 
-			var xhr = new XMLHttpRequest();
-			var method = "GET";
-			var url = "include/ajax/getDemandsPO.php?selectedPOs="+(poString);
-			var asyncronous = true;
 
-			xhr.open(method,url,asyncronous);
-			xhr.send();
-
-			xhr.onreadystatechange = function() {
-				if(xhr.readyState === 4 && xhr.status === 200) {
-					const options = xhr.responseText;
-					poSelector.innerHTML = options;
-				}
-			}
-
-			poSelectorContanier.appendChild(poSelectorLabel);
-			poSelectorContanier.appendChild(poSelector);
-			container.appendChild(poSelectorContanier);
-
+			// Remove Button Start
 			const removeButtonContainer = document.createElement("div");
 			removeButtonContainer.className = "col-sm-21";
 
@@ -153,7 +156,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			removeButtonContainer.appendChild(removeButtonDiv);
 			container.appendChild(removeButtonContainer);
 
-			// Item Selector Start
+			// Item Input Start
 			const itemInputContainer = document.createElement("div");
 			itemInputContainer.className = "col-sm-91";
 			

@@ -166,44 +166,48 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 			itemContainer.appendChild(container);
 
+
 			// Demand Selector Start
-			const demandSelectorContanier = document.createElement("div");
-			demandSelectorContanier.className = "col-sm-92";
+			const demandInputContanier = document.createElement("div");
+			demandInputContanier.className = "col-sm-70";
 
-			const demandSelectorLabel = document.createElement("label");
-			demandSelectorLabel.textContent = "Demand";
-			demandSelectorLabel.className = "req";
+			const demandInputLabel = document.createElement("label");
+			demandInputLabel.textContent = "Demand";
+			demandInputLabel.className = "req";
 			
-			const demandSelector = document.createElement("select");
-			demandSelector.className = "form-control";
-			demandSelector.name = "id_demand["+i+"]";
-			demandSelector.required = true;
+			const demandInput = document.createElement("input");
+			demandInput.className = "form-control";
+			demandInput.name = "id_demand["+i+"]";
+			demandInput.type = Text;
+			demandInput.required = true;
 
-			var demandsString = selectedDemands.join(',');
-			var xhr = new XMLHttpRequest();
-			var method = "GET";
-			var url = "include/ajax/getDemandsPO.php?selectedDemands="+(demandsString);
-			var asyncronous = true;
+			demandInputContanier.appendChild(demandInputLabel);
+			demandInputContanier.appendChild(demandInput);
+			container.appendChild(demandInputContanier);
 
-			xhr.open(method,url,asyncronous);
-			xhr.send();
+			// Retrieve Button Start
+			const retrieveButtonContainer = document.createElement("div");
+			retrieveButtonContainer.className = "col-sm-31";
+			const retrieveButtonDiv = document.createElement("div");
+			retrieveButtonDiv.style = "display: flex; justify-content: left; align-items: left; margin: 15px;"
 
-			xhr.onreadystatechange = function() {
-				if(xhr.readyState === 4 && xhr.status === 200) {
-					const options = xhr.responseText;
-					demandSelector.innerHTML = options;
-				}
-			}
+			const retrieveButton = document.createElement("button");
+			retrieveButton.className = "btn btn-info";
+			retrieveButton.style.alignItems = "center";
+			retrieveButton.innerHTML = "Retrieve";
 
-			demandSelector.addEventListener("change", function () {
-				// Fetch items based on the selected demand
-				fetchItems(this.value, itemInputContainer);
+			
+			retrieveButton.addEventListener("click", function (event) {
+				event.preventDefault();  // Prevent the default form submission behavior
+				fetchItems(demandInput.value, itemInputContainer);
 			});
 
-			demandSelectorContanier.appendChild(demandSelectorLabel);
-			demandSelectorContanier.appendChild(demandSelector);
-			container.appendChild(demandSelectorContanier);
-
+			retrieveButtonDiv.appendChild(retrieveButton);
+			retrieveButtonContainer.appendChild(retrieveButtonDiv);
+			container.appendChild(retrieveButtonContainer);
+			
+			
+			// Remove button Start
 			const removeButtonContainer = document.createElement("div");
 			removeButtonContainer.className = "col-sm-21";
 
@@ -213,7 +217,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			const removeButton = document.createElement("button");
 			removeButton.className = "btn btn-info";
 			removeButton.style.alignItems = "center";
-			removeButton.onclick = "removeItem(this)";
 			removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
 
 			removeButton.addEventListener("click", function () {
@@ -224,7 +227,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			removeButtonContainer.appendChild(removeButtonDiv);
 			container.appendChild(removeButtonContainer);
 
-			// Item Selector Start
+			// Item Input Start
 			const itemInputContainer = document.createElement("div");
 			itemInputContainer.className = "col-sm-91";
 			
@@ -243,9 +246,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4 && xhr.status === 200) {
-					const options = xhr.responseText;
-					itemInputContainer.innerHTML = options;
-					// itemInputContainer.appendChild(options)
+					const response = xhr.responseText;
+					itemInputContainer.innerHTML = response;
 				}
 			};
 		}

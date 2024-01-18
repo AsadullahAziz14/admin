@@ -160,16 +160,16 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 
 //--------------- Units of Measurements ---------------
 $units_of_measurement = array (
-	array('id'	=>'Piece'		,	'name'	=>'Piece'),
-	array('id'	=>'Dozen'		,	'name'	=>'Dozen'),
-	array('id' 	=>'Pound'		,	'name'	=>'Pound'),
-	array('id'	=>'Kilogram'	,	'name'	=>'Kilogram'),
-	array('id'	=>'Liter'		,	'name'	=>'Liter'),
-	array('id'	=>'Gallon'		,	'name'	=>'Meter'),
-	array('id'	=>'Meter'		,	'name'	=>'Meter'),
-	array('id'	=>'Centimeter'	,	'name'	=>'Centimeter'),
-	array('id'	=>'Square Meter',	'name'	=>'Square Meter'),
-	array('id'	=>'Cubic Meter'	,	'name'	=>'Cubic Meter')
+	array('id'	=>'1'		,	'name'	=>'Piece'),
+	array('id'	=>'2'		,	'name'	=>'Dozen'),
+	array('id' 	=>'3'		,	'name'	=>'Pound'),
+	array('id'	=>'4'	,	'name'	=>'Kilogram'),
+	array('id'	=>'5'		,	'name'	=>'Liter'),
+	array('id'	=>'6'		,	'name'	=>'Meter'),
+	array('id'	=>'7'		,	'name'	=>'Meter'),
+	array('id'	=>'8'	,	'name'	=>'Centimeter'),
+	array('id'	=>'9',	'name'	=>'Square Meter'),
+	array('id'	=>'10'	,	'name'	=>'Cubic Meter')
 );
 
 function get_unit_of_measurement($id) {

@@ -47,7 +47,25 @@ if(isset($_GET['selectedDemands'])) {
 				echo '<option value = "'.$valuePO['po_id'].'">'.$valuePO['po_code'].'</option>';
 		}
 	}
+} elseif (isset($_GET['selectedRequisitions'])) {
+	$selectedRequisitions = $_GET['selectedRequisitions'];
+	if($selectedRequisitions != '') {
+		$queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+										FROM ".SMS_REQUISITION." 
+										Where requisition_id NOT IN (".$selectedRequisitions.")
+									");
+		echo '<option value = "">Select Requisition</option>';
+		while ($valueRequisition = mysqli_fetch_array($queryRequisition)) {
+				echo '<option value = "'.$valueRequisition['requisition_id'].'">'.$valueRequisition['requisition_code'].'</option>';
+		}
+
+	} else {
+		$queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+													FROM ".SMS_REQUISITION."
+											");
+		echo '<option value = "">Select Requisition</option>';
+		while ($valueRequisition = mysqli_fetch_array($queryRequisition)) {
+				echo '<option value = "'.$valueRequisition['requisition_id'].'">'.$valueRequisition['requisition_code'].'</option>';
+		}
+	}
 }
-
-
-?>
