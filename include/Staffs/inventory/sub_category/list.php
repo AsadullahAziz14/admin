@@ -4,8 +4,7 @@ if(!($Limit)) { $Limit = 100; }
 if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
 $page = (int)$page;
 
-$queryCategory = $dblms->querylms("SELECT sub_category_id, sub_category_code, sub_category_name, 
-                                          sub_category_description, sub_category_status, id_category
+$queryCategory = $dblms->querylms("SELECT sub_category_id
                                     FROM ".SMS_SUB_CATEGORY." 
                                     WHERE sub_category_id != ''
                                     $sql2

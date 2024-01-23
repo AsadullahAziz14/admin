@@ -4,8 +4,7 @@ if(!($Limit)) { $Limit = 100; }
 if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
 $page = (int)$page;
 
-$queryItem = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_code, vendor_address, vendor_contact_email, 
-								vendor_contact_phone1, vendor_contact_phone2, vendor_contact_name, vendor_status 
+$queryItem = $dblms->querylms("SELECT vendor_id 
 								FROM ".SMS_VENDOR." 
 								WHERE vendor_id != '' 
 								$sql2

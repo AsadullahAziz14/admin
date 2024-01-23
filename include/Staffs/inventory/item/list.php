@@ -4,8 +4,7 @@ if(!($Limit)) { $Limit = 100; }
 if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
 $page = (int)$page;
 
-$queryItem = $dblms->querylms("SELECT item_id, item_code, item_image, 
-									item_title, item_status
+$queryItem = $dblms->querylms("SELECT item_id
 								FROM ".SMS_ITEM." WHERE item_id != '' 
 								$sql2
                             ");
