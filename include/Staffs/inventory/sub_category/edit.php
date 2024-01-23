@@ -1,7 +1,7 @@
 <?php
 
 if (!LMS_VIEW && isset($_GET['id'])) {
-	$querySubCategory = $dblms->querylms("SELECT * FROM ".SMS_SUB_CATEGORIE." WHERE sub_category_id = ".cleanvars($_GET['id'])." ");
+	$querySubCategory = $dblms->querylms("SELECT * FROM ".SMS_SUB_CATEGORY." WHERE sub_category_id = ".cleanvars($_GET['id'])." ");
 	$valueSubCategory = mysqli_fetch_array($querySubCategory);
 	echo '
 	<div class="row">
@@ -32,7 +32,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<select id="id_category" class="form-control" name="id_category" required>
 									<option value="">Select Status</option>';
 									$queryCategory = $dblms->querylms("SELECT category_id, category_name 
-																	FROM ".SMS_CATEGORIE." 
+																	FROM ".SMS_CATEGORY." 
 																	WHERE category_status = 1");
 									while($valueCategory = mysqli_fetch_array($queryCategory)) {
 										if($valueSubCategory['id_category'] == $valueCategory['category_id']) {

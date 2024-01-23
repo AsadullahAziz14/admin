@@ -1,11 +1,30 @@
 <?php
-if(!LMS_VIEW && !isset($_GET['id'])) {  
+$adjacents 	= 3;
+if(!($Limit)) { $Limit = 100; } 
+if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
+$page = (int)$page;
+
+$queryItem = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_code, vendor_address, vendor_contact_email, 
+								vendor_contact_phone1, vendor_contact_phone2, vendor_contact_name, vendor_status 
+								FROM ".SMS_VENDOR." 
+								WHERE vendor_id != '' 
+								$sql2
+                            ");
+
+$count 		= mysqli_num_rows($queryItem);
+if($page == 0) { $page = 1; }						//if no page var is given, default to 1.
+$prev 		= $page - 1;							//previous page is page - 1
+$next 		= $page + 1;							//next page is page + 1
+$lastpage	= ceil($count/$Limit);				//lastpage is = total pages / items per page, rounded up.
+$lpm1 		= $lastpage - 1;
+
+if(mysqli_num_rows($queryItem) > 0) {
 	$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_code, vendor_address, vendor_contact_email, 
 											vendor_contact_phone1, vendor_contact_phone2, vendor_contact_name, vendor_status 
 									FROM ".SMS_VENDOR." 
 									WHERE vendor_id != ''
 									$sql2
-								");
+									LIMIT ".($page-1)*$Limit .",$Limit");
 	include ("include/page_title.php"); 
 	echo'    
 		<div class="table-responsive" style="overflow: auto;">

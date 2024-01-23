@@ -117,6 +117,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										<label for="id_demand" class="req">Demand</label>';									
 										$queryDemand = $dblms->querylms("SELECT demand_id, demand_code
 																			FROM ".SMS_DEMAND."
+																			Where demand_id = ".$valueRequisitionDemand['id_demand']."
 																		");
 										$valueDemand = mysqli_fetch_array($queryDemand);
 										echo '

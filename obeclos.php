@@ -16,8 +16,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	header('location: index.php');
 
 //Check If User has rights
-} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) 
-{   
+} else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) {
+	
 	require_once("include/header.php");
     require_once("include/Staffs/obe/clos/query.php");
 		

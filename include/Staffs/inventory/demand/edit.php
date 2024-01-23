@@ -17,7 +17,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 
 						<div class="modal-body">
 							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
-							<div class="col-sm-41">
+							<div class="col-sm-61">
 								<div style="margin-top:5px;">
 									<label for="demand_type" class="req"><b>Demand Type</b></label>
 									<select id="demand_type" class="form-control" name="demand_type" required>
@@ -34,7 +34,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								</div>
 							</div>
 
-							<div class="col-sm-41">
+							<div class="col-sm-61">
 								<div style="margin-top:5px;">
 									<label for="id_department" class="req"><b>Department</b></label>
 									<select name="id_department" class="form-control" id="id_department" required>
@@ -46,23 +46,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 												echo '<option value="'.$valueDepartments['dept_id'].'" selected>'.$valueDepartments['dept_name'].'</option>';
 											} else {
 												echo '<option value="'.$valueDepartments['dept_id'].'">'.$valueDepartments['dept_name'].'</option>';
-											}
-										}
-										echo '
-									</select>
-								</div>
-							</div>
-
-							<div class="col-sm-41">
-								<div style="margin-top:5px;">
-								<label for="demand_status" class="req"><b>Status</b></label>
-									<select id="demand_status" class="form-control" name="demand_status" required>
-										<option value="">Select Status</option>';
-										foreach($status as $adm_status) {
-											if($valueDemands['demand_status'] == $adm_status['id']) {
-												echo "<option value='$adm_status[id]' selected>$adm_status[name]</option>";
-											} else {
-												echo "<option value='$adm_status[id]'>$adm_status[name]</option>";
 											}
 										}
 										echo '

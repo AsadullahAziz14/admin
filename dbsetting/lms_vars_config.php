@@ -48,8 +48,8 @@
 	define('SMS_DEMAND'									, 'cms_sms_demand');
 	define('SMS_DEMAND_ITEM_JUNCTION'					, 'cms_sms_demand_item_junction');
 	define('SMS_ITEM'									, 'cms_sms_item');
-	define('SMS_CATEGORIE' 								, 'cms_sms_category');
-	define('SMS_SUB_CATEGORIE'							, 'cms_sms_sub_category');
+	define('SMS_CATEGORY' 								, 'cms_sms_category');
+	define('SMS_SUB_CATEGORY'							, 'cms_sms_sub_category');
 	define('SMS_VENDOR' 								, 'cms_sms_vendor');
 	define('SMS_PO' 									, 'cms_sms_po');
 	define('SMS_PO_DEMAND_ITEM_JUNCTION' 				, 'cms_sms_po_demand_item_junction');
@@ -88,80 +88,3 @@
 	define("COPY_RIGHTS_ORG"		, "&copy; ".date("Y")." - All Rights Reserved.");
 	define("COPY_RIGHTS_URL"		, "https://www.facebook.com/MinhajUniversityLahore/");
 
-//-----------------CMS-OBE Variable---------------------
-define('ID_TEACHER'	, 1);
-define('ID_TEACHER_ARRAY'	,[
-	1 => 'Ali',
-	2 => 'Hasan',
-	3 => 'Ahmad',
-	4 => 'Shakeel',
-	5 => 'Hussain' 
-]);
-
-define('ID_COURSE'	, 1);
-define('ID_COURSE_ARRAY'	,[
-	1 => 'Separation Process',
-	2 => 'DSA',
-	3 => 'PF',
-	4 => 'OOP',
-]);
-
-define('COURSE_TYPE'	, 1);
-define('COURSE_TYPE_ARRAY'	,[
-	1 => 'Theory',
-	2 => 'Lab',
-]);
-
-define('ID_PRG'	, 1);
-define('ID_PRG_ARRAY'	,[
-	1 => 'BS Chemical Engg',
-	2 => 'BS CS',
-	3 => 'BS IT',
-	4 => 'BS SE',
-	5 => 'BS AI' 
-]);
-
-define('SECTION'	, 'A');
-
-define('SEMESTER'	, 1);
-define('SEMESTER_ARRAY'	,[
-	1 => '1st',
-	2 => '2nd',
-	3 => '3rd',
-	4 => '4th',
-	5 => '5th',
-	6 => '6th',
-	7 => '7th',
-	8 => '8th',
-]);
-
-define('TIMING'	, 1);
-define('TIMING_ARRAY'	,[
-	1 => 'Morning',
-	2 => 'Evening',
-	3 => 'Week Night'
-]);
-
-define('ACADEMIC_SESSION', 'Spring 2023');
-
-// 1,2,3,4,5,... represents Roll numbers in below STUDENTS Array
-define('STUDENTS' , array(
-	1 			=> array("id" => "2023F-mul-1", "name" => "Ali")
-	,2 			=> array("id" => "2023F-mul-2", "name" => "Ahmad" )
-	,3 			=> array("id" => "2023F-mul-3", "name" => "Hammad")
-));
-
-define('GRADES'	,[
-	'f' 	=> 'F'
-	,'d' 	=> 'D'
-	,'c-' 	=> 'C-'
-	,'c' 	=> 'C'
-	,'c+' 	=> 'C+'
-	,'b-' 	=> 'B-'
-	,'b' 	=> 'B'
-	,'b+' 	=> 'B+'
-	,'a' 	=> 'A'
-	,'a+' 	=> 'A+'
-]);
-
-define('LIBREL_ARTS'	, 1);

@@ -26,35 +26,63 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 							</div>
 						</div>
 
-						<div class="col-sm-31">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="vendor_contact_name" class="req"><b>Contact Person</b></label>
 								<input type="text" class="form-control" id="vendor_contact_name" name="vendor_contact_name">
 							</div>
 						</div>
 
-						<div class="col-sm-31">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="vendor_contact_email" class="req"><b>Email</b></label>
 								<input type="email" class="form-control" id="vendor_contact_email" name="vendor_contact_email">
 							</div>
 						</div>
 
-						<div class="col-sm-31">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="vendor_contact_phone1" class="req"><b>Phone Num. 1</b></label>
 								<input type="text" class="form-control" id="vendor_contact_phone1" name="vendor_contact_phone1">
 							</div>
 						</div>
 
-						<div class="col-sm-31">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="vendor_contact_phone2" class="req"><b>Phone Num. 2</b></label>
 								<input type="text" class="form-control" id="vendor_contact_phone2" name="vendor_contact_phone2">
 							</div>
 						</div>
 
-						<div class="col-sm-31">
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_account_number" class="req"><b>Bank Account Number</b></label>
+								<input type="text" class="form-control" id="vendor_bank_account_number" name="vendor_bank_account_number">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_account_name" class="req"><b>Bank Account Name</b></label>
+								<input type="text" class="form-control" id="vendor_bank_account_name" name="vendor_bank_account_name">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_name" class="req"><b>Bank Name</b></label>
+								<input type="text" class="form-control" id="vendor_bank_name" name="vendor_bank_name">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_branch_code" class="req"><b>Branch Code</b></label>
+								<input type="text" class="form-control" id="vendor_bank_branch_code" name="vendor_bank_branch_code">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="vendor_status" class="req"><b>Status</b></label>
 								<select id="vendor_status" class="form-control" name="vendor_status" required>

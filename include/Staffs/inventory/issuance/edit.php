@@ -75,11 +75,13 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<div class="form-sep" style="margin-top: 10px; width: 100%; border: 1px solid rgb(231, 231, 231);">
 									<div class="col-sm-92">
 										<label for="id_requisition" class="req">Requisition</label>';
-											$queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
-																					FROM ".SMS_REQUISITION);
-											$valueRequisition = mysqli_fetch_array($queryRequisition);
-											echo '
-										<input type="text" class="form-control" "'.$valueRequisition['requisition_id'].'" name="id_requisition['.$i.']" id="id_requisition'.$i.'">
+										$queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+																				FROM ".SMS_REQUISITION."
+																				Where requisition_id = ".$valueIssuanceRequisition['id_requisition']."
+																			");
+										$valueRequisition = mysqli_fetch_array($queryRequisition);
+										echo '
+										<input type="text" class="form-control" value="'.$valueRequisition['requisition_code'].'" name="id_requisition['.$i.']" id="id_requisition'.$i.'">
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">

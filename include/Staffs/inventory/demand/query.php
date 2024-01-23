@@ -29,7 +29,7 @@ if(isset($_POST['submit_demand'])) {
     $data = [
         'demand_type'                          => cleanvars($_POST['demand_type'])                      ,
         'demand_date'                          => date('Y-m-d H:i:s')                                   ,
-        'demand_status'                        => cleanvars($_POST['demand_status'])                    ,
+        'demand_status'                        => 1                                                     ,
         'id_department'                        => cleanvars($_POST['id_department'])                    ,
         'id_added'                             => cleanvars($_SESSION['LOGINIDA_SSS'])                  ,
         'date_added'                           => date('Y-m-d H:i:s')          
@@ -83,7 +83,6 @@ if(isset($_POST['submit_demand'])) {
                                                     PHP_EOL.'demanded_items: '.$demanded_items.
                                                     PHP_EOL.'demand_date: '.date('Y-m-d H:i:s').
                                                     PHP_EOL.'demand_due_date: '.$min_demand_due_date.
-                                                    PHP_EOL.'demand_status: '.cleanvars($_POST['demand_status']).
                                                     PHP_EOL.'id_added: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  ,
             'path'                             =>  end($filePath)                                                               ,
@@ -121,7 +120,6 @@ if(isset($_POST['update_demand'])) {
     $data = [
         'demand_type'                      => cleanvars($_POST['demand_type'])                          ,
         'id_department'                    => cleanvars($_POST['id_department'])                        ,
-        'demand_status'                    => cleanvars($_POST['demand_status'])                        ,
         'id_modify'                        => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])         ,
         'date_modify'                      => date('Y-m-d H:i:s')                
     ];
@@ -195,7 +193,6 @@ if(isset($_POST['update_demand'])) {
                                                     PHP_EOL.'demand_quantity: '.$demand_quantity.
                                                     PHP_EOL.'demanded_items: '.$demanded_items_str.
                                                     PHP_EOL.'demand_due_date: '.$min_demand_due_date.
-                                                    PHP_EOL.'demand_status: '.cleanvars($_POST['demand_status']).
                                                     PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s'),
             'path'                             =>  end($filePath)                                                               ,
@@ -231,6 +228,7 @@ if(isset($_POST["forward_demand"])) {
     $data = [
         'forwarded_to'      => $_POST['forwarded_to']                                           ,
         'forwarded_by'      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                ,
+        'demand_status'     => 2                                                                ,
         'date_forwarded'    => date('Y-m-d H:i:s')
     ];
     $conditions = " Where demand_id = ".$_POST['demand_id']."";

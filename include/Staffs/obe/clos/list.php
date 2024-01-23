@@ -36,64 +36,64 @@ if(mysqli_num_rows($queryCLO) > 0) {
    <div class="table-responsive" style="overflow: auto;">
       <table class="footable table table-bordered table-hover table-with-avatar">
          <thead>
-         <tr>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Sr.#</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> CLO Number</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> CLO Statement</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Course</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Mapped CLOs</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Program</th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Domain Level </th>
-            <th style="vertical-align: middle;" nowrap="nowrap"> Status</th>
-            <th style="width:70px; text-align:center; font-size:14px;"><i class="icon-reorder"></i> </th>
-         </tr>
+            <tr>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Sr.#</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> CLO Number</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> CLO Statement</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Course</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Mapped CLOs</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Program</th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Domain Level </th>
+               <th style="vertical-align: middle;" nowrap="nowrap"> Status</th>
+               <th style="width:70px; text-align:center; font-size:14px;"><i class="icon-reorder"></i> </th>
+            </tr>
          </thead>
          <tbody>';
-         if($page == 1) { $srno = 0; } else { $srno = ($Limit * ($page-1));}
+            if($page == 1) { $srno = 0; } else { $srno = ($Limit * ($page-1));}
 
-         while($valueCLO = mysqli_fetch_array($queryCLO)) {
-            $srno++;
+            while($valueCLO = mysqli_fetch_array($queryCLO)) {
+               $srno++;
 
-            $canEdit = ' ';
-            if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) { 
-               $canEdit = '<a class="btn btn-xs btn-info edit-clo-modal" data-toggle="modal" data-modal-window-title="Edit CLO" data-height="350" data-width="100%" data-clo-number="'.$valueCLO['clo_number'].'" data-clo-statement="'.$valueCLO['clo_statement'].'" data-id-plo="'.$valueCLO['id_plo'].'" data-id-domain-level="'.$valueCLO['id_domain_level'].'" data-clo-status="'.$valueCLO['clo_status'].'" data-clo-id="'.$valueCLO['clo_id'].'" data-target="#editCLOModal"><i class="icon-pencil"></i></a> ';
-            }
+               $canEdit = ' ';
+               if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) { 
+                  $canEdit = '<a class="btn btn-xs btn-info edit-clo-modal" data-toggle="modal" data-modal-window-title="Edit CLO" data-height="350" data-width="100%" data-clo-number="'.$valueCLO['clo_number'].'" data-clo-statement="'.$valueCLO['clo_statement'].'" data-id-plo="'.$valueCLO['id_plo'].'" data-id-domain-level="'.$valueCLO['id_domain_level'].'" data-clo-status="'.$valueCLO['clo_status'].'" data-clo-id="'.$valueCLO['clo_id'].'" data-target="#editCLOModal"><i class="icon-pencil"></i></a> ';
+               }
 
-            $canDelete = ' ';
-            if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'delete' => '1'))) { 
-               $canDelete =  ' <a class="btn btn-xs btn-danger delete-clo-modal bootbox-confirm" href="obeclos.php?id='.$valueCLO['clo_id'].'&view=delete" data-popconfirm-yes="Yes" data-popconfirm-no="No" data-popconfirm-title="Are you sure?"> <i class="icon-trash"></i></a>';
-            }
+               $canDelete = ' ';
+               if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'delete' => '1'))) { 
+                  $canDelete =  ' <a class="btn btn-xs btn-danger delete-clo-modal bootbox-confirm" href="obeclos.php?id='.$valueCLO['clo_id'].'&view=delete" data-popconfirm-yes="Yes" data-popconfirm-no="No" data-popconfirm-title="Are you sure?"> <i class="icon-trash"></i></a>';
+               }
 
-            if($valueCLO['id_plo'] != ''){
-               $queryPLO  = $dblms->querylms('SELECT pl.id_prg, GROUP_CONCAT(plo_number) AS result, prg.prg_name 
-                                                FROM '.OBE_PLOS.' as pl
-                                                INNER JOIN '.PROGRAMS.' as prg ON prg.prg_id = pl.id_prg 
-                                                WHERE plo_id IN ('.$valueCLO['id_plo'].')');
-               
-               $valuePLO = mysqli_fetch_array($queryPLO);
-            }
-            else {
-               $valuePLO['result'] = '';
-               $valuePLO['id_prg'] = '';
-            }
+               if($valueCLO['id_plo'] != ''){
+                  $queryPLO  = $dblms->querylms('SELECT pl.id_prg, GROUP_CONCAT(plo_number) AS result, prg.prg_name 
+                                                   FROM '.OBE_PLOS.' as pl
+                                                   INNER JOIN '.PROGRAMS.' as prg ON prg.prg_id = pl.id_prg 
+                                                   WHERE plo_id IN ('.$valueCLO['id_plo'].')');
+                  
+                  $valuePLO = mysqli_fetch_array($queryPLO);
+               }
+               else {
+                  $valuePLO['result'] = '';
+                  $valuePLO['id_prg'] = '';
+               }
+
+               echo '
+               <tr>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.$srno.'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['clo_number'].'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['clo_statement'].'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.ID_COURSE_ARRAY[$valueCLO['id_course']].'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.$valuePLO['result'].'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.ID_PRG_ARRAY[$valuePLO['id_prg']].'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['domain_level_code']  .'</td>
+                  <td style="vertical-align: middle;" nowrap="nowrap" style="width:70px; text-align:center;">'.get_status($valueCLO['clo_status']).'</td>
+                  <td style="text-align:center;">'.$canEdit.$canDelete;
+                     echo '
+                  </td>
+               </tr>';
+            } // End while loop
 
             echo '
-            <tr>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.$srno.'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['clo_number'].'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['clo_statement'].'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.ID_COURSE_ARRAY[$valueCLO['id_course']].'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.$valuePLO['result'].'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.ID_PRG_ARRAY[$valuePLO['id_prg']].'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCLO['domain_level_code']  .'</td>
-               <td style="vertical-align: middle;" nowrap="nowrap" style="width:70px; text-align:center;">'.get_status($valueCLO['clo_status']).'</td>
-               <td style="text-align:center;">'.$canEdit.$canDelete;
-                  echo '
-               </td>
-            </tr>';
-         } // End while loop
-
-         echo '
          </tbody>
       </table>
    </div>';

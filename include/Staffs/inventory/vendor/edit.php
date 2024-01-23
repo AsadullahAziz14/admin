@@ -1,8 +1,10 @@
 <?php
 
 if(!LMS_VIEW && isset($_GET['id'])) {
-	$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_address,vendor_contact_name, vendor_contact_email,
-												vendor_contact_phone1, vendor_contact_phone2, vendor_status
+	$queryVendor = $dblms->querylms("SELECT vendor_id, vendor_name, vendor_address,vendor_contact_name,
+											vendor_contact_email, vendor_contact_phone1, vendor_contact_phone2,
+											vendor_bank_account_number, vendor_bank_account_name, vendor_bank_name,
+											vendor_bank_branch_code, vendor_status
 										FROM " .SMS_VENDOR." 
 										WHERE vendor_id =  ".cleanvars($_GET['id'])." ");
 	$valueVendor = mysqli_fetch_array($queryVendor);
@@ -54,7 +56,35 @@ if(!LMS_VIEW && isset($_GET['id'])) {
 						<div class="col-sm-31">
 							<div style="margin-top:5px;">
 								<label for="vendor_contact_phone2" class="req"><b>Phone Num. 2</b></label>
-								<input type="text" class="form-control" id="vendor_contact_phone2" name="vendor_contact_phone2" value="'.$valueVendor['vendor_contact_phone2'].'">
+								<input type="text" value="'.$valueVendor['vendor_contact_phone2'].'" class="form-control" id="vendor_contact_phone2" name="vendor_contact_phone2">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_account_number" class="req"><b>Bank Account Number</b></label>
+								<input type="text" class="form-control" value="'.$valueVendor['vendor_bank_account_number'].'" id="vendor_bank_account_number" name="vendor_bank_account_number">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_account_name" class="req"><b>Bank Account Name</b></label>
+								<input type="text" class="form-control" value="'.$valueVendor['vendor_bank_account_name'].'" id="vendor_bank_account_name" name="vendor_bank_account_name">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_name" class="req"><b>Bank Name</b></label>
+								<input type="text" class="form-control" value="'.$valueVendor['vendor_bank_name'].'" id="vendor_bank_name" name="vendor_bank_name">
+							</div>
+						</div>
+
+						<div class="col-sm-61">
+							<div style="margin-top:5px;">
+								<label for="vendor_bank_branch_code" class="req"><b>Branch Code</b></label>
+								<input type="text" class="form-control" value="'.$valueVendor['vendor_bank_branch_code'].'" id="vendor_bank_branch_code" name="vendor_bank_branch_code">
 							</div>
 						</div>
 

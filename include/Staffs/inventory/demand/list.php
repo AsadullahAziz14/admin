@@ -49,7 +49,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                $valueEmployees = mysqli_fetch_array($queryEmployees);
                echo '
                <td style="vertical-align: middle;" nowrap="nowrap">'.$valueEmployees['emply_name'].'</td>
-               <td nowrap="nowrap" style="width:70px; text-align:center;">'.get_status($valueDemand['demand_status']).'</td>
+               <td nowrap="nowrap" style="width:70px; text-align:center;">'.get_sms_status($valueDemand['demand_status']).'</td>
                <td nowrap="nowrap" style="text-align:center;">
                   <a class="btn btn-xs btn-warning view-demand-modal" data-toggle="modal" data-target="#viewDemandModal" 
                      data-modal-window-title="Demand Details" data-height="350" data-width="100%" 

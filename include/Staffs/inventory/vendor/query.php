@@ -8,8 +8,8 @@ if(isset($_GET['deleteId'])) {
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                           ,
             'action'                           => "Delete"                                                      ,
-            'affected_table'                   => SMS_VENDOR                                                   ,
-            'action_detail'                    =>  'vendor_id: '.cleanvars($_GET['deleteId'])                   ,
+            'affected_table'                   => SMS_VENDOR                                                    ,
+            'action_detail'                    => 'vendor_id: '.cleanvars($_GET['deleteId'])                    ,
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
@@ -31,6 +31,10 @@ if(isset($_POST['submit_vendor'])) {
         'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])            ,
         'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])            ,
         'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])             ,
+        'vendor_bank_account_number'           => cleanvars($_POST['vendor_bank_account_number'])       ,
+        'vendor_bank_account_name'             => cleanvars($_POST['vendor_bank_account_name'])         ,
+        'vendor_bank_name'                     => cleanvars($_POST['vendor_bank_name'])                 ,
+        'vendor_bank_branch_code'              => cleanvars($_POST['vendor_bank_branch_code'])          ,
         'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
         'id_added'                             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
         'date_added'                           => date('Y-m-d H:i:s')     
@@ -82,6 +86,10 @@ if(isset($_POST['edit_vendor'])) {
         'vendor_contact_phone1'                => cleanvars($_POST['vendor_contact_phone1'])            ,
         'vendor_contact_phone2'                => cleanvars($_POST['vendor_contact_phone2'])            ,
         'vendor_contact_email'                 => cleanvars($_POST['vendor_contact_email'])             ,
+        'vendor_bank_account_number'           => cleanvars($_POST['vendor_bank_account_number'])       ,
+        'vendor_bank_account_name'             => cleanvars($_POST['vendor_bank_account_name'])         ,
+        'vendor_bank_name'                     => cleanvars($_POST['vendor_bank_name'])                 ,
+        'vendor_bank_branch_code'              => cleanvars($_POST['vendor_bank_branch_code'])          ,
         'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
         'id_modify'                            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
         'date_modify'                          => date('Y-m-d H:i:s')            

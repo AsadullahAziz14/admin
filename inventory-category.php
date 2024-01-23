@@ -17,13 +17,26 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {
+	
 	require_once("include/Staffs/inventory/category/query.php");
 	require_once("include/header.php");
-	$sql2 = '';
-	$sqlstring	= "";
-	if(isset($_GET['srch'])) { 
-		// $sql2 		.= " b.block_name LIKE '".$stdsrch."%' ";
-		$sqlstring	.= "&srch=".$_GET['srch']."";
+	
+	$sql2 			= '';
+	$sqlstring		= "";
+	$srch			= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
+	$status_srch	= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
+	$faculty		= (isset($_GET['faculty']) && $_GET['faculty'] != '') ? $_GET['faculty'] : '';
+	$dept			= (isset($_GET['dept']) && $_GET['dept'] != '') ? $_GET['dept'] : '';
+	$liberalArts	= (isset($_GET['la']) && $_GET['la'] != '') ? $_GET['la'] : '';
+
+
+	if(($srch)) { 
+		$sql2 		.= " AND (category_name LIKE '%".$srch."%')"; 
+		$sqlstring	.= "&srch=".$srch."";
+	}
+    if(($status_srch)) { 
+		$sql2 		.= " AND category_status = '".$status_srch."'"; 
+		$sqlstring	.= "&status_srch=".$status_srch."";
 	}
 				echo '
 				<title>Manage Categories - '.TITLE_HEADER.'</title>
@@ -40,7 +53,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<form class="navbar-form navbar-left form-small" action="" method="get">
 									<div class="form-group">
-										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
+										<input type="text" class="form-control" name="srch" placeholder="Search by Category Name" style="width:250px;">
 									</div>
 
 									<button type="submit" class="btn btn-primary">Search</button>

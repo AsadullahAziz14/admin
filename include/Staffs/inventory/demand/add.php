@@ -10,7 +10,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 					</div>
 
 					<div class="modal-body">
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="demand_type" class="req"><b>Demand Type</b></label>
 								<select id="demand_type" class="form-control" name="demand_type" required>
@@ -23,7 +23,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 							</div>
 						</div>
 
-						<div class="col-sm-41">
+						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="id_department" class="req"><b>Department</b></label>
 								<select name="id_department" class="form-control" id="id_department" required>
@@ -37,19 +37,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								</select>
 							</div>
 						</div>
-
-						<div class="col-sm-41">
-							<div style="margin-top:5px;">
-							<label for="demand_status" class="req"><b>Status</b></label>
-								<select id="demand_status" class="form-control" name="demand_status" required>
-									<option value="">Select Status</option>';
-									foreach ($status as $statusDemand) {
-										echo '<option value="'. $statusDemand['id'].'">'.$statusDemand['name'].'</option>';
-									}
-								echo '
-								</select>
-							</div>
-						</div>';
+						';
 						for ($i=0; $i < 3; $i++) { 
 							echo '
 							<div class="col-sm-91 item">
@@ -59,7 +47,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 										<select class="form-control" name="item['.($i+1).']" required>
 											<option value="">Select Item</option>';
 											$queryItems = $dblms->querylms("SELECT item_id, item_code, item_title 
-																	FROM ".SMS_ITEM);
+																				FROM ".SMS_ITEM."
+																		");
 											while($valueItems = mysqli_fetch_array($queryItems)) {
 												echo '<option value="'.$valueItems['item_id'].'">'.$valueItems['item_code'].' '.$valueItems['item_title'].'</option>';
 											}

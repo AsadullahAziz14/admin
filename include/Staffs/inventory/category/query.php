@@ -1,13 +1,13 @@
 <?php
 if(isset($_GET['deleteId'])) {
-    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_CATEGORIE." WHERE category_id = '".cleanvars($_GET['deleteId'])."'");
+    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_CATEGORY." WHERE category_id = '".cleanvars($_GET['deleteId'])."'");
 
     if($queryDelete) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                               ,
             'action'                           => "Delete"                                                          ,
-            'affected_table'                   => SMS_CATEGORIE                                                    ,
+            'affected_table'                   => SMS_CATEGORY                                                    ,
             'action_detail'                    =>  'category_id: '.cleanvars($_GET['deleteId'])                     ,
             'path'                             =>  end($filePath)                                                   ,
             'login_session_start_time'         => $_SESSION['login_time']                                           ,
@@ -30,7 +30,7 @@ if(isset($_POST['submit_category'])) {
         'id_added'                             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])         ,
         'date_added'                           => date('Y-m-d H:i:s')
     ];
-    $queryInsert = $dblms->Insert(SMS_CATEGORIE, $data);
+    $queryInsert = $dblms->Insert(SMS_CATEGORY, $data);
     $latest_id = $dblms->lastestid();
     
     if($queryInsert) {
@@ -39,13 +39,13 @@ if(isset($_POST['submit_category'])) {
             'category_code' => 'CAT'.str_pad($idCategory, 5, '0', STR_PAD_LEFT)
         ];
         $conditions = "WHERE category_id  = ".$idCategory."";
-        $queryUpdate = $dblms->Update(SMS_CATEGORIE, $data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_CATEGORY, $data, $conditions);
 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                                               ,
             'action'                           => "Create"                                                                          ,
-            'affected_table'                   => SMS_CATEGORIE                                                                    ,
+            'affected_table'                   => SMS_CATEGORY                                                                    ,
             'action_detail'                    =>  'category_id: '.$idCategory.
                                                     PHP_EOL.'category_code: '.'CAT'.str_pad($idCategory, 5, '0', STR_PAD_LEFT).
                                                     PHP_EOL.'category_name: '.cleanvars($_POST['category_name']).
@@ -76,14 +76,14 @@ if(isset($_POST['edit_category'])){
     ];
 
     $conditions = "WHERE  category_id  = ".cleanvars($_GET['id'])."";
-    $queryUpdate = $dblms->Update(SMS_CATEGORIE, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_CATEGORY, $data, $conditions);
 
     if($queryUpdate) {   
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                                               ,
             'action'                           => "Update"                                                                          ,
-            'affected_table'                   => SMS_CATEGORIE                                                                    ,
+            'affected_table'                   => SMS_CATEGORY                                                                    ,
             'action_detail'                    =>  'category_id: '.cleanvars($_GET['id']).
                                                     PHP_EOL.'category_name: '.cleanvars($_POST['category_name']).
                                                     PHP_EOL.'category_description: '.cleanvars($_POST['category_description']).

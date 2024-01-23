@@ -10,10 +10,14 @@ checkCpanelLMSALogin();
 if(isset($_GET['selectedDemand'])) {
 	$selectedDemand = $_GET['selectedDemand'];
 	if(isset($selectedDemand)) {
-		$queryDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_demanded) as quantity_demanded
-												FROM ".SMS_DEMAND_ITEM_JUNCTION."
-												Where id_demand IN (".$selectedDemand.") AND is_ordered = ''
-												GROUP BY id_item
+		$queryDemandItem = $dblms->querylms("SELECT distinct di.id_item, sum(di.quantity_demanded) as quantity_demanded,
+															d.demand_code
+													FROM ".SMS_DEMAND_ITEM_JUNCTION." as di, ".SMS_DEMAND." as d
+													Where d.demand_code IN ('".$selectedDemand."') 
+															AND d.demand_id =  di.id_demand
+															AND d.demand_status = 3
+															AND di.is_ordered = 0
+													GROUP BY di.id_item
 											");
 		while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
@@ -50,10 +54,14 @@ if(isset($_GET['selectedDemand'])) {
 } elseif (isset($_GET['selectedDemandRequisition'])) {
 	$selectedDemandRequisition = $_GET['selectedDemandRequisition'];
 	if(isset($selectedDemandRequisition)) {
-		$queryDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_demanded) as quantity_demanded
-												FROM ".SMS_DEMAND_ITEM_JUNCTION."
-												Where id_demand IN (".$selectedDemandRequisition.") AND is_ordered = ''
-												GROUP BY id_item
+		$queryDemandItem = $dblms->querylms("SELECT distinct di.id_item, sum(di.quantity_demanded) as quantity_demanded,
+															 d.demand_code
+												FROM ".SMS_DEMAND_ITEM_JUNCTION." as di, ".SMS_DEMAND." as d
+												Where id_demand IN (".$selectedDemandRequisition.") 
+												AND di.id_demand = d.demand_id
+												AND d.demand_status = 3
+												AND di.is_ordered != 1
+												GROUP BY di.id_item
 											");
 		while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
@@ -87,7 +95,7 @@ if(isset($_GET['selectedDemand'])) {
 	$selectedPO = $_GET['selectedPO'];
 	if(isset($selectedPO)){
 		$queryPODemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered
-											FROM ".SMS_PO_DEMAND_ITEM_JUNCTION."
+											FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." as pdo, ".SMS_PO." as r
 											Where id_po IN (".$selectedPO.")
 											GROUP BY id_item
 										");
@@ -100,7 +108,7 @@ if(isset($_GET['selectedDemand'])) {
 			echo '
 			<div class="item'.$selectedPO.'">
 				<div class="col-sm-61">
-					<label for="id_item" class="req"><b>Item Name</b></label>
+					<label for="id_item" class="req"><b>Item</b></label>
 					<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item['.$selectedPO.']['.$valueItem['item_id'].']" id="id_item'.$selectedPO.$valueItem['item_id'].'" readonly required>
 				</div>
 				<div class="col-sm-31">

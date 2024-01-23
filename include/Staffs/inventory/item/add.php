@@ -25,29 +25,29 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						</div>
 
 						<div class="col-sm-41">
-							<div style="margin-top:5px;">
-								<label for="id_category" class="req"><b>Category</b></label>
-								<select id="id_category" class="form-control" name="id_category" onchange="selectSubCategory()" required>
-									<option value="">Select Category</option>';
-									$queryCategories = $dblms->querylms("SELECT category_id, category_name 
-																	FROM ".SMS_CATEGORIE." 
-																	WHERE category_status = 1");
-									while($valueCategory = mysqli_fetch_array($queryCategories)) { 
-										echo '<option value="'.$valueCategory['category_id'].'">'.$valueCategory['category_name'].'</option>';
-									}	
-								echo '
-								</select>
-							</div>
-						</div>
+                            <div style="margin-top:5px;">
+                                <label for="id_category" class="req"><b>Category</b></label>
+                                <select id="id_category" class="form-control" name="id_category" onchange="selectSubCategory()" required>
+                                    <option value="">Select Category</option>';
+                                    $queryCategories = $dblms->querylms("SELECT category_id, category_name 
+                                                                        FROM ".SMS_CATEGORY." 
+                                                                        WHERE category_status = 1");
+                                    while ($valueCategory = mysqli_fetch_array($queryCategories)) {
+                                        echo '<option value="'.$valueCategory['category_id'].'">'.$valueCategory['category_name'].'</option>';
+                                    }
+                                echo '
+                                </select>
+                            </div>
+                        </div>
 
-						<div class="col-sm-41">
-							<div style="margin-top:5px;">
-								<label for="id_sub_category" class="req"><b>Sub-Category</b></label>
-								<select id="id_sub_category" class="form-control" name="id_sub_category">
-									<!-- Options are populated dynamically using AJAx onchange of category_id selector which is above -->
-								</select>
-							</div>
-						</div>
+                        <div class="col-sm-41">
+                            <div style="margin-top:5px;">
+                                <label for="id_sub_category" class="req"><b>Sub-Category</b></label>
+                                <select id="id_sub_category" class="form-control" name="id_sub_category">
+                                    <!-- Options are populated dynamically using AJAX -->
+                                </select>
+                            </div>
+                        </div>
 
 						<div class="col-sm-41">
 							<div style="margin-top:5px;">
@@ -110,9 +110,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<input id="item_image" name="item_image" class="form-control btn btn-mid btn-primary clearfix" type="file" accept=".jpg, .jpeg, .png ">Size: <span style="color:red;">(450px X 338px)</span>
 							</div> 
 						</div>
-
 						<div style="clear:both;"></div>
-
 					</div>
 
 					<div class="modal-footer">
@@ -120,11 +118,26 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<input class="btn btn-primary" type="submit" value="Add Record" id="submit_item" name="submit_item">
 					</div>
 				</div>
-				
 			</form>
 		</div>
-	</div>';
+	</div>
+	<script>
+		$(".select2").select2({
+			placeholder: "Select Any Option"
+		})
 
+		function selectSubCategory() {
+            var selectedCategory = $("#id_category").val();
+            $.ajax({
+                type: "GET",
+                url: "include/ajax/getSubCategory.php",
+                data: { selectedValue: selectedCategory },
+                success: function (data) {
+                    $("#id_sub_category").html(data);
+                }
+            });
+        }
+
+	</script>
+	';
 }
-
-?>

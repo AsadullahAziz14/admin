@@ -5,10 +5,10 @@ $status = array (
 					array('id'=>'0', 'name'=>'Inactive')
 				);
 function get_status($id) {
-	$listadmstatus= array (
+	$liststatus= array (
 							'1' => '<span class="label label-success" id="bns-status-badge">Active</span>', 
 							'0' => '<span class="label label-danger" id="bns-status-badge">Inactive</span>');
-	return $listadmstatus[$id];
+	return $liststatus[$id];
 }
 //------------Slider Position---------
 $sliderpost = array (
@@ -202,11 +202,114 @@ function get_paytypes($id) {
 	return $listpaytypes[$id];
 }
 
+//-----------------CMS-OBE Variable---------------------
+define('ID_TEACHER'	, 1);
+define('ID_TEACHER_ARRAY'	,[
+	1 => 'Ali',
+	2 => 'Hasan',
+	3 => 'Ahmad',
+	4 => 'Shakeel',
+	5 => 'Hussain' 
+]);
 
+define('ID_COURSE'	, 1);
+define('ID_COURSE_ARRAY'	,[
+	1 => 'Separation Process',
+	2 => 'DSA',
+	3 => 'PF',
+	4 => 'OOP',
+]);
 
+define('COURSE_TYPE'	, 1);
+define('COURSE_TYPE_ARRAY'	,[
+	1 => 'Theory',
+	2 => 'Lab',
+]);
+
+define('ID_PRG'	, 1);
+define('ID_PRG_ARRAY'	,[
+	1 => 'BS Chemical Engg',
+	2 => 'BS CS',
+	3 => 'BS IT',
+	4 => 'BS SE',
+	5 => 'BS AI' 
+]);
+
+define('SECTION'	, 'A');
+
+define('SEMESTER'	, 1);
+define('SEMESTER_ARRAY'	,[
+	1 => '1st',
+	2 => '2nd',
+	3 => '3rd',
+	4 => '4th',
+	5 => '5th',
+	6 => '6th',
+	7 => '7th',
+	8 => '8th',
+]);
+
+define('TIMING'	, 1);
+define('TIMING_ARRAY'	,[
+	1 => 'Morning',
+	2 => 'Evening',
+	3 => 'Week Night'
+]);
+
+define('ACADEMIC_SESSION', 'Spring 2023');
+
+// 1,2,3,4,5,... represents Roll numbers in below STUDENTS Array
+define('STUDENTS' , array(
+	1 			=> array("id" => "2023F-mul-1", "name" => "Ali")
+	,2 			=> array("id" => "2023F-mul-2", "name" => "Ahmad" )
+	,3 			=> array("id" => "2023F-mul-3", "name" => "Hammad")
+));
+
+define('GRADES'	,[
+	'f' 	=> 'F'
+	,'d' 	=> 'D'
+	,'c-' 	=> 'C-'
+	,'c' 	=> 'C'
+	,'c+' 	=> 'C+'
+	,'b-' 	=> 'B-'
+	,'b' 	=> 'B'
+	,'b+' 	=> 'B+'
+	,'a' 	=> 'A'
+	,'a+' 	=> 'A+'
+]);
+
+define('LIBREL_ARTS'	, 1);
 
 
 //-----------------CMS-SMS Variable-----------
+
+$SMS_STATUS = array (
+	array('id'=>'1', 'name'=>'Created')			,
+	array('id'=>'2', 'name'=>'Forwarded')		,
+	array('id'=>'3', 'name'=>'Approved')		,
+	array('id'=>'4', 'name'=>'Rejected')		,
+	array('id'=>'5', 'name'=>'Ordered')			,	// PO of demand is ordered
+	array('id'=>'6', 'name'=>'In-Process')		,	// PO of demand is on-receiving
+	array('id'=>'7', 'name'=>'Completed')		,   // PO of demand is Completed
+	array('id'=>'8', 'name'=>'Requested')		,	// Demand is requested
+	array('id'=>'9', 'name'=>'Issued')			,	// Requisition is issued is issued
+	array('id'=>'10', 'name'=>'Full-Filled')	,	// Demand/Request is Full-Filled
+);
+function get_sms_status($id) {
+$liststatus= array (
+			'1' => '<span class="label label-primary" id="bns-status-badge">Created</span>', 
+			'2' => '<span class="label label-purple" id="bns-status-badge">Forwarded</span>',
+			'3' => '<span class="label label-success" id="bns-status-badge">Approved</span>',
+			'4' => '<span class="label label-danger" id="bns-status-badge">Rejected</span>',
+			'5' => '<span class="label label-info-dark" id="bns-status-badge">Ordered</span>',
+			'6' => '<span class="label label-warning" id="bns-status-badge">In-Process</span>',
+			'7' => '<span class="label label-success-dark" id="bns-status-badge">Full-Filled</span>',
+			'8' => '<span class="label label-success-dark" id="bns-status-badge">Completed</span>',
+			'9' => '<span class="label label-success-dark" id="bns-status-badge">Issued</span>',
+			'10' => '<span class="label label-info-dark" id="bns-status-badge">Requested</span>',
+);
+return $liststatus[$id];
+}
 
 define('DEMAND_TYPES'	,[
 	'n' 	=> '<span class="label label-info" id="bns-status-badge">Normal</span>'	,

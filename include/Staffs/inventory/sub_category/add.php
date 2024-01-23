@@ -29,7 +29,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 							<label for="id_category" class="req"><b>Mapped Category</b></label>
 								<select id="id_category" class="form-control" name="id_category" required>
 									<option value="">Select Status</option>';
-									$sqllms = $dblms->querylms("SELECT category_id, category_name FROM " .SMS_CATEGORIE." WHERE category_status = 1");
+									$sqllms = $dblms->querylms("SELECT category_id, category_name FROM " .SMS_CATEGORY." WHERE category_status = 1");
 									while($rowstd = mysqli_fetch_array($sqllms))
 									{
 										echo '<option value="'.$rowstd['category_id'].'">'.$rowstd['category_name'].'</option>';

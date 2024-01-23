@@ -69,7 +69,7 @@ if(isset($_POST['submit_item'])) {
         $data = [
             'log_date'                  => date('Y-m-d H:i:s')                                                                  ,
             'action'                    => "Create"                                                                             ,
-            'affected_table'            => SMS_CATEGORIE                                                                       ,
+            'affected_table'            => SMS_CATEGORY                                                                       ,
             'action_detail'             =>  'item_id: '.cleanvars($idItem).
                                             PHP_EOL.'item_code: '.'ITEM'.str_pad(cleanvars($idItem), 5, '0', STR_PAD_LEFT).
                                             PHP_EOL.'item_title: '.cleanvars($_POST['item_title']).
@@ -143,7 +143,7 @@ if(isset($_POST['edit_item'])) {
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                                           ,
             'action'                           => "Update"                                                                      ,
-            'affected_table'                   => SMS_CATEGORIE                                                                ,
+            'affected_table'                   => SMS_CATEGORY                                                                ,
             'action_detail'                    =>  'item_id: '.cleanvars($idItem).
                                                     PHP_EOL.'item_title: '.cleanvars($_POST['item_title']).
                                                     PHP_EOL.'item_description: '.cleanvars($_POST['item_description']).

@@ -1,13 +1,13 @@
 <?php
 if(isset($_GET['deleteId'])) {
-    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_SUB_CATEGORIE." WHERE sub_category_id = '".cleanvars($_GET['deleteId'])."'");
+    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_SUB_CATEGORY." WHERE sub_category_id = '".cleanvars($_GET['deleteId'])."'");
     
     if($queryDelete) {
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                           ,
             'action'                           => "Delete"                                                      ,
-            'affected_table'                   => SMS_SUB_CATEGORIE                                            ,
+            'affected_table'                   => SMS_SUB_CATEGORY                                            ,
             'action_detail'                    =>  'sub_category_id: '.cleanvars($_GET['deleteId'])             ,
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
@@ -31,7 +31,7 @@ if(isset($_POST['submit_sub_category'])) {
         'id_added'                                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])             ,
         'date_added'                               => date('Y-m-d H:i:s')
     ];
-    $queryInsert = $dblms->Insert(SMS_SUB_CATEGORIE, $data);
+    $queryInsert = $dblms->Insert(SMS_SUB_CATEGORY, $data);
     $latest_id = $dblms->lastestid();
     
     if($queryInsert) {
@@ -40,13 +40,13 @@ if(isset($_POST['submit_sub_category'])) {
         ];
         
         $conditions = "WHERE sub_category_id  = ".cleanvars($latest_id)."";
-        $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIE, $data, $conditions);
+        $queryUpdate = $dblms->Update(SMS_SUB_CATEGORY, $data, $conditions);
 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                          => date('Y-m-d H:i:s')
             ,'action'                           => "Create"
-            ,'affected_table'                   => SMS_SUB_CATEGORIE
+            ,'affected_table'                   => SMS_SUB_CATEGORY
             ,'action_detail'                    =>  'sub_category_id: '.cleanvars($latest_id).
                                                     PHP_EOL.'sub_category_code: '.'SUB-CAT-' .str_pad(cleanvars($latest_id), 5, '0', STR_PAD_LEFT).
                                                     PHP_EOL.'sub_category_name: '.cleanvars($_POST['sub_category_name']).
@@ -78,14 +78,14 @@ if(isset($_POST['edit_sub_category'])) {
         'date_modify'                              => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  sub_category_id  = ".cleanvars($_GET['id'])."";
-    $queryUpdate = $dblms->Update(SMS_SUB_CATEGORIE, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_SUB_CATEGORY, $data, $conditions);
 
     if($queryUpdate) { 
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                          => date('Y-m-d H:i:s')
             ,'action'                           => "Update"
-            ,'affected_table'                   => SMS_SUB_CATEGORIE
+            ,'affected_table'                   => SMS_SUB_CATEGORY
             ,'action_detail'                    =>  'sub_category_id: '.cleanvars($_GET['id']).
                                                     PHP_EOL.'sub_category_name: '.cleanvars($_POST['sub_category_name']).
                                                     PHP_EOL.'sub_category_description: '.cleanvars($_POST['sub_category_description']).

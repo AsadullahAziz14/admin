@@ -4,9 +4,9 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 	$queryItem = $dblms->querylms("SELECT itm.item_title, itm.item_status, itm.item_uom, itm.item_description, itm.item_article_number, itm.item_image,
 									itm.item_style_number, itm.item_model_number, itm.item_dimensions, cat.category_id,
 									cat.category_name, sub.sub_category_id, sub.sub_category_name
-									FROM ".SMS_ITEM." itm LEFT JOIN ".SMS_CATEGORIE." cat
+									FROM ".SMS_ITEM." itm LEFT JOIN ".SMS_CATEGORY." cat
 									ON itm.id_category = cat.category_id 
-									LEFT JOIN ".SMS_SUB_CATEGORIE." sub ON itm.id_sub_category = sub.sub_category_id
+									LEFT JOIN ".SMS_SUB_CATEGORY." sub ON itm.id_sub_category = sub.sub_category_id
 									WHERE itm.item_id = '".cleanvars($_GET['id'])."'");
 	$valueItem = mysqli_fetch_array($queryItem);
 
@@ -48,7 +48,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<select id="id_category" class="form-control" name="id_category" onchange="selectSubCategory()" required>
 									<option value="'.$valueItem['category_id'].'">'.$valueItem['category_name'].'</option>';
 									$queryCategories = $dblms->querylms("SELECT category_id, category_name 
-																FROM ".SMS_CATEGORIE." 
+																FROM ".SMS_CATEGORY." 
 																WHERE category_status = 1");
 									while($valueCategory = mysqli_fetch_array($queryCategories)) { 
 										if($valueCategory['category_id'] == $valueItem['category_id']) { continue; }

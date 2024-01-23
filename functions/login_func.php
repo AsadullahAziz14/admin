@@ -50,7 +50,7 @@ function cpanelLMSAuserLogin() {
 	$_SESSION['LOGINIDA_SSS']   			= $row['adm_id'];
 	$_SESSION['LOGINUSERA_SSS'] 			= $row['adm_username'];
 	$_SESSION['LOGINFNAMEA_SSS']  	 		= $row['adm_fullname'];
-	$_SESSION['LOGINTYPE_SSS']  	 		= $row['adm_type'];
+	$_SESSION['LOGINTYPE_SSS']  	 		= $row['adm_type']; //1,2,3... 8, 9
 	$_SESSION['userlogininfo']['LOGINIDA'] 	= $row['adm_id'];
 	$_SESSION['LOGINAFOR'] 		 			= $row['adm_logintype'];
 	$_SESSION['LOGINTYPE'] 		 			= $row['adm_type'];

@@ -73,16 +73,29 @@ if(isset($_POST['submit_po'])) {
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
-        foreach (cleanvars($_POST['id_item']) as $id_demand => $id_itemArray) {
+        foreach(cleanvars($_POST['id_item']) as $id_demand => $id_itemArray) {
+            $queryDemand = $dblms->querylms("SELECT demand_id, demand_code
+													FROM ".SMS_DEMAND."
+                                                    Where demand_code = '".$id_demand."'
+                                                ");
+            $valueDemand = mysqli_fetch_array($queryDemand);
+            $demand_id = $valueDemand['demand_id'];
+
             foreach ($id_itemArray as $id_item => $itemTitle) {
                 $data = [
                     'id_po'                => $id_po                                            ,
-                    'id_demand'            => $id_demand                                        ,
+                    'id_demand'            => $demand_id                                        ,
                     'id_item'              => $id_item                                          ,
                     'quantity_ordered'     => $_POST['quantity_ordered'][$id_demand][$id_item]  ,
                     'unit_price'           => $_POST['unit_price'][$id_demand][$id_item]
                 ];
                 $queryInsert = $dblms->Insert(SMS_PO_DEMAND_ITEM_JUNCTION, $data);
+
+                $data = [
+                    'is_ordered' => 1
+                ];
+                $conditions = "Where id_demand = ".$demand_id." AND id_item = ".$id_item."";
+                $queryUpdate = $dblms->Update(SMS_DEMAND_ITEM_JUNCTION, $data, $conditions);
             }
         }
         
@@ -92,9 +105,9 @@ if(isset($_POST['submit_po'])) {
         $conditions = "WHERE po_id  = ".$id_po."";
         $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
         
-        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
-        header("Location: inventory-purchase_order.php", true, 301);
-        exit();
+        // $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
+        // header("Location: inventory-purchase_order.php", true, 301);
+        // exit();
 	} 
 }
 

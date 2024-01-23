@@ -1,8 +1,8 @@
 <?php
 if (!LMS_VIEW && isset($_GET['id'])) {
 	$queryCategory = $dblms->querylms("SELECT category_id, category_name, category_description, category_status  
-									FROM " .SMS_CATEGORIE."
-									WHERE category_id =  ".cleanvars($_GET['id'])." ");
+										FROM ".SMS_CATEGORY."
+										WHERE category_id =  ".cleanvars($_GET['id'])." ");
 	$valueCategory = mysqli_fetch_array($queryCategory);
 
 	echo '
