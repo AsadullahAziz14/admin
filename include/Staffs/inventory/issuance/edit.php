@@ -5,7 +5,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 											WHERE issuance_id =  ".cleanvars($_GET['id'])."
 									");
    $valueIssuance = mysqli_fetch_array($queryIssuance);
-
    echo '
 	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -14,9 +13,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 				<div class="modal-header">
 					<h4 class="modal-title" style="font-weight:700;"> Edit Issuance</h4>
 				</div>
-
 					<div class="modal-body">
-
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="issuance_to" class="req"><b>Issuance To</b></label>
@@ -278,5 +275,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 				}
 			};
 		}
-	</script>';
+	</script>
+	<script src="js/select2/jquery.select2.js"></script>';
 }

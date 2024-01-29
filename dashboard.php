@@ -6,7 +6,8 @@
 	include "functions/functions.php";
 	checkCpanelLMSALogin();
 	require_once("include/header.php");
-
+	echo $_SESSION['userlogininfo']['LOGINAFOR'];
+	
 	
 echo '<title>'.TITLE_HEADER.' Dashboard</title>
 <!-- Matter -->

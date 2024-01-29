@@ -5,7 +5,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										po_delivery_address, date_ordered, id_vendor 
 									FROM ".SMS_PO." WHERE po_id =  ".cleanvars($_GET['id'])." ");
 	$valuePO = mysqli_fetch_array($queryPO);
-	$selectedDemands = [];
 	echo '
    	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -106,23 +105,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							<div style="margin-top:5px;">
 								<label for="date_ordered" class="req"> Ordered Date </label>
 								<input class="form-control" type="date" name="date_ordered" id="date_ordered" value="'.date('Y-m-d', strtotime($valuePO['date_ordered'])).'" required>
-							</div>
-						</div>
-
-						<div class="col-sm-61">
-							<div style="margin-top:5px;">
-							<label for="po_status" class="req"><b>Status</b></label>
-								<select id="po_status" class="form-control" name="po_status" required>
-									<option value="">Select Status</option>';
-									foreach ($status as $poStatus) {
-										if($valuePO['po_status'] == $poStatus['id']) {
-											echo '<option value="'. $poStatus['id'].'" selected>'.$poStatus['name'].'</option>';
-										} else {
-											echo '<option value="'. $poStatus['id'].'">'.$poStatus['name'].'</option>';
-										}
-									}
-									echo '
-								</select>
 							</div>
 						</div>
 
@@ -232,7 +214,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		}
 	}
 	
-	var selectedDemands = '.json_encode($selectedDemands).'
 	function addDemand() {
 		var i = 0;
 		i = i + 1;
@@ -329,12 +310,9 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				const options = xhr.responseText;
 				itemInputContainer.innerHTML = options;
-				// itemInputContainer.appendChild(options)
 			}
 		};
 	}
-
 	</script>
-
 	<script src="js/select2/jquery.select2.js"></script>';
 }

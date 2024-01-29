@@ -9,5 +9,6 @@ if(isset($_SESSION['LOGINIDA_SSS'])) {
 } else { 
 	header("Location: login.php");
 }
+
 //echo 'hello';
 ?>

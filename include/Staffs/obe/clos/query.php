@@ -37,7 +37,7 @@ if(isset($_POST['submit_clo'])) {
             'id_course'             => ID_COURSE                                ,
             'academic_session'      => ACADEMIC_SESSION                         ,
             'id_campus'             => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])                                ,
-            'id_added'              => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                  ,
+            'id_added'              => cleanvars($_SESSION['LOGINIDA_SSS'])                  ,
             'date_added'            => date('Y-m-d H:i:s')                
         ];
         $queryInsert = $dblms->Insert(OBE_CLOS , $cloData);
@@ -82,7 +82,7 @@ if(isset($_POST['submit_changes'])) {
         'clo_statement'        => cleanvars($_POST['clo_statement_edit'])       ,
         'id_domain_level'      => cleanvars($_POST['id_domain_level_edit'])     ,
         'id_plo'               => $plos                                         ,
-        'id_modify'            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                       ,
+        'id_modify'            => cleanvars($_SESSION['LOGINIDA_SSS'])                       ,
         'date_modify'          => date('Y-m-d H:i:s')              
     ];
     $conditions = "WHERE  clo_id  = ".cleanvars($_POST['clo_id_edit'])."";

@@ -13,7 +13,7 @@ if(isset($_GET['deleteId'])) {
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -36,7 +36,7 @@ if(isset($_POST['submit_vendor'])) {
         'vendor_bank_name'                     => cleanvars($_POST['vendor_bank_name'])                 ,
         'vendor_bank_branch_code'              => cleanvars($_POST['vendor_bank_branch_code'])          ,
         'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
-        'id_added'                             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_added'                             => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_added'                           => date('Y-m-d H:i:s')     
     ];
     $queryInsert = $dblms->Insert(SMS_VENDOR, $data);
@@ -63,12 +63,12 @@ if(isset($_POST['submit_vendor'])) {
                                                     PHP_EOL.'vendor_contact_phone2: '.cleanvars($_POST['vendor_contact_phone2']).
                                                     PHP_EOL.'vendor_contact_email: '.cleanvars($_POST['vendor_contact_email']).
                                                     PHP_EOL.'vendor_status: '.cleanvars($_POST['vendor_status']).
-                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
+                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')
             ,'path'                             =>  end($filePath)
             ,'login_session_start_time'         => $_SESSION['login_time']
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -91,7 +91,7 @@ if(isset($_POST['edit_vendor'])) {
         'vendor_bank_name'                     => cleanvars($_POST['vendor_bank_name'])                 ,
         'vendor_bank_branch_code'              => cleanvars($_POST['vendor_bank_branch_code'])          ,
         'vendor_status'                        => cleanvars($_POST['vendor_status'])                    ,
-        'id_modify'                            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_modify'                            => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_modify'                          => date('Y-m-d H:i:s')            
     ];
     $conditions = "WHERE vendor_id  = ".cleanvars($_GET['id'])."";
@@ -111,12 +111,12 @@ if(isset($_POST['edit_vendor'])) {
                                                     PHP_EOL.'vendor_contact_phone2: '.cleanvars($_POST['vendor_contact_phone2']).
                                                     PHP_EOL.'vendor_contact_email: '.cleanvars($_POST['vendor_contact_email']).
                                                     PHP_EOL.'vendor_status: '.cleanvars($_POST['vendor_status']).
-                                                    PHP_EOL.'id_modify: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
+                                                    PHP_EOL.'id_modify: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')
             ,'path'                             =>  end($filePath)
             ,'login_session_start_time'         => $_SESSION['login_time']
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 

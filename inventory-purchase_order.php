@@ -19,11 +19,25 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {
 	require_once("include/Staffs/inventory/purchase_order/query.php");
 	require_once("include/header.php");
-	$sql2 = '';
-	$sqlstring	= "";
-	if(isset($_GET['srch'])) { 
-		// $sql2 		.= " b.block_name LIKE '".$stdsrch."%' ";
-		$sqlstring	.= "&srch=".$_GET['srch']."";
+
+	$sql2 			= '';
+	$sqlstring		= "";
+	$srch			= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
+	$status_srch	= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
+	$faculty		= (isset($_GET['faculty']) && $_GET['faculty'] != '') ? $_GET['faculty'] : '';
+	$dept			= (isset($_GET['dept']) && $_GET['dept'] != '') ? $_GET['dept'] : '';
+	$liberalArts	= (isset($_GET['la']) && $_GET['la'] != '') ? $_GET['la'] : '';
+
+	if(($srch)) { 
+		$sql2 		.= " AND (po_code LIKE '%".$srch."%')"; 
+		$sqlstring	.= "&srch=".$srch."";
+	}
+    if(($status_srch)) { 
+		$sql2 		.= " AND po_status = '".$status_srch."'"; 
+		$sqlstring	.= "&status_srch=".$status_srch."";
+	}
+	if((($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9))) { 
+		$sql2 		.= " AND po_status = 2"; 
 	}
 				echo '
 				<title>Manage PO - '.TITLE_HEADER.'</title>
@@ -99,6 +113,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>';
 
 		require_once("include/Staffs/inventory/purchase_order/forward.php");
+		
 		echo '
 		<!--WI_IFRAME_Start_MODAL-->
 		<div class="row">
@@ -158,4 +173,3 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	</body>
 </html>';
 }
-?>

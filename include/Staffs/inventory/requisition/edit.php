@@ -72,23 +72,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							</div>
 						</div>
 
-						<div class="col-sm-61">
-							<div style="margin-top:5px;">
-							<label for="requisition_status" class="req"><b>Status</b></label>
-								<select id="requisition_status" class="form-control" name="requisition_status" required>
-									<option value="">Select Status</option>';
-									foreach ($status as $requisitionStatus) {
-										if($valueRequisition['requisition_status'] == $requisitionStatus['id']) {
-											echo '<option value="'. $requisitionStatus['id'].'" selected>'.$requisitionStatus['name'].'</option>';
-										} else {
-											echo '<option value="'. $requisitionStatus['id'].'">'.$requisitionStatus['name'].'</option>';
-										}
-									}
-									echo '
-								</select>
-							</div>
-						</div>
-
 						<div class="col-sm-91">
 							<div style="margin-top:5px;">
 								<label for="requisition_purpose" class="req">Requisition Purpose</label>
@@ -306,7 +289,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				const options = xhr.responseText;
 				itemInputContainer.innerHTML = options;
-				// itemInputContainer.appendChild(options)
 			}
 		};
 	}

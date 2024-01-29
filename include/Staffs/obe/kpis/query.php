@@ -26,7 +26,7 @@ if(isset($_POST['submit_kpi'])) {
         'timing'           => TIMING                                                ,
         'academic_session' => ACADEMIC_SESSION                                      ,
         'id_campus'        => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])   ,
-        'id_added'         => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_added'         => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_added'       => date('Y-m-d H:i:s')                
     ];
     $queryInsert = $dblms->Insert(OBE_KPIS, $kpiData);
@@ -48,7 +48,7 @@ if(isset($_POST['edit_kpi'])) {
         //'kpi_weightage'    => cleanvars($_POST['kpi_weightage']                   ,
         'id_pac'           => cleanvars($_POST['id_pac'])                           ,
         'id_clo'           => implode(",",cleanvars($_POST['clo']))                 ,
-        'id_modify'        => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_modify'        => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_modify'      => date('Y-m-d H:i:s')              
     ];
     $conditions = "WHERE  kpi_id  = ".cleanvars($_GET['id'])."";

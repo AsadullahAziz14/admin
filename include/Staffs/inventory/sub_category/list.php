@@ -4,26 +4,26 @@ if(!($Limit)) { $Limit = 100; }
 if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
 $page = (int)$page;
 
-$queryCategory = $dblms->querylms("SELECT sub_category_id
+$querySubCategory = $dblms->querylms("SELECT sub_category_id
                                     FROM ".SMS_SUB_CATEGORY." 
                                     WHERE sub_category_id != ''
                                     $sql2
-                                    LIMIT ".($page-1)*$Limit .",$Limit");
+                                 ");
 
-$count 		= mysqli_num_rows($queryCategory);
+$count 		= mysqli_num_rows($querySubCategory);
 if($page == 0) { $page = 1; }						//if no page var is given, default to 1.
 $prev 		= $page - 1;							//previous page is page - 1
 $next 		= $page + 1;							//next page is page + 1
 $lastpage	= ceil($count/$Limit);				//lastpage is = total pages / items per page, rounded up.
 $lpm1 		= $lastpage - 1;
 
-if(mysqli_num_rows($queryCategory) > 0) { 
+if(mysqli_num_rows($querySubCategory) > 0) { 
    $querySubCategory  = $dblms->querylms("SELECT sub_category_id, sub_category_code, sub_category_name, 
                                                    sub_category_description, sub_category_status, id_category
                                              FROM ".SMS_SUB_CATEGORY." 
                                              WHERE sub_category_id != ''
                                              $sql2
-                                       ");
+                                             LIMIT ".($page-1)*$Limit .",$Limit");
    include ("include/page_title.php"); 
 
    echo'    
@@ -50,10 +50,10 @@ if(mysqli_num_rows($queryCategory) > 0) {
                   <td style="vertical-align: middle;" nowrap="nowrap">'.$valueSubCategory['sub_category_name'].'</td>
                   <td style="vertical-align: middle;" nowrap="nowrap">'.$valueSubCategory['sub_category_code'].'</td>
                   '; 
-                  $queryCategory = $dblms->querylms("SELECT category_id, category_name 
+                  $querySubCategory = $dblms->querylms("SELECT category_id, category_name 
                                                       FROM " .SMS_CATEGORY." 
                                                       WHERE category_id = ".$valueSubCategory['id_category']."");
-                  $valueCategory = mysqli_fetch_array($queryCategory);
+                  $valueCategory = mysqli_fetch_array($querySubCategory);
                   echo '
                   <td style="vertical-align: middle;" nowrap="nowrap">'.$valueCategory['category_name'].'</td>
                   <td style="vertical-align: middle;" nowrap="nowrap">'.$valueSubCategory['sub_category_description'].'</td>

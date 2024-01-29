@@ -29,7 +29,7 @@ if(isset($_POST['submit_plo'])) {
 			'plo_status'		=> cleanvars($_POST['plo_status'])		            	, 
 			'id_prg'			=> cleanvars($_POST['id_prg'])		            		, 
 			'id_campus'			=> cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])	, 
-			'id_added'	    	=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])	,
+			'id_added'	    	=> cleanvars($_SESSION['LOGINIDA_SSS'])	,
 			'date_added'		=> date("Y-m-d H:i:s")		            				, 
 		);
 		$queryInsert = $dblms->Insert(OBE_PLOS, $ploData);
@@ -50,7 +50,7 @@ if(isset($_POST['submit_changes'])) {
 		'plo_statement'		=> cleanvars($_POST['plo_statement_edit'])		        , 
 		'plo_status'		=> cleanvars($_POST['plo_status_edit'])		            , 
 		'id_prg'			=> cleanvars($_POST['id_prg_edit'])		            	, 
-		'id_modify'	    	=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])	,
+		'id_modify'	    	=> cleanvars($_SESSION['LOGINIDA_SSS'])	,
 		'date_modify'		=> date("Y-m-d H:i:s")		            				, 
 	);
 	$queryUpdate = $dblms->Update(OBE_PLOS, $ploData, "WHERE plo_id = '".cleanvars($_POST['plo_id'])."'");

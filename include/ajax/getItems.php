@@ -6,19 +6,18 @@ include "../../functions/login_func.php";
 include "../../functions/functions.php";
 checkCpanelLMSALogin();
 
-
 if(isset($_GET['selectedDemand'])) {
 	$selectedDemand = $_GET['selectedDemand'];
 	if(isset($selectedDemand)) {
-		$queryDemandItem = $dblms->querylms("SELECT distinct di.id_item, sum(di.quantity_demanded) as quantity_demanded,
-															d.demand_code
-													FROM ".SMS_DEMAND_ITEM_JUNCTION." as di, ".SMS_DEMAND." as d
-													Where d.demand_code IN ('".$selectedDemand."') 
-															AND d.demand_id =  di.id_demand
-															AND d.demand_status = 3
-															AND di.is_ordered = 0
-													GROUP BY di.id_item
-											");
+		$queryDemandItem = $dblms->querylms("SELECT di.id_demand, di.id_item, di.quantity_demanded
+											FROM ".SMS_DEMAND_ITEM_JUNCTION." di
+											JOIN ".SMS_DEMAND." d ON d.demand_id = di.id_demand
+											LEFT JOIN ".SMS_PO_DEMAND_ITEM_JUNCTION." pdi ON di.id_item = pdi.id_item
+											LEFT JOIN ".SMS_PO." p ON pdi.id_po = p.po_id
+											WHERE d.demand_code = ('".$selectedDemand."')
+											AND d.demand_status = 3
+											AND pdi.id_po IS NULL	
+										");
 		while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
 												FROM ".SMS_ITEM."
@@ -54,14 +53,14 @@ if(isset($_GET['selectedDemand'])) {
 } elseif (isset($_GET['selectedDemandRequisition'])) {
 	$selectedDemandRequisition = $_GET['selectedDemandRequisition'];
 	if(isset($selectedDemandRequisition)) {
-		$queryDemandItem = $dblms->querylms("SELECT distinct di.id_item, sum(di.quantity_demanded) as quantity_demanded,
-															 d.demand_code
-												FROM ".SMS_DEMAND_ITEM_JUNCTION." as di, ".SMS_DEMAND." as d
-												Where id_demand IN (".$selectedDemandRequisition.") 
-												AND di.id_demand = d.demand_id
+		$queryDemandItem = $dblms->querylms("SELECT distinct di.id_item, di.quantity_demanded, di.quantity_demanded
+												FROM ".SMS_DEMAND_ITEM_JUNCTION." as di
+												JOIN ".SMS_DEMAND." d ON di.id_demand = d.demand_id
+												LEFT JOIN ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION." rdi ON di.id_item = rdi.id_item
+												LEFT JOIN ".SMS_REQUISITION." r ON rdi.id_requisition = r.requisition_id
+												WHERE d.demand_code = ('".$selectedDemandRequisition."')
 												AND d.demand_status = 3
-												AND di.is_ordered != 1
-												GROUP BY di.id_item
+												AND rdi.id_requisition IS NULL;
 											");
 		while($valueDemandItem = mysqli_fetch_array($queryDemandItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
@@ -94,11 +93,16 @@ if(isset($_GET['selectedDemand'])) {
 } elseif (isset($_GET['selectedPO'])) {
 	$selectedPO = $_GET['selectedPO'];
 	if(isset($selectedPO)){
-		$queryPODemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered
-											FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." as pdo, ".SMS_PO." as r
-											Where id_po IN (".$selectedPO.")
-											GROUP BY id_item
-										");
+		$queryPODemandItem = $dblms->querylms("SELECT distinct pdi.id_item, pdi.quantity_ordered, pdi.id_po, p.po_id
+												FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." pdi
+												JOIN ".SMS_PO." p ON pdi.id_po = p.po_id
+												LEFT JOIN ".SMS_RECEIVING_PO_ITEM_JUNCTION." rpi ON pdi.id_item = rpi.id_item
+												LEFT JOIN ".SMS_RECEIVING." r ON rpi.id_receiving = r.receiving_id
+												Where p.po_code IN ('".$selectedPO."')
+												AND p.po_status = 3
+												AND rpi.id_po IS NULL
+											");
+
 		while($valuePODemandItem = mysqli_fetch_array($queryPODemandItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
 												FROM ".SMS_ITEM."
@@ -125,17 +129,19 @@ if(isset($_GET['selectedDemand'])) {
 					</div>
 				</div>
 			</div>';
-			
 		}
 	}
 } elseif (isset($_GET['selectedRequisition'])) {
 	$selectedRequisition = $_GET['selectedRequisition'];
 	if(isset($selectedRequisition)){
-		$queryRequisitionItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_requested) as quantity_requested
-											FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION."
-											Where id_requisition IN (".$selectedRequisition.")
-											GROUP BY id_item
-										");
+		$queryRequisitionItem = $dblms->querylms("SELECT distinct rdi.id_item, rdi.quantity_requested
+													FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION." rdi
+													JOIN ".SMS_REQUISITION." r ON rdi.id_requisition = r.requisition_id
+													LEFT JOIN ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." iri ON rdi.id_item = iri.id_item
+													LEFT JOIN ".SMS_ISSUANCE." i ON iri.id_issuance = i.issuance_id
+													Where r.requisition_code IN ('".$selectedRequisition."')
+													AND iri.id_requisition IS NULL 
+												");
 		while($valueRequisitionItem = mysqli_fetch_array($queryRequisitionItem)) {
 			$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
 												FROM ".SMS_ITEM."

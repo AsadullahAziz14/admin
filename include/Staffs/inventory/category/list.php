@@ -1,4 +1,6 @@
 <?php
+if(!LMS_VIEW && !isset($_GET['id'])) { 
+
 $adjacents 	= 3;
 if(!($Limit)) { $Limit = 100; } 
 if($page) { $start = ($page - 1) * $Limit; } else {	$start = 0;	}
@@ -145,4 +147,5 @@ if(mysqli_num_rows($queryCategory) > 0) {
    <div class="col-lg-12">
       <div class="widget-tabs-notification">No Result Found</div>
    </div>';
+}
 }

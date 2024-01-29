@@ -9,12 +9,12 @@ if(isset($_GET['deleteId'])) {
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                               ,
             'action'                           => "Delete"                                                          ,
-            'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION.', '.SMS_DEMAND                         ,
+            'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION.', '.SMS_DEMAND                          ,
             'action_detail'                    => 'demand_id: '.cleanvars($_GET['deleteId'])                        ,
             'path'                             =>  end($filePath)                                                   ,
             'login_session_start_time'         => $_SESSION['login_time']                                           ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']       ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -32,7 +32,8 @@ if(isset($_POST['submit_demand'])) {
         'demand_status'                        => 1                                                     ,
         'id_department'                        => cleanvars($_POST['id_department'])                    ,
         'id_added'                             => cleanvars($_SESSION['LOGINIDA_SSS'])                  ,
-        'date_added'                           => date('Y-m-d H:i:s')          
+        'date_added'                           => date('Y-m-d H:i:s')
+
     ];
     $queryInsert = $dblms->Insert(SMS_DEMAND, $data);
 
@@ -44,7 +45,6 @@ if(isset($_POST['submit_demand'])) {
             $itemIdsStr = implode(',', $items);
 
             $demanded_items = $itemIdsStr;
-            $demand_quantity = 0;
             $demand_due_date = [];
 
             foreach ($items as $index => $item_id) {
@@ -56,7 +56,6 @@ if(isset($_POST['submit_demand'])) {
                 ];
                 $queryInsert = $dblms->Insert(SMS_DEMAND_ITEM_JUNCTION, $data);
 
-                $demand_quantity += cleanvars($_POST['quantity_demanded'][$index]);
                 $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]);
             }
             $min_demand_due_date = min($demand_due_date);
@@ -64,7 +63,6 @@ if(isset($_POST['submit_demand'])) {
 
         $data = [
             'demand_code'                                  => 'D'.str_pad($id_demand, 5, '0', STR_PAD_LEFT)     ,
-            'demand_quantity'                              => $demand_quantity                                  ,
             'demand_due_date'                              => $min_demand_due_date
         ];
         $conditions = "WHERE demand_id  = ".$id_demand."";
@@ -79,16 +77,15 @@ if(isset($_POST['submit_demand'])) {
             'action_detail'                    =>  'demand_id: '.$id_demand.
                                                     PHP_EOL.'demand_code: '.'D'.str_pad($id_demand, 5, '0', STR_PAD_LEFT).
                                                     PHP_EOL.'demand_type: '.cleanvars($_POST['demand_type']).
-                                                    PHP_EOL.'demand_quantity: '.$demand_quantity.
                                                     PHP_EOL.'demanded_items: '.$demanded_items.
                                                     PHP_EOL.'demand_date: '.date('Y-m-d H:i:s').
                                                     PHP_EOL.'demand_due_date: '.$min_demand_due_date.
-                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
+                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  ,
             'path'                             =>  end($filePath)                                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -98,14 +95,13 @@ if(isset($_POST['submit_demand'])) {
             'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION                                                      ,
             'action_detail'                    =>  'demand_id: '.$id_demand.
                                                     PHP_EOL.implode(',',cleanvars($_POST['item'])).
-                                                    PHP_EOL.implode(',',cleanvars($_POST['quantity_demanded'])).
                                                     PHP_EOL.implode(',',cleanvars($_POST['item_due_date'])).
-                                                    PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
+                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')                                 ,
             'path'                             =>  end($filePath)                                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
         
@@ -120,14 +116,13 @@ if(isset($_POST['update_demand'])) {
     $data = [
         'demand_type'                      => cleanvars($_POST['demand_type'])                          ,
         'id_department'                    => cleanvars($_POST['id_department'])                        ,
-        'id_modify'                        => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])         ,
+        'id_modify'                        => cleanvars($_SESSION['LOGINIDA_SSS'])         ,
         'date_modify'                      => date('Y-m-d H:i:s')                
     ];
     $conditions = "WHERE  demand_id  = ".$id_demand."";
     $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
 
     if($queryUpdate) {
-        $demand_quantity = 0;
         $min_demand_due_date = 0;
         $demanded_items_str = '';
 
@@ -151,7 +146,6 @@ if(isset($_POST['update_demand'])) {
                     $conditions = "WHERE id_demand  = ".$id_demand." && id_item = ".$item_id['u'] ;
                     $query = $dblms->update(SMS_DEMAND_ITEM_JUNCTION, $data, $conditions);
 
-                    $demand_quantity += cleanvars($_POST['quantity_demanded'][$index]['u']);
                     $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['u']);
                     $demanded_items[] = $item_id['u'];
                 } elseif (isset($item_id['n'])) {
@@ -163,7 +157,6 @@ if(isset($_POST['update_demand'])) {
                     ];
                     $queryInsert = $dblms->Insert(SMS_DEMAND_ITEM_JUNCTION, $data);
 
-                    $demand_quantity += cleanvars($_POST['quantity_demanded'][$index]['n']);
                     $demand_due_date[] = cleanvars($_POST['item_due_date'][$index]['n']);
                     $demanded_items[] = $item_id['n'];
 
@@ -175,7 +168,6 @@ if(isset($_POST['update_demand'])) {
         }
 
         $data = [
-            'demand_quantity'             => $demand_quantity       ,
             'demand_due_date'             => $min_demand_due_date
         ];
         
@@ -190,15 +182,14 @@ if(isset($_POST['update_demand'])) {
             'affected_table'                   => SMS_DEMAND                                                                   ,
             'action_detail'                    =>  'demand_id: '.$id_demand.
                                                     PHP_EOL.'demand_type: '.cleanvars($_POST['demand_type']).
-                                                    PHP_EOL.'demand_quantity: '.$demand_quantity.
                                                     PHP_EOL.'demanded_items: '.$demanded_items_str.
                                                     PHP_EOL.'demand_due_date: '.$min_demand_due_date.
-                                                    PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
+                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s'),
             'path'                             =>  end($filePath)                                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -210,12 +201,12 @@ if(isset($_POST['update_demand'])) {
                                                     PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item']))).
                                                     PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['quantity_demanded']))).
                                                     PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item_due_date']))).
-                                                    PHP_EOL.'id_modify: '.$_SESSION['userlogininfo']['LOGINIDA'].
+                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')
             ,'path'                             =>  end($filePath)
             ,'login_session_start_time'         => $_SESSION['login_time']
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
     }
@@ -227,9 +218,37 @@ if(isset($_POST['update_demand'])) {
 if(isset($_POST["forward_demand"])) {
     $data = [
         'forwarded_to'      => $_POST['forwarded_to']                                           ,
-        'forwarded_by'      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                ,
+        'forwarded_by'      => cleanvars($_SESSION['LOGINIDA_SSS'])                ,
         'demand_status'     => 2                                                                ,
         'date_forwarded'    => date('Y-m-d H:i:s')
+    ];
+    $conditions = " Where demand_id = ".$_POST['demand_id']."";
+    $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
+
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Forwarded successfully.</div>';
+    header("Location: inventory-demand.php", true, 301);
+    exit();
+}
+
+if(isset($_POST["approve_demand"])) {
+    $data = [
+        'id_approved_rejected'          => cleanvars($_SESSION['LOGINIDA_SSS'])                ,
+        'demand_status'                 => 3                                                                ,
+        'date_approved_rejected'        => date('Y-m-d H:i:s')
+    ];
+    $conditions = " Where demand_id = ".$_POST['demand_id']."";
+    $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
+
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Forwarded successfully.</div>';
+    header("Location: inventory-demand.php", true, 301);
+    exit();
+}
+
+if(isset($_POST["reject_demand"])) {
+    $data = [
+        'id_approved_rejected'          => cleanvars($_SESSION['LOGINIDA_SSS'])            ,
+        'demand_status'                 => 4                                                            ,
+        'date_approved_rejected'        => date('Y-m-d H:i:s')
     ];
     $conditions = " Where demand_id = ".$_POST['demand_id']."";
     $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);

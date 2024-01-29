@@ -29,7 +29,6 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	$dept			= (isset($_GET['dept']) && $_GET['dept'] != '') ? $_GET['dept'] : '';
 	$liberalArts	= (isset($_GET['la']) && $_GET['la'] != '') ? $_GET['la'] : '';
 
-
 	if(($srch)) { 
 		$sql2 		.= " AND (category_name LIKE '%".$srch."%')"; 
 		$sqlstring	.= "&srch=".$srch."";
@@ -168,7 +167,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	</body>
 </html>';
 }
-?>
+
 
 
 

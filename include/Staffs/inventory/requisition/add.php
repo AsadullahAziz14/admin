@@ -13,7 +13,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="requisition_type" class="req"><b>Requistion Type</b></label>
-								<select name="requisition_type" class="form-control" id="requisition_type" required>
+								<select name="requisition_type" class="form-control" id="requisition_type" >
 									<option value="">Select Type</option>
 									<option value="1">Tengible</option>
 									<option value="2">Non-Tengible</option>
@@ -23,7 +23,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="id_department" class="req"><b>Department</b></label>
-								<select name="id_department" class="form-control" id="id_department" required>
+								<select name="id_department" class="form-control" id="id_department" >
 									<option value="">Select Department</option>';
 									$queryDepartments = $dblms->querylms("SELECT dept_id, dept_name 
 															FROM ".DEPARTMENTS);
@@ -37,7 +37,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="id_location" class="req"><b>Store</b></label>
-								<select name="id_location" class="form-control" id="id_location" required>
+								<select name="id_location" class="form-control" id="id_location" >
 									<option value="">Select Store</option>';
 									$queryStores = $dblms->querylms("SELECT l.location_id, l.location_address
 																	From ".SMS_LOCATION." l 
@@ -49,28 +49,16 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								</select>
 							</div>
 						</div>
-						<div class="col-sm-61">
-							<div style="margin-top:5px;">
-							<label for="requistion_status" class="req"><b>Status</b></label>
-								<select id="requistion_status" class="form-control" name="requistion_status" required>
-									<option value="">Select Status</option>';
-									foreach ($status as $requisitionStatus) {
-										echo '<option value="'. $requisitionStatus['id'].'">'.$requisitionStatus['name'].'</option>';
-									}
-									echo '
-								</select>
-							</div>
-						</div>
 						<div class="col-sm-91">
 							<div style="margin-top:5px;">
 								<label for="requisition_purpose" class="req"><b>Requistion Purpose</b></label>
-								<input class="form-control" type="text" name="requisition_purpose" id="requisition_purpose" required>
+								<input class="form-control" type="text" name="requisition_purpose" id="requisition_purpose" >
 							</div>
 						</div>
 						<div class="col-sm-91">
 							<div style="margin-top:5px;">
 								<label for="requisition_remarks" class="req">Remarks</label>
-								<input class="form-control" type="text" name="requisition_remarks" id="requisition_remarks" required>
+								<input class="form-control" type="text" name="requisition_remarks" id="requisition_remarks" >
 							</div>
 						</div>
 
@@ -85,10 +73,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								</div>
 							</div>
 						</div>
-						
 						<div style="clear:both;"></div>
 					</div>
-
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" onclick="location.href=\'inventory-requisition.php\'">Close</button>
 						<input class="btn btn-primary" type="submit" value="Add Record" id="submit_requisition" name="submit_requisition">
@@ -206,7 +192,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 				if (xhr.readyState === 4 && xhr.status === 200) {
 					const options = xhr.responseText;
 					itemInputContainer.innerHTML = options;
-					// itemInputContainer.appendChild(options)
 				}
 			};
 		}

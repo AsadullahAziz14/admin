@@ -36,7 +36,7 @@ if (isset($_POST['submit_paractical'])) {
         'timing'               => TIMING                                                ,
         'academic_session'     => 'Spring 2023'                                         ,
         'id_campus'            => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])   ,
-        'id_added'             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_added'             => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_added'           => date('Y-m-d H:i:s')                
     ];
     $queryInsert = $dblms->Insert(OBE_PARACTICAL_PERFORMANCES, $paracticalData);
@@ -55,7 +55,7 @@ if(isset($_POST['edit_paractical'])) {
         'pp_marks'             => cleanvars($_POST['pp_marks'])                         ,
         'pp_date'              => cleanvars($_POST['pp_date'])                          ,
         'id_kpi'               => cleanvars($_POST['kpi_ids'])                          ,
-        'id_added'             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_added'             => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_added'           => date('Y-m-d H:i:s')                
     ];
     $conditions = "WHERE pp_id  = ".cleanvars($_GET['id'])."";
@@ -83,7 +83,7 @@ if(isset($_POST['submit_result'])) {
         'timing'               => TIMING                                                    ,
         'academic_session'     => ACADEMIC_SESSION                                          ,
         'id_campus'            => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])       ,
-        'id_added'             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])         ,
+        'id_added'             => cleanvars($_SESSION['LOGINIDA_SSS'])         ,
         'date_added'           => date('Y-m-d H:i:s')                
     ];
     $queryInsertQues = $dblms->Insert(OBE_RESULTS, $resultData);
@@ -111,7 +111,7 @@ if(isset($_POST['edit_result'])) {
     $resultData = [
         'result_status'        => cleanvars($_POST['result_status'])                    ,
         'result_number'        => 1                                                     ,
-        'id_modify'            => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_modify'            => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_modify'          => date('Y-m-d H:i:s')                
     ];
     $conditions = "WHERE result_id  = ".cleanvars($_POST['result_id'])."";

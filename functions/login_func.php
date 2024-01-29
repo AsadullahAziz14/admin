@@ -40,45 +40,66 @@ function cpanelLMSAuserLogin() {
 											 AND adm_status = '1' LIMIT 1");
 		
 
-//************** if the admin name and password exist then **************** 	
+	//************** if the admin name and password exist then **************** 	
 	if (mysqli_num_rows($sqllms) == 1) {
-	$row = mysqli_fetch_array($sqllms); 
+		$row = mysqli_fetch_array($sqllms); 
 
-	$userlogininfo = [];
-	
-//*********** Store admin id into session ************************
-	$_SESSION['LOGINIDA_SSS']   			= $row['adm_id'];
-	$_SESSION['LOGINUSERA_SSS'] 			= $row['adm_username'];
-	$_SESSION['LOGINFNAMEA_SSS']  	 		= $row['adm_fullname'];
-	$_SESSION['LOGINTYPE_SSS']  	 		= $row['adm_type']; //1,2,3... 8, 9
-	$_SESSION['userlogininfo']['LOGINIDA'] 	= $row['adm_id'];
-	$_SESSION['LOGINAFOR'] 		 			= $row['adm_logintype'];
-	$_SESSION['LOGINTYPE'] 		 			= $row['adm_type'];
-	$_SESSION['login_time'] 				= date('Y-m-d H:i:s'); // Store the current timestamp	
-	
-	
-	$userlogininfo['LOGINIDA_SSS']   	= $row['adm_id'];
-	$userlogininfo['LOGINUSERA_SSS'] 	= $row['adm_username'];
-	$userlogininfo['LOGINFNAMEA_SSS']  	= $row['adm_fullname'];
-	$userlogininfo['LOGINID_DT'] 		= $row['adm_id'];
-	$userlogininfo['LOGINAFOR'] 		= $row['adm_logintype'];
-	$userlogininfo['LOGINTYPE'] 		= $row['adm_type'];
-	$userlogininfo['LOGINIDA'] 		 	= $row['id_campus'];
-	$userlogininfo['LOGINIDCOM'] 		= $row['id_campus'];
-	$userlogininfo['login_time'] 		= date('Y-m-d H:i:s'); // Store the current timestamp
+		$userlogininfo = [];
+		
+	//*********** Store admin id into session ************************
+		$_SESSION['LOGINIDA_SSS']   			= $row['adm_id'];
+		$_SESSION['LOGINUSERA_SSS'] 			= $row['adm_username'];
+		$_SESSION['LOGINFNAMEA_SSS']  	 		= $row['adm_fullname'];
+		$_SESSION['LOGINTYPE_SSS']  	 		= $row['adm_type']; //1,2,3... 8, 9
+		$_SESSION['userlogininfo']['LOGINIDA'] 	= $row['adm_id'];
+		$_SESSION['LOGINAFOR'] 		 			= 1;
+		$_SESSION['LOGINTYPE'] 		 			= $row['adm_type'];
+		// $_SESSION['LOGINTYPE'] 		 			= 8;
+		$_SESSION['login_time'] 				= date('Y-m-d H:i:s'); // Store the current timestamp	
+		
+		
+		$userlogininfo['LOGINTYPE']         = $row['adm_type'];
 
-	$_SESSION['userlogininfo'] = $userlogininfo;
-	
-// ***************Login time when the admin login **************
+		$userlogininfo['LOGINIDA_SSS']   	= $row['adm_id'];
+		$userlogininfo['LOGINUSERA_SSS'] 	= $row['adm_username'];
+		$userlogininfo['LOGINFNAMEA_SSS']  	= $row['adm_fullname'];
+		$userlogininfo['LOGINID_DT'] 		= $row['adm_id'];
+		$userlogininfo['LOGINAFOR'] 		= 1;
+		$userlogininfo['LOGINTYPE'] 		= $row['adm_type'];
+		// $userlogininfo['LOGINTYPE'] 		= 8;
+		$userlogininfo['LOGINIDA'] 		 	= $row['id_campus'];
+		$userlogininfo['LOGINIDCOM'] 		= $row['id_campus'];
+		$userlogininfo['login_time'] 		= date('Y-m-d H:i:s'); // Store the current timestamp
 
-//**************Store into session url  Last page visit*******************  
-	header("Location: dashboard.php");
+		$_SESSION['userlogininfo'] = $userlogininfo;
 
-	
+		$rightdata = array();
+		// $sqllmsrights  	= $dblms->querylms("SELECT * FROM ".ADMIN_ROLES." 
+		// 											WHERE id_adm = '".cleanvars($row['adm_id'])."' ORDER BY right_type ASC");
+		// while($valueroles	= mysqli_fetch_array($sqllmsrights)) {
+		// 	$rightdata[] = 	array (
+		// 							'right_name' 	=> $valueroles['right_name'],
+		// 							'add' 			=> $valueroles['added'],
+		// 							'edit' 			=> $valueroles['updated'],
+		// 							'delete' 		=> $valueroles['deleted'],
+		// 							'view' 			=> $valueroles['view'],
+		// 							'report' 		=> $valueroles['reporting'],
+		// 							'type' 			=> $valueroles['right_type']
+		// 						);
+		// 	}
+		
+	$_SESSION['userroles'] = $rightdata;
+		
+	// ***************Login time when the admin login **************
+
+	//**************Store into session url  Last page visit*******************  
+		header("Location: dashboard.php");
+
+		
 	} else {
 
-//********** admin name and password dosn't much *******************
-	$errorMessage = '<span style="color: red;"><p> Invalid User Name or Password.</p></span>';
+	//********** admin name and password dosn't much *******************
+		$errorMessage = '<span style="color: red;"><p> Invalid User Name or Password.</p></span>';
 	}		
 }
 
@@ -92,6 +113,7 @@ function panelLMSALogout() {
 		unset($_SESSION['userlogininfo']['LOGINIDA_SSS']);
 		unset($_SESSION['LOGINUSERA_SSS']);
 		unset($_SESSION['LOGINFNAMEA_SSS']);
+		unset($_SESSION['userlogininfo']['LOGINAFOR']);
 		unset($_SESSION['LOGINTYPE_SSS']);
 		session_destroy();
 	}

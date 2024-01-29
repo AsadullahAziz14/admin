@@ -12,7 +12,7 @@ if(isset($_GET['deleteId'])) {
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -28,7 +28,7 @@ if(isset($_POST['submit_sub_category'])) {
         'sub_category_description'                 => cleanvars($_POST['sub_category_description'])                 ,
         'sub_category_status'                      => cleanvars($_POST['sub_category_status'])                      ,
         'id_category'                              => cleanvars($_POST['id_category'])                              ,
-        'id_added'                                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])             ,
+        'id_added'                                 => cleanvars($_SESSION['LOGINIDA_SSS'])             ,
         'date_added'                               => date('Y-m-d H:i:s')
     ];
     $queryInsert = $dblms->Insert(SMS_SUB_CATEGORY, $data);
@@ -53,12 +53,12 @@ if(isset($_POST['submit_sub_category'])) {
                                                     PHP_EOL.'sub_category_description: '.cleanvars($_POST['sub_category_description']).
                                                     PHP_EOL.'sub_category_status: '.cleanvars($_POST['sub_category_status']).
                                                     PHP_EOL.'id_category: '.cleanvars($_POST['id_category']).
-                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
+                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')
             ,'path'                             =>  end($filePath)
             ,'login_session_start_time'         => $_SESSION['login_time']
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -74,7 +74,7 @@ if(isset($_POST['edit_sub_category'])) {
         'sub_category_description'                 => cleanvars($_POST['sub_category_description'])         ,
         'sub_category_status'                      => cleanvars($_POST['sub_category_status'])              ,
         'id_category'                              => cleanvars($_POST['id_category'])                      ,
-        'id_modify'                                => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_modify'                                => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_modify'                              => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  sub_category_id  = ".cleanvars($_GET['id'])."";
@@ -91,12 +91,12 @@ if(isset($_POST['edit_sub_category'])) {
                                                     PHP_EOL.'sub_category_description: '.cleanvars($_POST['sub_category_description']).
                                                     PHP_EOL.'sub_category_status: '.cleanvars($_POST['sub_category_status']).
                                                     PHP_EOL.'id_category: '.cleanvars($_POST['id_category']).
-                                                    PHP_EOL.'id_modify: '.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).
+                                                    PHP_EOL.'id_modify: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')
             ,'path'                             =>  end($filePath)
             ,'login_session_start_time'         => $_SESSION['login_time']
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 

@@ -1,5 +1,5 @@
 <?php
-if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19'))) {
+if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19'))) {
 	echo '
    	<div class="row">
 		<div id="viewRequisitionModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -76,22 +76,9 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									<input class="form-control" type="text" name="requisition_remarks" id="requisition_remarks" readonly>
 								</div>
 							</div>
-							<div class="col-sm-61">
-								<div style="margin-top:5px;">
-									<label><b>Status</b></label>
-									<select class="form-control" name="requisition_status" id="requisition_status" readonly>
-										<option value="">Select Status</option>';
-										foreach ($status as $requisitionStatus) {
-											echo '<option value="'.$requisitionStatus['id'].'">'.$requisitionStatus['name'].'</option>';
-										}
-										echo '
-									</select>
-								</div>
-							</div>
-							<div class="col-sm-91">
+							<div class="col-sm-91" id="forward">
 								<div style="margin-top:5px;">
 									<label><b>Forward to:</b></label>
-									<input class="form-control" type="hidden" id="requisition_id" name="requisition_id" readonly>
 									<select class="form-control col-sm-91" name="forwarded_to" id="forwarded_to">
 										<option value="">Select</option>';
 										$queryAdmin = $dblms->querylms("SELECT adm_id,adm_fullname
@@ -106,13 +93,22 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 							</div>
 							<div style="clear:both;"></div>
 						</div>
-
 						<div class="modal-footer">
+							<input class="form-control" type="hidden" id="requisition_id" name="requisition_id" readonly>
 							<button type="button" class="btn btn-default" onclick="location.href=\'inventory-requisition.php\'">Close</button>
-							<input class="btn btn-primary" type="submit" value="Forward" id="forward_requisition" name="forward_requisition">
+							';
+							if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2)) {
+								echo '<input class="btn btn-primary" type="submit" value="Forward" id="forward_requisition" name="forward_requisition">';
+							}
+							if(($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9)) {
+								echo '
+									<input class="btn btn-primary" type="submit" value="Approve" id="approve_requisition" name="approve_requisition">
+									<input class="btn btn-warning" type="submit" value="Reject" id="reject_requisition" name="reject_requisition">
+								';
+							}
+							echo '
 						</div>
 					</div>
-					
 				</form>
 			</div>
 		</div>
@@ -140,8 +136,11 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 				var id_requester 					= $(this).attr("data-id-requester");
 				var forwarded_to 					= $(this).attr("data-forwarded-to");
 				var date_forwarded 					= $(this).attr("data-date-forwarded");
+				if(forwarded_to !== "0") {
+					$("#forward").remove();
+					$("#forward_requisition").hide();
+				}
 				
-
 				// set modal input values dynamically
 				$("#requisition_id")            .val(requisition_id);
 				$("#requisition_code")         	.val(requisition_code);

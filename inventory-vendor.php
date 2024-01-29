@@ -52,7 +52,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<form class="navbar-form navbar-left form-small" action="" method="get">
 									<div class="form-group">
-										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
+										<input type="text" class="form-control" name="srch" placeholder="Search by Vendor Name" style="width:250px;">
 									</div>
 
 									<button type="submit" class="btn btn-primary">Search</button>

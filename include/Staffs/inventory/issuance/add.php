@@ -11,7 +11,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 					</div>
 
 					<div class="modal-body">
-
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="issuance_to" class="req"><b>Issuance To</b></label>
@@ -30,7 +29,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
-							<label for="issuance_status" class="req"><b>Status</b></label>
+								<label for="issuance_status" class="req"><b>Status</b></label>
 								<select id="issuance_status" class="form-control" name="issuance_status" required>
 									<option value="">Select Status</option>';
 									foreach ($status as $adm_status) {
@@ -185,8 +184,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 				}
 			};
 		}
-
-	</script>';
+	</script>
+	<script src="js/select2/jquery.select2.js"></script>';
 }
-
-?>

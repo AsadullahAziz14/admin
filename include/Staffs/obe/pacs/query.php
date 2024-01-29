@@ -24,7 +24,7 @@ if(isset($_POST['submit_pac'])) {
         'timing'           => TIMING                                                ,   
         'academic_session' => ACADEMIC_SESSION                                      ,
         'id_campus'        => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])   ,
-        'id_added'         => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+        'id_added'         => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
         'date_added'       => date('Y-m-d H:i:s')                
     ];
     $queryInsert = $dblms->Insert(OBE_PACS, $pacData);
@@ -45,7 +45,7 @@ if(isset($_POST['edit_pac'])) {
         'pac_statement'    => cleanvars($_POST['pac_statement'])                ,
         'pac_marks'        => 0                                                 ,
         'pac_weightage'    => cleanvars($_POST['pac_weightage'])                ,
-        'id_modify'        => cleanvars($_SESSION['userlogininfo']['LOGINIDA']) ,
+        'id_modify'        => cleanvars($_SESSION['LOGINIDA_SSS']) ,
         'date_modify'      => date('Y-m-d H:i:s')              
     ];
     $conditions = "WHERE  pac_id  = ".cleanvars($_GET['id'])."";

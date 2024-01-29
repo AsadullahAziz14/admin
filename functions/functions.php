@@ -48,19 +48,36 @@ function get_couponstatus($id) {
 }
 
 //--------------- Admins Rights ----------
+// $admtypes = array (
+// 					array('id'=>1, 'name'=>'Super Admin')	,
+// 					array('id'=>2, 'name'=>'Accountant')	,
+// 					array('id'=>3, 'name'=>'Simple User')
+// );
 $admtypes = array (
-					array('id'=>1, 'name'=>'Super Admin')	,
-					array('id'=>2, 'name'=>'Accountant')	,
-					array('id'=>3, 'name'=>'Simple User')
-				   );
+					array('id'=>1, 'name'=>'Super Administrator')	,
+					array('id'=>2, 'name'=>'Campus Administrator')	,
+					array('id'=>3, 'name'=>'Librarian')				,
+					array('id'=>4, 'name'=>'Hostel Warden')			,
+					array('id'=>5, 'name'=>'Finance Director')		,
+					array('id'=>6, 'name'=>'Accountant')			,
+					array('id'=>7, 'name'=>'Clerk')					,
+					array('id'=>8, 'name'=>'Dean')					,
+					array('id'=>9, 'name'=>'HOD')
+);
 
 function get_admtypes($id) {
-	$listadmrights = array (
-							'1'	=> 'Super Admin'			,
-							'2'	=> 'Accountant'				,
-							'3'	=> 'Simple User'
+	$listadmtypes = array (
+							'1'	=> 'Super Administrator'		,
+							'2'	=> 'Campus Administrator'		,
+							'3'	=> 'Librarian'					,
+							'4'	=> 'Hostel Warden'				,
+							'5'	=> 'Finance Director'			,
+							'6'	=> 'Accountant'					,
+							'7'	=> 'Clerk'						,
+							'8'	=> 'Dean'						,
+							'9'	=> 'HOD'
 							);
-	return $listadmrights[$id];
+	return $listadmtypes[$id];
 }
 
 //--------------- Status Yes No ----------
@@ -288,11 +305,11 @@ $SMS_STATUS = array (
 	array('id'=>'2', 'name'=>'Forwarded')		,
 	array('id'=>'3', 'name'=>'Approved')		,
 	array('id'=>'4', 'name'=>'Rejected')		,
-	array('id'=>'5', 'name'=>'Ordered')			,	// PO of demand is ordered
-	array('id'=>'6', 'name'=>'In-Process')		,	// PO of demand is on-receiving
-	array('id'=>'7', 'name'=>'Completed')		,   // PO of demand is Completed
-	array('id'=>'8', 'name'=>'Requested')		,	// Demand is requested
-	array('id'=>'9', 'name'=>'Issued')			,	// Requisition is issued is issued
+	array('id'=>'5', 'name'=>'Ordered')			,	// demand is ordered in PO / PO is ordered
+	array('id'=>'6', 'name'=>'In-Process')		,	// PO is on-receiving 
+	array('id'=>'7', 'name'=>'Completed')		,   // PO is Completed
+	array('id'=>'8', 'name'=>'Requested')		,	// Demand is requested in Requisition
+	array('id'=>'9', 'name'=>'Issued')			,	// Requisition is issued
 	array('id'=>'10', 'name'=>'Full-Filled')	,	// Demand/Request is Full-Filled
 );
 function get_sms_status($id) {

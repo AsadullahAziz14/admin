@@ -96,19 +96,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 							</div>
 						</div>
 
-						<div class="col-sm-61">
-							<div style="margin-top:5px;">
-							<label for="po_status" class="req"><b>Status</b></label>
-								<select id="po_status" class="form-control" name="po_status" required>
-									<option value="">Select Status</option>';
-									foreach ($status as $poStatus) {
-										echo '<option value="'. $poStatus['id'].'">'.$poStatus['name'].'</option>';
-									}
-									echo '
-								</select>
-							</div>
-						</div>
-
 						<div class="col-sm-91">
 							<div style="margin-top:5px;">
 								<label for="po_remarks" class="req">Remarks</label>
@@ -252,7 +239,6 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 			};
 		}
 	</script>
-
 	<script src="js/select2/jquery.select2.js"></script>';
 }
 

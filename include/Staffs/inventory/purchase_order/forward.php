@@ -1,5 +1,5 @@
 <?php
-if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19'))) {
+if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19'))) {
 	echo '
    	<div class="row">
 		<div id="viewPOModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -15,18 +15,6 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 								<div style="margin-top:5px;">
 									<label for="po_code">PO Code</label>
 									<input class="form-control" type="text" name="po_code" id="po_code" readonly>
-								</div>
-							</div>
-							<div class="col-sm-61">
-								<div style="margin-top:5px;">
-									<label for="po_quantity">PO Quantity</label>
-									<input class="form-control" type="text" name="po_quantity" id="po_quantity" readonly>
-								</div>
-							</div>
-							<div class="col-sm-61">
-								<div style="margin-top:5px;">
-									<label for="po_amount">PO Amount</label>
-									<input class="form-control" type="text" name="po_amount" id="po_amount" readonly>
 								</div>
 							</div>
 							<div class="col-sm-61">
@@ -118,41 +106,18 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 
 							<div class="col-sm-61">
 								<div style="margin-top:5px;">
-									<label for="date_ordered"> Ordered Date </label>
-									<input class="form-control" type="date" name="date_ordered" id="date_ordered" readonly>
-								</div>
-							</div>
-
-							<div class="col-sm-61">
-								<div style="margin-top:5px;">
-									<label><b>Status</b></label>
-									<select class="form-control" name="po_status" id="po_status" readonly>
-										<option value="">Select Status</option>';
-										foreach ($status as $poStatus) {
-											echo '<option value="'.$poStatus['id'].'">'.$poStatus['name'].'</option>';
-										}
-										echo '
-									</select>
-								</div>
-							</div>
-
-							<div class="col-sm-61">
-								<div style="margin-top:5px;">
 									<label for="po_remarks">Remarks</label>
 									<input class="form-control" type="text" name="po_remarks" id="po_remarks" readonly>
 								</div>
 							</div>
 
-							<div class="col-sm-91">
+							<div class="col-sm-61" id="forward">
 								<div style="margin-top:5px;">
 									<label><b>Forward to:</b></label>
-									<input class="form-control" type="hidden" id="po_id" name="po_id" readonly>
 									<select class="form-control col-sm-91" name="forwarded_to" id="forwarded_to">
 										<option value="">Select</option>';
-										$queryAdmin = $dblms->querylms("SELECT adm_id,adm_fullname
+										$queryAdmin = $dblms->querylms("SELECT adm_id, adm_fullname
 																		FROM ".ADMINS."
-																		WHERE adm_id IN (1,2,3,4,5)
-																		$sql2
 																	");
 										while($valueAdmin = mysqli_fetch_array($queryAdmin)) {
 											echo '<option value="'.$valueAdmin['adm_id'].'">'.$valueAdmin['adm_fullname'].'</option> ';
@@ -164,11 +129,21 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 							<div style="clear:both;"></div>
 						</div>
 						<div class="modal-footer">
+							<input class="form-control" type="hidden" id="po_id" name="po_id" readonly>
 							<button type="button" class="btn btn-default" onclick="location.href=\'inventory-purchase_order.php\'">Close</button>
-							<input class="btn btn-primary" type="submit" value="Forward" id="forward_po" name="forward_po">
+							';
+							if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2)) {
+								echo '<input class="btn btn-primary" type="submit" value="Forward" id="forward_po" name="forward_po">';
+							}
+							if(($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9)) {
+								echo '
+									<input class="btn btn-primary" type="submit" value="Approve" id="approve_po" name="approve_po">
+									<input class="btn btn-warning" type="submit" value="Reject" id="reject_po" name="reject_po">
+								';
+							}
+							echo '
 						</div>
 					</div>
-					
 				</form>
 			</div>
 		</div>
@@ -201,8 +176,10 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 				var forwarded_to 			= $(this).attr("data-forwarded-by");
 				var date_forwarded 			= $(this).attr("data-date-forwarded");
 				var id_vendor 				= $(this).attr("data-id-vendor");
-
-				console.log(date_ordered);
+				if(forwarded_to !== "0") {
+					$("#forward").remove();
+					$("#forward_po").hide();
+				}
 				// set modal input values dynamically
 				$("#po_id")              	.val(po_id);
 				$("#po_code")         		.val(po_code);

@@ -49,14 +49,19 @@ if(isset($_POST['submit_issuance'])) {
     $queryUpdate = $dblms->Update(SMS_ISSUANCE, $data, $conditions);
 
     if(isset($_POST['id_item'])) {
-        foreach (cleanvars($_POST['id_item']) as $id_requisition => $id_itemArray) {
+        foreach (cleanvars($_POST['id_item']) as $requisition_code => $id_itemArray) {
+            $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+                                                    FROM ".SMS_REQUISITION."
+                                                    Where requisition_code = '".$requisition_code."'
+                                                ");
+            $valueRequisition = mysqli_fetch_array($queryRequisition);
             foreach ($id_itemArray as $id_item => $itemTitle) {
                 $data = [
-                    'id_issuance'                   => $id_issuance                                      ,
-                    'id_requisition'                => $id_requisition                                   ,
-                    'id_item'                       => $id_item                                          ,
-                    'quantity_issued'               => $_POST['quantity_issued'][$id_requisition][$id_item]  ,
-                    'issuance_barcode'              => $isuance_code.$id_requisition.$id_item
+                    'id_issuance'                   => $id_issuance                                                                 ,
+                    'id_requisition'                => $valueRequisition['requisition_id']                                          ,
+                    'id_item'                       => $id_item                                                                     ,
+                    'quantity_issued'               => $_POST['quantity_issued'][$requisition_code][$id_item]     ,
+                    'issuance_barcode'              => $isuance_code.$valueRequisition['requisition_id'].$id_item
                 ];
                 $queryInsert = $dblms->Insert(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data);
             }
@@ -66,12 +71,9 @@ if(isset($_POST['submit_issuance'])) {
             // echo $d->getBarcodeHTML('9780691147727', 'EAN13');
         }
     }
-    
-    if($queryInsert) {
-        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
-        header("Location: inventory-issuance.php", true, 301);
-        exit(); 
-    }
+    // $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
+    // header("Location: inventory-issuance.php", true, 301);
+    // exit(); 
 }
 
 if(isset($_POST['update_issuance'])) {
@@ -90,31 +92,35 @@ if(isset($_POST['update_issuance'])) {
     if($queryUpdate) {
         foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {
             if($key == "u") {
-                foreach ($id_itemArray as $id_requisition => $id_itemArray) {
+                foreach ($id_itemArray as $requisition_code => $id_itemArray) {
+                    $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+                                                            FROM ".SMS_REQUISITION."
+                                                            Where requisition_code = '".$requisition_code."'
+                                                        ");
+                    $valueRequisition = mysqli_fetch_array($queryRequisition);
                     foreach ($id_itemArray as $id_item => $item_title) {
                         $data = [
-                            'quantity_issued'      => $_POST['quantity_issued'][$id_requisition][$id_item]
+                            'quantity_issued'      => $_POST['quantity_issued'][$requisition_code][$id_item]
                         ];
-                        $conditions = "Where id_issuance = ".$issuance_id." AND id_requisition = ".$id_requisition." AND id_item = ".$id_item."";
+                        $conditions = "Where id_issuance = ".$issuance_id." AND id_requisition = ".$valueRequisition['requisition_id']." AND id_item = ".$id_item."";
                         $queryUpdate = $dblms->Update(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data, $conditions);
                     }   
                 }
             } else {
-                $id_requisition = $key;
+                $valueRequisition['requisition_id'] = $key;
                 foreach ($id_itemArray as $id_item => $itemTitle) {
                     $data = [
                         'id_issuance'               => $issuance_id                                             ,
-                        'id_requisition'            => $id_requisition                                          ,
+                        'id_requisition'            => $valueRequisition['requisition_id']                                          ,
                         'id_item'                   => $id_item                                                 ,
-                        'quantity_issued'           => $_POST['quantity_issued'][$id_requisition][$id_item]     ,
+                        'quantity_issued'           => $_POST['quantity_issued'][$requisition_code][$id_item]     ,
                     ];
                     $queryInsert = $dblms->Insert(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data);   
                 }
             } 
         }
-
-        $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
-        header("Location: inventory-issuance.php", true, 301);
-        exit();
     }
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
+    header("Location: inventory-issuance.php", true, 301);
+    exit();
 }

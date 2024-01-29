@@ -56,7 +56,7 @@ if(isset($_POST['submit_domain_level']))
             'domain_level_name'         => cleanvars($_POST['domain_level_name'])           ,
             'domain_level_code'         => $domain_level_code                               ,
             'id_campus'                 => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])                                        ,
-            'id_added'                  => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                          ,
+            'id_added'                  => cleanvars($_SESSION['LOGINIDA_SSS'])                          ,
             'date_added'                => date('Y-m-d H:i:s')
         ];
         $queryInsert = $dblms->Insert(OBE_DOMAINS , $domainLevelData);
@@ -77,7 +77,7 @@ if(isset($_POST['submit_changes']))
         'domain_level_status'       => cleanvars($_POST['domain_level_status_edit'])        ,
         'domain_name_code'          => cleanvars($_POST['domain_name_code_edit'])           ,
         'domain_level_name'         => cleanvars($_POST['domain_level_name_edit'])          ,
-        'id_modify'                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])                              ,
+        'id_modify'                 => cleanvars($_SESSION['LOGINIDA_SSS'])                              ,
         'date_modify'               => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  domain_level_id  = ".cleanvars($_POST['domain_level_id_edit'])."";

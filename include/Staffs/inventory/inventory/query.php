@@ -14,7 +14,7 @@ if(isset($_GET['deleteId'])) {
             'path'                             =>  end($filePath)                                               ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']   ,
-            'id_user'                          => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
@@ -31,7 +31,7 @@ if(isset($_POST['submit_inventory'])) {
         'inventory_reorder_point'       => cleanvars($_POST['inventory_reorder_point'])         ,
         'inventory_date'                => date('Y-m-d H:i:s')                                  ,
         'id_item'                       => cleanvars($_POST['id_item'])                         ,
-        'id_added'                      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+        'id_added'                      => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
         'date_added'                    => date('Y-m-d H:i:s')
     ];
     $queryInsert = $dblms->Insert(SMS_INVENTORY, $data);
@@ -59,7 +59,7 @@ if(isset($_POST['update_inventory'])) {
         'inventory_reorder_point'        => cleanvars($_POST['inventory_reorder_point'])        ,
         'inventory_status'                      => cleanvars($_POST['inventory_status'])                      ,
         'inventory_description'                 => cleanvars($_POST['inventory_description'])                 ,
-        'id_modify'                      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])   ,
+        'id_modify'                      => cleanvars($_SESSION['LOGINIDA_SSS'])   ,
         'date_modify'                    => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  inventory_id  = ".$inventory_id."";

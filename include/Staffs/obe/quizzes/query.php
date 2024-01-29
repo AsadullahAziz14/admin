@@ -67,7 +67,7 @@ if (isset($_POST['submit_quiz'])) {
                 'timing'                => TIMING                                                   ,
                 'academic_session'      => ACADEMIC_SESSION                                         ,
                 'id_campus'             => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])      ,
-                'id_added'              => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])        ,
+                'id_added'              => cleanvars($_SESSION['LOGINIDA_SSS'])        ,
                 'date_added'            => date('Y-m-d H:i:s')
             ];
             $queryInsertQues = $dblms->Insert(OBE_QUESTIONS, $quesData);
@@ -110,7 +110,7 @@ if (isset($_POST['submit_quiz'])) {
         'timing'                => TIMING                                               ,
         'academic_session'      => 'Spring 2023'                                        ,
         'id_campus'             => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])  ,
-        'id_added'              => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+        'id_added'              => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
         'date_added'            => date('Y-m-d H:i:s')
     ];
     $queryInsertQuiz = $dblms->Insert(OBE_QUIZZES, $quizData);
@@ -153,7 +153,7 @@ if (isset($_POST['save_changes'])) {
                 'timing'                            => TIMING                                               ,
                 'academic_session'                  => ACADEMIC_SESSION                                     ,
                 'id_campus'                         => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])  ,
-                'id_modify'                         => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+                'id_modify'                         => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
                 'date_modify'                       => date('Y-m-d H:i:s')
             ];
             $conditions = "WHERE ques_id  = ".$val[0];
@@ -180,7 +180,7 @@ if (isset($_POST['save_changes'])) {
                 } else {
                     $update_quesData = [
                         'ques_statement'               => cleanvars($_POST['ques_statement'][$val[0]])          ,
-                        'id_modify'                    => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])     ,
+                        'id_modify'                    => cleanvars($_SESSION['LOGINIDA_SSS'])     ,
                         'date_modify'                  => date('Y-m-d H:i:s')
                     ];
                     $conditions = "WHERE ques_id  = ".$val[0];
@@ -217,7 +217,7 @@ if (isset($_POST['save_changes'])) {
                 'timing'                        => TIMING                                               ,
                 'academic_session'              => ACADEMIC_SESSION                                     ,
                 'id_campus'                     => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])  ,
-                'id_added'                      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+                'id_added'                      => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
                 'date_added'                    => date('Y-m-d H:i:s')
             ];
             $queryInsertQues = $dblms->Insert(OBE_QUESTIONS, $quesData);
@@ -252,7 +252,7 @@ if (isset($_POST['save_changes'])) {
         'timing'                        => TIMING                                               ,
         'academic_session'              => ACADEMIC_SESSION                                     ,
         'id_campus'                     => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])  ,
-        'id_added'                      => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+        'id_added'                      => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
         'date_added'                    => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE quiz_id  = ".cleanvars($_GET['id'])."";
@@ -282,7 +282,7 @@ if (isset($_POST['submit_result'])) {
         'timing'                    => TIMING                                                       ,
         'academic_session'          => ACADEMIC_SESSION                                             ,
         'id_campus'                 => cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])          ,
-        'id_added'                  => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])            ,
+        'id_added'                  => cleanvars($_SESSION['LOGINIDA_SSS'])            ,
         'date_added'                => date('Y-m-d H:i:s')
     ];
     $queryInsertQues = $dblms->Insert(OBE_RESULTS, $resultData);
@@ -307,7 +307,7 @@ if (isset($_POST['edit_result'])) {
     $resultData = [
         'result_status'             => cleanvars($_POST['result_status'])                   ,
         'result_number'             => 1                                                    ,
-        'id_modify'                 => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])    ,
+        'id_modify'                 => cleanvars($_SESSION['LOGINIDA_SSS'])    ,
         'date_modify'               => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE result_id  = ".cleanvars($_POST['result_id'])."";
