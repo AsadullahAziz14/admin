@@ -51,6 +51,9 @@ if(isset($_POST['submit_issuance'])) {
         $queryUpdate = $dblms->Update(SMS_ISSUANCE, $data, $conditions);
 
         if(isset($_POST['id_item'])) {
+            $items = cleanvars($_POST['item']);
+            $issued_items = implode(',', $items);
+            
             foreach (cleanvars($_POST['id_item']) as $requisition_code => $id_itemArray) {
                 $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
                                                         FROM ".SMS_REQUISITION."
@@ -73,6 +76,28 @@ if(isset($_POST['submit_issuance'])) {
                 // echo $d->getBarcodeHTML('9780691147727', 'EAN13');
             }
         }
+
+        // -------------Logs------------------------
+        $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
+        $data = [
+            'log_date'                          => date('Y-m-d H:i:s')
+            ,'action'                           => "Create"
+            ,'affected_table'                   => SMS_ISSUANCE.', '.SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION
+            ,'action_detail'                    => 'issuance_id: '.$issuance_id.
+                                                    PHP_EOL.'issuance_code: '.'ISSUE_NO_'.str_pad($issuance_id, 5, '0', STR_PAD_LEFT).
+                                                    PHP_EOL.'issuance_to: '.cleanvars($_POST['issuance_to']).
+                                                    PHP_EOL.'issuance_by: '.cleanvars($_POST['issuance_by']).
+                                                    PHP_EOL.'issuance_remarks: '.cleanvars($_POST['issuance_remarks']).
+                                                    PHP_EOL.'issued_items: '.$issued_items.
+                                                    PHP_EOL.'issuance_date: '.date('Y-m-d H:i:s').
+                                                    PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
+                                                    PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  
+            ,'path'                              =>  end($filePath)
+            ,'login_session_start_time'          => $_SESSION['login_time']
+            ,'ip_address'                        => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
+            ,'id_user'                           => cleanvars($_SESSION['LOGINIDA_SSS'])
+        ];
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
     }
     $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
     header("Location: inventory-issuance.php", true, 301);
@@ -94,7 +119,7 @@ if(isset($_POST['update_issuance'])) {
 
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
-            echo 'asad';
+
             if(isset($_POST['deleted_item_ids'])) {
                 $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." WHERE id_issuance = ".$issuance_id." && id_item IN(".$_POST['deleted_item_ids'].")");
             }
@@ -116,7 +141,6 @@ if(isset($_POST['update_issuance'])) {
                             ];
                             $conditions = "Where id_issuance = ".$issuance_id." AND id_requisition = ".$valueRequisition['requisition_id']." AND id_item = ".$id_item."";
                             $queryUpdate = $dblms->Update(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data, $conditions);
-
                             $issued_items[] = $id_item;
                         }   
                     }
@@ -135,9 +159,28 @@ if(isset($_POST['update_issuance'])) {
                     }
                 } 
             }
-        }  
+        } 
+        
+        // -------------Logs------------------------
+        $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
+        $data = [
+            'log_date'                         => date('Y-m-d H:i:s')                                                           ,
+            'action'                           => "Update"                                                                      ,
+            ,'affected_table'                   => SMS_ISSUANCE.', '.SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION
+            ,'action_detail'                    => 'issuance_id: '.$issuance_id.
+                                                    PHP_EOL.'issuance_to: '.cleanvars($_POST['issuance_to']).
+                                                    PHP_EOL.'issuance_remarks: '.cleanvars($_POST['issuance_remarks']).
+                                                    PHP_EOL.'issued_items: '.$issued_items.
+                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
+                                                    PHP_EOL.'date_modify: '.date('Y-m-d H:i:s'),
+            'path'                             =>  end($filePath)                                                               ,
+            'login_session_start_time'         => $_SESSION['login_time']                                                       ,
+            'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
+            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
+        ];
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
     }
-    // $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
-    // header("Location: inventory-issuance.php", true, 301);
-    // exit();
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
+    header("Location: inventory-issuance.php", true, 301);
+    exit();
 }

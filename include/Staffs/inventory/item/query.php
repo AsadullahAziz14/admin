@@ -4,12 +4,14 @@
 if(isset($_GET['deleteId'])) { 
     $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ITEM." WHERE item_id = '".cleanvars($_GET['deleteId'])."'");
 
-    if($queryDelete) { 
+    if($queryDelete) {
+
+        //-------------------------- Logs -------------------------------------------
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                         => date('Y-m-d H:i:s')                                           ,
             'action'                           => "Delete"                                                      ,
-            'affected_table'                   => SMS_ITEM                                                     ,
+            'affected_table'                   => SMS_ITEM                                                      ,
             'action_detail'                    => 'item_id: '.cleanvars($_GET['deleteId'])                      ,
             'path'                             => end($filePath)                                                ,
             'login_session_start_time'         => $_SESSION['login_time']                                       ,
@@ -65,11 +67,12 @@ if(isset($_POST['submit_item'])) {
             }   
         }
 
+        // ------------------ Logs ---------------------------
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                  => date('Y-m-d H:i:s')                                                                  ,
             'action'                    => "Create"                                                                             ,
-            'affected_table'            => SMS_CATEGORY                                                                       ,
+            'affected_table'            => SMS_ITEM                                                                       ,
             'action_detail'             =>  'item_id: '.cleanvars($idItem).
                                             PHP_EOL.'item_code: '.'ITEM'.str_pad(cleanvars($idItem), 5, '0', STR_PAD_LEFT).
                                             PHP_EOL.'item_title: '.cleanvars($_POST['item_title']).
@@ -91,11 +94,11 @@ if(isset($_POST['submit_item'])) {
             'id_user'                   => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
-        
-        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
-        header("Location: inventory-item.php", true, 301);
-        exit();
-	} 
+	}
+
+    $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
+    header("Location: inventory-item.php", true, 301);
+    exit();
 }
 
 if(isset($_POST['edit_item'])) { 
@@ -138,13 +141,13 @@ if(isset($_POST['edit_item'])) {
             }                
         }
 
+        //------------------- Logs --------------------
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
-
         $data = [
-            'log_date'                         => date('Y-m-d H:i:s')                                                           ,
-            'action'                           => "Update"                                                                      ,
-            'affected_table'                   => SMS_CATEGORY                                                                ,
-            'action_detail'                    =>  'item_id: '.cleanvars($idItem).
+            'log_date'                          => date('Y-m-d H:i:s')                                                           ,
+            'action'                            => "Update"                                                                      ,
+            'affected_table'                    => SMS_ITEM                                                                       ,
+            'action_detail'                     =>  'item_id: '.cleanvars($idItem).
                                                     PHP_EOL.'item_title: '.cleanvars($_POST['item_title']).
                                                     PHP_EOL.'item_description: '.cleanvars($_POST['item_description']).
                                                     PHP_EOL.'item_article_number: '.cleanvars($_POST['item_article_number']).
@@ -158,15 +161,15 @@ if(isset($_POST['edit_item'])) {
                                                     PHP_EOL.'id_sub_category: '.cleanvars($_POST['id_sub_category']).
                                                     PHP_EOL.'id_modify: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')                                 ,
-                'path'                             =>  end($filePath)                                                           ,
-                'login_session_start_time'         => $_SESSION['login_time']                                                   ,
-                'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']               ,
-                'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
+                'path'                          =>  end($filePath)                                                           ,
+                'login_session_start_time'      => $_SESSION['login_time']                                                   ,
+                'ip_address'                    => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']               ,
+                'id_user'                       => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
-
-        $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
-        header("Location: inventory-item.php", true, 301);
-        exit();
     }
+    
+    $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
+    header("Location: inventory-item.php", true, 301);
+    exit();
 }

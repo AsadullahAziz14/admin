@@ -81,6 +81,7 @@ if(isset($_POST['submit_demand'])) {
                                                     PHP_EOL.'demand_type: '.cleanvars($_POST['demand_type']).
                                                     PHP_EOL.'demanded_items: '.$demanded_items.
                                                     PHP_EOL.'demand_date: '.date('Y-m-d H:i:s').
+                                                    PHP_EOL.'demand_status: '.'1'.
                                                     PHP_EOL.'demand_due_date: '.$min_demand_due_date.
                                                     PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  
@@ -156,7 +157,6 @@ if(isset($_POST['update_demand'])) {
         $conditions = "WHERE demand_id  = ".$demand_id."";
         $queryUpdate = $dblms->Update(SMS_DEMAND, $data, $conditions);
 
-
         // -------------Logs------------------------
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
@@ -173,23 +173,6 @@ if(isset($_POST['update_demand'])) {
             'login_session_start_time'         => $_SESSION['login_time']                                                       ,
             'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
             'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
-        ];
-        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
-
-        $data = [
-            'log_date'                          => date('Y-m-d H:i:s')
-            ,'action'                           => "Update"
-            ,'affected_table'                   => SMS_DEMAND_ITEM_JUNCTION
-            ,'action_detail'                    =>  'demand_id: '.$demand_id.
-                                                    PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item']))).
-                                                    PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['quantity_demanded']))).
-                                                    PHP_EOL.implode(',', array_map(function($item) { return implode(',', $item); }, cleanvars($_POST['item_due_date']))).
-                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
-                                                    PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')
-            ,'path'                             =>  end($filePath)
-            ,'login_session_start_time'         => $_SESSION['login_time']
-            ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
         $queryInsert = $dblms->Insert(SMS_LOGS, $data);
 
