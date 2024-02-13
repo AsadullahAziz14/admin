@@ -42,9 +42,14 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                                        $sql2
                                        ORDER BY kpi_id DESC LIMIT ".($page-1)*$Limit .",$Limit
                                  ");
-      include ("include/page_title.php"); 
-      echo'    
-      <div class="table-responsive" style="overflow: auto;">
+      require_once("include/page_title.php"); 
+      echo'
+         <div style=" float:right; text-align:right; font-weight:700; color:blue; margin-right:10px;"> 
+            <form class="navbar-form navbar-left form-small" action="#" method="POST">
+               Total : ('.number_format($count).')
+            </form>
+         </div>
+         <div class="table-responsive" style="overflow: auto;">
          <table class="footable table table-bordered table-hover table-with-avatar">
             <thead>
                <tr>

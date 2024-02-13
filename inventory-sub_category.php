@@ -54,6 +54,15 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									<div class="form-group">
 										<input type="text" class="form-control" name="srch" placeholder="Search by Sub-Category Name" style="width:250px;">
 									</div>
+									<div class="form-group">
+										<select id="list-status" class="form-control" placeholder="Status" name="status_srch" style="width:250px;">
+											<option></option>';
+											foreach($status as $valueStatus) { 
+												echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+											}
+										echo '
+										</select>
+									</div>
 
 									<button type="submit" class="btn btn-primary">Search</button>
 									<a href="inventory-sub_category.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';

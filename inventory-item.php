@@ -54,6 +54,15 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 								<div class="form-group">
 									<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
 								</div>
+								<div class="form-group">
+									<select id="list-status" class="form-control" placeholder="Status" name="status_srch" style="width:250px;">
+										<option></option>';
+										foreach($status as $valueStatus) { 
+											echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+										}
+									echo '
+									</select>
+								</div>
 
 								<button type="submit" class="btn btn-primary">Search</button>
 								<a href="inventory-item.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
@@ -165,26 +174,26 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<script type="text/javascript" src="js/custom/custom.js"></script>
 	<script type="text/javascript" src="js/custom/custom.general.js"></script>
 	<script type="">
-		function selectSubCategory() { 
-			var selectedValue = document.getElementById("id_category").value;
-			var ajaxReq = new XMLHttpRequest();
-			var method = "GET";
-			var url = "include/ajax/inventory/getSubCategory.php?selectedValue=" + selectedValue;
-			var asynchronous = true;
+		// function selectSubCategory() { 
+		// 	var selectedValue = document.getElementById("id_category").value;
+		// 	var ajaxReq = new XMLHttpRequest();
+		// 	var method = "GET";
+		// 	var url = "include/ajax/getSubCategory.php?selectedValue=" + selectedValue;
+		// 	var asynchronous = true;
 
-			ajaxReq.open(method, url, asynchronous);
-			ajaxReq.send();
+		// 	ajaxReq.open(method, url, asynchronous);
+		// 	ajaxReq.send();
 
-			ajaxReq.onreadystatechange = function() {
-				if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
-					const options = ajaxReq.responseText;
-					var id_sub_category = document.getElementById("id_sub_category");
+		// 	ajaxReq.onreadystatechange = function() {
+		// 		if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
+		// 			const options = ajaxReq.responseText;
+		// 			var id_sub_category = document.getElementById("id_sub_category");
 					
-					id_sub_category.innerHTML = options;
-					console.log(options);
-				}
-			};
-		}
+		// 			id_sub_category.innerHTML = options;
+		// 			console.log(options);
+		// 		}
+		// 	};
+		// }
 	</script>
 	
 	</body>

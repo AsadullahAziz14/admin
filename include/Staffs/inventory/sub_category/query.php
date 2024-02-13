@@ -28,7 +28,7 @@ if(isset($_POST['submit_sub_category'])) {
         'sub_category_description'                 => cleanvars($_POST['sub_category_description'])                 ,
         'sub_category_status'                      => cleanvars($_POST['sub_category_status'])                      ,
         'id_category'                              => cleanvars($_POST['id_category'])                              ,
-        'id_added'                                 => cleanvars($_SESSION['LOGINIDA_SSS'])             ,
+        'id_added'                                 => cleanvars($_SESSION['LOGINIDA_SSS'])                          ,
         'date_added'                               => date('Y-m-d H:i:s')
     ];
     $queryInsert = $dblms->Insert(SMS_SUB_CATEGORY, $data);
@@ -42,6 +42,7 @@ if(isset($_POST['submit_sub_category'])) {
         $conditions = "WHERE sub_category_id  = ".cleanvars($latest_id)."";
         $queryUpdate = $dblms->Update(SMS_SUB_CATEGORY, $data, $conditions);
 
+        //---------------Logs------------------------
         $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
         $data = [
             'log_date'                          => date('Y-m-d H:i:s')
@@ -60,12 +61,11 @@ if(isset($_POST['submit_sub_category'])) {
             ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
         ];
-        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
-
-        $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
-        header("Location: inventory-sub_category.php", true, 301);
-        exit(); 
+        $queryInsert = $dblms->Insert(SMS_LOGS, $data); 
     }
+    $_SESSION['msg']['status'] = '<div class="alert-box success"><span>Success: </span>Record has been added successfully.</div>';
+    header("Location: inventory-sub_category.php", true, 301);
+    exit();
 }
 
 if(isset($_POST['edit_sub_category'])) {    

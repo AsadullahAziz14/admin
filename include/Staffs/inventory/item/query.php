@@ -37,7 +37,7 @@ if(isset($_POST['submit_item'])) {
         'item_status'                      => cleanvars($_POST['item_status'])                          ,
         'id_category'                      => cleanvars($_POST['id_category'])                          ,
         'id_sub_category'                  => cleanvars($_POST['id_sub_category'])                      ,
-        'id_added'                         => cleanvars($_SESSION['LOGINIDA_SSS'])         ,
+        'id_added'                         => cleanvars($_SESSION['LOGINIDA_SSS'])                      ,
         'date_added'                       => date('Y-m-d H:i:s')          
     ];
     $queryInsert = $dblms->Insert(SMS_ITEM, $data);

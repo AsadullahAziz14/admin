@@ -17,7 +17,6 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {
-	
 	require_once("include/Staffs/inventory/demand/query.php");
 	require_once("include/header.php");
 
@@ -33,7 +32,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		$sql2 		.= " AND (demand_code LIKE '%".$srch."%')"; 
 		$sqlstring	.= "&srch=".$srch."";
 	}
-    if(($status_srch)) { 
+	if(($status_srch)) { 
 		$sql2 		.= " AND demand_status = '".$status_srch."'"; 
 		$sqlstring	.= "&status_srch=".$status_srch."";
 	}
@@ -58,7 +57,15 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									<div class="form-group">
 										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
 									</div>
-
+									<div class="form-group">
+										<select id="list-status" class="form-control" placeholder="Status" name="status_srch" style="width:250px;">
+											<option></option>';
+											foreach($SMS_STATUS as $valueStatus) { 
+												echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+											}
+										echo '
+										</select>
+									</div>
 									<button type="submit" class="btn btn-primary">Search</button>
 									<a href="inventory-demand.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
 									if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '191', 'add' => '1'))) { 
@@ -171,7 +178,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		<script type="text/javascript" src="js/custom/custom.js"></script>
 		<script type="text/javascript" src="js/custom/custom.general.js"></script>
 	</body>
-</html>';
+	</html>';
 }
 
 

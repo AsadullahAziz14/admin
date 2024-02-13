@@ -13,20 +13,25 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 	if($page == 0) { $page = 1; }						//if no page var is given, default to 1.
 	$prev 		= $page - 1;							//previous page is page - 1
 	$next 		= $page + 1;							//next page is page + 1
-	$lastpage	= ceil($count/$Limit);					//lastpage is = total pages / items per page, rounded up.
+	$lastpage	= ceil($count/$Limit);				//lastpage is = total pages / items per page, rounded up.
 	$lpm1 		= $lastpage - 1;
  
-	if(mysqli_num_rows($queryRequisition) > 0) {  
-		$queryRequistion  = $dblms->querylms("SELECT requisition_id, requisition_status, requisition_code, requisition_date,
+	if(mysqli_num_rows($queryRequisition) > 0) {
+		require_once("include/page_title.php"); 
+		$queryRequisition  = $dblms->querylms("SELECT requisition_id, requisition_status, requisition_code, requisition_date,
 													requisition_type, requisition_purpose, requisition_remarks, id_department,
 													id_requester, forwarded_by, forwarded_to, date_forwarded
 												FROM ".SMS_REQUISITION." 
 												WHERE requisition_id != ''
 												$sql2
 											");
-		include ("include/page_title.php"); 
-		echo'  
-		<div class="table-responsive" style="overflow: auto;">
+		echo'
+         <div style=" float:right; text-align:right; font-weight:700; color:blue; margin-right:10px;"> 
+            <form class="navbar-form navbar-left form-small" action="#" method="POST">
+               Total : ('.number_format($count).')
+            </form>
+         </div>
+         <div class="table-responsive" style="overflow: auto;">
 			<table class="footable table table-bordered table-hover table-with-avatar">
 				<thead>
 					<tr>
@@ -41,8 +46,8 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 					</tr>
 				</thead>
 				<tbody>';
-					$srno = 0;
-					while($valueRequisition = mysqli_fetch_array($queryRequistion)) {
+               if($page == 1) { $srno = 0; } else { $srno = ($Limit * ($page-1));}
+					while($valueRequisition = mysqli_fetch_array($queryRequisition)) {
 						$srno++;
 						echo '
 						<tr>
@@ -92,7 +97,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 				</tbody>
 			</table>
 		</div>';
-		if($count>$Limit) {
+		if($count > $Limit) {
 			echo '
 			<div class="widget-foot">
 			   <!--WI_PAGINATION-->
@@ -101,63 +106,64 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 			   $pagination = "";
 			   
 			   if($lastpage > 1) {	
-			   //previous button
-			   if ($page > 1) {
-				  $pagination.= '<li><a href="inventory-requisition.php?page='.$prev.$sqlstring.'">Prev</a></li>';
-			   }
-			   //pages	
-			   if ($lastpage < 7 + ($adjacents * 3)) {	
-				  //not enough pages to bother breaking it up
-				  for ($counter = 1; $counter <= $lastpage; $counter++) {
-					 if ($counter == $page) {
-						$pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
-					 } else {
-						$pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
-					 }
+   
+				  //previous button
+				  if ($page > 1) {
+					 $pagination.= '<li><a href="inventory-requisition.php?page='.$prev.$sqlstring.'">Prev</a></li>';
 				  }
-			   } else if($lastpage > 5 + ($adjacents * 3))	{ 
-				  //enough pages to hide some
-				  //close to beginning; only hide later pages
-				  if($page < 1 + ($adjacents * 3)) {
-					 for ($counter = 1; $counter < 4 + ($adjacents * 3); $counter++)	{
+				  //pages	
+				  if ($lastpage < 7 + ($adjacents * 3)) {	
+					 //not enough pages to bother breaking it up
+					 for ($counter = 1; $counter <= $lastpage; $counter++) {
 						if ($counter == $page) {
 						   $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
 						} else {
 						   $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
 						}
 					 }
-					 $pagination.= '<li><a href="#"> ... </a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
-				  } else if($lastpage - ($adjacents * 3) > $page && $page > ($adjacents * 3)) { //in middle; hide some front and some back
+				  } else if($lastpage > 5 + ($adjacents * 3))	{ 
+					 //enough pages to hide some
+					 //close to beginning; only hide later pages
+					 if($page < 1 + ($adjacents * 3)) {
+						for ($counter = 1; $counter < 4 + ($adjacents * 3); $counter++)	{
+						   if ($counter == $page) {
+							  $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
+						   } else {
+							  $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
+						   }
+						}
+						$pagination.= '<li><a href="#"> ... </a></li>';
+						$pagination.= '<li><a href="inventory-requisition.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
+						$pagination.= '<li><a href="inventory-requisition.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
+					 } else if($lastpage - ($adjacents * 3) > $page && $page > ($adjacents * 3)) { //in middle; hide some front and some back
+						   $pagination.= '<li><a href="inventory-requisition.php?page=1'.$sqlstring.'">1</a></li>';
+						   $pagination.= '<li><a href="inventory-requisition.php?page=2'.$sqlstring.'">2</a></li>';
+						   $pagination.= '<li><a href="inventory-requisition.php?page=3'.$sqlstring.'">3</a></li>';
+						   $pagination.= '<li><a href="#"> ... </a></li>';
+						for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
+						   if ($counter == $page) {
+							  $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
+						   } else {
+							  $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
+						   }
+						}
+						$pagination.= '<li><a href="#"> ... </a></li>';
+						$pagination.= '<li><a href="inventory-requisition.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
+						$pagination.= '<li><a href="inventory-requisition.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
+					 } else { //close to end; only hide early pages
 						$pagination.= '<li><a href="inventory-requisition.php?page=1'.$sqlstring.'">1</a></li>';
 						$pagination.= '<li><a href="inventory-requisition.php?page=2'.$sqlstring.'">2</a></li>';
 						$pagination.= '<li><a href="inventory-requisition.php?page=3'.$sqlstring.'">3</a></li>';
 						$pagination.= '<li><a href="#"> ... </a></li>';
-					 for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
-						if ($counter == $page) {
-						   $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
-						} else {
-						   $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
-						}
-					 }
-					 $pagination.= '<li><a href="#"> ... </a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
-				  } else { //close to end; only hide early pages
-					 $pagination.= '<li><a href="inventory-requisition.php?page=1'.$sqlstring.'">1</a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page=2'.$sqlstring.'">2</a></li>';
-					 $pagination.= '<li><a href="inventory-requisition.php?page=3'.$sqlstring.'">3</a></li>';
-					 $pagination.= '<li><a href="#"> ... </a></li>';
-					 for ($counter = $lastpage - (3 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
-						if ($counter == $page) {
-						   $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
-						} else {
-						   $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
+						for ($counter = $lastpage - (3 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
+						   if ($counter == $page) {
+							  $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
+						   } else {
+							  $pagination.= '<li><a href="inventory-requisition.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
+						   }
 						}
 					 }
 				  }
-			   }
 			   //next button
 			   if ($page < $counter - 1) {
 				  $pagination.= '<li><a href="inventory-requisition.php?page='.$next.$sqlstring.'">Next</a></li>';
@@ -172,11 +178,11 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 			   <!--WI_PAGINATION-->
 			<div class="clearfix"></div>
 			</div>';
-		 }
+		 }        
 	  } else {
-	  echo '
-	  <div class="col-lg-12">
-		 <div class="widget-tabs-notification">No Result Found</div>
-	  </div>';
-	}
+		 echo '
+		 <div class="col-lg-12">
+			<div class="widget-tabs-notification">No Result Found</div>
+		 </div>';
+	  }
 }

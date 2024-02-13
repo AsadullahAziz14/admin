@@ -110,7 +110,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div class="col-sm-91 item">
 							<div class="form-sep" style="margin-top: 10px; width: 100%">
 								<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus">&nbsp&nbspAdd Item</i></button>
+									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus"></i></button>
 								</div>
 							</div>
 						</div>

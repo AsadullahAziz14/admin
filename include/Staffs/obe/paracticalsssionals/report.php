@@ -10,7 +10,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
   if(!($Limit)) 	{ $Limit = 50; } 
   if($page)		{ $start = ($page - 1) * $Limit; } else {	$start = 0;	}
 
-  include ("include/page_title.php"); 
+  require_once("include/page_title.php"); 
   echo '
   <div class="table-responsive" style="overflow: auto;">
     <table class="footable table table-bordered table-hover table-with-avatar">

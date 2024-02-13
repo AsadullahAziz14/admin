@@ -40,7 +40,7 @@ if(isset($_SESSION['msg'])) {
 if(!LMS_VIEW && !isset($_GET['id'])) {
     $sql2 = '';
     $sqlstring	= "";
-    include ("include/page_title.php"); 
+    require_once("include/page_title.php"); 
 
 echo '<title>'.TITLE_HEADER.'</title>
 <!-- Matter -->

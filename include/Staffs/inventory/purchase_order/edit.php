@@ -5,6 +5,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										po_delivery_address, date_ordered, id_vendor 
 									FROM ".SMS_PO." WHERE po_id =  ".cleanvars($_GET['id'])." ");
 	$valuePO = mysqli_fetch_array($queryPO);
+	$selectedDemands = [];
 	echo '
    	<div class="row">
 		<div class="modal-dialog" style="width:95%;">
@@ -137,7 +138,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
+											<!-- <button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button> -->
 										</div>
 									</div>';
 									$queryPoDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered, unit_price 
@@ -152,22 +153,34 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 										$valueItem = mysqli_fetch_array($queryItem);
 										echo '
 											<div class="item">
-												<div class="col-sm-61">
-														<label for="id_item" class="req"><b>Item</b></label>
-														<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="id_item'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" readonly required>
+												<div class="col-sm-51">
+													<label for="id_item" class="req"><b>Item</b></label>
+													<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="id_item'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" readonly required>
+												</div>
+												';
+												$queryDemad = $dblms->querylms("SELECT id_item, sum(quantity_demanded) as quantity_demanded
+																				FROM ".SMS_DEMAND_ITEM_JUNCTION." 
+																				where id_item =  ".$valuePoDemandItem['id_item']." AND id_demand = ".$valuePoDemand['id_demand']."
+																				Group by id_item
+																			");
+												$valueDemand = mysqli_fetch_array($queryDemad);
+												echo '
+												<div class="col-sm-31">
+													<label for="quantity_ordered" class="req">Demand Quantity</label>
+													<input class="form-control" type="number"  value="'.$valueDemand['quantity_demanded'].'" name="quantity_demanded['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="quantity_demanded'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
 												</div>
 												<div class="col-sm-31">
-														<label for="quantity_ordered" class="req">Quantity</label>
-														<input class="form-control" type="number"  value="'.$valuePoDemandItem['quantity_ordered'].'" name="quantity_ordered['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="quantity_ordered'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
-												</div>
-												<div class="col-sm-31">
-														<label for="unit_price" class="req">Rate</label>
-														<input class="form-control" type="number" value="'.$valuePoDemandItem['unit_price'].'" name="unit_price['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="unit_price'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
+													<label for="quantity_ordered" class="req">Ordered Quantity</label>
+													<input class="form-control" type="number"  value="'.$valuePoDemandItem['quantity_ordered'].'" name="quantity_ordered['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="quantity_ordered'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
 												</div>
 												<div class="col-sm-21">
-														<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-																<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this)"><i class="icon-remove"></i></button>									
-														</div>
+													<label for="unit_price" class="req">Rate</label>
+													<input class="form-control" type="number" value="'.$valuePoDemandItem['unit_price'].'" name="unit_price['.$valuePoDemand['id_demand'].']['.$valueItem['item_id'].']" id="unit_price'.$valuePoDemand['id_demand'].$valueItem['item_id'].'" min="0" required>
+												</div>
+												<div class="col-sm-21">
+													<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
+														<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this)"><i class="icon-remove"></i></button>									
+													</div>
 												</div>
 											</div>';
 									}	
@@ -184,7 +197,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 						<div class="col-sm-91 item">
 							<div class="form-sep" style="margin-top: 10px; width: 100%">
 								<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus">&nbsp&nbspAdd Item</i></button>
+									<button type="button" class="btn btn-info" onclick="addDemand()" style="width: 10%;  float: right"><i class="icon-plus"></i></button>
 								</div>
 							</div>
 						</div>
@@ -213,7 +226,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			parentDiv.parentNode.removeChild(parentDiv);
 		}
 	}
-	
+
+	var selectedDemands = '.json_encode($selectedDemands).'
 	function addDemand() {
 		var i = 0;
 		i = i + 1;

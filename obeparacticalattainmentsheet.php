@@ -84,7 +84,7 @@ echo '<title>'.TITLE_HEADER.'</title>
 
 echo '<div class="widget-content">';
 
-    include ("include/Staffs/obe/paracticalattainmentsheet/report.php");
+    require_once("include/Staffs/obe/paracticalattainmentsheet/report.php");
          
 echo'
         </div>

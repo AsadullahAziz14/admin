@@ -19,11 +19,22 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 8) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 9) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '191')) {
 	require_once("include/Staffs/inventory/inventory/query.php");
 	require_once("include/header.php");
-	$sql2 = '';
-	$sqlstring	= "";
-	if(isset($_GET['srch'])) { 
-		// $sql2 		.= " b.block_name LIKE '".$stdsrch."%' ";
-		$sqlstring	.= "&srch=".$_GET['srch']."";
+
+	$sql2 			= '';
+	$sqlstring		= "";
+	$srch			= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
+	$status_srch	= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
+	$faculty		= (isset($_GET['faculty']) && $_GET['faculty'] != '') ? $_GET['faculty'] : '';
+	$dept			= (isset($_GET['dept']) && $_GET['dept'] != '') ? $_GET['dept'] : '';
+	$liberalArts	= (isset($_GET['la']) && $_GET['la'] != '') ? $_GET['la'] : '';
+
+	if(($srch)) { 
+		$sql2 		.= " AND (inventory_code LIKE '%".$srch."%')"; 
+		$sqlstring	.= "&srch=".$srch."";
+	}
+    if(($status_srch)) { 
+		$sql2 		.= " AND inventory_status = '".$status_srch."'"; 
+		$sqlstring	.= "&status_srch=".$status_srch."";
 	}
 				echo '
 				<title>Manage Inventory - '.TITLE_HEADER.'</title>
@@ -42,7 +53,15 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									<div class="form-group">
 										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
 									</div>
-
+									<div class="form-group">
+										<select id="list-status" class="form-control" placeholder="Status" name="status_srch" style="width:250px;">
+											<option></option>';
+											foreach($status as $valueStatus) { 
+												echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+											}
+										echo '
+										</select>
+									</div>
 									<button type="submit" class="btn btn-primary">Search</button>
 									<a href="inventory-inventory.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
 									if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '191', 'add' => '1'))) { 
@@ -155,4 +174,3 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	</body>
 </html>';
 }
-?>

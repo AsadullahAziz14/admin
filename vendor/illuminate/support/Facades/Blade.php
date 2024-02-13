@@ -24,7 +24,7 @@ namespace Illuminate\Support\Facades;
  * @method static array getAnonymousComponentNamespaces()
  * @method static array getClassComponentNamespaces()
  * @method static void aliasComponent(string $path, string|null $alias = null)
- * @method static void include(string $path, string|null $alias = null)
+ * @method static void require_once(string $path, string|null $alias = null)
  * @method static void aliasInclude(string $path, string|null $alias = null)
  * @method static void directive(string $name, callable $handler)
  * @method static array getCustomDirectives()

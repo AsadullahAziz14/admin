@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 if (!LMS_VIEW && isset($_GET['id'])) {
 	$queryItem = $dblms->querylms("SELECT itm.item_title, itm.item_status, itm.item_uom, itm.item_description, itm.item_article_number, itm.item_image,
 									itm.item_style_number, itm.item_model_number, itm.item_dimensions, cat.category_id,

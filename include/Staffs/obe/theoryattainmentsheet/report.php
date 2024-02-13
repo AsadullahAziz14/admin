@@ -82,7 +82,7 @@ if(!LMS_VIEW && !isset($_GET['id']))
 		}
 	}
 		
-	include ("include/page_title.php"); 
+	require_once("include/page_title.php"); 
 	echo '
 		<div class="table-responsive" style="overflow: auto;">
 			<table class="footable table table-bordered table-hover table-with-avatar">
@@ -563,7 +563,7 @@ if(!LMS_VIEW && !isset($_GET['id']))
 					</tr>
 				</thead>
 				<tbody>';
-					$srno = 0;
+               if($page == 1) { $srno = 0; } else { $srno = ($Limit * ($page-1));}
 					$stdCount = 0;
 					$attainedCloMarks = [];
 					$attainedPloMarks = [];

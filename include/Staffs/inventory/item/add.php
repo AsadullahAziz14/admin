@@ -125,19 +125,26 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 		$(".select2").select2({
 			placeholder: "Select Any Option"
 		})
+		
+		function selectSubCategory() { 
+			var selectedValue = document.getElementById("id_category").value;
+			var ajaxReq = new XMLHttpRequest();
+			var method = "GET";
+			var url = "include/ajax/getSubCategory.php?selectedValue=" + selectedValue;
+			var asynchronous = true;
 
-		function selectSubCategory() {
-            var selectedCategory = $("#id_category").val();
-            $.ajax({
-                type: "GET",
-                url: "include/ajax/getSubCategory.php",
-                data: { selectedValue: selectedCategory },
-                success: function (data) {
-                    $("#id_sub_category").html(data);
-                }
-            });
-        }
+			ajaxReq.open(method, url, asynchronous);
+			ajaxReq.send();
 
-	</script>
-	';
+			ajaxReq.onreadystatechange = function() {
+				if (ajaxReq.readyState === 4 && ajaxReq.status === 200) {
+					const options = ajaxReq.responseText;
+					var id_sub_category = document.getElementById("id_sub_category");
+					
+					id_sub_category.innerHTML = options;
+					console.log(options);
+				}
+			};
+		}
+	</script>';
 }

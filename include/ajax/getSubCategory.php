@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include "../../dbsetting/lms_vars_config.php";
 include "../../dbsetting/classdbconection.php";
 $dblms = new dblms();

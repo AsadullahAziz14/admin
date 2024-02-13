@@ -56,6 +56,15 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									<div class="form-group">
 										<input type="text" class="form-control" name="srch" placeholder="Search by Item Name" style="width:250px;">
 									</div>
+									<div class="form-group">
+										<select id="list-status" class="form-control" placeholder="Status" name="status_srch" style="width:250px;">
+											<option></option>';
+											foreach($SMS_STATUS as $valueStatus) { 
+												echo '<option value="'.$valueStatus['id'].'">'.$valueStatus['name'].'</option>';
+											}
+										echo '
+										</select>
+									</div>
 
 									<button type="submit" class="btn btn-primary">Search</button>
 									<a href="inventory-purchase_order.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
