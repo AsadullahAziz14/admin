@@ -14,7 +14,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 					<h4 class="modal-title" style="font-weight:700;"> Edit Issuance</h4>
 				</div>
 					<div class="modal-body">
-						<input class="form-control deleted_item_ids" type="" name="deleted_item_ids" id="deleted_item_ids">
 						<div class="col-sm-61">
 							<div style="margin-top:5px;">
 								<label for="issuance_to" class="req"><b>Issuance To</b></label>
@@ -59,9 +58,11 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							</div>
 						</div>
 						<div style="clear:both;"></div>
-
-
-						<div class="col-sm-91">';
+						<div class="col-sm-91">
+							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
+							<input class="form-control deleted_requisition_ids" type="hidden" name="deleted_requisition_ids" id="deleted_requisition_ids">
+							<input class="form-control deleted_requisition" type="" name="deleted_requisition" id="deleted_requisition">';
+							';
 							$queryIssuanceRequisition = $dblms->querylms("SELECT DISTINCT id_requisition
 																FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." 
 																Where id_issuance = ".$valueIssuance['issuance_id']
@@ -83,10 +84,10 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<!-- <button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button> -->
+											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
-									$queryIssuanceRequisitionItem = $dblms->querylms("SELECT id_item, quantity_issued, id_requisition
+									$queryIssuanceRequisitionItem = $dblms->querylms("SELECT id_item, sum(quantity_issued)  as quantity_issued , id_requisition
 																						FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION."
 																						Where id_issuance = ".$valueIssuance['issuance_id']." AND id_requisition = ".$valueIssuanceRequisition['id_requisition']."
 																					");
@@ -99,37 +100,37 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 											<div class="item">
 												<div class="col-sm-42">
 														<label for="id_item" class="req"><b>Item</b></label>
-														<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valueIssuanceRequisition['id_requisition'].']['.$valueIssuanceRequisitionItem['id_item'].']" id="id_item'.$valueIssuanceRequisition['id_requisition'].$valueIssuanceRequisitionItem['id_item'].'" readonly required>
+														<input class="form-control" type="text" value="'.$valueItem['item_title'].'" name="id_item[u]['.$valueIssuanceRequisition['id_requisition'].']['.$valueItem['item_id'].']" id="id_item'.$valueIssuanceRequisition['id_requisition'].$valueItem['item_id'].'" readonly required>
 												</div>';
 												$queryRequisitionDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_requested) as quantity_requested
 																								FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION."
-																								Where id_requisition = ".$valueIssuanceRequisitionItem['id_requisition']." AND id_item = ".$valueIssuanceRequisitionItem['id_item']."
+																								Where id_requisition = ".$valueIssuanceRequisitionItem['id_requisition']." AND id_item = ".$valueItem['item_id']."
 																								Group By id_item
 																							");
 												$valueRequisitionDemandItem = mysqli_fetch_array($queryRequisitionDemandItem);
 												echo '
 												<div class="col-sm-31">
 													<label for="quantity_requested" class="req">Quantity Requested</label>
-													<input class="form-control" type="number"  value="'.$valueRequisitionDemandItem['quantity_requested'].'" name="quantity_requested['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueIssuanceRequisitionItem['id_item'].']" id="quantity_requested'.$valueIssuanceRequisitionItem['id_requisition'].$valueIssuanceRequisitionItem['id_item'].'" min="0" readonly required>
+													<input class="form-control" type="number"  value="'.$valueRequisitionDemandItem['quantity_requested'].'" name="quantity_requested['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueItem['item_id'].']" id="quantity_requested'.$valueIssuanceRequisitionItem['id_requisition'].$valueItem['item_id'].'" min="0" readonly required>
 												</div>
 												';
 												$queryInventory = $dblms->querylms("SELECT distinct id_item, sum(quantity_added) as quantity_instock
 																					FROM ".SMS_INVENTORY_RECEIVING_ITEM_JUNCTION."
-																					Where id_item = ".$valueIssuanceRequisitionItem['id_item']."
+																					Where id_item = ".$valueItem['item_id']."
 																				");
 												$valueInventory = mysqli_fetch_array($queryInventory);
 												echo '
 												<div class="col-sm-31">
 													<label for="quantity_instock" class="req">Quantity In-Stock</label>
-													<input class="form-control" type="number"  value="'.$valueInventory['quantity_instock'].'" name="quantity_instock['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueIssuanceRequisitionItem['id_item'].']" id="quantity_instock'.$valueIssuanceRequisitionItem['id_requisition'].$valueIssuanceRequisitionItem['id_item'].'" min="0" readonly required>
+													<input class="form-control" type="number"  value="'.$valueInventory['quantity_instock'].'" name="quantity_instock['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueItem['item_id'].']" id="quantity_instock'.$valueIssuanceRequisitionItem['id_requisition'].$valueItem['item_id'].'" min="0" readonly required>
 												</div>
 												<div class="col-sm-31">
 													<label for="quantity_issued" class="req">Quantity Issued</label>
-													<input class="form-control" type="number"  value="'.$valueIssuanceRequisitionItem['quantity_issued'].'" name="quantity_issued['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueIssuanceRequisitionItem['id_item'].']" id="quantity_issued'.$valueIssuanceRequisitionItem['id_requisition'].$valueIssuanceRequisitionItem['id_item'].'" min="0" required>
+													<input class="form-control" type="number"  value="'.$valueIssuanceRequisitionItem['quantity_issued'].'" name="quantity_issued['.$valueIssuanceRequisitionItem['id_requisition'].']['.$valueItem['item_id'].']" id="quantity_issued'.$valueIssuanceRequisitionItem['id_requisition'].$valueItem['item_id'].'" min="0" required>
 												</div>
 												<div class="col-sm-21">
 													<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-														<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valueIssuanceRequisitionItem['id_item'].')"><i class="icon-remove"></i></button>									
+														<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valueIssuanceRequisitionItem['id_requisition'].','.$valueItem['item_id'].')"><i class="icon-remove"></i></button>									
 													</div>
 												</div>
 											</div>';
@@ -169,12 +170,15 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			placeholder: "Select Any Option"
 		})
 
-		$deleteid = [];
-		function removeItem(button, delete_item_id) {
+		$deleteItemId = [];
+		$deleteRequisitionId = [];
+		function removeItem(button,requisition_id, delete_item_id) {
 			var parentDiv = button.closest("[class*=item]");
 			if (parentDiv) {
-				$deleteid.push(delete_item_id);
-				document.getElementById("deleted_item_ids").value =  $deleteid;
+				$deleteItemId.push(delete_item_id);
+				$deleteRequisitionId.push(requisition_id);
+				document.getElementById("deleted_item_ids").value =  $deleteItemId;
+				document.getElementById("deleted_requisition_ids").value =  $deleteRequisitionId;
 				parentDiv.parentNode.removeChild(parentDiv);
 			}
 		}
@@ -242,7 +246,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			const removeButton = document.createElement("button");
 			removeButton.className = "btn btn-info";
 			removeButton.style.alignItems = "center";
-			removeButton.onclick = "removeItem(this)";
 			removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
 
 			removeButton.addEventListener("click", function () {

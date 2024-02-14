@@ -29,10 +29,11 @@ if(isset($_POST['submit_requisition'])) {
         'requisition_type'                          => cleanvars($_POST['requisition_type'])                    ,
         'requisition_purpose'                       => cleanvars($_POST['requisition_purpose'])                 ,
         'requisition_remarks'                       => cleanvars($_POST['requisition_remarks'])                 ,
-        'requisition_status'                        => 1                                                        ,
+        'requisition_status'                        => '1'                                                      ,
+        'id_location'                               => cleanvars($_POST['id_location'])                         ,
         'id_department'                             => cleanvars($_POST['id_department'])                       ,
-        'id_requester'                              => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))        ,
-        'id_added'                                  => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))        ,
+        'id_requester'                              => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))          ,
+        'id_added'                                  => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))          ,
         'date_added'                                => date('Y-m-d H:i:s')
     ];
     $queryInsert = $dblms->Insert(SMS_REQUISITION, $data);
@@ -100,14 +101,21 @@ if(isset($_POST['update_requisition'])) {
         'requisition_type'                          => cleanvars($_POST['requisition_type'])                    ,
         'requisition_purpose'                       => cleanvars($_POST['requisition_purpose'])                 ,
         'requisition_remarks'                       => cleanvars($_POST['requisition_remarks'])                 ,
-        'requisition_status'                        => cleanvars($_POST['requisition_status'])                  ,
+        'requisition_status'                        => '1'                  ,
         'id_location'                               => cleanvars($_POST['id_location'])                         ,
         'id_department'                             => cleanvars($_POST['id_department'])                       ,
-        'id_modify'                                 => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))        ,
+        'id_modify'                                 => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))          ,
         'date_modify'                               => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE requisition_id = ".$requisition_id."";
     $queryUpdate = $dblms->Update(SMS_REQUISITION, $data, $conditions);
+
+    if(isset($_POST['deleted_item_ids']) && isset($_POST['deleted_demand_ids']) && $_POST['deleted_demand_ids'] != '' && $_POST['deleted_item_ids'] != '' ) {
+        $deleteDemands = explode(',',cleanvars($_POST['deleted_demand_ids']));
+        foreach ($deleteDemands as $key => $demandId) {
+            $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION." WHERE id_requisition = ".$requisition_id." AND id_demand IN ('".$demandId."') AND id_item IN ('".$_POST['deleted_item_ids'][$key]."')");
+        }
+    }
 
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
@@ -164,9 +172,9 @@ if(isset($_POST['update_requisition'])) {
 
 if(isset($_POST["forward_requisition"])) {
     $data = [
-        'forwarded_to'      => $_POST['forwarded_to']               ,
-        'forwarded_by'      => $_SESSION['LOGINIDA_SSS']            ,
-        'requisition_status'         => 2                                    ,
+        'forwarded_to'              => $_POST['forwarded_to']               ,
+        'forwarded_by'              => $_SESSION['LOGINIDA_SSS']            ,
+        'requisition_status'        => '2'                                  ,
         'date_forwarded'    => date('Y-m-d H:i:s')
     ];
     $conditions = " Where requisition_id = ".$_POST['requisition_id']."";
@@ -199,12 +207,12 @@ if(isset($_POST["forward_requisition"])) {
 
 if(isset($_POST["approve_requisition"])) {
     $data = [
-        'id_approved_rejected'          => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))                    ,
-        'requisition_status'            => 3                                                                ,
+        'id_approved_rejected'          => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))      ,
+        'requisition_status'            => '3'                                                  ,
         'date_approved_rejected'        => date('Y-m-d H:i:s')
     ];
     $conditions = " Where requisition_id = ".$_POST['requisition_id']."";
-    $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_REQUISITION, $data, $conditions);
 
     // -------------Logs------------------------
     $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
@@ -233,12 +241,12 @@ if(isset($_POST["approve_requisition"])) {
 
 if(isset($_POST["reject_requisition"])) {
     $data = [
-        'id_approved_rejected'          => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))            ,
-        'requisition_status'            => 4                                                            ,
+        'id_approved_rejected'          => cleanvars(cleanvars($_SESSION['LOGINIDA_SSS']))      ,
+        'requisition_status'            => '4'                                                  ,
         'date_approved_rejected'        => date('Y-m-d H:i:s')
     ];
     $conditions = " Where requisition_id = ".$_POST['requisition_id']."";
-    $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
+    $queryUpdate = $dblms->Update(SMS_REQUISITION, $data, $conditions);
 
     // -------------Logs------------------------
     $filePath = explode("/", $_SERVER["HTTP_REFERER"]);

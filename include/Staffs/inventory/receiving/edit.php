@@ -60,7 +60,9 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							</div>
 						</div>
 
-						<div class="col-sm-91">';
+						<div class="col-sm-91">
+							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
+							<input class="form-control deleted_po_ids" type="hidden" name="deleted_po_ids" id="deleted_po_ids">';
 							$queryReceivingPO = $dblms->querylms("SELECT DISTINCT id_po 
 																FROM ".SMS_RECEIVING_PO_ITEM_JUNCTION." 
 																Where id_receiving= ".$valueReceiving['receiving_id']
@@ -73,8 +75,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									<div class="col-sm-92">
 										<label for="id_po" class="req">PO</label>';
 										$queryPO = $dblms->querylms("SELECT po_id, po_code
-																			FROM ".SMS_PO."
-																			where po_id = ".$valueReceivingPO['id_po']."
+																		FROM ".SMS_PO."
+																		where po_id = ".$valueReceivingPO['id_po']."
 																	");
 										$valuePO = mysqli_fetch_array($queryPO);
 										echo '
@@ -112,7 +114,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 											
 											<div class="col-sm-21">
 												<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-													<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this)"><i class="icon-remove"></i></button>									
+													<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valueReceivingPO['id_po'].','.$valueItem['item_id'].')"><i class="icon-remove"></i></button>									
 												</div>
 											</div>
 										</div>';
@@ -151,9 +153,16 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		$(".select2").select2({
 			placeholder: "Select Any Option"
 		})
-		function removeItem(button) {
+
+		$deleteItemId = [];
+		$deletePOId = [];
+		function removeItem(button,po_id, delete_item_id) {
 			var parentDiv = button.closest("[class*=item]");
 			if (parentDiv) {
+				$deleteItemId.push(delete_item_id);
+				$deletePOId.push(po_id);
+				document.getElementById("deleted_item_ids").value =  $deleteItemId;
+				document.getElementById("deleted_po_ids").value =  $deletePOId;
 				parentDiv.parentNode.removeChild(parentDiv);
 			}
 		}	
@@ -222,7 +231,6 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 			const removeButton = document.createElement("button");
 			removeButton.className = "btn btn-info";
 			removeButton.style.alignItems = "center";
-			removeButton.onclick = "removeItem(this)";
 			removeButton.innerHTML = "<i class=\"icon-remove\"></i>";
 
 			removeButton.addEventListener("click", function () {

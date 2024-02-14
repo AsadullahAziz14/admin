@@ -115,8 +115,9 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<input class="form-control" type="text" name="po_remarks" id="po_remarks" value="'.$valuePO['po_remarks'].'" required>
 							</div>
 						</div>
-						
-						<div class="col-sm-91">';
+						<div class="col-sm-91">
+							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
+							<input class="form-control deleted_demand_ids" type="hidden" name="deleted_demand_ids" id="deleted_demand_ids">';
 							$queryPoDemand = $dblms->querylms("SELECT DISTINCT id_demand 
 																FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." 
 																Where id_po = ".$valuePO['po_id']
@@ -138,7 +139,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<!-- <button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button> -->
+											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
 									$queryPoDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered, unit_price 
@@ -152,6 +153,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 																		where item_id IN (".$valuePoDemandItem['id_item'].")");
 										$valueItem = mysqli_fetch_array($queryItem);
 										echo '
+										
 											<div class="item">
 												<div class="col-sm-51">
 													<label for="id_item" class="req"><b>Item</b></label>
@@ -179,7 +181,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 												</div>
 												<div class="col-sm-21">
 													<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-														<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this)"><i class="icon-remove"></i></button>									
+														<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeItem(this,'.$valuePoDemand['id_demand'].','.$valueItem['item_id'].')"><i class="icon-remove"></i></button>									
 													</div>
 												</div>
 											</div>';
@@ -220,9 +222,15 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		placeholder: "Select Any Option"
 	})
 
-	function removeItem(button){
+	$deleteItemId = [];
+	$deleteDemandId = [];
+	function removeItem(button,demand_id, delete_item_id) {
 		var parentDiv = button.closest("[class*=item]");
 		if (parentDiv) {
+			$deleteItemId.push(delete_item_id);
+			$deleteDemandId.push(demand_id);
+			document.getElementById("deleted_item_ids").value =  $deleteItemId;
+			document.getElementById("deleted_demand_ids").value =  $deleteDemandId;
 			parentDiv.parentNode.removeChild(parentDiv);
 		}
 	}

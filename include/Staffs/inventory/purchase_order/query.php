@@ -51,13 +51,13 @@ if(isset($_POST['submit_po'])) {
         $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
 
         if(isset($_POST['id_item'])) {
-            $items = cleanvars($_POST['item']);
+            $items = cleanvars($_POST['id_item']);
             $po_items = implode(',', $items);
 
-            foreach(cleanvars($_POST['id_item']) as $id_demand => $id_itemArray) {
+            foreach(cleanvars($_POST['id_item']) as $demand_code => $id_itemArray) {
                 $queryDemand = $dblms->querylms("SELECT demand_id, demand_code
                                                     FROM ".SMS_DEMAND."
-                                                    Where demand_code = '".$id_demand."'
+                                                    Where demand_code = '".$demand_code."'
                                                 ");
                 $valueDemand = mysqli_fetch_array($queryDemand);
                 $demand_id = $valueDemand['demand_id'];
@@ -67,8 +67,8 @@ if(isset($_POST['submit_po'])) {
                         'id_po'                => $po_id                                            ,
                         'id_demand'            => $demand_id                                        ,
                         'id_item'              => $id_item                                          ,
-                        'quantity_ordered'     => $_POST['quantity_ordered'][$id_demand][$id_item]  ,
-                        'unit_price'           => $_POST['unit_price'][$id_demand][$id_item]
+                        'quantity_ordered'     => $_POST['quantity_ordered'][$demand_code][$id_item]  ,
+                        'unit_price'           => $_POST['unit_price'][$demand_code][$id_item]
                     ];
                     $queryInsert = $dblms->Insert(SMS_PO_DEMAND_ITEM_JUNCTION, $data);
                 }
@@ -98,7 +98,7 @@ if(isset($_POST['submit_po'])) {
                                                     PHP_EOL.'id_demand: '.cleanvars($_POST['id_vendor']).
                                                     PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  
-            ,'path'                              =>  end($filePath)
+            ,'path'                              => end($filePath)
             ,'login_session_start_time'          => $_SESSION['login_time']
             ,'ip_address'                        => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
             ,'id_user'                           => cleanvars($_SESSION['LOGINIDA_SSS'])
@@ -126,73 +126,79 @@ if(isset($_POST['update_po'])) {
         'id_modify'                        => cleanvars($_SESSION['LOGINIDA_SSS'])                          ,
         'date_modify'                      => date('Y-m-d H:i:s')
     ];
-    $conditions = "WHERE  po_id  = ".$po_id."";
+    $conditions = "WHERE po_id  = ".$po_id."";
     $queryUpdate = $dblms->Update(SMS_PO, $data, $conditions);
+    
+    if(isset($_POST['deleted_item_ids']) && isset($_POST['deleted_demand_ids']) && $_POST['deleted_demand_ids'] != '' && $_POST['deleted_item_ids'] != '' ) {
+        $deleteDemands = explode(',',cleanvars($_POST['deleted_demand_ids']));
+        foreach ($deleteDemands as $key => $demandId) {
+            $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." WHERE id_po = ".$po_id." AND id_demand IN ('".$demandId."') AND id_item IN ('".$_POST['deleted_item_ids'][$key]."')");
+        }
+    }
 
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
-            
-            if(isset($_POST['deleted_item_ids'])) {
-                $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." WHERE id_po = ".$po_id." && id_item IN(".$_POST['deleted_item_ids'].")");
-            }
-
             $items = cleanvars($_POST['id_item']);
             $po_items = [];
-
             foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {
                 if($key == "u") {
-                    foreach ($id_itemArray as $id_demand => $id_itemArray) {
+                    foreach ($id_itemArray as $demand_id => $id_itemArray) {
                         foreach ($id_itemArray as $id_item => $item_title) {
                             $data = [
-                                'quantity_ordered'             => $_POST['quantity_ordered'][$id_demand][$id_item]     ,
-                                'unit_price'                   => $_POST['unit_price'][$id_demand][$id_item]
+                                'quantity_ordered'             => $_POST['quantity_ordered'][$demand_id][$id_item]     ,
+                                'unit_price'                   => $_POST['unit_price'][$demand_id][$id_item]
                             ];
-                            $conditions = "Where id_po = ".$po_id." AND id_demand = ".$id_demand." AND id_item = ".$id_item."";
+                            $conditions = "Where id_po = ".$po_id." AND id_demand = ".$demand_id." AND id_item = ".$id_item."";
                             $queryUpdate = $dblms->Update(SMS_PO_DEMAND_ITEM_JUNCTION, $data, $conditions);
 
                             $po_items = $id_item;
                         }   
                     }
                 } else {
-                    $id_demand = $key;
+                    $demand_code = $key;
+                    $queryDemand = $dblms->querylms("SELECT demand_id, demand_code
+                                                        FROM ".SMS_DEMAND." 
+                                                        WHERE demand_code = '".$demand_code."'
+                                                    ");
+                    $valueDemand = mysqli_fetch_array($queryDemand);
                     foreach ($id_itemArray as $id_item => $itemTitle) {
                         $data = [
-                            'id_po'                            => $po_id                                            ,
-                            'id_demand'                        => $id_demand                                        ,
-                            'id_item'                          => $id_item                                          ,
-                            'quantity_ordered'                 => $_POST['quantity_ordered'][$id_demand][$id_item]  ,
-                            'unit_price'                       => $_POST['unit_price'][$id_demand][$id_item]
+                            'id_po'                            => $po_id                                                ,
+                            'id_demand'                        => $valueDemand['demand_id']                             ,
+                            'id_item'                          => $id_item                                              ,
+                            'quantity_ordered'                 => $_POST['quantity_ordered'][$demand_code][$id_item]    ,
+                            'unit_price'                       => $_POST['unit_price'][$demand_code][$id_item]
                         ];
                         $queryInsert = $dblms->Insert(SMS_PO_DEMAND_ITEM_JUNCTION, $data);
                         $po_items = $id_item; 
                     }
                 } 
             }
+            // -------------Logs------------------------
+            $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
+            $data = [
+                'log_date'                          => date('Y-m-d H:i:s')
+                ,'action'                           => "Update"
+                ,'affected_table'                   => SMS_PO.', '.SMS_PO_DEMAND_ITEM_JUNCTION
+                ,'action_detail'                    => 'po_id: '.$po_id.
+                                                        PHP_EOL.'po_delivery_date: '.cleanvars($_POST['po_delivery_date']).
+                                                        PHP_EOL.'po_delivery_address: '.cleanvars($_POST['po_delivery_address']).
+                                                        PHP_EOL.'po_remarks: '.cleanvars($_POST['po_remarks']).
+                                                        PHP_EOL.'po_tax_perc: '.cleanvars($_POST['po_tax_perc']).
+                                                        PHP_EOL.'po_payment_terms: '.cleanvars($_POST['po_payment_terms']).                                                    
+                                                        PHP_EOL.'po_lead_time: '.cleanvars($_POST['po_lead_time']).
+                                                        PHP_EOL.'po_date: '.date('Y-m-d H:i:s').
+                                                        PHP_EOL.'po_items: '.$po_items.
+                                                        PHP_EOL.'id_vendor: '.cleanvars($_POST['id_vendor']).
+                                                        PHP_EOL.'id_modify: '.cleanvars($_SESSION['LOGINIDA_SSS']).
+                                                        PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')                                  
+                ,'path'                             =>  end($filePath)
+                ,'login_session_start_time'         => $_SESSION['login_time']
+                ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
+                ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
+            ];
+            $queryInsert = $dblms->Insert(SMS_LOGS, $data);
         }
-        // -------------Logs------------------------
-        $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
-        $data = [
-            'log_date'                          => date('Y-m-d H:i:s')
-            ,'action'                           => "Update"
-            ,'affected_table'                   => SMS_PO.', '.SMS_PO_DEMAND_ITEM_JUNCTION
-            ,'action_detail'                    => 'po_id: '.$po_id.
-                                                    PHP_EOL.'po_delivery_date: '.cleanvars($_POST['po_delivery_date']).
-                                                    PHP_EOL.'po_delivery_address: '.cleanvars($_POST['po_delivery_address']).
-                                                    PHP_EOL.'po_remarks: '.cleanvars($_POST['po_remarks']).
-                                                    PHP_EOL.'po_tax_perc: '.cleanvars($_POST['po_tax_perc']).
-                                                    PHP_EOL.'po_payment_terms: '.cleanvars($_POST['po_payment_terms']).                                                    
-                                                    PHP_EOL.'po_lead_time: '.cleanvars($_POST['po_lead_time']).
-                                                    PHP_EOL.'po_date: '.date('Y-m-d H:i:s').
-                                                    PHP_EOL.'po_items: '.$po_items.
-                                                    PHP_EOL.'id_vendor: '.cleanvars($_POST['id_vendor']).
-                                                    PHP_EOL.'id_modify: '.cleanvars($_SESSION['LOGINIDA_SSS']).
-                                                    PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')                                  
-            ,'path'                              =>  end($filePath)
-            ,'login_session_start_time'          => $_SESSION['login_time']
-            ,'ip_address'                        => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
-            ,'id_user'                           => cleanvars($_SESSION['LOGINIDA_SSS'])
-        ];
-        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
     }
     $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
     header("Location: inventory-purchase_order.php", true, 301);

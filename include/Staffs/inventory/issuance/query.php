@@ -41,18 +41,17 @@ if(isset($_POST['submit_issuance'])) {
     $queryInsert = $dblms->Insert(SMS_ISSUANCE, $data);
     
     if($queryInsert) {
-        $id_issuance = $dblms->lastestid();
+        $issuance_id = $dblms->lastestid();
     
-        $isuance_code = 'ISSUE_NO_'.str_pad(cleanvars($id_issuance), 5, '0', STR_PAD_LEFT);
+        $isuance_code = 'ISSUE'.str_pad(cleanvars($issuance_id), 5, '0', STR_PAD_LEFT);
         $data = [
             'issuance_code' => $isuance_code
         ];
-        $conditions = "WHERE issuance_id  = ".cleanvars($id_issuance)."";
+        $conditions = "WHERE issuance_id  = ".$issuance_id."";
         $queryUpdate = $dblms->Update(SMS_ISSUANCE, $data, $conditions);
 
         if(isset($_POST['id_item'])) {
-            $items = cleanvars($_POST['item']);
-            $issued_items = implode(',', $items);
+            $issued_items = [];
             
             foreach (cleanvars($_POST['id_item']) as $requisition_code => $id_itemArray) {
                 $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
@@ -62,13 +61,14 @@ if(isset($_POST['submit_issuance'])) {
                 $valueRequisition = mysqli_fetch_array($queryRequisition);
                 foreach ($id_itemArray as $id_item => $itemTitle) {
                     $data = [
-                        'id_issuance'                   => $id_issuance                                                                 ,
+                        'id_issuance'                   => $issuance_id                                                                 ,
                         'id_requisition'                => $valueRequisition['requisition_id']                                          ,
                         'id_item'                       => $id_item                                                                     ,
-                        'quantity_issued'               => $_POST['quantity_issued'][$requisition_code][$id_item]     ,
+                        'quantity_issued'               => $_POST['quantity_issued'][$requisition_code][$id_item]                       ,
                         'issuance_barcode'              => $isuance_code.$valueRequisition['requisition_id'].$id_item
                     ];
                     $queryInsert = $dblms->Insert(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data);
+                    $issued_items[] = $id_item;
                 }
                 
                 $d = new DNS1D();
@@ -84,11 +84,11 @@ if(isset($_POST['submit_issuance'])) {
             ,'action'                           => "Create"
             ,'affected_table'                   => SMS_ISSUANCE.', '.SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION
             ,'action_detail'                    => 'issuance_id: '.$issuance_id.
-                                                    PHP_EOL.'issuance_code: '.'ISSUE_NO_'.str_pad($issuance_id, 5, '0', STR_PAD_LEFT).
+                                                    PHP_EOL.'issuance_code: '.'ISSUE'.str_pad($issuance_id, 5, '0', STR_PAD_LEFT).
                                                     PHP_EOL.'issuance_to: '.cleanvars($_POST['issuance_to']).
-                                                    PHP_EOL.'issuance_by: '.cleanvars($_POST['issuance_by']).
+                                                    PHP_EOL.'issuance_by: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'issuance_remarks: '.cleanvars($_POST['issuance_remarks']).
-                                                    PHP_EOL.'issued_items: '.$issued_items.
+                                                    PHP_EOL.'issued_items: '.implode(',',$issued_items).
                                                     PHP_EOL.'issuance_date: '.date('Y-m-d H:i:s').
                                                     PHP_EOL.'id_added: '.cleanvars($_SESSION['LOGINIDA_SSS']).
                                                     PHP_EOL.'date_added: '.date('Y-m-d H:i:s')                                  
@@ -117,11 +117,20 @@ if(isset($_POST['update_issuance'])) {
     $conditions = "WHERE issuance_id = ".$issuance_id."";
     $queryUpdate = $dblms->Update(SMS_ISSUANCE, $data, $conditions);
 
+    if(isset($_POST['deleted_item_ids']) && isset($_POST['deleted_requisition_ids']) && $_POST['deleted_requisition_ids'] != '' && $_POST['deleted_item_ids'] != '' ) {
+        $deleteRequisition = explode(',',cleanvars($_POST['deleted_requisition_ids']));
+        foreach ($deleteRequisition as $key => $requisitionId) {
+            $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." WHERE id_issuance = ".$issuance_id." AND id_requisition IN ('".$requisitionId."') AND id_item IN ('".$_POST['deleted_item_ids'][$key]."')");
+        }
+    }
+
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
-
-            if(isset($_POST['deleted_item_ids'])) {
-                $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." WHERE id_issuance = ".$issuance_id." && id_item IN(".$_POST['deleted_item_ids'].")");
+            if(isset($_POST['deleted_item_ids']) && isset($_POST['deleted_requisition_ids']) && $_POST['deleted_requisition_ids'] != '' && $_POST['deleted_item_ids'] != '' ) {
+                $deleteReqisition = explode(',',cleanvars($_POST['deleted_requisition_ids']));
+                foreach ($deleteReqisition as $key => $requisitionId) {
+                    $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." WHERE id_issuance = ".$issuance_id." AND id_demand IN ('".$requisitionId."') AND id_item IN ('".$_POST['deleted_item_ids'][$key]."')");
+                }
             }
 
             $items = cleanvars($_POST['id_item']);
@@ -129,24 +138,24 @@ if(isset($_POST['update_issuance'])) {
 
             foreach (cleanvars($_POST['id_item']) as $key => $items_array) {
                 if($key == "u") {
-                    foreach ($items_array as $requisition_code => $id_itemArray) {
-                        $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
-                                                                FROM ".SMS_REQUISITION."
-                                                                Where requisition_code = '".$requisition_code."'
-                                                            ");
-                        $valueRequisition = mysqli_fetch_array($queryRequisition);
+                    foreach ($items_array as $requisition_id => $id_itemArray) {
                         foreach ($id_itemArray as $id_item => $item_title) {
                             $data = [
-                                'quantity_issued'      => $_POST['quantity_issued'][$requisition_code][$id_item]
+                                'quantity_issued'      => $_POST['quantity_issued'][$requisition_id][$id_item]
                             ];
-                            $conditions = "Where id_issuance = ".$issuance_id." AND id_requisition = ".$valueRequisition['requisition_id']." AND id_item = ".$id_item."";
+                            $conditions = "Where id_issuance = ".$issuance_id." AND id_requisition = ".$requisition_id." AND id_item = ".$id_item."";
                             $queryUpdate = $dblms->Update(SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION, $data, $conditions);
                             $issued_items[] = $id_item;
                         }   
                     }
 
-                } elseif (isset($item_id['n'])) {
-                    $valueRequisition['requisition_id'] = $key;
+                } else {
+                    $requisition_code = $key;
+                    $queryRequisition = $dblms->querylms("SELECT requisition_id, requisition_code
+                                        FROM ".SMS_REQUISITION."
+                                        Where requisition_code = '".$requisition_code."'
+                                    ");
+                    $valueRequisition = mysqli_fetch_array($queryRequisition);
                     foreach ($items_array as $id_item => $itemTitle) {
                         $data = [
                             'id_issuance'               => $issuance_id                                             ,
@@ -159,26 +168,25 @@ if(isset($_POST['update_issuance'])) {
                     }
                 } 
             }
+            // -------------Logs------------------------
+            $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
+            $data = [
+                'log_date'                         => date('Y-m-d H:i:s')
+                ,'action'                           => "Update"
+                ,'affected_table'                   => SMS_ISSUANCE.', '.SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION
+                ,'action_detail'                    => 'issuance_id: '.$issuance_id.
+                                                        PHP_EOL.'issuance_to: '.cleanvars($_POST['issuance_to']).
+                                                        PHP_EOL.'issuance_remarks: '.cleanvars($_POST['issuance_remarks']).
+                                                        PHP_EOL.'issued_items: '.implode(',',$issued_items).
+                                                        PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
+                                                        PHP_EOL.'date_modify: '.date('Y-m-d H:i:s')
+                ,'path'                             =>  end($filePath)
+                ,'login_session_start_time'         => $_SESSION['login_time']
+                ,'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
+                ,'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
+            ];
+            $queryInsert = $dblms->Insert(SMS_LOGS, $data);
         } 
-        
-        // -------------Logs------------------------
-        $filePath = explode("/", $_SERVER["HTTP_REFERER"]);
-        $data = [
-            'log_date'                         => date('Y-m-d H:i:s')                                                           ,
-            'action'                           => "Update"                                                                      ,
-            ,'affected_table'                   => SMS_ISSUANCE.', '.SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION
-            ,'action_detail'                    => 'issuance_id: '.$issuance_id.
-                                                    PHP_EOL.'issuance_to: '.cleanvars($_POST['issuance_to']).
-                                                    PHP_EOL.'issuance_remarks: '.cleanvars($_POST['issuance_remarks']).
-                                                    PHP_EOL.'issued_items: '.$issued_items.
-                                                    PHP_EOL.'id_modify: '.$_SESSION['LOGINIDA_SSS'].
-                                                    PHP_EOL.'date_modify: '.date('Y-m-d H:i:s'),
-            'path'                             =>  end($filePath)                                                               ,
-            'login_session_start_time'         => $_SESSION['login_time']                                                       ,
-            'ip_address'                       => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']                   ,
-            'id_user'                          => cleanvars($_SESSION['LOGINIDA_SSS'])
-        ];
-        $queryInsert = $dblms->Insert(SMS_LOGS, $data);
     }
     $_SESSION['msg']['status'] = '<div class="alert-box info"><span>Success: </span>Record has been updated successfully.</div>';
     header("Location: inventory-issuance.php", true, 301);
