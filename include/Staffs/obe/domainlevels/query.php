@@ -3,7 +3,7 @@
 if($view == 'delete') {
 	if(isset($_GET['id'])) { 
 
-        $queryDelete  = $dblms->querylms("DELETE FROM ".OBE_DOMAINS." WHERE domain_level_id = '".cleanvars($_GET['id'])."'");
+        $queryDelete  = $dblms->querylms("DELETE FROM ".OBE_DOMAIN_LEVELS." WHERE domain_level_id = '".cleanvars($_GET['id'])."'");
 
         $_SESSION['msg']['status']  = '<div class="alert-box error"><span>Success: </span>Record has been deleted successfully.</div>';
         header("Location: ".$_SERVER['HTTP_REFERER']."", true, 301);
@@ -15,7 +15,7 @@ if($view == 'delete') {
 if(isset($_POST['submit_domain_level'])) 
 {
     $queryCheck = $dblms->querylms("SELECT domain_level_id 
-										FROM ".OBE_DOMAINS." 
+										FROM ".OBE_DOMAIN_LEVELS." 
 										WHERE domain_name_code = '".cleanvars($_POST['domain_name_code'])."'
 										AND domain_level_name = '".cleanvars($_POST['domain_level_name'])."'
 										AND id_campus = '".cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])."' LIMIT 1");
@@ -28,7 +28,7 @@ if(isset($_POST['submit_domain_level']))
     else
     {
         $queryDomainLevel = $dblms->querylms("SELECT max(domain_level_number) as last_domain_level_number
-                                            FROM ".OBE_DOMAINS." 
+                                            FROM ".OBE_DOMAIN_LEVELS." 
                                             WHERE domain_name_code = '".cleanvars($_POST['domain_name_code'])."'
                                             LIMIT 1");
         $valuequeryDomainLevel = mysqli_fetch_array($queryDomainLevel);
@@ -59,7 +59,7 @@ if(isset($_POST['submit_domain_level']))
             'id_added'                  => cleanvars($_SESSION['LOGINIDA_SSS'])                          ,
             'date_added'                => date('Y-m-d H:i:s')
         ];
-        $queryInsert = $dblms->Insert(OBE_DOMAINS , $domainLevelData);
+        $queryInsert = $dblms->Insert(OBE_DOMAIN_LEVELS , $domainLevelData);
         
         if($queryInsert) 
         {               
@@ -81,7 +81,7 @@ if(isset($_POST['submit_changes']))
         'date_modify'               => date('Y-m-d H:i:s')
     ];
     $conditions = "WHERE  domain_level_id  = ".cleanvars($_POST['domain_level_id_edit'])."";
-    $queryUpdate = $dblms->Update(OBE_DOMAINS, $domainLevelData,$conditions);
+    $queryUpdate = $dblms->Update(OBE_DOMAIN_LEVELS, $domainLevelData,$conditions);
 
     if($queryUpdate) 
     {

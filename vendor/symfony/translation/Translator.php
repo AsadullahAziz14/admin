@@ -192,10 +192,10 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
 
         $parameters = array_map(fn ($parameter) => $parameter instanceof TranslatableInterface ? $parameter->trans($this, $locale) : $parameter, $parameters);
 
-        $len = \strlen(MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX);
+        $len = \strlen(MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX);
         if ($this->hasIntlFormatter
-            && ($catalogue->defines($id, $domain.MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX)
-            || (\strlen($domain) > $len && 0 === substr_compare($domain, MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX, -$len, $len)))
+            && ($catalogue->defines($id, $domain.MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX)
+            || (\strlen($domain) > $len && 0 === substr_compare($domain, MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX, -$len, $len)))
         ) {
             return $this->formatter->formatIntl($catalogue->get($id, $domain), $locale, $parameters);
         }
@@ -458,8 +458,8 @@ EOF
         $allMessages = [];
 
         foreach ($catalogue->all() as $domain => $messages) {
-            if ($intlMessages = $catalogue->all($domain.MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX)) {
-                $allMessages[$domain.MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX] = $intlMessages;
+            if ($intlMessages = $catalogue->all($domain.MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
+                $allMessages[$domain.MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX] = $intlMessages;
                 $messages = array_diff_key($messages, $intlMessages);
             }
             if ($messages) {

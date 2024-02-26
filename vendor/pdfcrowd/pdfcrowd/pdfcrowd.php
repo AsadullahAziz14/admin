@@ -2675,12 +2675,12 @@ class HtmlToPdfClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "html-to-pdf", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "html-to-pdf", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -2689,12 +2689,12 @@ class HtmlToPdfClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "html-to-pdf", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "html-to-pdf", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;
@@ -3716,12 +3716,12 @@ class HtmlToImageClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "html-to-image", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "html-to-image", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -3730,12 +3730,12 @@ class HtmlToImageClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "html-to-image", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "html-to-image", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;
@@ -4460,12 +4460,12 @@ class ImageToImageClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "image-to-image", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "image-to-image", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -4474,12 +4474,12 @@ class ImageToImageClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "image-to-image", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "image-to-image", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;
@@ -6208,12 +6208,12 @@ class ImageToPdfClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "image-to-pdf", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "image-to-pdf", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -6222,12 +6222,12 @@ class ImageToPdfClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "image-to-pdf", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "image-to-pdf", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;
@@ -6776,12 +6776,12 @@ class PdfToHtmlClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "pdf-to-html", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "pdf-to-html", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -6790,12 +6790,12 @@ class PdfToHtmlClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "pdf-to-html", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "pdf-to-html", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;
@@ -7376,12 +7376,12 @@ class PdfToTextClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTP scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "pdf-to-text", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpProxy", "pdf-to-text", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_http_proxy"), 470);
         
         $this->fields['http_proxy'] = $proxy;
         return $this;
@@ -7390,12 +7390,12 @@ class PdfToTextClient {
     /**
     * A proxy server used by Pdfcrowd conversion process for accessing the source URLs with HTTPS scheme. It can help to circumvent regional restrictions or provide limited access to your intranet.
     *
-    * @param proxy The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.
+    * @param proxy The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.
     * @return The converter object.
     */
     function setHttpsProxy($proxy) {
         if (!preg_match("/(?i)^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z0-9]{1,}:\d+$/", $proxy))
-            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "pdf-to-text", "The value must have format OBE_DOMAINS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
+            throw new Error(create_invalid_value_message($proxy, "setHttpsProxy", "pdf-to-text", "The value must have format OBE_DOMAIN_LEVELS_OR_IP_ADDRESS:PORT.", "set_https_proxy"), 470);
         
         $this->fields['https_proxy'] = $proxy;
         return $this;

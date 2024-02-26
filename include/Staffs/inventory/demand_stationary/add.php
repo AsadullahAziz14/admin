@@ -48,8 +48,8 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 											<option value="">Select Item</option>';
 											$queryItems = $dblms->querylms("SELECT item_id, item_code, item_title 
 																				FROM ".SMS_ITEM."
-																				WHERE item_type = 2
-																		");
+																				WHERE item_type = 1
+																			");
 											while($valueItems = mysqli_fetch_array($queryItems)) {
 												echo '<option value="'.$valueItems['item_id'].'">'.$valueItems['item_code'].' '.$valueItems['item_title'].'</option>';
 											}
@@ -87,7 +87,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 						<div style="clear:both;"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" onclick="location.href=\'inventory-demand.php\'">Close</button>
+						<button type="button" class="btn btn-default" onclick="location.href=\'inventory-demand_stationary.php\'">Close</button>
 						<input class="btn btn-primary" type="submit" value="Add Record" id="submit_demand" name="submit_demand">
 					</div>
 				</div>
@@ -144,7 +144,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 
 			var xhr = new XMLHttpRequest();
 			var method = "GET";
-			var url = "include/ajax/getItems.php";
+			var url = "include/ajax/getItems.php?stationaryItems";
 			var asyncronous = true;
 
 			xhr.open(method,url,asyncronous);

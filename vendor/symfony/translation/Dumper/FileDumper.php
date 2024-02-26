@@ -63,7 +63,7 @@ abstract class FileDumper implements DumperInterface
                 }
             }
 
-            $intlDomain = $domain.MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX;
+            $intlDomain = $domain.MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX;
             $intlMessages = $messages->all($intlDomain);
 
             if ($intlMessages) {

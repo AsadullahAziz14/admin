@@ -115,8 +115,7 @@ if(isset($_GET['selectedDemand'])) {
 												HAVING total_received IS NULL OR total_received < SUM(pdi.quantity_ordered)
 											");
 		while($valuePODemandItem = mysqli_fetch_array($queryPODemandItem)) {
-			if($valuePODemandItem['quantity_ordered'] != $valuePODemandItem['total_received'])
-			{
+			if($valuePODemandItem['quantity_ordered'] != $valuePODemandItem['total_received']){
 				$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
 													FROM ".SMS_ITEM."
 													Where item_id IN (".$valuePODemandItem['id_item'].")
@@ -197,15 +196,25 @@ if(isset($_GET['selectedDemand'])) {
 			</div>';
 		}
 	}
+} elseif (isset($_GET['stationaryItems'])) {
+	$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
+									FROM ".SMS_ITEM."
+									Where item_id != ''
+									AND item_type = 1
+								");
+	echo '<option value = "">Select Item</option>';
+	while($valueItem = mysqli_fetch_array($queryItem)) {
+		echo '<option value = "'.$valueItem['item_id'].'">'.$valueItem['item_code'].' '.$valueItem['item_title'].'</option>';
+	}
 } else {
 	$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title 
 									FROM ".SMS_ITEM."
 									Where item_id != ''
+									AND item_type = 2
 								");
-	$valueItem = mysqli_fetch_array($queryItem);
 	echo '<option value = "">Select Item</option>';
 	while($valueItem = mysqli_fetch_array($queryItem)) {
-		echo '<option value = "'.$valueItem['item_id'].'">'.$valueItem['item_code'].'</option>';
+		echo '<option value = "'.$valueItem['item_id'].'">'.$valueItem['item_code'].' '.$valueItem['item_title'].'</option>';
 	}
 }
 

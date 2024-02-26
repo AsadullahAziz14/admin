@@ -30,7 +30,8 @@
 	define('PROGRAM_CATS'								, 'cms_programs_categories');
 	define('WEBSITES' 			    					, 'websites');
 	define('SLIDER_WEB' 								, 'slider_web');
-	define('OBE_DOMAINS'								, 'cms_obe_domain_levels');
+	define('OBE_DOMAINS'								, 'cms_obe_domains');
+	define('OBE_DOMAIN_LEVELS'							, 'cms_obe_domain_levels');
 	define('OBE_PLOS' 			        				, 'cms_obe_plos');
 	define('OBE_CLOS'									, 'cms_obe_clo');
 	define('OBE_CLOS_PROGRAMS'           				, 'cms_obe_clo_programs');

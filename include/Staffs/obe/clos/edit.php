@@ -3,106 +3,102 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 	echo '
 	<!--WI_EDIT_NEW_TASK_MODAL-->
 	<div class="row">
-	<div id="editCLOModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	<form class="form-horizontal" action="obeclos.php" method="POST" id="editRecord">
-	<div class="modal-content">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-		<button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
-		<h4 class="modal-title" style="font-weight:700;"> Edit CLO Details</h4>
-	</div>
+		<div id="editCLOModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<form class="form-horizontal" action="obeclos.php" method="POST" id="editRecord">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+							<button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+							<h4 class="modal-title" style="font-weight:700;"> Edit CLO Details</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label col-lg-12 req" style="width:150px;"> <b>CLO Number</b></label>
+								<div class="col-lg-12">
+									<select id="clo_number_edit" name="clo_number_edit" style="width:100%" autocomplete="off" required>
+										<option value="">Select CLO Number</option>';
+									for($i = 1; $i <= 50; $i++) { 
+										echo '<option value="'.$i.'">'.$i.'</option>';
+									}
+									echo '
+									</select>
+								</div>
+							</div>
 
-	<div class="modal-body">
+							<div style="clear:both;"></div>
 
-		<div class="form-group">
-			<label class="control-label col-lg-12 req" style="width:150px;"> <b>CLO Number</b></label>
-			<div class="col-lg-12">
-				<select id="clo_number_edit" name="clo_number_edit" style="width:100%" autocomplete="off" required>
-					<option value="">Select CLO Number</option>';
-				for($i = 1; $i <= 50; $i++) { 
-					echo '<option value="'.$i.'">'.$i.'</option>';
-				}
-				echo '
-				</select>
+							<div class="form-group">
+								<label class="control-label req col-lg-12" style="width:150px;"> <b>CLO Statement</b></label>
+								<div class="col-lg-12">
+									<textarea class="form-control" name="clo_statement_edit" id="clo_statement_edit" style="height:100px!important;" required></textarea>
+								</div>
+							</div>';
+
+							$queryPLO = $dblms->querylms("SELECT plo_id, plo_statement 
+															FROM ".OBE_PLOS." 
+															WHERE id_prg = 1
+														");
+							$options = '';
+							while ($valuePlo = mysqli_fetch_array($queryPLO)) {
+								$options .= '<option value="'.$valuePlo['plo_id'].'">'.$valuePlo['plo_statement'].'</option>';
+							}
+								
+							echo '
+							<div class="form-group">
+								<label class="control-label req col-lg-12" style="width:150px;"><b>Mapped PLOs</b></label>
+								<div class="col-lg-12">
+									<select id="id_plo_edit" class="select2" name="id_plo_edit[]" style="width:100%" multiple>
+										'.$options.'
+									</select>
+								</div>
+							</div>';
+
+							$queryDomains = $dblms->querylms("SELECT domain_level_id, domain_level_code, domain_level_name
+																FROM ".OBE_DOMAIN_LEVELS."
+															");
+							$options = '';
+							while ($valueDomain = mysqli_fetch_assoc($queryDomains)) {
+								$options .= '<option value="'.$valueDomain['domain_level_id'].'">'.$valueDomain['domain_level_code'].' - '.$valueDomain['domain_level_name'].'</option>';
+							}
+							
+							echo '
+							<div class="form-group">
+								<label class="control-label req col-lg-12" style="width:150px;"><b>Mapped Domain</b></label>
+								<div class="col-lg-12">
+									<select id="id_domain_level_edit" name="id_domain_level_edit" style="width:100%" autocomplete="off" required>
+										<option value="">Select Domain Level</option>
+										'.$options.'
+									</select>
+								</div>
+							</div>
+
+							<div style="clear:both;"></div>
+
+							<div class="form-group">
+								<label class="control-label req col-lg-12" style="width:150px;"><b>Status</b></label>
+								<div class="col-lg-12">
+									<select id="clo_status_edit" name="clo_status_edit" style="width:100%" autocomplete="off" required>
+										<option value="">Select Option</option>';
+									foreach($status as $cloStatus) { 
+										echo '<option value="'.$cloStatus['id'].'">'.$cloStatus['name'].'</option>';
+									}
+									echo '
+									</select>
+								</div>
+							</div>
+							
+							<div style="clear:both;"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+							<input type="hidden" id="clo_id_edit" name="clo_id_edit" value="">
+							<input class="btn btn-primary" type="submit" value="Save Changes" id="submit_changes" name="submit_changes">
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-
-		<div style="clear:both;"></div>
-
-		<div class="form-group">
-			<label class="control-label req col-lg-12" style="width:150px;"> <b>CLO Statement</b></label>
-			<div class="col-lg-12">
-				<textarea class="form-control" name="clo_statement_edit" id="clo_statement_edit" style="height:100px!important;" required></textarea>
-			</div>
-		</div>';
-
-		$queryPLO = $dblms->querylms("SELECT plo_id, plo_statement 
-										FROM ".OBE_PLOS." 
-										WHERE id_prg = 1
-									");
-		$options = '';
-		while ($valuePlo = mysqli_fetch_array($queryPLO)) {
-			$options .= '<option value="'.$valuePlo['plo_id'].'">'.$valuePlo['plo_statement'].'</option>';
-		}
-			
-		echo '
-		<div class="form-group">
-			<label class="control-label req col-lg-12" style="width:150px;"><b>Mapped PLOs</b></label>
-			<div class="col-lg-12">
-				<select id="id_plo_edit" class="select2" name="id_plo_edit[]" style="width:100%" multiple>
-					'.$options.'
-				</select>
-			</div>
-		</div>';
-
-		$queryDomains = $dblms->querylms("SELECT domain_level_id, domain_level_code, domain_level_name
-											FROM ".OBE_DOMAINS."
-										");
-		$options = '';
-		while ($valueDomain = mysqli_fetch_assoc($queryDomains)) {
-			$options .= '<option value="'.$valueDomain['domain_level_id'].'">'.$valueDomain['domain_level_code'].' - '.$valueDomain['domain_level_name'].'</option>';
-		}
-		
-		echo '
-		<div class="form-group">
-			<label class="control-label req col-lg-12" style="width:150px;"><b>Mapped Domain</b></label>
-			<div class="col-lg-12">
-				<select id="id_domain_level_edit" name="id_domain_level_edit" style="width:100%" autocomplete="off" required>
-					<option value="">Select Domain Level</option>
-					'.$options.'
-				</select>
-			</div>
-		</div>
-
-		<div style="clear:both;"></div>
-
-		<div class="form-group">
-			<label class="control-label req col-lg-12" style="width:150px;"><b>Status</b></label>
-			<div class="col-lg-12">
-				<select id="clo_status_edit" name="clo_status_edit" style="width:100%" autocomplete="off" required>
-					<option value="">Select Option</option>';
-				foreach($status as $cloStatus) { 
-					echo '<option value="'.$cloStatus['id'].'">'.$cloStatus['name'].'</option>';
-				}
-				echo '
-				</select>
-			</div>
-		</div>
-		
-		<div style="clear:both;"></div>
-	</div>
-
-	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
-		<input type="hidden" id="clo_id_edit" name="clo_id_edit" value="">
-		<input class="btn btn-primary" type="submit" value="Save Changes" id="submit_changes" name="submit_changes">
-	</div>
-
-	</div>
-	</form>
-	</div>
-	</div>
 	</div>
 	<!--WI_EDIT_NEW_TASK_MODAL-->
    <script type="text/javascript">

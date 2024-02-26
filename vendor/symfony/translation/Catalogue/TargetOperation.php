@@ -35,7 +35,7 @@ class TargetOperation extends AbstractOperation
             'new' => [],
             'obsolete' => [],
         ];
-        $intlDomain = $domain.MessageCatalogueInterface::INTL_OBE_DOMAINS_SUFFIX;
+        $intlDomain = $domain.MessageCatalogueInterface::INTL_OBE_DOMAIN_LEVELS_SUFFIX;
 
         foreach ($this->target->getCatalogueMetadata('', $domain) ?? [] as $key => $value) {
             if (null === $this->result->getCatalogueMetadata($key, $domain)) {

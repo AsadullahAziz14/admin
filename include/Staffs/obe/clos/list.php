@@ -7,7 +7,7 @@ $page = (int)$page;
 
 $queryCLO  = $dblms->querylms("SELECT cl.clo_id
                                  FROM ".OBE_CLOS." as cl
-                                 LEFT JOIN ".OBE_DOMAINS." dm ON cl.id_domain_level = dm.domain_level_id 
+                                 LEFT JOIN ".OBE_DOMAIN_LEVELS." dm ON cl.id_domain_level = dm.domain_level_id 
                                  WHERE cl.clo_id != ''
                                  $sql2
                                  ");
@@ -22,7 +22,7 @@ $lpm1 		= $lastpage - 1;
 if(mysqli_num_rows($queryCLO) > 0) {     
    $queryCLO  = $dblms->querylms("SELECT cl.clo_id, cl.id_course, cl.clo_number, cl.clo_statement, cl.id_plo, cl.id_domain_level, dm.domain_level_code, cl.clo_status
                               FROM ".OBE_CLOS." as cl 
-                              LEFT JOIN ".OBE_DOMAINS." as dm ON cl.id_domain_level = dm.domain_level_id 
+                              LEFT JOIN ".OBE_DOMAIN_LEVELS." as dm ON cl.id_domain_level = dm.domain_level_id 
                               WHERE cl.clo_id != ''
                               $sql2
                               ORDER BY cl.clo_id DESC 

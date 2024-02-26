@@ -6,10 +6,10 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
    $page = (int)$page;
 
    $queryDemand = $dblms->querylms("SELECT demand_id
-                                       FROM ".SMS_DEMAND." as d
-                                       LEFT JOIN  ".SMS_DEMAND_ITEM_JUNCTION." as di ON d.demand_id = di.id_demand
-                                       LEFT JOIN ".SMS_ITEM." as i ON di.id_item = i.item_id 
-                                       WHERE d.demand_id != '' AND i.item_type = 2 
+                                          FROM ".SMS_DEMAND." as d
+                                          LEFT JOIN  ".SMS_DEMAND_ITEM_JUNCTION." as di ON d.demand_id = di.id_demand
+                                          LEFT JOIN ".SMS_ITEM." as i ON di.id_item = i.item_id 
+                                          WHERE d.demand_id != '' AND i.item_type = 1
                                     ");
    $count 		= mysqli_num_rows($queryDemand);
    if($page == 0) { $page = 1; }						//if no page var is given, default to 1.
@@ -20,12 +20,12 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 
    if(mysqli_num_rows($queryDemand) > 0) {
       $queryDemand = $dblms->querylms("SELECT d.demand_id, d.demand_status, d.demand_code, d.demand_type,
-                                             d.demand_date, d.demand_due_date, d.forwarded_by,
-                                             d.forwarded_to, d.id_department, d.id_added,d.date_forwarded
-                                             FROM ".SMS_DEMAND." as d
-                                             LEFT JOIN  ".SMS_DEMAND_ITEM_JUNCTION." as di ON d.demand_id = di.id_demand
-                                             LEFT JOIN ".SMS_ITEM." as i ON di.id_item = i.item_id 
-                                             WHERE d.demand_id != '' AND i.item_type = 2 
+                                                d.demand_date, d.demand_due_date, d.forwarded_by,
+                                                d.forwarded_to, d.id_department, d.id_added,d.date_forwarded
+                                                FROM ".SMS_DEMAND." as d
+                                                LEFT JOIN  ".SMS_DEMAND_ITEM_JUNCTION." as di ON d.demand_id = di.id_demand
+                                                LEFT JOIN ".SMS_ITEM." as i ON di.id_item = i.item_id 
+                                                WHERE d.demand_id != '' AND i.item_type = 1
                                              $sql2
                                              LIMIT ".($page-1)*$Limit .",$Limit
                                        ");
@@ -98,7 +98,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                         ';
                         if($valueDemand['demand_status'] <= 1) {
                            echo '
-                           <a class="btn btn-xs btn-info" href="inventory-demand.php?id='.$valueDemand['demand_id'].'"><i class="icon-pencil"></i></a>
+                           <a class="btn btn-xs btn-info" href="inventory-demand_stationary.php?id='.$valueDemand['demand_id'].'"><i class="icon-pencil"></i></a>
                            <a href="?deleteId='.$valueDemand['demand_id'].'" class="btn btn-xs btn-danger"><i class="icon-trash"></i></a>';
                         }
                         echo '
@@ -121,7 +121,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
    
                //previous button
                if ($page > 1) {
-                  $pagination.= '<li><a href="inventory-demand.php?page='.$prev.$sqlstring.'">Prev</a></li>';
+                  $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$prev.$sqlstring.'">Prev</a></li>';
                }
                //pages	
                if ($lastpage < 7 + ($adjacents * 3)) {	
@@ -130,7 +130,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                      if ($counter == $page) {
                         $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
                      } else {
-                        $pagination.= '<li><a href="inventory-demand.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
+                        $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
                      }
                   }
                } else if($lastpage > 5 + ($adjacents * 3))	{ 
@@ -141,44 +141,44 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                         if ($counter == $page) {
                            $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
                         } else {
-                           $pagination.= '<li><a href="inventory-demand.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
+                           $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';
                         }
                      }
                      $pagination.= '<li><a href="#"> ... </a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
                   } else if($lastpage - ($adjacents * 3) > $page && $page > ($adjacents * 3)) { //in middle; hide some front and some back
-                        $pagination.= '<li><a href="inventory-demand.php?page=1'.$sqlstring.'">1</a></li>';
-                        $pagination.= '<li><a href="inventory-demand.php?page=2'.$sqlstring.'">2</a></li>';
-                        $pagination.= '<li><a href="inventory-demand.php?page=3'.$sqlstring.'">3</a></li>';
+                        $pagination.= '<li><a href="inventory-demand_stationary.php?page=1'.$sqlstring.'">1</a></li>';
+                        $pagination.= '<li><a href="inventory-demand_stationary.php?page=2'.$sqlstring.'">2</a></li>';
+                        $pagination.= '<li><a href="inventory-demand_stationary.php?page=3'.$sqlstring.'">3</a></li>';
                         $pagination.= '<li><a href="#"> ... </a></li>';
                      for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
                         if ($counter == $page) {
                            $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
                         } else {
-                           $pagination.= '<li><a href="inventory-demand.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
+                           $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
                         }
                      }
                      $pagination.= '<li><a href="#"> ... </a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$lpm1.$sqlstring.'">'.$lpm1.'</a></li>';
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$lastpage.$sqlstring.'">'.$lastpage.'</a></li>';	
                   } else { //close to end; only hide early pages
-                     $pagination.= '<li><a href="inventory-demand.php?page=1'.$sqlstring.'">1</a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page=2'.$sqlstring.'">2</a></li>';
-                     $pagination.= '<li><a href="inventory-demand.php?page=3'.$sqlstring.'">3</a></li>';
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page=1'.$sqlstring.'">1</a></li>';
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page=2'.$sqlstring.'">2</a></li>';
+                     $pagination.= '<li><a href="inventory-demand_stationary.php?page=3'.$sqlstring.'">3</a></li>';
                      $pagination.= '<li><a href="#"> ... </a></li>';
                      for ($counter = $lastpage - (3 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
                         if ($counter == $page) {
                            $pagination.= '<li class="active"><a href="">'.$counter.'</a></li>';
                         } else {
-                           $pagination.= '<li><a href="inventory-demand.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
+                           $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$counter.$sqlstring.'">'.$counter.'</a></li>';					
                         }
                      }
                   }
                }
             //next button
             if ($page < $counter - 1) {
-               $pagination.= '<li><a href="inventory-demand.php?page='.$next.$sqlstring.'">Next</a></li>';
+               $pagination.= '<li><a href="inventory-demand_stationary.php?page='.$next.$sqlstring.'">Next</a></li>';
             } else {
                $pagination.= "";
             }

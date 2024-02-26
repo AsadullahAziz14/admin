@@ -55,6 +55,9 @@ if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "dashboard")) {
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i> Manage User Files</h2>';
 	$lefttitlename 	= 'Manage User Files';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "domains")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i> Manage Domain</h2>';
+	$lefttitlename 	= 'Manage Domain';
+} else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "domainlevels")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i> Manage Domain Level</h2>';
 	$lefttitlename 	= 'Manage Domain Level';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "plo")) { 
@@ -77,6 +80,9 @@ if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "dashboard")) {
 	$lefttitlename 	= 'Vendors';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "demand")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Demand</h2>';
+	$lefttitlename 	= 'Demand';
+}else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "demand_stationary")) { 
+	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Stationary Demand</h2>';
 	$lefttitlename 	= 'Demand';
 } else if((strstr(basename($_SERVER['REQUEST_URI']), '.php', true) == "purchase_order")) { 
 	$toptitlename 	= '<h2 class="pull-left responsive-heading-title"><i class="icon-file-alt"></i>Purchase Order</h2>';
@@ -117,7 +123,8 @@ echo '
 
 	<li class="has_sub"> <a href="javascript:void(0)"> <i class="icon-file-text"></i> OBE System<span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span></a>
 		<ul>
-			<li> <a href="obedomainlevels.php"> <i class="icon-file-text"></i> Manage Domains<span class="pull-right"></span></a> </li>
+			<li> <a href="obedomains.php"> <i class="icon-file-text"></i> Manage Domains<span class="pull-right"></span></a> </li>
+			<li> <a href="obedomainlevels.php"> <i class="icon-file-text"></i> Manage Domain Levels<span class="pull-right"></span></a> </li>
 			<li> <a href="obeplos.php"> <i class="icon-file-text"></i> Manage PLOs<span class="pull-right"></span></a> </li>
 			<li> <a href="obehome.php"> <i class="icon-file-text"></i> OBE Home<span class="pull-right"></span></a> </li>		
 		</ul>
@@ -129,6 +136,7 @@ echo '
 			<li> <a href="inventory-sub_category.php"> <i class="icon-file-text"></i>Sub Categories<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-vendor.php"> <i class="icon-file-text"></i>Vendors<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-demand.php"> <i class="icon-file-text"></i>Demand<span class="pull-right"></span></a> </li>
+			<li> <a href="inventory-demand_stationary.php"> <i class="icon-file-text"></i>Stationary Demand<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-purchase_order.php"> <i class="icon-file-text"></i>PO<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-receiving.php"> <i class="icon-file-text"></i>PO Receiving<span class="pull-right"></span></a> </li>
 			<li> <a href="inventory-requisition.php"> <i class="icon-file-text"></i>Item Requisition<span class="pull-right"></span></a> </li>

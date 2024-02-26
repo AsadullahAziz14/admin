@@ -27,7 +27,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
 {
     public const MESSAGE_TOKEN = 300;
     public const METHOD_ARGUMENTS_TOKEN = 1000;
-    public const OBE_DOMAINS_TOKEN = 1001;
+    public const OBE_DOMAIN_LEVELS_TOKEN = 1001;
 
     /**
      * Prefix for new found message.
@@ -46,7 +46,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
             ',',
             self::METHOD_ARGUMENTS_TOKEN,
             ',',
-            self::OBE_DOMAINS_TOKEN,
+            self::OBE_DOMAIN_LEVELS_TOKEN,
         ],
         [
             '->',
@@ -62,7 +62,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
             ',',
             self::METHOD_ARGUMENTS_TOKEN,
             ',',
-            self::OBE_DOMAINS_TOKEN,
+            self::OBE_DOMAIN_LEVELS_TOKEN,
         ],
         [
             'new',
@@ -85,7 +85,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
             ',',
             self::METHOD_ARGUMENTS_TOKEN,
             ',',
-            self::OBE_DOMAINS_TOKEN,
+            self::OBE_DOMAIN_LEVELS_TOKEN,
         ],
         [
             'new',
@@ -95,7 +95,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
             ',',
             self::METHOD_ARGUMENTS_TOKEN,
             ',',
-            self::OBE_DOMAINS_TOKEN,
+            self::OBE_DOMAIN_LEVELS_TOKEN,
         ],
         [
             'new',
@@ -123,7 +123,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
             ',',
             self::METHOD_ARGUMENTS_TOKEN,
             ',',
-            self::OBE_DOMAINS_TOKEN,
+            self::OBE_DOMAIN_LEVELS_TOKEN,
         ],
         [
             't',
@@ -288,7 +288,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                         }
                     } elseif (self::METHOD_ARGUMENTS_TOKEN === $item) {
                         $this->skipMethodArgument($tokenIterator);
-                    } elseif (self::OBE_DOMAINS_TOKEN === $item) {
+                    } elseif (self::OBE_DOMAIN_LEVELS_TOKEN === $item) {
                         $domainToken = $this->getValue($tokenIterator);
                         if ('' !== $domainToken) {
                             $domain = $domainToken;

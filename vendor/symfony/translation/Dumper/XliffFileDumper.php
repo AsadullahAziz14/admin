@@ -149,8 +149,8 @@ class XliffFileDumper extends FileDumper
         $xliff->setAttribute('trgLang', str_replace('_', '-', $messages->getLocale()));
 
         $xliffFile = $xliff->appendChild($dom->createElement('file'));
-        if (str_ends_with($domain, MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX)) {
-            $xliffFile->setAttribute('id', substr($domain, 0, -\strlen(MessageCatalogue::INTL_OBE_DOMAINS_SUFFIX)).'.'.$messages->getLocale());
+        if (str_ends_with($domain, MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
+            $xliffFile->setAttribute('id', substr($domain, 0, -\strlen(MessageCatalogue::INTL_OBE_DOMAIN_LEVELS_SUFFIX)).'.'.$messages->getLocale());
         } else {
             $xliffFile->setAttribute('id', $domain.'.'.$messages->getLocale());
         }

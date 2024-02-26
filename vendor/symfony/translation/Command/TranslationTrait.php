@@ -47,7 +47,7 @@ trait TranslationTrait
         $filteredCatalogue = new MessageCatalogue($catalogue->getLocale());
 
         // extract intl-icu messages only
-        $intlDomain = $domain.MessageCatalogueInterface::INTL_OBE_DOMAINS_SUFFIX;
+        $intlDomain = $domain.MessageCatalogueInterface::INTL_OBE_DOMAIN_LEVELS_SUFFIX;
         if ($intlMessages = $catalogue->all($intlDomain)) {
             $filteredCatalogue->add($intlMessages, $intlDomain);
         }

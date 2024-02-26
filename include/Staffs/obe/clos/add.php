@@ -73,7 +73,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 		</div>';
 		
 		$queryDomains = $dblms->querylms("SELECT domain_level_id, domain_level_code, domain_level_name
-											FROM ".OBE_DOMAINS." 
+											FROM ".OBE_DOMAIN_LEVELS." 
 										");
 		$options = '';
 		while ($valueDomain = mysqli_fetch_assoc($queryDomains)) {

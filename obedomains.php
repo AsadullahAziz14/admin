@@ -18,27 +18,23 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 //Check If User has rights
 } else if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || arrayKeyValueSearch($_SESSION['userroles'], 'right_name', '19')) {   
 	require_once("include/header.php");
-    require_once("include/Staffs/obe/domainlevels/query.php");
+    require_once("include/Staffs/obe/domains/query.php");
 		
 	$sql2 						= '';
 	$sqlstring					= "";
 	$srch						= (isset($_GET['srch']) && $_GET['srch'] != '') ? $_GET['srch'] : '';
-	$domain_level_name_srch		= (isset($_GET['domain_level_name_srch']) && $_GET['domain_level_name_srch'] != '') ? $_GET['domain_level_name_srch'] : '';
+	$domain_name_srch			= (isset($_GET['domain_name_srch']) && $_GET['domain_name_srch'] != '') ? $_GET['domain_name_srch'] : '';
 	$status_srch				= (isset($_GET['status_srch']) && $_GET['status_srch'] != '') ? $_GET['status_srch'] : '';
 	$faculty					= (isset($_GET['faculty']) && $_GET['faculty'] != '') ? $_GET['faculty'] : '';
 	$dept						= (isset($_GET['dept']) && $_GET['dept'] != '') ? $_GET['dept'] : '';
 	$liberalArts				= (isset($_GET['la']) && $_GET['la'] != '') ? $_GET['la'] : '';
 
-	if(($srch)) { 
-		$sql2 		.= " AND (".OBE_DOMAIN_LEVELS.".domain_name_code LIKE '%".$srch."%')"; 
-		$sqlstring	.= "&srch=".$srch."";
-	}
-	if(($domain_level_name_srch)) { 
-		$sql2 		.= " AND ".OBE_DOMAIN_LEVELS.".domain_level_name = '".$domain_level_name_srch."'"; 
-		$sqlstring	.= "&domain_level_name_srch=".$domain_level_name_srch."";
+	if(($domain_name_srch)) { 
+		$sql2 		.= " AND ".OBE_DOMAINS.".domain_name = '".$domain_name_srch."'"; 
+		$sqlstring	.= "&domain_name_srch=".$domain_name_srch."";
 	}
     if(($status_srch)) { 
-		$sql2 		.= " AND ".OBE_DOMAIN_LEVELS.".domain_level_status = '".$status_srch."'"; 
+		$sql2 		.= " AND ".OBE_DOMAINS.".domain_status = '".$status_srch."'"; 
 		$sqlstring	.= "&status_srch=".$status_srch."";
 	}
 			echo '
@@ -55,11 +51,11 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 						<!-- .navbar-collapse -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<form class="navbar-form navbar-left form-small" action="" method="get">
+								<!-- <div class="form-group">
+									<input type="text" class="form-control" name="srch" placeholder="Program" style="width:250px;">
+								</div> -->
 								<div class="form-group">
-									<input type="text" class="form-control" name="srch" placeholder="Domain Name" style="width:250px;">
-								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" name="domain_level_name_srch" placeholder="Domain Level Name" style="width:250px;">
+									<input type="text" class="form-control" name="domain_name_srch" placeholder="Domain Name" style="width:250px;">
 								</div>
 								<div class="form-group">
 									<select id="list-status" data-placeholder="Status" name="status_srch" style="width:auto;">
@@ -71,9 +67,9 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									</select>
 								</div>
 								<button type="submit" class="btn btn-primary">Search</button>
-								<a href="obedomainlevels.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
+								<a href="obedomains.php" class="btn btn-purple"><i class="icon-list"></i> All</a>';
 								if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) { 
-									echo '<button data-toggle="modal" class="btn btn-success" href="#addNewDOMAINLEVELModal"><i class="icon-plus"></i>Add Domain Level</button>';
+									echo '<button data-toggle="modal" class="btn btn-success" href="#addNewDOMAINModal"><i class="icon-plus"></i>Add Domain</button>';
 								}
 							echo '
 							</form>
@@ -95,7 +91,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 									unset($_SESSION['msg']);
 								} 
 
-								require_once("include/Staffs/obe/domainlevels/list.php");
+								require_once("include/Staffs/obe/domains/list.php");
+								require_once("include/Staffs/obe/domains/edit.php");
 
 								echo '
 								</div>
@@ -127,8 +124,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	<!-- Scroll to top -->
 	<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>';
 	//------------------------------------------------
-		require_once("include/Staffs/obe/domainlevels/add.php");
-		require_once("include/Staffs/obe/domainlevels/edit.php");
+		require_once("include/Staffs/obe/domains/add.php");
 	//------------------------------------------------
 	echo '
 	<!--WI_IFRAME_MODAL-->
@@ -161,22 +157,22 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 		$("#list-status").select2({
 			allowClear: true
 		});
-		$("#domain_level_number").select2({
+		$("#domain_number").select2({
 			allowClear: true
 		});
-		$("#domain_level_number_edit").select2({
+		$("#domain_number_edit").select2({
 			allowClear: true
 		});
-		$("#id_domain_level").select2({
+		$("#id_domain").select2({
 			allowClear: true
 		});
-		$("#id_domain_level_edit").select2({
+		$("#id_domain_edit").select2({
 			allowClear: true
 		});
-		$("#domain_level_status").select2({
+		$("#domain_status").select2({
 			allowClear: true
 		});
-		$("#domain_level_status_edit").select2({
+		$("#domain_status_edit").select2({
 			allowClear: true
 		});
 		$("#id_cat").select2({

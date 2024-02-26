@@ -46,8 +46,8 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         $domains = [];
 
         foreach ($this->messages as $domain => $messages) {
-            if (str_ends_with($domain, self::INTL_OBE_DOMAINS_SUFFIX)) {
-                $domain = substr($domain, 0, -\strlen(self::INTL_OBE_DOMAINS_SUFFIX));
+            if (str_ends_with($domain, self::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
+                $domain = substr($domain, 0, -\strlen(self::INTL_OBE_DOMAIN_LEVELS_SUFFIX));
             }
             $domains[$domain] = $domain;
         }
@@ -59,18 +59,18 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
     {
         if (null !== $domain) {
             // skip messages merge if intl-icu requested explicitly
-            if (str_ends_with($domain, self::INTL_OBE_DOMAINS_SUFFIX)) {
+            if (str_ends_with($domain, self::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
                 return $this->messages[$domain] ?? [];
             }
 
-            return ($this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX] ?? []) + ($this->messages[$domain] ?? []);
+            return ($this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX] ?? []) + ($this->messages[$domain] ?? []);
         }
 
         $allMessages = [];
 
         foreach ($this->messages as $domain => $messages) {
-            if (str_ends_with($domain, self::INTL_OBE_DOMAINS_SUFFIX)) {
-                $domain = substr($domain, 0, -\strlen(self::INTL_OBE_DOMAINS_SUFFIX));
+            if (str_ends_with($domain, self::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
+                $domain = substr($domain, 0, -\strlen(self::INTL_OBE_DOMAIN_LEVELS_SUFFIX));
                 $allMessages[$domain] = $messages + ($allMessages[$domain] ?? []);
             } else {
                 $allMessages[$domain] = ($allMessages[$domain] ?? []) + $messages;
@@ -90,7 +90,7 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
 
     public function has(string $id, string $domain = 'messages'): bool
     {
-        if (isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX][$id])) {
+        if (isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX][$id])) {
             return true;
         }
 
@@ -103,13 +103,13 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
 
     public function defines(string $id, string $domain = 'messages'): bool
     {
-        return isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX][$id]);
+        return isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX][$id]);
     }
 
     public function get(string $id, string $domain = 'messages'): string
     {
-        if (isset($this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX][$id])) {
-            return $this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX][$id];
+        if (isset($this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX][$id])) {
+            return $this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX][$id];
         }
 
         if (isset($this->messages[$domain][$id])) {
@@ -128,7 +128,7 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
      */
     public function replace(array $messages, string $domain = 'messages')
     {
-        unset($this->messages[$domain], $this->messages[$domain.self::INTL_OBE_DOMAINS_SUFFIX]);
+        unset($this->messages[$domain], $this->messages[$domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX]);
 
         $this->add($messages, $domain);
     }
@@ -138,7 +138,7 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
      */
     public function add(array $messages, string $domain = 'messages')
     {
-        $altDomain = str_ends_with($domain, self::INTL_OBE_DOMAINS_SUFFIX) ? substr($domain, 0, -\strlen(self::INTL_OBE_DOMAINS_SUFFIX)) : $domain.self::INTL_OBE_DOMAINS_SUFFIX;
+        $altDomain = str_ends_with($domain, self::INTL_OBE_DOMAIN_LEVELS_SUFFIX) ? substr($domain, 0, -\strlen(self::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) : $domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX;
         foreach ($messages as $id => $message) {
             unset($this->messages[$altDomain][$id]);
             $this->messages[$domain][$id] = $message;
@@ -159,8 +159,8 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         }
 
         foreach ($catalogue->all() as $domain => $messages) {
-            if ($intlMessages = $catalogue->all($domain.self::INTL_OBE_DOMAINS_SUFFIX)) {
-                $this->add($intlMessages, $domain.self::INTL_OBE_DOMAINS_SUFFIX);
+            if ($intlMessages = $catalogue->all($domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX)) {
+                $this->add($intlMessages, $domain.self::INTL_OBE_DOMAIN_LEVELS_SUFFIX);
                 $messages = array_diff_key($messages, $intlMessages);
             }
             $this->add($messages, $domain);
