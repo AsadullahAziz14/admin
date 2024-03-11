@@ -61,7 +61,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 						<div class="col-sm-91">
 							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
 							<input class="form-control deleted_requisition_ids" type="hidden" name="deleted_requisition_ids" id="deleted_requisition_ids">
-							<input class="form-control deleted_requisition" type="" name="deleted_requisition" id="deleted_requisition">';
+							<input class="form-control deleted_requisition" type="hidden" name="deleted_requisition" id="deleted_requisition">';
 							';
 							$queryIssuanceRequisition = $dblms->querylms("SELECT DISTINCT id_requisition
 																FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." 
@@ -84,7 +84,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
+											<button class="btn btn-info" style="align-items: center;" ><i class="icon-remove"></i></button>
+											<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeRequisition(this,'.$valueIssuanceRequisition['id_requisition'].')"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
 									$queryIssuanceRequisitionItem = $dblms->querylms("SELECT id_item, sum(quantity_issued)  as quantity_issued , id_requisition
@@ -169,6 +170,13 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		$(".select2").select2({
 			placeholder: "Select Any Option"
 		})
+		
+		deleteRequisition = [];
+		function removeRequisition(button,requisition_id) {
+			deleteRequisition.push(requisition_id);
+			document.getElementById("deleted_requisition").value =  deleteRequisition;
+			document.getElementById(requisition_id).remove();
+		}
 
 		$deleteItemId = [];
 		$deleteRequisitionId = [];

@@ -62,11 +62,12 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 
 						<div class="col-sm-91">
 							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
-							<input class="form-control deleted_po_ids" type="hidden" name="deleted_po_ids" id="deleted_po_ids">';
+							<input class="form-control deleted_po_ids" type="hidden" name="deleted_po_ids" id="deleted_po_ids">
+							<input class="form-control deleted_po" type="hidden" name="deleted_po" id="deleted_po">';
 							$queryReceivingPO = $dblms->querylms("SELECT DISTINCT id_po 
-																FROM ".SMS_RECEIVING_PO_ITEM_JUNCTION." 
-																Where id_receiving= ".$valueReceiving['receiving_id']
-															);
+																	FROM ".SMS_RECEIVING_PO_ITEM_JUNCTION." 
+																	Where id_receiving= ".$valueReceiving['receiving_id']
+																);
 							$i = 0;
 							while($valueReceivingPO = mysqli_fetch_array($queryReceivingPO)) {
 								$i = $i + 1;
@@ -84,7 +85,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
+											<button type="button" class="btn btn-info" style="align-items: center;" onclick="removePO(this,'.$valueReceivingPO['id_po'].')"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
 									$queryReceivingPOJuntion = $dblms->querylms("SELECT distinct a.id_item, sum(a.quantity_received) as quantity_received, b.quantity_ordered
@@ -153,6 +154,13 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		$(".select2").select2({
 			placeholder: "Select Any Option"
 		})
+
+		deletePO = [];
+		function removePO(button,po_id) {
+			deletePO.push(po_id);
+			document.getElementById("deleted_po").value =  deletePO;
+			document.getElementById(po_id).remove();
+		}
 
 		$deleteItemId = [];
 		$deletePOId = [];

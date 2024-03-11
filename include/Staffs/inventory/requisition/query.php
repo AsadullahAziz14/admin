@@ -117,6 +117,11 @@ if(isset($_POST['update_requisition'])) {
         }
     }
 
+    if(isset($_POST['deleted_demand']) && $_POST['deleted_demand'] != '') {
+        $deleteDemands = cleanvars($_POST['deleted_demand']);
+        $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION." WHERE id_requisition = ".$requisition_id." AND id_demand IN ('".$deleteDemands."')");
+    }
+
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
             foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {

@@ -117,7 +117,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 						</div>
 						<div class="col-sm-91">
 							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
-							<input class="form-control deleted_demand_ids" type="hidden" name="deleted_demand_ids" id="deleted_demand_ids">';
+							<input class="form-control deleted_demand_ids" type="hidden" name="deleted_demand_ids" id="deleted_demand_ids">
+							<input class="form-control deleted_demand" type="hidden" name="deleted_demand" id="deleted_demand">';
 							$queryPoDemand = $dblms->querylms("SELECT DISTINCT id_demand 
 																FROM ".SMS_PO_DEMAND_ITEM_JUNCTION." 
 																Where id_po = ".$valuePO['po_id']
@@ -126,7 +127,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 							while($valuePoDemand = mysqli_fetch_array($queryPoDemand)) {
 								$i = $i + 1;
 								echo '
-								<div class="form-sep" style="margin-top: 10px; width: 100%; border: 1px solid rgb(231, 231, 231);">
+								<div class="form-sep" id="'.$valuePoDemand['id_demand'].'" style="margin-top: 10px; width: 100%; border: 1px solid rgb(231, 231, 231);">
 									<div class="col-sm-92">
 										<label for="id_demand" class="req">Demand</label>';									
 										$queryDemand = $dblms->querylms("SELECT demand_id, demand_code
@@ -139,14 +140,14 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
+											<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeDemand(this,'.$valuePoDemand['id_demand'].')"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
 									$queryPoDemandItem = $dblms->querylms("SELECT distinct id_item, sum(quantity_ordered) as quantity_ordered, unit_price 
 																				FROM ".SMS_PO_DEMAND_ITEM_JUNCTION."
 																				Where id_po = ".$valuePO['po_id']." AND id_demand = ".$valuePoDemand['id_demand']."
 																				GROUP BY id_item
-																				");
+																		");
 									while($valuePoDemandItem = mysqli_fetch_array($queryPoDemandItem)) {
 										$queryItem = $dblms->querylms("SELECT item_id, item_code, item_title
 																		FROM ".SMS_ITEM." 
@@ -222,15 +223,22 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 		placeholder: "Select Any Option"
 	})
 
-	$deleteItemId = [];
-	$deleteDemandId = [];
+	deleteDemand = [];
+	function removeDemand(button,demand_id) {
+		console.log(demand_id);
+		deleteDemand.push(demand_id);
+		document.getElementById("deleted_demand").value =  deleteDemand;
+		document.getElementById(demand_id).remove();
+	}
+	deleteItemId = [];
+	deleteDemandId = [];
 	function removeItem(button,demand_id, delete_item_id) {
 		var parentDiv = button.closest("[class*=item]");
 		if (parentDiv) {
-			$deleteItemId.push(delete_item_id);
-			$deleteDemandId.push(demand_id);
-			document.getElementById("deleted_item_ids").value =  $deleteItemId;
-			document.getElementById("deleted_demand_ids").value =  $deleteDemandId;
+			deleteItemId.push(delete_item_id);
+			document.getElementById("deleted_item_ids").value =  deleteItemId;
+			deleteDemandId.push(demand_id);
+			document.getElementById("deleted_demand_ids").value =  deleteDemandId;
 			parentDiv.parentNode.removeChild(parentDiv);
 		}
 	}

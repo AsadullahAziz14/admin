@@ -124,6 +124,11 @@ if(isset($_POST['update_issuance'])) {
         }
     }
 
+    if(isset($_POST['deleted_requisition']) && $_POST['deleted_requisition'] != '') {
+        $deleteRequisition = cleanvars($_POST['deleted_requisition']);
+        $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION." WHERE id_issuance = ".$issuance_id." AND id_requisition IN ('".$deleteRequisition."')");
+    }
+
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
             if(isset($_POST['deleted_item_ids']) && isset($_POST['deleted_requisition_ids']) && $_POST['deleted_requisition_ids'] != '' && $_POST['deleted_item_ids'] != '' ) {

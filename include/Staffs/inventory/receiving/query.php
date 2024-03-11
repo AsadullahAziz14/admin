@@ -128,6 +128,11 @@ if(isset($_POST['update_receiving'])) {
         }
     }
 
+    if(isset($_POST['deleted_po']) && $_POST['deleted_po'] != '') {
+        $deletePo = cleanvars($_POST['deleted_po']);
+        $queryDelete  = $dblms->querylms("DELETE FROM ".SMS_RECEIVING_PO_ITEM_JUNCTION." WHERE id_receiving = ".$receiving_id." AND id_requisition IN ('".$deletePo."')");
+    }
+
     if($queryUpdate) {
         if(isset($_POST['id_item'])) {
             foreach (cleanvars($_POST['id_item']) as $key => $id_itemArray) {
@@ -146,11 +151,11 @@ if(isset($_POST['update_receiving'])) {
                                                                 ");
                             $valueInventory = mysqli_fetch_array($queryInventory);
 
-                            // $data = [
-                            //     'quantity_added'            => $_POST['quantity_received'][$id_po][$id_item]
-                            // ];
-                            // $conditions = "Where id_inventory = ".$valueInventory['inventory_id']." AND id_receiving = ".$receiving_id." AND id_item = ".$id_item."";
-                            // $queryUpdate = $dblms->Update(SMS_INVENTORY_RECEIVING_ITEM_JUNCTION, $data, $conditions);
+                            $data = [
+                                'quantity_added'            => $_POST['quantity_received'][$id_po][$id_item]
+                            ];
+                            $conditions = "Where id_inventory = ".$valueInventory['inventory_id']." AND id_receiving = ".$receiving_id." AND id_item = ".$id_item."";
+                            $queryUpdate = $dblms->Update(SMS_INVENTORY_RECEIVING_ITEM_JUNCTION, $data, $conditions);
                         }   
                     }
                 } else {

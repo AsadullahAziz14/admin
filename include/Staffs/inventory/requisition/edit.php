@@ -88,7 +88,8 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 						
 						<div class="col-sm-91">
 							<input class="form-control deleted_item_ids" type="hidden" name="deleted_item_ids" id="deleted_item_ids">
-							<input class="form-control deleted_demand_ids" type="hidden" name="deleted_demand_ids" id="deleted_demand_ids">';
+							<input class="form-control deleted_demand_ids" type="hidden" name="deleted_demand_ids" id="deleted_demand_ids">
+							<input class="form-control deleted_demand" type="hidden" name="deleted_demand" id="deleted_demand">';';
 							$queryRequisitionDemand = $dblms->querylms("SELECT DISTINCT id_demand
 																FROM ".SMS_REQUISITION_DEMAND_ITEM_JUNCTION." 
 																Where id_requisition = ".$valueRequisition['requisition_id']
@@ -110,7 +111,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									</div>
 									<div class="col-sm-21">
 										<div style="display: flex; justify-content: center; align-items: center; margin: 15px;">
-											<button class="btn btn-info" style="align-items: center;"><i class="icon-remove"></i></button>
+											<button type="button" class="btn btn-info" style="align-items: center;" onclick="removeDemand(this,'.$valueRequisitionDemand['id_demand'].')"><i class="icon-remove"></i></button>
 										</div>
 									</div>';
 									$queryRequisitionDemandJuntion = $dblms->querylms("SELECT distinct id_item, sum(quantity_requested) as quantity_requested 
@@ -187,6 +188,14 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 	$(".select2").select2({
 		placeholder: "Select Any Option"
 	})
+
+	deleteDemand = [];
+	function removeDemand(button,demand_id) {
+		console.log(demand_id);
+		deleteDemand.push(demand_id);
+		document.getElementById("deleted_demand").value =  deleteDemand;
+		document.getElementById(demand_id).remove();
+	}
 
 	$deleteItemId = [];
 	$deleteDemandId = [];
