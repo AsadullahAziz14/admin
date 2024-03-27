@@ -172,7 +172,7 @@ if(isset($_POST['save_changes'])) {
 
 
 	// Check if a field have new value
-	$sqllmsApplications = $dblms->querylms("SELECT *
+	$sqllmsApplications = $dblms->querylms("SELECT id, status, full_name, mobile, email, postal_address, hod_verified, accounts_verified, remarks_dsa,  
 											FROM ".DSA_APPLICATIONS." sa 
 											WHERE sa.id = '".cleanvars($_GET['id'])."' 
 										");
