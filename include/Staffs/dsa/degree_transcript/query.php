@@ -180,34 +180,34 @@ if(isset($_POST['save_changes'])) {
 	$valuesqllmsApplications = mysqli_fetch_assoc($sqllmsApplications);
 
 	$requestedvars = "\n";
-	$requestedvars .= '"ID:"' . '=>' . '"' . cleanvars($_GET['id']) . '",'.PHP_EOL;
+	$requestedvars .= 'ID: '.''.cleanvars($_GET['id']).','.PHP_EOL;
 
 	if($valuesqllmsApplications['status'] != cleanvars($_POST['status'])) {
-	$requestedvars .= '"Status"' . '=>' . '"' . cleanvars($_POST['status']) . '",'.PHP_EOL;
+	$requestedvars .= 'Status: '.''.cleanvars($_POST['status']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['full_name'] != cleanvars($_POST['stdname_edit'])) {
-	$requestedvars .= '"full_name"' . '=>' . '"' . cleanvars($_POST['stdname_edit']) . '",'.PHP_EOL;
+	$requestedvars .= 'full_name: '.''.cleanvars($_POST['stdname_edit']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['mobile'] != cleanvars($_POST['mobile_edit'])) {
-	$requestedvars .= '"mobile"' . '=>' . '"' . cleanvars($_POST['mobile_edit']) . '",'.PHP_EOL;
+	$requestedvars .= 'mobile: '.''.cleanvars($_POST['mobile_edit']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['email'] != cleanvars($_POST['email_edit'])) {
-	$requestedvars .= '"email"' . '=>' . '"' . cleanvars($_POST['email_edit']) . '",'.PHP_EOL;
+	$requestedvars .= 'email: '.''.cleanvars($_POST['email_edit']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['postal_address'] != cleanvars($_POST['postal_address_edit'])) {
-	$requestedvars .= '"postal_address"' . '=>' . '"' . cleanvars($_POST['postal_address_edit']) . '",'.PHP_EOL;
+	$requestedvars .= 'postal_address: '.''.cleanvars($_POST['postal_address_edit']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['hod_verified'] != cleanvars($_POST['hod_verified'])) {
-	$requestedvars .= '"hod_verified"' . '=>' . '"' . cleanvars($_POST['hod_verified']) . '",'.PHP_EOL;
+	$requestedvars .= 'hod_verified: '.''.cleanvars($_POST['hod_verified']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['accounts_verified'] != cleanvars($_POST['accounts_verified'])) {
-	$requestedvars .= '"accounts_verified"' . '=>' . '"' . cleanvars($_POST['accounts_verified']) . '",'.PHP_EOL;
+	$requestedvars .= 'accounts_verified: '.''.cleanvars($_POST['accounts_verified']).','.PHP_EOL;
 	}
 	if($valuesqllmsApplications['remarks_dsa'] != cleanvars($_POST['remarks_dsa'])) {
-	$requestedvars .= '"remarks_dsa"' . '=>' . '"' . cleanvars($_POST['remarks_dsa']) . '",'.PHP_EOL;
+	$requestedvars .= 'remarks_dsa: '.''.cleanvars($_POST['remarks_dsa']).','.PHP_EOL;
 	}
-	$requestedvars .= '"Modefied By"' . '=>' . '"' . cleanvars($_SESSION['userlogininfo']['LOGINIDA']) . '",'.PHP_EOL;
-	$requestedvars .= '"Date Modefied"' . '=>' . '"' . date("Y-m-d H:i:s") . '",'.PHP_EOL;
+	$requestedvars .= 'Modefied By: '.''.cleanvars($_SESSION['userlogininfo']['LOGINIDA']).','.PHP_EOL;
+	$requestedvars .= 'Date Modefied: '.''.date("Y-m-d H:i:s").','.PHP_EOL;
 	$requestedvars .= ")\n";
 
 

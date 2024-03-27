@@ -42,6 +42,8 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	$facultyID	        = (isset($_GET['faculty']) && $_GET['faculty'] != '') ? $_GET['faculty'] : '';
 	$paidDate	        = (isset($_GET['paid_date']) && $_GET['paid_date'] != '') ? $_GET['paid_date'] : '';
 	$awaitingResposne	= (isset($_GET['ar']) && $_GET['ar'] != '') ? $_GET['ar'] : '';
+	$recentActivity	    = (isset($_GET['ra']) && $_GET['ra'] != '') ? $_GET['ra'] : '';
+
 
     // if($_SESSION['userlogininfo']['LOGINDEPT']) {
     //     $studentDepartment = "AND std.id_dept = '".cleanvars($_SESSION['userlogininfo']['LOGINDEPT'])."'";
@@ -183,6 +185,16 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
         ";
         $sqlstring	.= "&ar=".$awaitingResposne."";
     }
+
+    if(($recentActivity)) { 
+        $sql2 = " AND EXISTS (SELECT l.id, l.date_added
+						                        FROM ".DSA_APPLICATIONS_LOG." l
+                                                WHERE l.id_application = sa.id
+                                                AND l.date_added >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+                                                ORDER BY l.date_added ASC
+                             )";
+        $sqlstring	.= "&ra=".$recentActivity."";
+    }
     
     //Include Query
 	include_once("include/Staffs/dsa/degree_transcript/query.php");
@@ -307,7 +319,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
         <button type="submit" class="btn btn-primary">Search</button>
         <a href="dsadegreetranscript.php" class="btn btn-purple"><i class="icon-list"></i> All</a>
         <a href="dsadegreetranscript.php?ar=1" class="btn btn-warning"><i class="icon-list"></i> Awaiting Response</a>
-        <a href="dsadegreetranscript.php?ar=1" class="btn btn-warning"><i class="icon-list"></i> Awaiting Response</a>';
+        <a href="dsadegreetranscript.php?ra=1" class="btn btn-success"><i class="icon-list"></i> Recent Activity</a>';
 
     //--------------------------------------------
     if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '190', 'add' => '1'))) { 
