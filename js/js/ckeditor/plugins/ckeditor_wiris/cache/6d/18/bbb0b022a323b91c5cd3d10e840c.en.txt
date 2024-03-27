@@ -1,0 +1,1 @@
+{"result":{"text":"2 xy bold i plus 6 space straight y squared straight z space bold j plus 3 bold k"},"status":"ok"}

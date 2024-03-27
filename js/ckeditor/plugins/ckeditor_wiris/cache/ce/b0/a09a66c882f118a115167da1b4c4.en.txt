@@ -1,0 +1,1 @@
+{"result":{"text":"S with rightwards arrow on top equals _ _ _ _ _ space sigma with rightwards arrow on top"},"status":"ok"}

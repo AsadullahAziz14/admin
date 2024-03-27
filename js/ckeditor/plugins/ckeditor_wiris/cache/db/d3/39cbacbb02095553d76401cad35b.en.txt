@@ -1,0 +1,1 @@
+{"result":{"text":"r equals a left parenthesis 1 plus cos theta right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x over 3 plus integral subscript 0 superscript apostrophe x t space u left parenthesis t right parenthesis d t comma space u left parenthesis 0 right parenthesis equals 1"},"status":"ok"}

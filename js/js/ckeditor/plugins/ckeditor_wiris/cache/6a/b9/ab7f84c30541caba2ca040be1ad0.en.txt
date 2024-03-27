@@ -1,0 +1,1 @@
+{"result":{"text":"W h i c h space p r o p e r t y space h o l d space i n space straight real numbers space a n d space straight rational numbers space b u t space n o t space i n space straight integer numbers."},"status":"ok"}

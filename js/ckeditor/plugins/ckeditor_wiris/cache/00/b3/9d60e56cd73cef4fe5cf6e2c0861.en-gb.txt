@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis cos straight pi over 2 plus i sin straight pi over 2 right parenthesis to the power of 8 equals"},"status":"ok"}

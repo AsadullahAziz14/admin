@@ -1,0 +1,1 @@
+{"result":{"text":"space F i n d space a l l space t h e space s u b g r o u p s space o f space a l l space p o s s i b l e space o r d e r s space o f space Z 15 space a n d space m a k e space s u b g r o u p space d i a g r a m"},"status":"ok"}

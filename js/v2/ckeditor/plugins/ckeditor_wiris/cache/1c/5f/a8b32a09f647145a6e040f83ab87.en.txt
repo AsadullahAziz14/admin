@@ -1,0 +1,1 @@
+{"result":{"text":"L o g space i equals"},"status":"ok"}

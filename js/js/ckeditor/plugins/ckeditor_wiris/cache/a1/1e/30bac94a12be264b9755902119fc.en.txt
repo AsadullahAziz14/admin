@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis negative a right parenthesis space left parenthesis negative b right parenthesis space equals space a b"},"status":"ok"}

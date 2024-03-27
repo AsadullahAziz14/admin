@@ -1,0 +1,1 @@
+{"result":{"text":"L i m i t subscript x rightwards arrow 0 end subscript to the power of blank x squared equals 0"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"i n f space left parenthesis f plus g right parenthesis equals i n f space f space plus space i n f space g"},"status":"ok"}

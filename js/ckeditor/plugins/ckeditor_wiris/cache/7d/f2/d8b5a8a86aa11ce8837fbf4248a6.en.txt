@@ -1,0 +1,1 @@
+{"result":{"text":"C H subscript 3 bond C H subscript 2 bond C H subscript 2 bond C H subscript 3"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"A A to the power of t equals I"},"status":"ok"}

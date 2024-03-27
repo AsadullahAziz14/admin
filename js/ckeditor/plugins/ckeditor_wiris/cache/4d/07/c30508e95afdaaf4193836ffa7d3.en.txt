@@ -1,0 +1,1 @@
+{"result":{"text":"t squared fraction numerator d y over denominator d t end fraction plus y squared equals t y space i s space a"},"status":"ok"}

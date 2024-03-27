@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d over denominator d x end fraction cos e c x equals space i s\na right parenthesis cos e c x c o t x\nb right parenthesis minus cos e c x c o t x\nc right parenthesis cos e c x\nd right parenthesis c o t x"},"status":"ok"}

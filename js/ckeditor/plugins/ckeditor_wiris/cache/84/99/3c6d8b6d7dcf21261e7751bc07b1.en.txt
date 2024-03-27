@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar fraction numerator Z minus 1 over denominator Z plus 1 end fraction close vertical bar less or equal than 2"},"status":"ok"}

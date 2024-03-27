@@ -1,0 +1,1 @@
+{"result":{"text":"i f space alpha comma beta space a r e space t h e space r o o t s space o f space 3 x squared minus 3 x plus 4 equals 0 comma space f i n d space t h e space v a l u e s space o f space\n1 over alpha squared plus 1 over beta squared"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"n to the power of t h end exponent"},"status":"ok"}

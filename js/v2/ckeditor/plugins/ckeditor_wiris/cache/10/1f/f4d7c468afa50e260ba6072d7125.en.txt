@@ -1,0 +1,1 @@
+{"result":{"text":"1 over k squared open square brackets bold italic t bold space bold space bold italic t bold apostrophe bold space bold space bold italic t bold apostrophe bold apostrophe close square brackets equals tau space space left parenthesis t a u right parenthesis"},"status":"ok"}

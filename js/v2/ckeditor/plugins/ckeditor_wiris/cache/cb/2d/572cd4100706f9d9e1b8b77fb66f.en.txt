@@ -1,0 +1,1 @@
+{"result":{"text":"F left parenthesis x right parenthesis equals integral subscript a superscript x f left parenthesis t right parenthesis d t"},"status":"ok"}

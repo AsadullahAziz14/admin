@@ -1,0 +1,1 @@
+{"result":{"text":"Y to the power of apostrophe apostrophe equals ? end exponent"},"status":"ok"}

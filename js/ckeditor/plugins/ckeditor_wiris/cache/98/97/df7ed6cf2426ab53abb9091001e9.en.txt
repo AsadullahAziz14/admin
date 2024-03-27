@@ -1,0 +1,1 @@
+{"result":{"text":"L e t space G space b e space a space g r o u p space a n d space f i x space g comma space x space element of space G. space space space T h e space e l e m e n t space g x g minus 1 space i s space c a l l e d"},"status":"ok"}

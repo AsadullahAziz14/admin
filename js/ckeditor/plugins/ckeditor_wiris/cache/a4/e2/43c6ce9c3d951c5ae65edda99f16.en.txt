@@ -1,0 +1,1 @@
+{"result":{"text":"g element of G space comma space a equals g a g"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"empty set left parenthesis p left parenthesis x right parenthesis right parenthesis space equals space p left parenthesis 0 right parenthesis"},"status":"ok"}

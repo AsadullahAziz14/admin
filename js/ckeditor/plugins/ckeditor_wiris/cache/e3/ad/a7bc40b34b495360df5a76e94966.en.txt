@@ -1,0 +1,1 @@
+{"result":{"text":"P r o d u c t space o f space A subscript 1 equals left parenthesis 0 comma 1 right parenthesis space a n d space A subscript 2 equals left parenthesis 0 comma 1 right parenthesis space i s space _ _ _ _ _ _ _ _ _\nspace w h e r e space A subscript 1 comma A subscript 2 element of C."},"status":"ok"}

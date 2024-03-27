@@ -1,0 +1,1 @@
+{"result":{"text":"I n space e q u a t i o n space nabla squared u equals 0 space space nabla squared space i s space c a l l e d"},"status":"ok"}

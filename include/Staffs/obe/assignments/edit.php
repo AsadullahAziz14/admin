@@ -1,6 +1,5 @@
 <?php 
 if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'edit' => '1'))) {
-	if (!LMS_VIEW && isset($_GET['id'])) {
 		$queryAssignment = $dblms->querylms("SELECT ques_id, ques_status, ques_number, ques_marks, ques_date, id_ques 
 												FROM ".OBE_ASSIGNMENTS." 
 												WHERE assignment_id = ".cleanvars($_GET['id'])." ");
@@ -44,13 +43,13 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									<input type="text" class="form-control" id="marks" name="marks" value="'.$valueAssignment['assignment_marks'].'" readonly required>
 								</div>
 							</div>  
-							<input type="hidden" class="form-control" id="questionId" name="questionId">
 							<div class="col-sm-61">
 								<div class="form-sep" style="margin-top:5px;">
 									<label for="date" class="req"><b>Assignment Date</b></label>
 									<input type="date" class="form-control" id="assignment_date" name="assignment_date" value="'.$formattedDate.'" required>
 								</div>
 							</div>
+							<input type="hidden" class="form-control" id="questionId" name="questionId">
 							<div style="clear:both;"></div>
 							<div id="questionContainer" style="margin-top:10px; margin-bottom: 10px;" class="col-sm-91">';
 							if($valueAssignment['id_ques']) {

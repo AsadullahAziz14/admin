@@ -1,0 +1,1 @@
+{"result":{"text":"g a m m a space 5 equals space _ _ _ _ _ _ _ _ _ _"},"status":"ok"}

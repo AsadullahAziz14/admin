@@ -1,0 +1,1 @@
+{"result":{"text":"beta f element of R left parenthesis alpha right parenthesis"},"status":"ok"}

@@ -48,7 +48,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									<select class="form-control" id="id_department" name="id_department" readonly>
 										<option value="">Select Department</option>';
 										$queryDepartment = $dblms->querylms("SELECT dept_id, dept_name 
-																				FROM ".DEPARTMENTS."
+																				FROM ".DEPTS."
 																			");
 										while($valueDepartment = mysqli_fetch_array($queryDepartment)) {
 											echo '<option value="'.$valueDepartment['dept_id'].'">'.$valueDepartment['dept_name'].'</option> ';

@@ -1,0 +1,1 @@
+{"result":{"text":"C equals A union B"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"straight integer numbers"},"status":"ok"}

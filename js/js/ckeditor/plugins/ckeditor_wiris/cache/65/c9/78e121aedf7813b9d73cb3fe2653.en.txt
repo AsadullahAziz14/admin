@@ -1,0 +1,1 @@
+{"result":{"text":"mu left parenthesis x right parenthesis equals e to the power of integral p d x end exponent space i s space c a l l e d"},"status":"ok"}

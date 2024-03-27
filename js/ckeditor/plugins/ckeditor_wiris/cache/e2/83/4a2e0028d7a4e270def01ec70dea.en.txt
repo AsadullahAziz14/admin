@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator partial differential squared U over denominator partial differential x squared end fraction plus fraction numerator partial differential squared U over denominator partial differential y squared end fraction equals fraction numerator partial differential U over denominator partial differential z end fraction"},"status":"ok"}

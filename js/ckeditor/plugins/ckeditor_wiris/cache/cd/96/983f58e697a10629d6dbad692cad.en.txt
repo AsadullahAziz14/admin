@@ -1,0 +1,1 @@
+{"result":{"text":"A circled plus B equals"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x subscript 0 equals fraction numerator a plus b over denominator 2 end fraction"},"status":"ok"}

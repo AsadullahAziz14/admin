@@ -1,0 +1,1 @@
+{"result":{"text":"w subscript j cross times b subscript blank j end subscript"},"status":"ok"}

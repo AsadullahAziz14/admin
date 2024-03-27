@@ -1,0 +1,1 @@
+{"result":{"text":"g left parenthesis x right parenthesis equals N space e to the power of negative alpha space x squared end exponent space"},"status":"ok"}

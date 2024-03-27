@@ -1,0 +1,1 @@
+{"result":{"text":"2 sin theta cos theta"},"status":"ok"}

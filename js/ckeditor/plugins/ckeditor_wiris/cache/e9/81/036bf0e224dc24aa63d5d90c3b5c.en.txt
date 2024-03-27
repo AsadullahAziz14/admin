@@ -1,0 +1,1 @@
+{"result":{"text":"x subscript n yields x space and space y subscript n yields y space then space d left parenthesis x subscript n comma space y subscript n right parenthesis yields d left parenthesis x comma space y right parenthesis"},"status":"ok"}

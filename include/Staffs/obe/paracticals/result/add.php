@@ -64,7 +64,7 @@ if(LMS_VIEW == 'addresult' && isset($_GET['id'])) {
                   <tbody>';
                   $srno = 0;
 
-                  foreach (STUDENTS as $key => $std) {
+                  foreach (STUDENT as $key => $std) {
                      $srno++;
                      echo '
                      <tr class="form-gruop">

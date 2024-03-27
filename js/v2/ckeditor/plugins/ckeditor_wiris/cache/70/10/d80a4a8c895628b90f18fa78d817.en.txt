@@ -1,0 +1,1 @@
+{"result":{"text":"M subscript n left parenthesis straight real numbers right parenthesis"},"status":"ok"}

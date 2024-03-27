@@ -1,0 +1,1 @@
+{"result":{"text":"C equals 2 x plus 3 y plus z\nS u b j e c t space t o space\nx plus y plus z less or equal than 40\n2 x plus y minus z greater or equal than 10\nminus y plus z greater or equal than 10\nx comma y comma z greater or equal than 0"},"status":"ok"}

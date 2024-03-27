@@ -1,0 +1,1 @@
+{"result":{"text":"F o r space a n y space r e a l space n u m b e r space a space a n d space b space t h e n space vertical line a minus b vertical line space _ _ _ _ _ _ _ _ vertical line a vertical line plus vertical line b vertical line"},"status":"ok"}

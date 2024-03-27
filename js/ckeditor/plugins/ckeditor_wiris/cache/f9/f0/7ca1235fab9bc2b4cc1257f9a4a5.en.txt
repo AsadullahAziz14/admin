@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis theta comma r right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"i f space f left parenthesis x right parenthesis equals x squared minus 1 comma space g left parenthesis x right parenthesis equals square root of x plus 1 end root comma space f i n d space f o g space a n d space g o f space a t space x equals 2"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"1 right parenthesis space space space space space space left parenthesis D cubed plus 2 D plus D right parenthesis y equals e to the power of negative x end exponent plus cos x plus x squared\n2 right parenthesis space space space space space space left parenthesis D squared minus 2 D plus 1 right parenthesis y equals x sin x"},"status":"ok"}

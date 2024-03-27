@@ -1,0 +1,1 @@
+{"result":{"text":"nabla f left parenthesis x comma y right parenthesis equals 2 x bold italic i bold space plus space e to the power of y bold italic j"},"status":"ok"}

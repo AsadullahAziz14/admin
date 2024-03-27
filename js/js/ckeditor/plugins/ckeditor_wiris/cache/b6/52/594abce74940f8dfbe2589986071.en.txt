@@ -1,0 +1,1 @@
+{"result":{"text":"space r o o t s space o f space e q u a t i o n space y apostrophe apostrophe space minus y apostrophe minus y equals 0 space space i s space"},"status":"ok"}

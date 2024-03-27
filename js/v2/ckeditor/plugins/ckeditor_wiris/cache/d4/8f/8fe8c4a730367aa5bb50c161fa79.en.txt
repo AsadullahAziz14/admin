@@ -1,0 +1,1 @@
+{"result":{"text":"w cubed equals 1 comma space a n d space w squared plus w plus 1 equals 0."},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis A union B right parenthesis to the power of c equals A to the power of c end exponent intersection B to the power of c"},"status":"ok"}

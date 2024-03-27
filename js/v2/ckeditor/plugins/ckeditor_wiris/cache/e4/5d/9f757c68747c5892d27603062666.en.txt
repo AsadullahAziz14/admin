@@ -1,0 +1,1 @@
+{"result":{"text":"2 a x equals v squared minus u squared"},"status":"ok"}

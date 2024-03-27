@@ -1,0 +1,1 @@
+{"result":{"text":"u apostrophe apostrophe left parenthesis x right parenthesis equals negative x minus 1 over 6 x cubed plus integral subscript 0 superscript x u left parenthesis t right parenthesis space d t"},"status":"ok"}

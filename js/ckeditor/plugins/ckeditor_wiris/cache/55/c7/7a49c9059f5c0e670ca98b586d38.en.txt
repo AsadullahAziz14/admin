@@ -1,0 +1,1 @@
+{"result":{"text":"1 minus fraction numerator 1 over denominator 2 cross times 3 end fraction x cubed plus fraction numerator 1 over denominator 2 cross times 3 cross times 5 cross times 6 end fraction x to the power of 6 minus..."},"status":"ok"}

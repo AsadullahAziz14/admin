@@ -1,0 +1,1 @@
+{"result":{"text":"Z left parenthesis G right parenthesis equals left curly bracket x element of G colon g x equals x g comma for all g element of G right curly bracket space i s space"},"status":"ok"}

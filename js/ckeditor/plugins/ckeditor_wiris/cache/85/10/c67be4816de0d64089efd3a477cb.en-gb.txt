@@ -1,0 +1,1 @@
+{"result":{"text":"cos left parenthesis n theta right parenthesis plus i sin left parenthesis n theta right parenthesis"},"status":"ok"}

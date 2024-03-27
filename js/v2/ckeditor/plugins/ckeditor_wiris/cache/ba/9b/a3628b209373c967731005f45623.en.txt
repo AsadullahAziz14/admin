@@ -1,0 +1,1 @@
+{"result":{"text":"g equals 0 comma space epsilon equals k epsilon subscript o comma space k equals space w a v e space n u m b e r space equals w divided by c"},"status":"ok"}

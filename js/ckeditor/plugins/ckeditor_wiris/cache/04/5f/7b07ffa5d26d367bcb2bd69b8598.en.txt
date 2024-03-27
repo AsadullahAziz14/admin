@@ -1,0 +1,1 @@
+{"result":{"text":"y equals sin square root of fraction numerator 1 plus x over denominator 1 minus x end fraction end root comma space t h e n space f i n d space fraction numerator d y over denominator d x end fraction space b y space c h a i n space r u l e space."},"status":"ok"}

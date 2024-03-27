@@ -1,0 +1,1 @@
+{"result":{"text":"for all space 𝛼 comma 𝛽 comma 𝛾 space 𝜖 space 𝑆 space semicolon space left parenthesis 𝛼 plus 𝛽 right parenthesis plus 𝛾 equals 𝛼 plus left parenthesis 𝛽 plus 𝛾 right parenthesis"},"status":"ok"}

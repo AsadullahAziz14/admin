@@ -1,0 +1,1 @@
+{"result":{"text":"t to the power of negative 1 end exponent left parenthesis x right parenthesis space equals space A to the power of negative 1 end exponent left parenthesis x right parenthesis space minus space A to the power of negative 1 end exponent left parenthesis a right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"y apostrophe plus y equals 0"},"status":"ok"}

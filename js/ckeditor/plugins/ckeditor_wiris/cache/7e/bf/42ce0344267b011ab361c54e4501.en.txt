@@ -1,0 +1,1 @@
+{"result":{"text":"I f space w equals f left parenthesis z right parenthesis equals z squared space t h e n space U space i s\na right parenthesis space 2 x y\nb right parenthesis x squared plus y squared\nc right parenthesis x squared minus y squared\nd right parenthesis space minus 2 x y"},"status":"ok"}

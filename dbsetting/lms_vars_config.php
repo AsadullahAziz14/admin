@@ -6,14 +6,14 @@
 //----------------------------------------------------
 
 	define('LMS_HOSTNAME'			, 'localhost');
-	// define('LMS_NAME'				, 'obe_database');
-	define('LMS_NAME'				, 'sms');
+	define('LMS_NAME'				, 'obe_database');
+	// define('LMS_NAME'				, 'sms');
 	// define('LMS_NAME'				, 'mul');
 	define('LMS_USERNAME'			, 'root');
 	define('LMS_USERPASS'			, '');
 
-///-----------------DB Tables ------------------------
-	define('ADMINS'										, 'mul_admins');
+//-----------------DB Tables ------------------------
+	// define('ADMINS'										, 'mul_admins');
 	define('CONTACT_INQUIRY' 							, 'mul_contact_inquiry');
 	define('EVENT_INQUIRY'								, 'mul_event_inquiry');
 	define('GALLERY'									, 'mul_gallery');
@@ -23,13 +23,31 @@
 	define('POSTS_CATS' 								, 'mul_post_category');
 	define('SLIDER' 									, 'mul_slider');
 	define('TESTIMONIAL' 								, 'mul_testimonial');
-	define('DEPARTMENTS' 								, 'cms_departments');
-	define('EMPLOYEES' 									, 'cms_employees');
-	define('FACULTY'									, 'cms_faculties');
-	define('PROGRAMS'									, 'cms_programs');
-	define('PROGRAM_CATS'								, 'cms_programs_categories');
 	define('WEBSITES' 			    					, 'websites');
 	define('SLIDER_WEB' 								, 'slider_web');
+
+//---------------------- CMS Tables ----------------------
+	define('ADMINS'										, 'cms_admins');
+	define('DEPTS' 										, 'cms_departments');
+	define('EMPLYS' 									, 'cms_employees');
+	define('FACULTIES'									, 'cms_faculties');
+	define('COURSES'									, 'cms_courses');
+	define('PROGRAMS'									, 'cms_programs');
+	define('PROGRAM_CATS'								, 'cms_programs_categories');
+	define('STUDENTS'									, 'cms_students');
+	define('COURSES_ASSIGNMENTS'						, 'cms_courses_assignments');
+	define('COURSES_ASSIGNMENTSPROGRAM'					, 'cms_courses_assignmentsprogram');
+	define('COURSES_ANNOUCEMENTS'						, 'cms_courses_annoucements');
+	define('CAMPUSES'									, 'cms_campuses');
+	define('SETTINGS'									, 'cms_settings');
+	define('TIMETABLE'									, 'cms_timetable');
+	define('TIMETABLE_DETAILS'							, 'cms_timetable_details');
+	define('TIMETABLE_ROOMS'							, 'cms_timetable_rooms');
+	define('TIMETABLE_PERIODS'							, 'cms_timetable_periods');
+	define('COURSES_INFO'								, 'cms_courses_info');
+	define('DESIGNATIONS'								, 'cms_designations');
+
+//--------------------- OBE Tables ----------------------
 	define('OBE_DOMAINS'								, 'cms_obe_domains');
 	define('OBE_DOMAIN_LEVELS'							, 'cms_obe_domain_levels');
 	define('OBE_PLOS' 			        				, 'cms_obe_plos');
@@ -46,6 +64,8 @@
 	define('OBE_PACS'									, 'cms_obe_paractical_assessment_criteria');
 	define('OBE_KPIS'									, 'cms_obe_paractical_kpi');
 	define('OBE_PARACTICAL_PERFORMANCES'				, 'cms_obe_paractical_performance');
+
+// --------------------- SMS Tables ------------------
 	define('SMS_DEMAND'									, 'cms_sms_demand');
 	define('SMS_DEMAND_ITEM_JUNCTION'					, 'cms_sms_demand_item_junction');
 	define('SMS_ITEM'									, 'cms_sms_item');
@@ -64,6 +84,14 @@
 	define('SMS_ISSUANCE_REQUISITION_ITEM_JUNCTION'		, 'cms_sms_issuance_requisition_item_junction');
 	define('SMS_LOCATION' 								, 'cms_sms_location');
 	define('SMS_LOGS' 									, 'cms_sms_logs');
+
+	// DSA Tables
+	define('DSA_APPLICATIONS' 									, 'cms_dsa_applications');
+	define('DSA_APPLICATIONS_LOG' 								, 'cms_dsa_application_log');
+	define('DSA_APPLICATIONS_FORWARD' 							, 'cms_dsa_application_forward');
+	define('DSA_APPLICATIONS_REPEAT_COURSES' 					, 'cms_dsa_application_repeat_courses');
+
+
 	
 
 	define("SITE_URL", "https://oric.mul.edu.pk/");

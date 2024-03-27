@@ -1,0 +1,1 @@
+{"result":{"text":"u left parenthesis x right parenthesis equals f left parenthesis x right parenthesis plus integral subscript alpha left parenthesis x right parenthesis end subscript superscript beta left parenthesis x right parenthesis end superscript K left parenthesis x comma t right parenthesis space u left parenthesis t right parenthesis d t"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis a over d comma b over d right parenthesis equals"},"status":"ok"}

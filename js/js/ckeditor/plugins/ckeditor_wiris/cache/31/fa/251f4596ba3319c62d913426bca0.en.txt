@@ -1,0 +1,1 @@
+{"result":{"text":"square root of n plus 1 end root equals _ _ _ _ _ _ _ _ _ _ _ _ space w h e r e space square root of blank end root equals g a m m a"},"status":"ok"}

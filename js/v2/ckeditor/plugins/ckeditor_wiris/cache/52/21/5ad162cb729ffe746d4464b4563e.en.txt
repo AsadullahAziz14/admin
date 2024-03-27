@@ -1,0 +1,1 @@
+{"result":{"text":"v equals u plus a t"},"status":"ok"}

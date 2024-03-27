@@ -1,0 +1,1 @@
+{"result":{"text":"open square brackets fraction numerator k i over denominator n end fraction comma fraction numerator k open parentheses i minus 1 close parentheses over denominator n end fraction close square brackets"},"status":"ok"}

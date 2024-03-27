@@ -1,0 +1,1 @@
+{"result":{"text":"negative A equals left curly bracket minus x comma x element of A right curly bracket"},"status":"ok"}

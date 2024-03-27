@@ -1,0 +1,1 @@
+{"result":{"text":"𝜙 space colon space A space rightwards arrow space B space comma space 𝜙 space i s space r i n g space h o m o m o r p h i s m space t h e n"},"status":"ok"}

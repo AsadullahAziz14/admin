@@ -1,0 +1,1 @@
+{"result":{"text":"contour integral fraction numerator cos z over denominator z open parentheses z minus begin display style pi over 2 end style close parentheses end fraction d z equals............... space w h e r e space c space i s space a space u n i t space c i r c l e s space a t space o r i g i n"},"status":"ok"}

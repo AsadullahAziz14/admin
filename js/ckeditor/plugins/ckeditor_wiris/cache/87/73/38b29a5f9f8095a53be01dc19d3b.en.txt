@@ -1,0 +1,1 @@
+{"result":{"text":"1 divided by e to the power of negative 3 t end exponent"},"status":"ok"}

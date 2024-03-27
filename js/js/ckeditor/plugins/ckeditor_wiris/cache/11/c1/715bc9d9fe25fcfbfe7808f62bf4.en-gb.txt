@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator sin left parenthesis x right parenthesis over denominator x squared minus 5 x plus 6 end fraction"},"status":"ok"}

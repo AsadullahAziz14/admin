@@ -1,0 +1,1 @@
+{"result":{"text":"2 Fe 2 plus space plus space Ti 3 plus space space rightwards arrow space 2 Fe 3 plus space plus space Ti plus"},"status":"ok"}

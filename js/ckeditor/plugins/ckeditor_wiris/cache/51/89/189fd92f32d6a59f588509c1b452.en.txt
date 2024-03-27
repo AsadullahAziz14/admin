@@ -1,0 +1,1 @@
+{"result":{"text":"f colon open square brackets o subscript j vertical line close square brackets rightwards arrow straight real numbers"},"status":"ok"}

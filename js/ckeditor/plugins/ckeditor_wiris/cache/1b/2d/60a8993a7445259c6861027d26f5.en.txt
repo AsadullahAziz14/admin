@@ -1,0 +1,1 @@
+{"result":{"text":"element of Q left square bracket x right square bracket"},"status":"ok"}

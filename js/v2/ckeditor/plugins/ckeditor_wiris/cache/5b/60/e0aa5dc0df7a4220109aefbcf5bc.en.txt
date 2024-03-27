@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript 0 equals space 8 space m divided by s"},"status":"ok"}

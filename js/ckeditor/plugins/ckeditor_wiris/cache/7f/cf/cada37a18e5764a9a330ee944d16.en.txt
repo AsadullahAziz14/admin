@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top equals 3 x squared i with logical and on top minus 2 y j with logical and on top"},"status":"ok"}

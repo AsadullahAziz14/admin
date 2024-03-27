@@ -1,0 +1,1 @@
+{"result":{"text":"L left parenthesis P comma f comma alpha right parenthesis less or equal than L left parenthesis P asterisk times comma f comma alpha right parenthesis"},"status":"ok"}

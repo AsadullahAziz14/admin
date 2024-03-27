@@ -1,0 +1,1 @@
+{"result":{"text":"H union K equals H space space space space space sin c e space K subset of or equal to H\nH union K equals K space space space space space sin c e space H subset of or equal to K"},"status":"ok"}

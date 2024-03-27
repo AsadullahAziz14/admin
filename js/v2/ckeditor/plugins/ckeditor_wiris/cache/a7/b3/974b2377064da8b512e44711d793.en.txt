@@ -1,0 +1,1 @@
+{"result":{"text":"r equals a t plus b t squared"},"status":"ok"}

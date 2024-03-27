@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator 4 s over denominator open parentheses s squared plus 4 close parentheses end fraction"},"status":"ok"}

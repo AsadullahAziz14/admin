@@ -1,0 +1,1 @@
+{"result":{"text":"3 i with rightwards arrow on top plus 7 j with rightwards arrow on top"},"status":"ok"}

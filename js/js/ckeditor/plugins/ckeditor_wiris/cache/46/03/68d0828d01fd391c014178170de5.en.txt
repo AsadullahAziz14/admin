@@ -1,0 +1,1 @@
+{"result":{"text":"sum from n equals 1 to infinity of fraction numerator left parenthesis x minus 3 right parenthesis to the power of n over denominator 2 to the power of n n end fraction"},"status":"ok"}

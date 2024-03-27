@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space A union B equals n\nb right parenthesis space A intersection B equals n\nc right parenthesis space A intersection B equals empty set\nd right parenthesis space A union B equals empty set"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar fraction numerator a z plus b over denominator b z plus a end fraction close vertical bar equals _ _ _ _ _ _ _ _ _ _ _ space f o r space vertical line z vertical line equals"},"status":"ok"}

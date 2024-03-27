@@ -70,13 +70,13 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
                      <td style="vertical-align: middle;" nowrap="nowrap">'.date('d-M-Y', strtotime($valueDemand['demand_date'])).'</td>
                      <td style="vertical-align: middle;" nowrap="nowrap">'.date('d-M-Y', strtotime($valueDemand['demand_due_date'])).'</td>';
                      $queryDepartments = $dblms->querylms("SELECT dept_name
-                                                            FROM ".DEPARTMENTS." 
+                                                            FROM ".DEPTS." 
                                                             WHERE dept_id = ".$valueDemand['id_department']."
                                                          ");
                      $valueDepartments = mysqli_fetch_array($queryDepartments);
                      echo '<td style="vertical-align: middle;" nowrap="nowrap">'.$valueDepartments['dept_name'].'</td>';
                      $queryEmployees  = $dblms->querylms("SELECT emply_id, emply_name
-                                                            FROM ".EMPLOYEES." 
+                                                            FROM ".EMPLYS." 
                                                             WHERE emply_id = ".$valueDemand['id_added']."
                                                          ");
                      $valueEmployees = mysqli_fetch_array($queryEmployees);

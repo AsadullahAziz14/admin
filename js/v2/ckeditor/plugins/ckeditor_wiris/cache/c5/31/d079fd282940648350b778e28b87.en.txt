@@ -1,0 +1,1 @@
+{"result":{"text":"N left parenthesis a right parenthesis equals 1 minus vertical line a vertical line"},"status":"ok"}

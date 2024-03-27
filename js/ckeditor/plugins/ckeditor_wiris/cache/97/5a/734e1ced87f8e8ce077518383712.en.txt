@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space fraction numerator square root of 17 over denominator 2 end fraction\nb right parenthesis space square root of 17 over 2 end root\nc right parenthesis space minus square root of 17 over 2 end root\nd right parenthesis space minus fraction numerator square root of 17 over denominator 2 end fraction"},"status":"ok"}

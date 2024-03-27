@@ -1,0 +1,1 @@
+{"result":{"text":"sin left parenthesis 4 x right parenthesis"},"status":"ok"}

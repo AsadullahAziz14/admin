@@ -1,0 +1,1 @@
+{"result":{"text":"bold italic v equals left parenthesis 10 comma 11 comma negative 2 right parenthesis comma space bold italic u equals left parenthesis 0 comma 3 comma 4 right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x equals 8 over 3 plus 2 t comma space space space space space space space space space space space space space space space space space space y equals negative 2 t comma space space space space space space space space space space space space space z equals 1 plus t"},"status":"ok"}

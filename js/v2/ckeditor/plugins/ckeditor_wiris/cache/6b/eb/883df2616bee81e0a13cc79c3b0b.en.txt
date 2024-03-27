@@ -1,0 +1,1 @@
+{"result":{"text":"double integral integral subscript B 12 x y squared z cubed space d V space"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"r subscript 0 space equals space 3 space i with hat on top space minus space j with hat on top space plus space 4 space k with hat on top"},"status":"ok"}

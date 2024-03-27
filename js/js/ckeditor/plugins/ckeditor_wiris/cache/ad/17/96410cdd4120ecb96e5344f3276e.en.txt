@@ -1,0 +1,1 @@
+{"result":{"text":"negative a omega squared sin omega t"},"status":"ok"}

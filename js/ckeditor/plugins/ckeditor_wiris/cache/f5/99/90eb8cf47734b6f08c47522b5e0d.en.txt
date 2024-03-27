@@ -1,0 +1,1 @@
+{"result":{"text":"n left parenthesis A right parenthesis minus n left parenthesis A intersection B right parenthesis"},"status":"ok"}

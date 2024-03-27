@@ -1,0 +1,1 @@
+{"result":{"text":"square root of less than psi plus phi vertical line phi plus psi greater than space end root space _ _ _ _ _ _ _ _ _ _ _ space square root of less than psi vertical line psi greater than end root plus square root of less than phi vertical line phi greater than end root"},"status":"ok"}

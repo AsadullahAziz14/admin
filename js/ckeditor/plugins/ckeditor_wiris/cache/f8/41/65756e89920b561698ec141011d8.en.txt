@@ -1,0 +1,1 @@
+{"result":{"text":"U left parenthesis p comma f right parenthesis equals M subscript i increment x subscript i"},"status":"ok"}

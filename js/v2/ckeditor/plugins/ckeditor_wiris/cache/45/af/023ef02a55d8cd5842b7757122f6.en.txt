@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript theta equals fraction numerator d r over denominator d theta end fraction theta"},"status":"ok"}

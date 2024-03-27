@@ -1,0 +1,1 @@
+{"result":{"text":"beta subscript m a x end subscript equals beta subscript m i n end subscript plus _ _ _ _ _ _ _ _"},"status":"ok"}

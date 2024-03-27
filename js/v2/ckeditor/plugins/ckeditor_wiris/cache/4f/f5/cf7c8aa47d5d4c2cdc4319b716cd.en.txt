@@ -1,0 +1,1 @@
+{"result":{"text":"C subscript G left parenthesis H right parenthesis space equals space left curly bracket x space 𝜖 space G space comma space for all space h space 𝜖 space H space comma space x space h equals h space x space right curly bracket"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"y equals x to the power of 2 n end exponent"},"status":"ok"}

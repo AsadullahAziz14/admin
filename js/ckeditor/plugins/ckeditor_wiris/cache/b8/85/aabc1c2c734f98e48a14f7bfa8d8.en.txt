@@ -1,0 +1,1 @@
+{"result":{"text":"space r o o t s space o f space e q u a t i o n space 100 fraction numerator d squared N over denominator d t squared end fraction minus 20 fraction numerator d N over denominator d t end fraction plus N equals 0 space i s"},"status":"ok"}

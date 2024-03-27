@@ -1,0 +1,1 @@
+{"result":{"text":"t equals fraction numerator m subscript 1 bond m subscript 2 over denominator fraction numerator s open parentheses d semicolon 7 f close parentheses over denominator square root of n end fraction end fraction middle dot"},"status":"ok"}

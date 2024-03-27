@@ -1,0 +1,1 @@
+{"result":{"text":"r with minus on top space plus space s with minus on top space equals space r space plus space I space plus space s space plus space I"},"status":"ok"}

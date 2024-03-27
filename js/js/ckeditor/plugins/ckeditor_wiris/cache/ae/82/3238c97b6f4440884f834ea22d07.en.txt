@@ -1,0 +1,1 @@
+{"result":{"text":"\ntop enclose left parenthesis top enclose A B end enclose space space plus space space top enclose A B C end enclose right parenthesis end enclose"},"status":"ok"}

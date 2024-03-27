@@ -1,0 +1,1 @@
+{"result":{"text":"l i m subscript x minus greater than negative 1 end subscript fraction numerator square root of x squared plus 8 end root minus 3 over denominator x plus 1 end fraction"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"b with rightwards arrow on top space equals space i with hat on top minus j with hat on top"},"status":"ok"}

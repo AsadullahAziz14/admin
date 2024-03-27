@@ -26,7 +26,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<select name="id_department" class="form-control" id="id_department" >
 									<option value="">Select Department</option>';
 									$queryDepartments = $dblms->querylms("SELECT dept_id, dept_name 
-															FROM ".DEPARTMENTS);
+															FROM ".DEPTS);
 									while($valueDepartments = mysqli_fetch_array($queryDepartments)) {
 										echo '<option value="'.$valueDepartments['dept_id'].'">'.$valueDepartments['dept_name'].'</option>';
 									}

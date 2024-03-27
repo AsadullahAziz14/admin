@@ -1,0 +1,1 @@
+{"result":{"text":"8 f t divided by s e c squared"},"status":"ok"}

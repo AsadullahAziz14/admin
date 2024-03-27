@@ -1,0 +1,1 @@
+{"result":{"text":"r with minus on top space cross times space s with minus on top space equals space left parenthesis r space cross times space s right parenthesis space plus space I"},"status":"ok"}

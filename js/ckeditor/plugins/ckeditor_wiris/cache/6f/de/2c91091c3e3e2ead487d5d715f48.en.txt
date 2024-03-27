@@ -1,0 +1,1 @@
+{"result":{"text":"t h e space f u n c t i o n space space u equals x cubed minus 3 x y squared plus 3 x squared minus 3 y squared plus 1 space i s"},"status":"ok"}

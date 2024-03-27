@@ -1,0 +1,1 @@
+{"result":{"text":"space left square bracket left parenthesis negative square root of 2 divided by 2 right parenthesis plus i space left parenthesis negative square root of 2 divided by 2 right parenthesis right square bracket to the power of 8 space b y space u sin g space D e space M o i v r e apostrophe s space t h e o r e m space Z equals"},"status":"ok"}

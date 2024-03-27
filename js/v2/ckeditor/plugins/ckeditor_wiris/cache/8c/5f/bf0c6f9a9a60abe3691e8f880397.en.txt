@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis 1 minus m right parenthesis x squared minus 2 left parenthesis 1 plus 3 m right parenthesis x plus left parenthesis 1 plus 8 m right parenthesis equals 0"},"status":"ok"}

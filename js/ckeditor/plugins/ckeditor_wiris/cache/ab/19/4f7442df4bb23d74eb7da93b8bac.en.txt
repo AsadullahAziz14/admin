@@ -1,0 +1,1 @@
+{"result":{"text":"A equals open square brackets table row 1 cell negative 1 end cell 2 row 3 1 2 row 2 5 7 end table close square brackets comma space t h e n space f i n d space A to the power of negative 1 end exponent"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis n plus 1 right parenthesis square root of n plus 1 end root\nn square root of n plus 1 end root\nn square root of n\nn o n e"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript 0 superscript 2 left parenthesis 2 straight t straight i with rightwards arrow on top plus 3 t squared stack j right parenthesis with rightwards arrow on top d t"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket x element of straight rational numbers colon x greater than 0 comma x squared less than 3 right curly bracket"},"status":"ok"}

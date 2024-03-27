@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar fraction numerator a plus b over denominator 1 plus top enclose a b end fraction close vertical bar less or equal than _ _ _ _ _ _ _ _ space i f space open vertical bar a close vertical bar less than 1 space a n d space open vertical bar b close vertical bar less than 1"},"status":"ok"}

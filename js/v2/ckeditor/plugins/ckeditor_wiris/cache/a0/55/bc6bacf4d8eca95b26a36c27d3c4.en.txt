@@ -1,0 +1,1 @@
+{"result":{"text":"f g equals 1 fourth open square brackets open parentheses f plus g close parentheses squared plus left parenthesis f minus g right parenthesis squared close square brackets"},"status":"ok"}

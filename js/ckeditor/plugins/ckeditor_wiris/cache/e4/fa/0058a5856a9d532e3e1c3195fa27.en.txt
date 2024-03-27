@@ -1,0 +1,1 @@
+{"result":{"text":"alpha less than negative beta minus negative negative left parenthesis B right parenthesis\nf r o m space e q. space left parenthesis A right parenthesis a n d space left parenthesis B right parenthesis\nx equals negative beta\ns u p A equals negative i n f left parenthesis negative A right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar z subscript 1 z subscript 2 close vertical bar space space _ _ _ _ _ _ _ _ _ _ _ _ _ space open vertical bar z subscript 1 open vertical bar z subscript 2 close vertical bar close vertical bar"},"status":"ok"}

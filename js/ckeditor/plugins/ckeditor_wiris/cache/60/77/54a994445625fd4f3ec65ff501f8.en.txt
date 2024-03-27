@@ -1,0 +1,1 @@
+{"result":{"text":"d left parenthesis x comma space y right parenthesis space equals space open vertical bar fraction numerator x over denominator 1 plus square root of 1 plus x squared end root end fraction minus sign begin inline style fraction numerator y over denominator 1 plus square root of 1 plus y squared end root end fraction end style close vertical bar"},"status":"ok"}

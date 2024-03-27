@@ -1,0 +1,1 @@
+{"result":{"text":"left square bracket 0 comma infinity right parenthesis"},"status":"ok"}

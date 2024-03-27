@@ -1,0 +1,1 @@
+{"result":{"text":"Q to the power of d"},"status":"ok"}

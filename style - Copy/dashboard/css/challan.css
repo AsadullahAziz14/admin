@@ -1,0 +1,41 @@
+﻿body {
+	font: normal normal normal 9px/13px 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+	overflow: -moz-scrollbars-vertical; margin:0;
+}
+
+.no-border {
+	border: none !important; -moz-border-radius: 0 !important; -webkit-border-radius: 0 !important;
+    -khtml-border-radius: 0 !important; border-radius: 0 !important;
+}
+
+.td10pc { width: 9% !important; }
+
+.td20pc { width: 19% !important; }
+
+.td30pc { width: 29% !important; }
+
+.td40pc { width: 39% !important; }
+
+.td50pc { width: 49% !important; }
+
+.td60pc { width: 59% !important; }
+
+.td70pc {  width: 69% !important; }
+
+.td80pc {  width: 79% !important; }
+
+.td90pc {  width: 89% !important; }
+
+.td100pc { width: 99% !important; }
+
+table td.label { font-weight:bold; margin: 0; text-align:left; padding:2px; vertical-align:middle !important; }
+
+table.datatable { border: 1px solid #aaa; border-collapse:separate;  border-spacing: 0; }
+
+table.datatable td { border: 1px solid #aaa;  border-collapse:separate;  border-spacing: 0; }
+
+table.datatable th { border: 1px solid #aaa; border-collapse:separate;  border-spacing: 0; }
+
+@page {	margin: 0cm; width:99% !important; } /* All margins set to 2cm */
+
+@page :first {  margin-top: 0cm    /* Top margin on first page 10cm */ }

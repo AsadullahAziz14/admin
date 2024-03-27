@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar table row cell negative a squared end cell cell a b end cell cell a c end cell row cell b a end cell cell negative b squared end cell cell b c end cell row cell c a end cell cell c b end cell cell negative c squared end cell end table close vertical bar equals 4 a squared b squared c squared"},"status":"ok"}

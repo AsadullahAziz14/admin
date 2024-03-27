@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis n minus 1 right parenthesis k x to the power of n minus 1"},"status":"ok"}

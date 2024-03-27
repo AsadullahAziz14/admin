@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets fraction numerator sin 100 t over denominator t end fraction close curly brackets"},"status":"ok"}

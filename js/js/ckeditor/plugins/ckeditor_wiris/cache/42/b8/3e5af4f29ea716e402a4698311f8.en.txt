@@ -1,0 +1,1 @@
+{"result":{"text":"r left parenthesis t right parenthesis space equals space t space i space plus space t squared j plus space t cubed k comma space 0 less or equal than t less or equal than 1"},"status":"ok"}

@@ -325,7 +325,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
           $srno = 0;
         
           $stdCount = 0;
-          if(count(STUDENTS) > 0) {
+          if(count(STUDENT) > 0) {
             $sqllms = $dblms->querylms("SELECT pp_id, id_kpi,pp_marks
                                           FROM ".OBE_PARACTICAL_PERFORMANCES."
                                           Where pp_id != '' AND id_teacher = ".ID_TEACHER." AND id_course = ".ID_COURSE." AND id_prg = ".ID_PRG." AND semester = ".SEMESTER." AND section = '".SECTION."' AND timing = ".TIMING." AND academic_session = '".ACADEMIC_SESSION."' AND id_campus = ".cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])."
@@ -351,7 +351,7 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
             }
             
                                               
-            foreach (STUDENTS as $stdRollNum => $student) {
+            foreach (STUDENT as $stdRollNum => $student) {
               $columns = 4;
               $stdCount++;
               $srno++;
@@ -763,8 +763,8 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
   $stdIds = array_keys($attainedCloMarks);
   $studentIDs = array();
   foreach ($stdIds as $value) {
-    if(isset(STUDENTS[$value]['id'])) {
-      $studentIDs[] = STUDENTS[$value]['id'];
+    if(isset(STUDENT[$value]['id'])) {
+      $studentIDs[] = STUDENT[$value]['id'];
     }
   }
 

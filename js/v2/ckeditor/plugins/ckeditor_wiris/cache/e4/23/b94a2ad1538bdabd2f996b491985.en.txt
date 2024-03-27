@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis x comma y comma z right parenthesis equals left parenthesis 1 comma negative 3 comma 5 right parenthesis space"},"status":"ok"}

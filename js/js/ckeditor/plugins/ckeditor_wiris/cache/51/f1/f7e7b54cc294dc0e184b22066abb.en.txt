@@ -1,0 +1,1 @@
+{"result":{"text":"P r o v e space t h a t space R to the power of n space i s space c o m p l e t e space m e t r i c space s p a c e. space"},"status":"ok"}

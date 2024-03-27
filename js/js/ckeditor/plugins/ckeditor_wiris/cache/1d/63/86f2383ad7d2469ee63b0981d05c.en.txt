@@ -1,0 +1,1 @@
+{"result":{"text":"A X equals B"},"status":"ok"}

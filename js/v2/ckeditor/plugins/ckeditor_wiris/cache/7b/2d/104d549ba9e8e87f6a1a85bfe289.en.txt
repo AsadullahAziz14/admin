@@ -1,0 +1,1 @@
+{"result":{"text":"straight real numbers squared"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis U intersection A right parenthesis U left parenthesis B intersection A right parenthesis equals A"},"status":"ok"}

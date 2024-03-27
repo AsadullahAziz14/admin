@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets E subscript 1 comma E subscript 2 comma... comma space E subscript n close curly brackets"},"status":"ok"}

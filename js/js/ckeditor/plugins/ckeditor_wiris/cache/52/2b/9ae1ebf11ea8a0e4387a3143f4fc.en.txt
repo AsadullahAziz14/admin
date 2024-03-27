@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator negative x plus 3 y over denominator 2 end fraction equals 2 x minus y"},"status":"ok"}

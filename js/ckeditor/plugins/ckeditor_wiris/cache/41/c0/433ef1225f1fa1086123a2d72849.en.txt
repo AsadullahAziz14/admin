@@ -1,0 +1,1 @@
+{"result":{"text":"r with minus on top equals r plus I space element of space R divided by I"},"status":"ok"}

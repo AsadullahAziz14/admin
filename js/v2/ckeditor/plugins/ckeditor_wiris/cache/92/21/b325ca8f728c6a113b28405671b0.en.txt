@@ -1,0 +1,1 @@
+{"result":{"text":"B left parenthesis space x subscript 0 space semicolon space r space right parenthesis space equals space left curly bracket space x space 𝜖 space X space space vertical line space space d left parenthesis space x space comma space x subscript 0 space right parenthesis space equals space r space right curly bracket space i s space"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"L left parenthesis P comma f comma alpha right parenthesis equals sum from i equals 1 to n of m increment alpha subscript i"},"status":"ok"}

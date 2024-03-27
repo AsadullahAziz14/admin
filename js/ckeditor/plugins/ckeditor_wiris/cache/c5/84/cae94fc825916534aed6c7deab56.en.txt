@@ -1,0 +1,1 @@
+{"result":{"text":"f open parentheses z close parentheses equals fraction numerator Z squared plus 4 over denominator Z plus 2 i end fraction comma Z not equal to negative 2 i\nf left parenthesis z right parenthesis equals negative 5 i comma space Z equals negative 2 i"},"status":"ok"}

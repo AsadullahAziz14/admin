@@ -1,0 +1,1 @@
+{"result":{"text":"T h e space c e n t e r space o f space a space g r o u p space i s space t h e space s e t space o f space e l e m e n t s space w h i c h space c o m m u t e space"},"status":"ok"}

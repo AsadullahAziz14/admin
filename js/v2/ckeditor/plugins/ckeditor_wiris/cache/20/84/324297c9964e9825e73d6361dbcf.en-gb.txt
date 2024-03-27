@@ -1,0 +1,1 @@
+{"result":{"text":"x equals 2020"},"status":"ok"}

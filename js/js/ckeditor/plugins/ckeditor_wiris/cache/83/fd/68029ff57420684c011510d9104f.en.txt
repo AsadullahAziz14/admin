@@ -1,0 +1,1 @@
+{"result":{"text":"i f space A equals open vertical bar table row 3 1 2 row 1 0 1 end table close vertical bar space space space space space space a n d space B equals open square brackets table row 1 cell negative 1 end cell row 1 2 row 5 4 end table close square brackets"},"status":"ok"}

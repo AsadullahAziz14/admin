@@ -1,0 +1,1 @@
+{"result":{"text":"stack v subscript 0 with rightwards arrow on top space equals space 6 space i with hat on top space plus space 15 space j with hat on top space minus space 8 k with hat on top"},"status":"ok"}

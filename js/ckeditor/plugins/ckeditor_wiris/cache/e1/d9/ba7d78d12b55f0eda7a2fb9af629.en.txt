@@ -1,0 +1,1 @@
+{"result":{"text":"element of space G"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"3.75 open parentheses square root of 61.6 end root plus square root of 13.334 end root close parentheses"},"status":"ok"}

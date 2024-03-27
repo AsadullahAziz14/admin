@@ -1,0 +1,1 @@
+{"result":{"text":"a r g left parenthesis fraction numerator Z minus 1 over denominator Z plus 1 end fraction right parenthesis equals straight pi over 3"},"status":"ok"}

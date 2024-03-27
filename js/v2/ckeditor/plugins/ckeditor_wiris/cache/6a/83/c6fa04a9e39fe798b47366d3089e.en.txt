@@ -1,0 +1,1 @@
+{"result":{"text":"double integral left parenthesis 2 x space i space plus space 3 x z space j space plus space y squared space space k right parenthesis. space n space d S"},"status":"ok"}

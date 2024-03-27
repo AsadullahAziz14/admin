@@ -1,0 +1,1 @@
+{"result":{"text":"I subscript 3 minus end subscript I subscript 2"},"status":"ok"}

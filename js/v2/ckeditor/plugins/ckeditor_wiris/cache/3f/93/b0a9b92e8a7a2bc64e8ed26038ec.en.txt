@@ -1,0 +1,1 @@
+{"result":{"text":"r left parenthesis t right parenthesis space equals space cos t i space plus space sin space t space j space plus space 2 k comma"},"status":"ok"}

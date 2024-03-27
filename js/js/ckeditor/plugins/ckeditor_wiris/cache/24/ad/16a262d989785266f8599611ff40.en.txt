@@ -1,0 +1,1 @@
+{"result":{"text":"integral r with rightwards arrow on top space d x equals ?"},"status":"ok"}

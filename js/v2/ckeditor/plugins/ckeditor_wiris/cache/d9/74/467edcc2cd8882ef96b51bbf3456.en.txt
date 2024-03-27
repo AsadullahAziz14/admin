@@ -1,0 +1,1 @@
+{"result":{"text":"F with rightwards arrow on top space equals space 24 t space i with hat on top plus space j with hat on top space plus space 12 space k with hat on top"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"X equals left curly bracket x backslash x not equal to x right curly bracket space"},"status":"ok"}

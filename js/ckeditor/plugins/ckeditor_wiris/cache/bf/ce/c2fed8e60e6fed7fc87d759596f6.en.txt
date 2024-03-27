@@ -1,0 +1,1 @@
+{"result":{"text":"t left parenthesis x right parenthesis equals A left parenthesis bottom enclose x right parenthesis plus bottom enclose a"},"status":"ok"}

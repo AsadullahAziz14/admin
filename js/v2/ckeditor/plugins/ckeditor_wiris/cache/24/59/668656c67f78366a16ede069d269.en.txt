@@ -1,0 +1,1 @@
+{"result":{"text":"for all x element of R squared"},"status":"ok"}

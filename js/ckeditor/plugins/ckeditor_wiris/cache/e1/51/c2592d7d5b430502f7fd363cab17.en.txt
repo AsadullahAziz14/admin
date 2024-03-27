@@ -1,0 +1,1 @@
+{"result":{"text":"X cubed plus X"},"status":"ok"}

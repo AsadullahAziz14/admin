@@ -1,0 +1,1 @@
+{"result":{"text":"w equals z squared"},"status":"ok"}

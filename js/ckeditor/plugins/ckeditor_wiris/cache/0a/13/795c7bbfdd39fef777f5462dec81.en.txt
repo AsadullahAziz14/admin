@@ -1,0 +1,1 @@
+{"result":{"text":"2 cos 2 t minus 3 sin 2 t"},"status":"ok"}

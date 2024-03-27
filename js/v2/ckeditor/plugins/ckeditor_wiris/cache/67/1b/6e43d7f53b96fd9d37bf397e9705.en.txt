@@ -1,0 +1,1 @@
+{"result":{"text":"6 C O subscript 2 space plus space 6 H 2 subscript 2 O space space equals ________________"},"status":"ok"}

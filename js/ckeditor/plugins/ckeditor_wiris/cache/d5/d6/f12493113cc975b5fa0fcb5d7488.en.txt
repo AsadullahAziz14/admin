@@ -1,0 +1,1 @@
+{"result":{"text":"sin z equals i."},"status":"ok"}

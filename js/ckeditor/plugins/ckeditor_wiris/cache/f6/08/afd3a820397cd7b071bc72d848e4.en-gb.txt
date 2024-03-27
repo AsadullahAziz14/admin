@@ -1,0 +1,1 @@
+{"result":{"text":"d colon X rightwards arrow X"},"status":"ok"}

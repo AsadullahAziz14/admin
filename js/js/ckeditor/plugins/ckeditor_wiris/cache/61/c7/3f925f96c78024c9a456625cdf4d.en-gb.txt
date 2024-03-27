@@ -1,0 +1,1 @@
+{"result":{"text":"x subscript 1 equals x subscript 0 minus fraction numerator f left parenthesis x subscript 0 right parenthesis over denominator f apostrophe left parenthesis x subscript 0 right parenthesis end fraction"},"status":"ok"}

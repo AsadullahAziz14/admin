@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript b f d alpha greater or equal than integral subscript a superscript b g d alpha"},"status":"ok"}

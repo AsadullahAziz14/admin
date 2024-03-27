@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis 5 less than x less than negative 5\nb right parenthesis space minus 5 less than x less than 5\nc right parenthesis minus 5 less or equal than x less or equal than 5\nd right parenthesis space n o n e"},"status":"ok"}

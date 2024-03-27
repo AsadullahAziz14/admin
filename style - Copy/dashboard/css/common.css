@@ -1,0 +1,131 @@
+﻿#dasboard .watermark { color:#999; }
+
+#dasboard .watermarked { }
+#dasboard .ask { }
+
+#dasboard .question {
+	position: absolute;	display: inline; text-align: center; width: 174px; height: 78px; font-size: 13px;
+	line-height: 1.5em; background: url( 'images/bubble.png' ) left top no-repeat; padding: 10px 0 0 0;
+	text-shadow: 0px 1px 0px #fff; margin-left: -7em; margin-top: -6em; opacity: 0;
+}
+
+#dasboard .yes {
+	margin-top: .5em; margin-right: .5em; cursor: pointer; display: inline-block; width: 63px; height: 21px; color: #434d17;
+	text-shadow: 0px 1px 0px #fff; background: url( 'images/buttony.png' ) left top no-repeat;
+}
+
+#dasboard .cancel {
+	margin-top: .5em; margin-right: .5em; cursor: pointer; display:inline-block; width: 63px; height: 21px;
+	color: #fff; text-shadow: 0px 1px 0px #000; background: url( 'images/buttonn.png' ) left top no-repeat;
+}
+
+#dasboard .updateProgressDiv { display: none; left: 498.5px;  position: fixed; top: 199.5px;  z-index: 100001; }
+
+#dasboard .updateProgress {
+	background-color: #FFFFFF; border-style: solid; border-width: 1px; padding-bottom: 30px;  padding-top: 30px;
+    position: absolute; vertical-align: middle; width: 430px;
+}
+
+#dasboard .updateProgress { border-style: solid; }
+
+#dasboard .updateProgressMessage { font-weight: bold; padding-left: 5px; vertical-align: middle; }
+
+#dasboard .lightsOutBackground {
+	background: none repeat scroll 0 0 black; bottom: 0; left: 0;  opacity: 0.7; filter:alpha(opacity=50);
+    position: fixed; right: 0;  top: 0; z-index: 1000;
+}
+
+#dasboard .calander {
+	background:url("images/calendar.gif") no-repeat right center;
+	/*display: block;*/ padding:18px 5px; font-weight: bold; color: #406f85;
+}
+
+#dasboard .widget-grid {
+ 	/* width:360px;  */ width:100%; display:block; float: left; position: relative; margin-left: 10px; margin-right: 10px;   
+ }
+
+#dasboard .widget:before, #dasboard .widget:after, #dasboard .panel:before, #dasboard .panel:after {
+	bottom: 6px; content: " "; display: block; height: 12px; position: absolute; width: 99px;
+}
+
+#dasboard .widget-container .widget:before, #dasboard .widget-container .widget:after { /* bottom: -12px;*/ /*width:234px;*/ width:99px; }
+
+#dasboard .widget:before, #dasboard .panel:before { background: url("images/shadow_small_left.png") no-repeat scroll left top transparent;  left: 0; }
+
+#dasboard .widget:after, #dasboard .panel:after { background: url("images/shadow_small_right.png") no-repeat scroll left top transparent; right: 0; }
+
+#dasboard .widget.modal:before, #dasboard .widget.modal:after {  bottom:-12px; }
+
+#dasboard .widget .rollover {
+	background: url("images/zoom.png") no-repeat scroll center center #000000;  cursor: pointer; height: 100%; left: 0;
+    opacity: 0; position: absolute; top: 0; width: 100%;
+}
+
+#dasboard .widget .report-preview {  min-height: 100px;  width:100%;  vertical-align:middle !important; }
+/**********************************************/
+#dasboard table.simple {  border-top: 1px dotted #DDDDDD; }
+ 
+#dasboard table.simple > tbody > tr > td, #dasboard table.simple > tbody > tr > th { border-bottom: 1px dotted #DDDDDD;  padding: 2px; text-align: left; }
+
+#dasboard table.currents { width: 260px; }
+/* Dashboard buttons */
+	
+#dasboard ul.dashboard-buttons li { float:left; margin:7px 35px 7px 7px; }
+
+#dasboard ul.dashboard-buttons {
+	list-style-type:none !important; padding: 0; display:block;  width:100%;  vertical-align:middle !important; margin-top:20px;
+}
+
+#dasboard ul.dashboard-buttons li small {
+	color:#666666; display:block; font-size:11px; font-weight:bold; line-height: 11px;
+    text-align:center;  width:130px; padding-bottom:5px;
+}
+
+#dasboard .widget-grid .widget header {
+	background: #e1e1e1; background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e1e1e1));
+    background: -moz-linear-gradient(top, #fafafa, #e1e1e1); -pie-background: linear-gradient(top, #fafafa, #e1e1e1);
+    border: 1px solid #bbb; color: #333; font-size: 13px; text-shadow: 0 1px 0 #fff; margin: 0; padding: 5px 10px;
+	-moz-border-radius: 5px 5px 0 0; -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px;
+    -khtml-border-top-left-radius: 5px; -khtml-border-top-right-radius: 5px; border-radius: 5px 5px 0 0; position: relative;
+}
+
+#dasboard .widget-grid .widget header h2 { font-size: 13px; line-height: 30px;  margin: 0; }
+
+/*32x32*/
+#dasboard ul.dashboard-buttons li a {
+	display:block;  text-align:center;
+}
+
+
+#dasboard ul.dashboard-buttons li a.coursewebsite { background-image:url('images/icons_studenthome/Courses.png'); }
+
+#dasboard ul.dashboard-buttons li a.quizes { background-image:url('images/icons_studenthome/Quiz_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.assignments { background-image:url('images/icons_studenthome/Assignments_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.books { background-image:url('images/icons_studenthome/books_2-512.png'); }
+
+#dasboard ul.dashboard-buttons li a.GDB { background-image:url('images/icons_studenthome/btn_GDB_1.png'); }
+
+#dasboard ul.dashboard-buttons li a.MDB { background-image:url('images/icons_studenthome/MessageBoard_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.annoucements { background-image:url('images/icons_studenthome/Announcements_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.livesession { background-image:url('images/icons_studenthome/LiveSession_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.lessons { background-image:url('images/icons_studenthome/Lesson_32X32.png'); }
+#dasboard ul.dashboard-buttons li a.evaluation { background-image:url('images/icons_studenthome/evaluation.png'); }
+
+#dasboard ul.dashboard-buttons li a.videos { background-image:url('images/icons_studenthome/Videos_32X32.png'); }
+
+#dasboard ul.dashboard-buttons li a.Mail_open { background-image:url('images/icons/Mail_open.png'); }
+
+#dasboard .widget-grid >  ul.dashboard-buttons li a.Glass { background-image:url('images/icons/Glass.png'); }
+
+#dasboard .widget-grid >  ul.dashboard-buttons li a.Globe { background-image:url('images/icons/Globe.png'); }
+
+#dasboard .widget-grid >  ul.dashboard-buttons li a.Mail_compose { background-image:url('images/icons/Mail_compose.png'); }
+
+#dasboard .widget-grid >  ul.dashboard-buttons li a.Star { background-image:url('images/icons/Star.png'); }
+
+#dasboard .widget-grid >  ul.dashboard-buttons li a.Monitor { background-image:url('images/icons/Monitor.png'); }

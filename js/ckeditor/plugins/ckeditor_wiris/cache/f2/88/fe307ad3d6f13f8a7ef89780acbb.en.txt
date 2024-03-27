@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript 0 superscript 2 left parenthesis 2 t i with rightwards arrow on top plus 3 space t squared j with rightwards arrow on top right parenthesis d t equals"},"status":"ok"}

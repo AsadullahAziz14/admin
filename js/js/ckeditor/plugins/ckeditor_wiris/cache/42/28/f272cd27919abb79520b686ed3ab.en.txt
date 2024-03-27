@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses negative 1 close parentheses fraction numerator d to the power of n over denominator d s to the power of n end fraction F left parenthesis s right parenthesis"},"status":"ok"}

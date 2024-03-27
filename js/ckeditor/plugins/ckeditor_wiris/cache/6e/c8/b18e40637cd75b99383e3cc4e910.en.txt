@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript b f d n equals lambda"},"status":"ok"}

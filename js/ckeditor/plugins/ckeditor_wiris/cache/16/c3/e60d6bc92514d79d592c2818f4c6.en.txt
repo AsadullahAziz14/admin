@@ -1,0 +1,1 @@
+{"result":{"text":"v with bar on top equals left parenthesis 3 t squared plus 2 t right parenthesis i with rightwards arrow on top plus left parenthesis sin 2 t minus sin t right parenthesis j with rightwards arrow on top left parenthesis e to the power of t plus 1 over t right parenthesis k with rightwards arrow on top"},"status":"ok"}

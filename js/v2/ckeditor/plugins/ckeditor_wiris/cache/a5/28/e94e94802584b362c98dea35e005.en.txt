@@ -1,0 +1,1 @@
+{"result":{"text":"y double apostrophe plus y equals square root of 2 sin square root of 2 t\ny left parenthesis 0 right parenthesis equals 10 comma y apostrophe left parenthesis 0 right parenthesis equals 0"},"status":"ok"}

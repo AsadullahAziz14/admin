@@ -1,0 +1,1 @@
+{"result":{"text":"I f space A subset of or equal to B space a n d space B subset of or equal to A space t h e n"},"status":"ok"}

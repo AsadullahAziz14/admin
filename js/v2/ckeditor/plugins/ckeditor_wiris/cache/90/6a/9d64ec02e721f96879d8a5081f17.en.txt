@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis bevelled fraction numerator straight integer numbers over denominator 8 straight integer numbers end fraction right parenthesis to the power of cross times equals ?"},"status":"ok"}

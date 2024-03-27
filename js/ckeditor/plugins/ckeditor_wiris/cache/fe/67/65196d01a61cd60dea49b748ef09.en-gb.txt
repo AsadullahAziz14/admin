@@ -1,0 +1,1 @@
+{"result":{"text":"x comma y element of A space rightwards double arrow M equals left curly bracket a x plus left parenthesis 1 minus a right parenthesis y comma space 0 less or equal than a less or equal than 1 right curly bracket subset of A."},"status":"ok"}

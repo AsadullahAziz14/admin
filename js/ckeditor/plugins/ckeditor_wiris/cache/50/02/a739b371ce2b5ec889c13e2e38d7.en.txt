@@ -1,0 +1,1 @@
+{"result":{"text":"3.75 open parentheses 7.8485 space plus 3.65 close parentheses"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"d left parenthesis x comma y right parenthesis equals open curly brackets table attributes columnalign left end attributes row cell 1 comma space x not equal to y end cell row cell 0 comma space x equals y end cell end table close"},"status":"ok"}

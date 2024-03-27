@@ -1,0 +1,1 @@
+{"result":{"text":"J subscript plus vertical line alpha comma beta subscript m a x end subscript greater than equals _ _ _ _ _"},"status":"ok"}

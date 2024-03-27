@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator logical and c over denominator logical and ring operator end fraction"},"status":"ok"}

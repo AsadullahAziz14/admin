@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator 2 k s over denominator open parentheses s squared minus k squared close parentheses end fraction"},"status":"ok"}

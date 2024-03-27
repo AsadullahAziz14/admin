@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets x colon x element of A logical and x not an element of B close curly brackets equals _ _ _ _ _ _ _ _"},"status":"ok"}

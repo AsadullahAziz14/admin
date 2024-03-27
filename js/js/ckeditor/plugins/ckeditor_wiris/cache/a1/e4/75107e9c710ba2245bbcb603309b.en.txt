@@ -1,0 +1,1 @@
+{"result":{"text":"a subscript r equals r to the power of space.. end exponent minus r left parenthesis theta to the power of. right parenthesis"},"status":"ok"}

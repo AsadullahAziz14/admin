@@ -1,0 +1,1 @@
+{"result":{"text":"nabla space cross times space F space equals 0"},"status":"ok"}

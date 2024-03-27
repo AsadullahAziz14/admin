@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space A backslash C equals A\nb right parenthesis space C backslash A equals C\nc right parenthesis A increment C equals A union C\nd right parenthesis space A l l space o f space a b o v e"},"status":"ok"}

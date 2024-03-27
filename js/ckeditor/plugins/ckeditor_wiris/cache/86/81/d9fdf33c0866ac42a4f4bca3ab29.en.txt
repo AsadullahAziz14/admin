@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis x comma y right parenthesis equals x squared space e to the power of y"},"status":"ok"}

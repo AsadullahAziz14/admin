@@ -1,0 +1,1 @@
+{"result":{"text":"M subset of l to the power of infinity"},"status":"ok"}

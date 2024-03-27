@@ -1,0 +1,1 @@
+{"result":{"text":"A to the power of T B to the power of T"},"status":"ok"}

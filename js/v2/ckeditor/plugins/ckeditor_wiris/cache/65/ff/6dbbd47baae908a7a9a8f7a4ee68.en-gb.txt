@@ -1,0 +1,1 @@
+{"result":{"text":"w equals 2 t i minus t squared j plus left parenthesis 2 t plus 4 right parenthesis k"},"status":"ok"}

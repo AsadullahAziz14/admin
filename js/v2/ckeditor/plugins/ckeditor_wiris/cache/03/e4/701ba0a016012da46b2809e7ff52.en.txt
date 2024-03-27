@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis fraction numerator d y over denominator d x end fraction right parenthesis squared equals left parenthesis fraction numerator d squared y over denominator d x squared end fraction plus y right parenthesis to the power of bevelled 3 over 2 end exponent"},"status":"ok"}

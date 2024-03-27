@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top left parenthesis t right parenthesis equals less than t comma t squared comma t cubed greater than"},"status":"ok"}

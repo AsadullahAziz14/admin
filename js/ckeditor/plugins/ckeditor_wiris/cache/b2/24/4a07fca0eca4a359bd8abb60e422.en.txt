@@ -1,0 +1,1 @@
+{"result":{"text":"x subscript 0 space i s space"},"status":"ok"}

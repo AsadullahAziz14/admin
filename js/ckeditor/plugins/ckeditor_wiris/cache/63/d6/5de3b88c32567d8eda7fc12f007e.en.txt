@@ -1,0 +1,1 @@
+{"result":{"text":"A comma B element of fraktur A"},"status":"ok"}

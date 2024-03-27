@@ -1,0 +1,1 @@
+{"result":{"text":"B subset of or equal to A"},"status":"ok"}

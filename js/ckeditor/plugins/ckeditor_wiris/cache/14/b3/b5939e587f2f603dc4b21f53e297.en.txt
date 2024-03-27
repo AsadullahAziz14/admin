@@ -1,0 +1,1 @@
+{"result":{"text":"A to the power of t equals A to the power of negative 1 end exponent"},"status":"ok"}

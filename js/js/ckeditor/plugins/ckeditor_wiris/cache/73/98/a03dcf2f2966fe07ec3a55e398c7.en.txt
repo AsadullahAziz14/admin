@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator 2 straight pi over denominator square root of lambda end fraction"},"status":"ok"}

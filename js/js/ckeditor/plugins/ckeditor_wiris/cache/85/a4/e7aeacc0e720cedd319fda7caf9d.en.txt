@@ -1,0 +1,1 @@
+{"result":{"text":"u equals a left parenthesis x squared minus y squared right parenthesis comma space w equals b space a n d space v"},"status":"ok"}

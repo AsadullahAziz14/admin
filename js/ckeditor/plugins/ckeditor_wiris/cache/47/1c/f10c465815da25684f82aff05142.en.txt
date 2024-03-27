@@ -1,0 +1,1 @@
+{"result":{"text":"U left parenthesis r comma theta right parenthesis equals r to the power of n c o s n theta"},"status":"ok"}

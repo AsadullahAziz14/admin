@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets x subscript n close curly brackets space italic a italic n italic d space open curly brackets italic y subscript italic n close curly brackets"},"status":"ok"}

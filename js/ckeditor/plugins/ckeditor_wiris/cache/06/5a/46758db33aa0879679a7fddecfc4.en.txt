@@ -1,0 +1,1 @@
+{"result":{"text":"top enclose A B C D end enclose"},"status":"ok"}

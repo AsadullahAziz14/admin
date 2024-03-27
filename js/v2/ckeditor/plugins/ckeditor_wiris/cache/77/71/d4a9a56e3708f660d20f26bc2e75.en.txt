@@ -1,0 +1,1 @@
+{"result":{"text":"empty set colon M subscript 2 R space rightwards arrow R"},"status":"ok"}

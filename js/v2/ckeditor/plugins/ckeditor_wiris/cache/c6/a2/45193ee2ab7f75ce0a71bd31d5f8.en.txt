@@ -1,0 +1,1 @@
+{"result":{"text":"x less or equal than 7\nx minus y less or equal than 8\nx comma y greater or equal than 0"},"status":"ok"}

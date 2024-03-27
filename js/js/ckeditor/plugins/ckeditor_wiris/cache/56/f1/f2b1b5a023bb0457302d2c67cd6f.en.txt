@@ -1,0 +1,1 @@
+{"result":{"text":"a x squared plus 2 h x y plus b y squared plus 2 g x plus 2 f y plus c equals 0"},"status":"ok"}

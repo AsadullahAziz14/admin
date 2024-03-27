@@ -53,7 +53,7 @@ if (isset($_POST['submit_assignment'])) {
                 'ques_type'            => '1'                                                   ,
                 'ques_statement'       => $quesStatement                                        ,
                 'ques_marks'           => cleanvars($_POST['ques_marks'][$i])                   ,
-                'id_clo'               => implode('',cleanvars($_POST['ques_clo'][$i + 1]))     ,
+                'id_clo'               => implode(',',cleanvars($_POST['ques_clo'][$i + 1]))     ,
                 'ques_number'          => cleanvars($_POST['ques_number'][$i])                  ,
                 'id_teacher'           => ID_TEACHER                                            ,
                 'id_course'            => ID_COURSE                                             ,
@@ -88,9 +88,9 @@ if (isset($_POST['submit_assignment'])) {
         }
     }
         
-    $quesids = implode('', $quesIds);
+    $quesids = implode(',', $quesIds);
     if (count($quesIds) > 1) {
-        $quesids = implode('', $quesIds);
+        $quesids = implode(',', $quesIds);
     }
 
     $assignmentData = [
@@ -140,7 +140,7 @@ if(isset($_POST['save_changes'])) {
                 'ques_number'              => cleanvars($_POST['ques_number'][$key][$val[0]])      ,
                 'ques_statement'           => $quesStatement                                       ,
                 'ques_marks'               => cleanvars($_POST['ques_marks'][$key][$val[0]])       ,
-                'id_clo'                   => implode('',cleanvars($_POST['ques_clo'][$val[0]]))   ,
+                'id_clo'                   => implode(',',cleanvars($_POST['ques_clo'][$val[0]]))   ,
                 'id_teacher'               => ID_TEACHER                                           ,
                 'id_course'                => ID_COURSE                                            ,
                 'theory_paractical'        => COURSE_TYPE                                          ,
@@ -238,7 +238,7 @@ if(isset($_POST['save_changes'])) {
         'assignment_number'            => cleanvars($_POST['number'])                           ,
         'assignment_marks'             => cleanvars($_POST['marks'])                            ,
         'assignment_date'              => cleanvars($_POST['date'])                             ,
-        'id_ques'                      => implode('',$ques_ids)                                 ,
+        'id_ques'                      => implode(',',$ques_ids)                                 ,
         'id_teacher'                   => ID_TEACHER                                            ,
         'id_course'                    => ID_COURSE                                             ,
         'id_prg'                       => ID_PRG                                                ,

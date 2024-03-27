@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis stack A intersection B with bar on top right parenthesis equals A with bar on top intersection B with bar on top"},"status":"ok"}

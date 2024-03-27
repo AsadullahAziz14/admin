@@ -1,0 +1,1 @@
+{"result":{"text":"gamma equals C subscript p over C subscript v space w h i c h space i s space c o n s tan t comma space space P V to the power of gamma equals c o n s tan t space a n d space a l s o space w r i t t e n space a s space T V to the power of gamma minus 1 end exponent equals space c o n s tan t"},"status":"ok"}

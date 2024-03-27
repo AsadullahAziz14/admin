@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis x right parenthesis equals fraction numerator 1 over denominator left parenthesis x plus 4 right parenthesis left parenthesis x squared plus 5 x plus 6 right parenthesis end fraction"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis fraction numerator d y over denominator d x end fraction right parenthesis to the power of 1.5 end exponent equals left parenthesis fraction numerator x cos x over denominator square root of x squared plus sin x end root end fraction right parenthesis cubed"},"status":"ok"}

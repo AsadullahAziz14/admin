@@ -1,0 +1,1 @@
+{"result":{"text":"m left parenthesis b minus a right parenthesis less or equal than sum from i equals 1 to n of f left parenthesis x subscript i right parenthesis increment x subscript i less or equal than M left parenthesis b minus a right parenthesis"},"status":"ok"}

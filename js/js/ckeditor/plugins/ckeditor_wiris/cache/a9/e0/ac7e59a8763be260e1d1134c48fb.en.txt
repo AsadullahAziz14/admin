@@ -1,0 +1,1 @@
+{"result":{"text":"ϕ subscript i space end subscript colon space Q left square bracket x right square bracket space rightwards arrow C space"},"status":"ok"}

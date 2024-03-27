@@ -1,0 +1,1 @@
+{"result":{"text":"r with bar on top equals left parenthesis t cubed plus t squared right parenthesis i with rightwards arrow on top plus left parenthesis cos t plus sin squared t right parenthesis j with rightwards arrow on top plus left parenthesis e to the power of t plus log t right parenthesis k with rightwards arrow on top"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"nabla cross times F with rightwards arrow on top equals 0\n"},"status":"ok"}

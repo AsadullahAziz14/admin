@@ -1,0 +1,1 @@
+{"result":{"text":"a c less or equal than b c"},"status":"ok"}

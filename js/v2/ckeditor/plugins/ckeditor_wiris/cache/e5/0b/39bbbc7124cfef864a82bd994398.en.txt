@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar integral subscript a superscript b f d alpha close vertical bar greater or equal than integral subscript a superscript b open vertical bar f close vertical bar d alpha"},"status":"ok"}

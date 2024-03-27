@@ -1,0 +1,1 @@
+{"result":{"text":"x y squared fraction numerator d y over denominator d x end fraction equals y cubed minus x cubed space i s space a"},"status":"ok"}

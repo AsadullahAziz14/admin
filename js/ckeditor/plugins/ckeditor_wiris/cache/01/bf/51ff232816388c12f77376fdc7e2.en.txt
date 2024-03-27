@@ -1,0 +1,1 @@
+{"result":{"text":"A space s u b s e t space A space o f space a space r i n g space R space i s space c a l l e d space a n space i d e a l space i f"},"status":"ok"}

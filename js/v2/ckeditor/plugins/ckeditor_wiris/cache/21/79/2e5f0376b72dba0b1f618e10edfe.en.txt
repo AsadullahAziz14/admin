@@ -1,0 +1,1 @@
+{"result":{"text":"space r o o t s space o f space e q u a t i o n space x apostrophe apostrophe plus 4 x apostrophe plus 4 x equals 0 space i s space"},"status":"ok"}

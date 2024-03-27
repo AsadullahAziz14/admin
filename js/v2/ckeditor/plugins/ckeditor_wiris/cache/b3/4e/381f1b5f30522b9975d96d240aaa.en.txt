@@ -1,0 +1,1 @@
+{"result":{"text":"y double apostrophe minus 2 y apostrophe plus y equals e to the power of t\ny left parenthesis 0 right parenthesis equals 0 comma y apostrophe left parenthesis 0 right parenthesis equals 5"},"status":"ok"}

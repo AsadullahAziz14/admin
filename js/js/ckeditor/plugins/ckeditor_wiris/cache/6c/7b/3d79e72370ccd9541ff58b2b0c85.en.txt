@@ -1,0 +1,1 @@
+{"result":{"text":"Q left parenthesis space fifth root of 2 space right parenthesis"},"status":"ok"}

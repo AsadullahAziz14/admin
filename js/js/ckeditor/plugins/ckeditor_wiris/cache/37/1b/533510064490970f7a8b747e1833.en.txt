@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top equals 27 space i with hat on top plus 2 x space j with hat on top"},"status":"ok"}

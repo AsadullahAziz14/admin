@@ -1,0 +1,1 @@
+{"result":{"text":"x squared plus y squared minus fraction numerator 2 over denominator square root of 3 end fraction y minus 1 equals 0"},"status":"ok"}

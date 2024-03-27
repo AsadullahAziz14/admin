@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space fraction numerator x d y minus y d x over denominator x squared end fraction\nb right parenthesis fraction numerator x d y plus d x over denominator x squared end fraction\nc right parenthesis fraction numerator x d y y d x over denominator x squared end fraction\nd right parenthesis N o n e"},"status":"ok"}

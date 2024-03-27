@@ -1,0 +1,1 @@
+{"result":{"text":"eta equals 1 minus Q subscript 1 over Q subscript 2 comma space I f space Q subscript 1 equals 0 space t h e n space eta equals 100 percent sign"},"status":"ok"}

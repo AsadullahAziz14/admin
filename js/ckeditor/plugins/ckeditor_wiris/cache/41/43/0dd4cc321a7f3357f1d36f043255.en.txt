@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator 20 over denominator s minus 3 end fraction minus 7 over s squared"},"status":"ok"}

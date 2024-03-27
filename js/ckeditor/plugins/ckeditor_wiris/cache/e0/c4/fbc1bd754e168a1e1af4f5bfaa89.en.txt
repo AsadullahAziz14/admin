@@ -1,0 +1,1 @@
+{"result":{"text":"v left parenthesis x comma y right parenthesis equals f left parenthesis x right parenthesis plus g left parenthesis y right parenthesis"},"status":"ok"}

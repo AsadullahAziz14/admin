@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket x vertical line x element of N space comma space 1 less or equal than x less or equal than 2 right curly bracket"},"status":"ok"}

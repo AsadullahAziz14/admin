@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d over denominator d x end fraction integral subscript 0 superscript x u left parenthesis t right parenthesis d t"},"status":"ok"}

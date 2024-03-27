@@ -1,0 +1,1 @@
+{"result":{"text":"for all space 𝛼 comma 𝛽 space 𝜖 space 𝑆 space 𝛼 plus 𝛽 equals 𝛽 plus 𝛼"},"status":"ok"}

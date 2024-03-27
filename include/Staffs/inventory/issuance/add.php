@@ -17,7 +17,7 @@ if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 								<select id="issuance_to" class="form-control" name="issuance_to" required>
 									<option value="">Select</option>';
 									$queryEmployees  = $dblms->querylms("SELECT emply_id, emply_name
-																			FROM ".EMPLOYEES." 
+																			FROM ".EMPLYS." 
 																		");
                						while($valueEmployees = mysqli_fetch_array($queryEmployees)) {
 										echo '<option value="'.$valueEmployees['emply_id'].'">'.$valueEmployees['emply_name'].'</option>';

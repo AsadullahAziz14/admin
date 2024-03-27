@@ -1,0 +1,1 @@
+{"result":{"text":"p left parenthesis x right parenthesis equals 3 x plus 25000"},"status":"ok"}

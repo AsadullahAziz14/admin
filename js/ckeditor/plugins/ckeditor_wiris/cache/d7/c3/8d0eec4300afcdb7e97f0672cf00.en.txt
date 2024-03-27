@@ -1,0 +1,1 @@
+{"result":{"text":"a r g left parenthesis z subscript 1 right parenthesis minus a r g left parenthesis z subscript 2 right parenthesis equals"},"status":"ok"}

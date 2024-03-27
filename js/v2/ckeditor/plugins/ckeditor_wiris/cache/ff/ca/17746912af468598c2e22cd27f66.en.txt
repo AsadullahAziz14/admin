@@ -1,0 +1,1 @@
+{"result":{"text":"A equals open curly brackets b minus a plus 2 element of colon element of greater than 0 close curly brackets"},"status":"ok"}

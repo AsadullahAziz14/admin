@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l to the power of negative 1 end exponent open curly brackets fraction numerator 1 over denominator s squared plus 7 end fraction close curly brackets equals"},"status":"ok"}

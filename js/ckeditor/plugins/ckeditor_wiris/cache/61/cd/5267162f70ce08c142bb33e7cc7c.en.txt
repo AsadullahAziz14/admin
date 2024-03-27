@@ -1,0 +1,1 @@
+{"result":{"text":"tilde left parenthesis p logical and q right parenthesis identical to _ _ _ _"},"status":"ok"}

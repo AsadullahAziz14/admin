@@ -1,0 +1,1 @@
+{"result":{"text":"V subscript r equals r squared z cos theta comma space space V subscript theta equals r z sin theta comma space space space V subscript z equals Z squared t."},"status":"ok"}

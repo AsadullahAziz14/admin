@@ -1,0 +1,1 @@
+{"result":{"text":"u left parenthesis x right parenthesis equals 1 half plus x minus integral subscript a superscript b left parenthesis x minus t right parenthesis space u squared left parenthesis t right parenthesis d t"},"status":"ok"}

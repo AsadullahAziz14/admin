@@ -1,0 +1,1 @@
+{"result":{"text":"E left parenthesis r comma t right parenthesis equals space E left parenthesis r right parenthesis space e to the power of negative alpha t end exponent space s h o w space t h a t space f i e l d space"},"status":"ok"}

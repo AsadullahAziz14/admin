@@ -1,0 +1,1 @@
+{"result":{"text":"w equals f left parenthesis z right parenthesis space"},"status":"ok"}

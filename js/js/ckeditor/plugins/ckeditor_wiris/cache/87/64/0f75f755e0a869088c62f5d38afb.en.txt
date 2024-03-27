@@ -1,0 +1,1 @@
+{"result":{"text":"a element of G colon a X equals X a"},"status":"ok"}

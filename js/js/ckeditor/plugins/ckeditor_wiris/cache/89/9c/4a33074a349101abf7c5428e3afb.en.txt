@@ -1,0 +1,1 @@
+{"result":{"text":"sum for blank of U left parenthesis P comma f comma alpha right parenthesis"},"status":"ok"}

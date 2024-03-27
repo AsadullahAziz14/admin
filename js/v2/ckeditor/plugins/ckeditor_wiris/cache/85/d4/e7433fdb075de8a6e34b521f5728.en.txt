@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript r equals A over r plus B over r squared c o s theta comma space space space v subscript theta equals B over r squared s i n theta"},"status":"ok"}

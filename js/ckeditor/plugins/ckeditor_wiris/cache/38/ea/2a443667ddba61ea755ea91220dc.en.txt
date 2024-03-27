@@ -1,0 +1,1 @@
+{"result":{"text":"r space equals space 0"},"status":"ok"}

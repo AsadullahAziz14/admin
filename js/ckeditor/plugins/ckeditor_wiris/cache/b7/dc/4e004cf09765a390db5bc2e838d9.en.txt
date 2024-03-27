@@ -1,0 +1,1 @@
+{"result":{"text":"open square brackets 0 over n comma k over n close square brackets"},"status":"ok"}

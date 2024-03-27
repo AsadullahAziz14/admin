@@ -1,0 +1,1 @@
+{"result":{"text":"f i n d space t h e space r o o t space o f space c o m p l e x space n u m b e r space space z equals open parentheses fraction numerator square root of 3 minus i over denominator square root of 3 plus i end fraction close parentheses to the power of 6"},"status":"ok"}

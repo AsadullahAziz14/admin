@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript r equals r s i n theta comma v subscript theta equals 2 r c o s theta comma v subscript z equals 0."},"status":"ok"}

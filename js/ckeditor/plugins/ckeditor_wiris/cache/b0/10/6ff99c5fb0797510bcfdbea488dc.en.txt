@@ -1,0 +1,1 @@
+{"result":{"text":"1 right parenthesis W equals f left parenthesis z right parenthesis equals top enclose Z space a t space Z equals z subscript o\n2 right parenthesis W equals f left parenthesis z right parenthesis equals open vertical bar Z close vertical bar squared space a t space Z equals Z subscript o"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x y equals open vertical bar x close vertical bar open vertical bar y close vertical bar"},"status":"ok"}

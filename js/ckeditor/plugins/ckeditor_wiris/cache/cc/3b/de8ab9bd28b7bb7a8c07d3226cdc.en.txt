@@ -1,0 +1,1 @@
+{"result":{"text":"B equals space left curly bracket left parenthesis x comma y comma z right parenthesis element of R cubed space vertical line space minus 1 less or equal than x less or equal than 2 comma space 0 less or equal than y less or equal than 3 comma space 0 less or equal than z less or equal than 2 right curly bracket"},"status":"ok"}

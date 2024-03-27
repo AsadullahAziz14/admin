@@ -1,0 +1,1 @@
+{"result":{"text":"sin square root of 7 t"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis straight complex numbers left square bracket x right square bracket comma plus comma cross times right parenthesis"},"status":"ok"}

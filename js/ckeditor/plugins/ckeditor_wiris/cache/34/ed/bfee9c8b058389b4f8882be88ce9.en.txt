@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis a comma space b right parenthesis space equals space d"},"status":"ok"}

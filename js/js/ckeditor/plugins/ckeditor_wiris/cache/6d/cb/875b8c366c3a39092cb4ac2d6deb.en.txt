@@ -1,0 +1,1 @@
+{"result":{"text":"r cos theta plus i sin theta equals"},"status":"ok"}

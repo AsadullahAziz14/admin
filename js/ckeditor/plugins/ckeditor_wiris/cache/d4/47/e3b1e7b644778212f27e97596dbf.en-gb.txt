@@ -1,0 +1,1 @@
+{"result":{"text":"A plus B equals open square brackets table row 0 4 x row 11 3 y row 2 6 z end table close square brackets"},"status":"ok"}

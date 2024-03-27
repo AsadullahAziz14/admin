@@ -1,0 +1,1 @@
+{"result":{"text":"bold italic n bold. bold italic P subscript bold 0 bold italic P equals bold 0"},"status":"ok"}

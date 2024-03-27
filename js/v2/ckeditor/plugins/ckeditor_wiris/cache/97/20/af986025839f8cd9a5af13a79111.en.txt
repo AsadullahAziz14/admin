@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l to the power of negative 1 end exponent open curly brackets 1 over open parentheses s minus 5 close parentheses cubed close curly brackets equals"},"status":"ok"}

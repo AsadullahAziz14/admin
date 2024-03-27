@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis A union B right parenthesis to the power of ring operator equals A to the power of ring operator end exponent union B to the power of ring operator"},"status":"ok"}

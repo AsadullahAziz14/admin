@@ -1,0 +1,1 @@
+{"result":{"text":"a subscript n plus 1 end subscript equals a apostrophe subscript n minus k b subscript n"},"status":"ok"}

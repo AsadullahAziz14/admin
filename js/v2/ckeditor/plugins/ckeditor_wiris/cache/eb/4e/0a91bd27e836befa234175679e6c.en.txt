@@ -1,0 +1,1 @@
+{"result":{"text":"negative straight pi less or equal than straight theta less or equal than straight pi"},"status":"ok"}

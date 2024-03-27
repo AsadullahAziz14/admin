@@ -1,0 +1,1 @@
+{"result":{"text":"top enclose e to the power of z end enclose equals e stack blank to the power of z with bar on top"},"status":"ok"}

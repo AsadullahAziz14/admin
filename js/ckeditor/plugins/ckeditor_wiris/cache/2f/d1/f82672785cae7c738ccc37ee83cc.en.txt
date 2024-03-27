@@ -1,0 +1,1 @@
+{"result":{"text":"i f space y equals fraction numerator left parenthesis x plus 1 right parenthesis left parenthesis x plus 2 right parenthesis over denominator left parenthesis x minus 1 right parenthesis left parenthesis x minus 2 right parenthesis end fraction comma space t h e n space f i n d space fraction numerator d y over denominator d x end fraction."},"status":"ok"}

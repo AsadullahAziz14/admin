@@ -1,0 +1,1 @@
+{"result":{"text":"y equals sin squared x comma space t h e n space fraction numerator d y over denominator d x end fraction equals\na right parenthesis s i n 2 x\nb right parenthesis space cos 2 x\nc right parenthesis minus 2 cos x sin x\nd right parenthesis 2 cos x sin x"},"status":"ok"}

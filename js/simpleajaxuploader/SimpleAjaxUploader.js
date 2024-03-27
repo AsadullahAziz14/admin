@@ -452,7 +452,7 @@ ss.SimpleUpload = function( options ) {
     maxUploads: 3,
     queue: true,
     checkProgressInterval: 50,
-    keyParamName: 'APC_UOBE_PLOSAD_PROGRESS',
+    keyParamName: 'APC_UPLOAD_PROGRESS',
     nginxProgressHeader: 'X-Progress-ID',
     corsInputName: 'XHR_CORS_TARGETORIGIN',
     allowedExtensions: [],

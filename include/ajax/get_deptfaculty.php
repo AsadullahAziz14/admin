@@ -17,7 +17,7 @@ echo '
 			<label class="req">Department</label>
 			<select id="id_dept" name="id_dept" style="width:100%" autocomplete="off" required>
 				<option value="">Select Department</option>';
-				 $sqllmsdept	= $dblms->querylms("SELECT dept_id, dept_name FROM ".DEPARTMENTS." WHERE dept_status = '1' AND id_faculty = '".$id_faculty."'ORDER BY dept_name ASC");
+				 $sqllmsdept	= $dblms->querylms("SELECT dept_id, dept_name FROM ".DEPTS." WHERE dept_status = '1' AND id_faculty = '".$id_faculty."'ORDER BY dept_name ASC");
 				while($valuedept = mysqli_fetch_array($sqllmsdept)) { 
 				echo '<option value="'.$valuedept['dept_id'].'">'.$valuedept['dept_name'].'</option>';
 				}

@@ -1,0 +1,1 @@
+{"result":{"text":"u x squared plus v x plus w equals 0 comma space s o l v e space q u a d r a t i c space e q u a t i o n space b y space c o m p l e t i n g space s q u a r e space m e t h o d."},"status":"ok"}

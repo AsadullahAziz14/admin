@@ -1,0 +1,1 @@
+{"result":{"text":"x to the power of 5 plus 2 x plus 7"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"vertical line Z minus 1 vertical line equals vertical line Z minus 3 vertical line equals vertical line Z minus iota vertical line space"},"status":"ok"}

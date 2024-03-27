@@ -1,0 +1,1 @@
+{"result":{"text":"for all space 𝛼 space 𝜖 space 𝑆 space there exists space e equals 0 space ϵ space 𝑆 space s. t space 𝛼 plus 0 equals 𝛼 equals 0 plus 𝛼"},"status":"ok"}

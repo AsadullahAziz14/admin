@@ -1,0 +1,1 @@
+{"result":{"text":"V with rightwards arrow on top equals 10 x squared y i with hat on top plus 20 left parenthesis y z plus x right parenthesis j with hat on top plus 13 k with hat on top"},"status":"ok"}

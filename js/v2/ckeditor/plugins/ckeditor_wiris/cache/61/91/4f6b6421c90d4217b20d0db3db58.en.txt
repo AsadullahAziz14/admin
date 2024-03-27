@@ -1,0 +1,1 @@
+{"result":{"text":"large union for n of B subscript n equals large union for n of A subscript n"},"status":"ok"}

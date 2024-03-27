@@ -1,0 +1,1 @@
+{"result":{"text":"x squared equals e to the power of 2 minus x squared end exponent"},"status":"ok"}

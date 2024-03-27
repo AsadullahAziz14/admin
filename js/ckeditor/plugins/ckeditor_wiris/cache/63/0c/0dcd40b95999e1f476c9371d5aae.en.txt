@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript b f d left parenthesis alpha subscript 1 plus alpha subscript 2 right parenthesis greater than integral subscript a superscript b f d alpha subscript 1 plus integral subscript a superscript b f d alpha subscript 2"},"status":"ok"}

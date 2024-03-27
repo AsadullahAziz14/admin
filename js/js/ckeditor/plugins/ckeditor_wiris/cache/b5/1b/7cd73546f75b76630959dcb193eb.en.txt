@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis a space A with hat on top right parenthesis to the power of T asterisk times end exponent space equals"},"status":"ok"}

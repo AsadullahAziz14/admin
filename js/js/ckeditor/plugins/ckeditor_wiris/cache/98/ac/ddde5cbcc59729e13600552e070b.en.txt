@@ -1,0 +1,1 @@
+{"result":{"text":"x squared space plus y squared space plus z squared equals a squared"},"status":"ok"}

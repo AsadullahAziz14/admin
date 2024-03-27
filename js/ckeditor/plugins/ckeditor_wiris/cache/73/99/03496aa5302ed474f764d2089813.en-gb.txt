@@ -1,0 +1,1 @@
+{"result":{"text":"e to the power of i straight pi end exponent equals"},"status":"ok"}

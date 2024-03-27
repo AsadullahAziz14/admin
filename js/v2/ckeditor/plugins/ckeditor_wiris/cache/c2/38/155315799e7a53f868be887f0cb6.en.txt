@@ -1,0 +1,1 @@
+{"result":{"text":"\nopen parentheses top enclose open parentheses top enclose A plus B top enclose C end enclose close parentheses space plus D open parentheses top enclose E plus top enclose F end enclose close parentheses space end enclose close parentheses\n"},"status":"ok"}

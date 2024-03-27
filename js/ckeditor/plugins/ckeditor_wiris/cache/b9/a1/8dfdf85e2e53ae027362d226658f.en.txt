@@ -1,0 +1,1 @@
+{"result":{"text":"B to the power of t equals"},"status":"ok"}

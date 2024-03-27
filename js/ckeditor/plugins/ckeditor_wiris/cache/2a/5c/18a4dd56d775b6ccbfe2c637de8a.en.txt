@@ -1,0 +1,1 @@
+{"result":{"text":"p logical and F identical to"},"status":"ok"}

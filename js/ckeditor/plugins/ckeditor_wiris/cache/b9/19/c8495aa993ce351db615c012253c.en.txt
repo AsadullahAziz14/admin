@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y space over denominator d x end fraction equals fraction numerator negative 3 x y plus y squared over denominator x squared plus x y end fraction"},"status":"ok"}

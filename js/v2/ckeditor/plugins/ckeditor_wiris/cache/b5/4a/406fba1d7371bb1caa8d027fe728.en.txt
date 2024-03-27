@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis 0 right parenthesis equals 3 comma space f left parenthesis 1 right parenthesis equals 4 comma f to the power of apostrophe left parenthesis 1 right parenthesis equals 2 over 3"},"status":"ok"}

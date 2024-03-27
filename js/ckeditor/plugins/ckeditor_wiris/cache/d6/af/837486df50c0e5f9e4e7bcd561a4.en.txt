@@ -1,0 +1,1 @@
+{"result":{"text":"phi left parenthesis x right parenthesis space u left parenthesis x right parenthesis equals f left parenthesis x right parenthesis plus lambda integral subscript a superscript b k left parenthesis x comma t right parenthesis space u left parenthesis t right parenthesis d t comma space i f phi left parenthesis x right parenthesis equals 1"},"status":"ok"}

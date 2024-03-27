@@ -1,0 +1,1 @@
+{"result":{"text":"3.75 open parentheses 11.4985 close parentheses"},"status":"ok"}

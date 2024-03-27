@@ -1,0 +1,1 @@
+{"result":{"text":"G i v e n space 𝑓 left parenthesis 𝑍 right parenthesis equals 𝑍 minus 𝑍 comma space w h e r e space d o e s space 𝑓 prime left parenthesis 𝑍 right parenthesis space e x i s t ?"},"status":"ok"}

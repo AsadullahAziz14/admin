@@ -1,0 +1,1 @@
+{"result":{"text":"mu left parenthesis A right parenthesis greater or equal than mu left parenthesis B right parenthesis"},"status":"ok"}

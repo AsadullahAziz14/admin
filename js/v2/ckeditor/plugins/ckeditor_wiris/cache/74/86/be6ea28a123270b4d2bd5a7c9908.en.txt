@@ -1,0 +1,1 @@
+{"result":{"text":"t greater or equal than 0"},"status":"ok"}

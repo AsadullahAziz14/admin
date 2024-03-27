@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis Z right parenthesis equals space u plus space i v space"},"status":"ok"}

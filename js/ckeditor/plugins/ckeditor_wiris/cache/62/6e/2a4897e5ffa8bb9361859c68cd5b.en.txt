@@ -1,0 +1,1 @@
+{"result":{"text":"f asterisk times g equals integral subscript 0 superscript t f left parenthesis u right parenthesis g left parenthesis t plus u right parenthesis d u"},"status":"ok"}

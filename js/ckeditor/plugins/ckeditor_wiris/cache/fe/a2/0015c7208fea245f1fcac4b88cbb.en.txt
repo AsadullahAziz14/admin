@@ -1,0 +1,1 @@
+{"result":{"text":"𝜑 left parenthesis 𝑥 ∗ 𝑦 right parenthesis equals 𝜑 left parenthesis 𝑥 right parenthesis space ∗ space 𝜑 left parenthesis 𝑦 right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x minus fraction numerator 1 over denominator 3.4 end fraction x to the power of 4 plus fraction numerator 1 over denominator 3.4.6.7 end fraction x to the power of 7 minus fraction numerator 1 over denominator 3.4.6.7.9.10 end fraction x to the power of 10 plus..."},"status":"ok"}

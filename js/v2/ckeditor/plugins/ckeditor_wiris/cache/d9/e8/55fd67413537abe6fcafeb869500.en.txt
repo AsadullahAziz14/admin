@@ -1,0 +1,1 @@
+{"result":{"text":"i f space f left parenthesis x right parenthesis equals log subscript square root of x plus 1 end root end subscript superscript square root of x plus 2 end root end superscript comma space t h e n space f i n d space f to the power of apostrophe left parenthesis x right parenthesis space a t space x equals 0"},"status":"ok"}

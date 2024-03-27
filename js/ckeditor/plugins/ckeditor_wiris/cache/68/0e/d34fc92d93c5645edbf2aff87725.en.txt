@@ -1,0 +1,1 @@
+{"result":{"text":"nabla f left parenthesis x comma y right parenthesis equals f subscript y left parenthesis x comma y right parenthesis bold italic i bold space plus f subscript y left parenthesis x comma y right parenthesis space bold italic j"},"status":"ok"}

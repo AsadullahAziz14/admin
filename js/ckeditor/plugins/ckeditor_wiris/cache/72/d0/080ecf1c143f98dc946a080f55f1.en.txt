@@ -1,0 +1,1 @@
+{"result":{"text":"n left parenthesis A union B right parenthesis equals n left parenthesis A right parenthesis plus n left parenthesis B right parenthesis minus n left parenthesis A intersection B right parenthesis"},"status":"ok"}

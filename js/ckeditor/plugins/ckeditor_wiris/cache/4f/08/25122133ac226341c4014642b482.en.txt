@@ -1,0 +1,1 @@
+{"result":{"text":"1 right parenthesis space space e to the power of negative i w t end exponent\n2 right parenthesis space space e to the power of plus i w t end exponent\n3 right parenthesis space space e to the power of w t end exponent\n4 right parenthesis space n o n e"},"status":"ok"}

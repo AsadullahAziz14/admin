@@ -1,0 +1,1 @@
+{"result":{"text":"1011 circled plus 0110 equals"},"status":"ok"}

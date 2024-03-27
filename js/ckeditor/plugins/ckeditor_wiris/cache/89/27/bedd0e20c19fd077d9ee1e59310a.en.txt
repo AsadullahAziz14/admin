@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space x squared minus y squared equals 5\nb right parenthesis space x squared plus y squared equals 5\nc right parenthesis space x squared minus y squared equals 25\nd right parenthesis space x squared plus y squared equals 25"},"status":"ok"}

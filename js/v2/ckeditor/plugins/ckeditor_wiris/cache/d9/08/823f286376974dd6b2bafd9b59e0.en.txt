@@ -1,0 +1,1 @@
+{"result":{"text":"sum from i equals 1 to t of w i j space w i q"},"status":"ok"}

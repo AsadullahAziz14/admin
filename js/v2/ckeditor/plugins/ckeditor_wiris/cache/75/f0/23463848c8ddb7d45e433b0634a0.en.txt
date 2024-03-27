@@ -1,0 +1,1 @@
+{"result":{"text":"2 x hat 2 space"},"status":"ok"}

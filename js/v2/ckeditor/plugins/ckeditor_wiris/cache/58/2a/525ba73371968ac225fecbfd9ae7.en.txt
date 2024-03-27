@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction plus P left parenthesis x right parenthesis y equals Q left parenthesis x right parenthesis"},"status":"ok"}

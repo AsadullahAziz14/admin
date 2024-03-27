@@ -1,0 +1,1 @@
+{"result":{"text":"w equals square root of z"},"status":"ok"}

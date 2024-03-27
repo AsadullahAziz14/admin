@@ -1,0 +1,1 @@
+{"result":{"text":"x fraction numerator d y over denominator d x end fraction equals y plus square root of x squared minus y squared end root space i s space a"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"A O equals I"},"status":"ok"}

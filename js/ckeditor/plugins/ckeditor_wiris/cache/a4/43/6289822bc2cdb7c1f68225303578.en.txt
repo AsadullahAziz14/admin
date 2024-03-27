@@ -1,0 +1,1 @@
+{"result":{"text":"Z equals 3 x plus 2 y\nS u b j e c t space t o\nx minus y less or equal than 15\n2 x minus y less or equal than 40\nx comma y greater or equal than 0"},"status":"ok"}

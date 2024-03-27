@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar x subscript m minus x subscript n close vertical bar equals 0"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis 1 plus x right parenthesis y apostrophe plus y equals 0"},"status":"ok"}

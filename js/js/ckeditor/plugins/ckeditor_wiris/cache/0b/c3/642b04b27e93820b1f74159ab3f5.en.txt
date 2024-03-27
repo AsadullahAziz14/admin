@@ -1,0 +1,1 @@
+{"result":{"text":"r equals left parenthesis t squared plus 1 right parenthesis i minus 6 t j plus 4 t cubed k\na t space t equals 1"},"status":"ok"}

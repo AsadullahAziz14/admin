@@ -1,0 +1,1 @@
+{"result":{"text":"bold italic r left parenthesis t right parenthesis equals left parenthesis 2 t plus 3 right parenthesis bold italic i plus left parenthesis 5 minus t squared right parenthesis bold italic j"},"status":"ok"}

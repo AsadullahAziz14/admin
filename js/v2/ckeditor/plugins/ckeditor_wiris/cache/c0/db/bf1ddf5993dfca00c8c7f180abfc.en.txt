@@ -1,0 +1,1 @@
+{"result":{"text":"square root of b squared minus 4 a c end root"},"status":"ok"}

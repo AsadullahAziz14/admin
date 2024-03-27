@@ -1,0 +1,1 @@
+{"result":{"text":"1. space find space three space straight A. Ms space left parenthesis arithematic space means right parenthesis space between space square root of 2 space and space 3 square root of 2.\n2. space sum space of space the space series space space 2 plus 4 plus 6 plus 8 plus comma........... comma 2000. space"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"m asterisk times left parenthesis A right parenthesis equals m asterisk times left parenthesis E right parenthesis plus m asterisk times left parenthesis E apostrophe right parenthesis"},"status":"ok"}

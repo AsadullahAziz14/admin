@@ -1,0 +1,1 @@
+{"result":{"text":"r with hat on top fraction numerator d v over denominator d r end fraction"},"status":"ok"}

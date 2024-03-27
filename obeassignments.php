@@ -103,7 +103,7 @@ if(($_SESSION['userlogininfo']['LOGINAFOR'] != 1)) {
 	require_once("include/Staffs/obe/assignments/add.php");
 	require_once("include/Staffs/obe/assignments/edit.php");
 	require_once("include/Staffs/obe/assignments/result/add.php");
-	require_once("include/Staffs/obe/assignments//result/edit.php");
+	require_once("include/Staffs/obe/assignments/result/edit.php");
 
 
 	echo '

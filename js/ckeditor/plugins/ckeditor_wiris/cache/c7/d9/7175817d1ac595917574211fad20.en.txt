@@ -1,0 +1,1 @@
+{"result":{"text":"a subscript theta equals 2 r to the power of space. end exponent theta to the power of. plus r theta to the power of.. end exponent"},"status":"ok"}

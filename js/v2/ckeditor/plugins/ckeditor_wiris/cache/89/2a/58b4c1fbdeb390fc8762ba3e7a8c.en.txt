@@ -1,0 +1,1 @@
+{"result":{"text":"T h e space c o r r e c t space s t a t e m e n t space o f space D e minus M o i v r e ’ s space t h e o r e m space left parenthesis c o s theta plus i s i n theta right parenthesis to the power of n i s"},"status":"ok"}

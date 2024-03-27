@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript alpha f left parenthesis x right parenthesis d x equals limit as lambda rightwards arrow alpha of integral subscript a superscript alpha f left parenthesis x right parenthesis d x"},"status":"ok"}

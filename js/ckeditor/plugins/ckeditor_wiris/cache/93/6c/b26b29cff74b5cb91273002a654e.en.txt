@@ -1,0 +1,1 @@
+{"result":{"text":"N colon straight integer numbers rightwards arrow straight integer numbers to the power of plus union left curly bracket 0 right curly bracket"},"status":"ok"}

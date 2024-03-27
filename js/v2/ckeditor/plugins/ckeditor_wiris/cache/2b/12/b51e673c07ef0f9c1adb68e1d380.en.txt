@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript 0 superscript t f left parenthesis tau right parenthesis f left parenthesis t minus tau right parenthesis d tau equals 6 t cubed"},"status":"ok"}

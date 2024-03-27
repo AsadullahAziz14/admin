@@ -1,0 +1,1 @@
+{"result":{"text":"m equals I n f open curly brackets a less or equal than x less or equal than b close curly brackets"},"status":"ok"}

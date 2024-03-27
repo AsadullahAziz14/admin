@@ -1,0 +1,1 @@
+{"result":{"text":"a omega squared cos omega t"},"status":"ok"}

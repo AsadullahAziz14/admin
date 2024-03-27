@@ -1,0 +1,1 @@
+{"result":{"text":"t h e space f u n t i o n space f left parenthesis z right parenthesis equals space x squared plus i y space i s space"},"status":"ok"}

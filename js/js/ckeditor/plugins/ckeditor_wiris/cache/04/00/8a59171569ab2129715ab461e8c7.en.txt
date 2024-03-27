@@ -1,0 +1,1 @@
+{"result":{"text":"omega tau less than 1"},"status":"ok"}

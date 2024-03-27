@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator 3 d left parenthesis x comma space y right parenthesis over denominator 2 plus 3 d left parenthesis x comma space y right parenthesis end fraction"},"status":"ok"}

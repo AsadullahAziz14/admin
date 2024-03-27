@@ -1,0 +1,1 @@
+{"result":{"text":"i f space s equals fraction numerator t squared plus 5 t minus 1 over denominator t squared end fraction comma space f i n d space s e c o n d space o r d e r space d e r i v a t i v e space fraction numerator d squared y over denominator d x squared end fraction equals ?"},"status":"ok"}

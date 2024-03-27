@@ -1,0 +1,1 @@
+{"result":{"text":"C equals large intersection for b of C left parenthesis b right parenthesis"},"status":"ok"}

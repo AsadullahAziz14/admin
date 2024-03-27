@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator partial differential M over denominator partial differential y end fraction equals fraction numerator partial differential N over denominator partial differential x end fraction i s space t h e space c o n d i t i o n space o f"},"status":"ok"}

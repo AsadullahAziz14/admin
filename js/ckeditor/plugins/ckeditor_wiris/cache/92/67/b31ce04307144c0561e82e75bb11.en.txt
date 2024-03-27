@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator triangle y over denominator triangle x end fraction"},"status":"ok"}

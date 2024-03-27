@@ -1,0 +1,1 @@
+{"result":{"text":"y double apostrophe equals sum from n equals 2 to infinity of c subscript n n left parenthesis n minus 1 right parenthesis x to the power of n minus 1 end exponent"},"status":"ok"}

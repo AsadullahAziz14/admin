@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar stack P S with rightwards harpoon with barb upwards on top. fraction numerator n over denominator vertical line n vertical line end fraction close vertical bar"},"status":"ok"}

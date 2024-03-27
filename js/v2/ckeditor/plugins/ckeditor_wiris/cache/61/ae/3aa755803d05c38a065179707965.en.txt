@@ -1,0 +1,1 @@
+{"result":{"text":"identical to"},"status":"ok"}

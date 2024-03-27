@@ -1,0 +1,1 @@
+{"result":{"text":"2 t i with rightwards arrow on top plus e to the power of t j with rightwards arrow on top plus left parenthesis 2 πsinπt right parenthesis straight k with rightwards arrow on top"},"status":"ok"}

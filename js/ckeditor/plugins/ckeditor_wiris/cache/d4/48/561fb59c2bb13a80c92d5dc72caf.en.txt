@@ -1,0 +1,1 @@
+{"result":{"text":"theta subscript 2 minus theta subscript 1"},"status":"ok"}

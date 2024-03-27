@@ -1,0 +1,1 @@
+{"result":{"text":"mu open parentheses large union from i equals 1 to infinity of A subscript i close parentheses stack greater or equal than sum with i equals 1 below and infinity on top mu left parenthesis A subscript i right parenthesis"},"status":"ok"}

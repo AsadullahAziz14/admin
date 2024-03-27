@@ -1,0 +1,29 @@
+﻿
+
+#dasboard .sidemenu {  padding: 10px 0;  margin-right: -20px;   float:none !important; }
+
+#dasboard .sidemenu > ul {  display: block; float:none !important; }
+
+#dasboard .sidemenu h4 {
+	color: #333; font-size: 10px; font-weight: bold;  margin-top: 0; padding-left: 8px;
+    text-transform: uppercase;  text-shadow: 0 1px 0 #eee; text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}
+
+#dasboard .sidemenu > ul > li {  float: left;   width: 90% !important; }
+
+#dasboard .sidemenu > ul > li a {
+	color: #333;  display: block; font-size: 11px;  padding: 5px 4px 5px 8px;  text-decoration: none;
+    text-shadow: 0 1px 1px #fff;  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    -moz-border-radius: 4px 0 0 4px;  -webkit-border-top-left-radius: 4px;  -webkit-border-bottom-left-radius: 4px;
+    -khtml-border-radius: 4px 0 0 4px;  border-radius: 4px 0 0 4px;  line-height: 16px;
+}
+
+#dasboard .sidemenu > ul > li > a:hover {  background: #9ecbe0;  background: rgba(255,255,255,0.15); }
+
+#dasboard .sidemenu > ul > li.active > a {  background: #afd4e6;  background: rgba(255,255,255,0.3);  color: #111;  font-weight: bold; }
+
+#dasboard .sidemenu a.static.selected {   background: #afd4e6;  background: rgba(255,255,255,0.3);  color: #111;  font-weight: bold; }
+
+#dasboard .sidemenu >  ul > li > a:hover {  background: #9ecbe0;  background: rgba(255,255,255,0.15); }
+
+#dasboard .sidemenu > ul > li.active > a { background: #afd4e6;   background: rgba(255,255,255,0.3);  color: #111;  font-weight: bold; }

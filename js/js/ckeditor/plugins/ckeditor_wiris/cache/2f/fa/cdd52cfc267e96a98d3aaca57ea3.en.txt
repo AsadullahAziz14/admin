@@ -1,0 +1,1 @@
+{"result":{"text":"V e r i f y space t h e space f u n c t i o n space f left parenthesis z right parenthesis equals z e to the power of negative z end exponent space i s space a n a l y t i c space w h e r e space z space i n space p o l a r space f o m."},"status":"ok"}

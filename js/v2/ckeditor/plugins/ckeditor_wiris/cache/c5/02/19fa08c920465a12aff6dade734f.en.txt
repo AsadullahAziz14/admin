@@ -1,0 +1,1 @@
+{"result":{"text":"t h e space f u n c t i o n space f left parenthesis z right parenthesis equals sin open parentheses fraction numerator 1 over denominator cos begin display style 1 over z end style end fraction close parentheses space a t space z equals 0 space i s"},"status":"ok"}

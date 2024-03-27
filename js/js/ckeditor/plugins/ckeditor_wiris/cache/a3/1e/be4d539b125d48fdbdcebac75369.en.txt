@@ -1,0 +1,1 @@
+{"result":{"text":"A union empty set equals A"},"status":"ok"}

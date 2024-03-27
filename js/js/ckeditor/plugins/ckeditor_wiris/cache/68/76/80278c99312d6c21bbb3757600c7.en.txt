@@ -1,0 +1,1 @@
+{"result":{"text":"x to the power of 2 over 5 end exponent"},"status":"ok"}

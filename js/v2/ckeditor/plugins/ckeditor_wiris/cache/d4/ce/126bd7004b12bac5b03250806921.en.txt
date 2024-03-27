@@ -1,0 +1,1 @@
+{"result":{"text":"x over m equals k p to the power of bevelled 1 over n end exponent"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"omega squared"},"status":"ok"}

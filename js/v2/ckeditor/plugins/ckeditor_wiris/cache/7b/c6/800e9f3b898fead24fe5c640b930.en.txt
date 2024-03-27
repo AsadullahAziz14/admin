@@ -1,0 +1,1 @@
+{"result":{"text":"x squared over 1 squared plus y squared over left parenthesis begin display style bevelled 1 half end style right parenthesis squared equals 1"},"status":"ok"}

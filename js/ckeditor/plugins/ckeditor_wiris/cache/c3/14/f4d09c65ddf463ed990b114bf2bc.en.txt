@@ -1,0 +1,1 @@
+{"result":{"text":"integral integral subscript S left parenthesis x squared y plus z squared right parenthesis d S"},"status":"ok"}

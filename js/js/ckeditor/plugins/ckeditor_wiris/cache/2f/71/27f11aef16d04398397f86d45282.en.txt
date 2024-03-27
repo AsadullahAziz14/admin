@@ -1,0 +1,1 @@
+{"result":{"text":"f greater or equal than 0 comma g greater or equal than 0"},"status":"ok"}

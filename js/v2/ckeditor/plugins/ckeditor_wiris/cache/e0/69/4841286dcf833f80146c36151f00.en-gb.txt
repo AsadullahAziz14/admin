@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis A B right parenthesis to the power of T equals"},"status":"ok"}

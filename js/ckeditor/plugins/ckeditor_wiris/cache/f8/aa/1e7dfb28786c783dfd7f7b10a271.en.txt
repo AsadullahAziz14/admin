@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses table row 0 1 row 1 0 end table close parentheses equals sigma subscript ?"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis space left parenthesis empty set intersection A right parenthesis union left parenthesis B intersection A right parenthesis equals A union B\nb right parenthesis left parenthesis empty set union A right parenthesis intersection left parenthesis B union A right parenthesis equals A"},"status":"ok"}

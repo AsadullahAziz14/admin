@@ -2,7 +2,7 @@
 if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']['LOGINTYPE'] == 2) || Stdlib_Array::multiSearch($_SESSION['userroles'], array('right_name' => '19', 'add' => '1'))) { 
 	if(LMS_VIEW == 'add' && !isset($_GET['id'])) {
 		$queryAssignment = $dblms->querylms("SELECT max(assignment_number) as assignment_number 
-												FROM ".OBE_ASSIGNMENTS." 
+												FROM ".COURSES_ASSIGNMENTS." 
 												WHERE id_teacher = ".ID_TEACHER." AND id_course = ".ID_COURSE." AND id_prg = ".ID_PRG." AND semester = ".SEMESTER." AND section	= '".SECTION."' AND timing = ".TIMING." AND academic_session = '".ACADEMIC_SESSION."' AND id_campus = ".cleanvars($_SESSION['userlogininfo']['LOGINIDCOM'])."
 											");
 		$valueAssignment = mysqli_fetch_array($queryAssignment);
@@ -17,7 +17,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 				<form class="form-horizontal" action="obeassignments.php" method="POST" id="addNew" enctype="multipart/form-data">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h4 class="modal-title" style="font-weight:700;"> Add Assignment asasAS</h4>
+							<h4 class="modal-title" style="font-weight:700;"> Add Assignment</h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group col-sm-61">

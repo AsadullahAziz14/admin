@@ -1,0 +1,1 @@
+{"result":{"text":"A intersection empty set equals empty set"},"status":"ok"}

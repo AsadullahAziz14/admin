@@ -1,0 +1,1 @@
+{"result":{"text":"square root of vertical line A U B vertical line end root"},"status":"ok"}

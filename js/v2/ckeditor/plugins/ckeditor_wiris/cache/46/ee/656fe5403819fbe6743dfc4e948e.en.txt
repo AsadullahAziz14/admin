@@ -1,0 +1,1 @@
+{"result":{"text":"Z minus Z space ̅ equals"},"status":"ok"}

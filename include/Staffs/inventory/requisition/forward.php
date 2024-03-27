@@ -40,7 +40,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									<select class="form-control" id="id_department" name="id_department" readonly>
 										<option value="">Select Department</option>';
 										$queryDepartment = $dblms->querylms("SELECT dept_id, dept_name 
-																				FROM ".DEPARTMENTS."
+																				FROM ".DEPTS."
 																			");
 										while($valueDepartment = mysqli_fetch_array($queryDepartment)) {
 											echo '<option value="'.$valueDepartment['dept_id'].'">'.$valueDepartment['dept_name'].'</option> ';
@@ -55,7 +55,7 @@ if(($_SESSION['userlogininfo']['LOGINTYPE'] == 1) || ($_SESSION['userlogininfo']
 									<select class="form-control" id="id_requester" name="id_requester" readonly>
 										<option value="">Select</option>';
 										$queryEmployee = $dblms->querylms("SELECT emply_id, emply_name 
-																				FROM ".EMPLOYEES."
+																				FROM ".EMPLYS."
 																			");
 										while($valueEmployee = mysqli_fetch_array($queryEmployee)) {
 											echo '<option value="'.$valueEmployee['emply_id'].'">'.$valueEmployee['emply_name'].'</option> ';

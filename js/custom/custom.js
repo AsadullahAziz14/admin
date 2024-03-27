@@ -262,7 +262,7 @@ $(document).ready(function(){
 /** slim scroll */
 $(document).ready(function(){
     $('.slimScrollProjectTimeline').slimScroll({
-        height: '750px',
+        height: '600px',
         railVisible: false,
         alwaysVisible: false,
         railColor: 'transparent',
@@ -271,7 +271,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
     $('.slimScrollAdminProjectTimeline').slimScroll({
-        height: '500px',
+        height: '548px',
         railVisible: false,
         alwaysVisible: false,
         railColor: 'transparent',
@@ -279,8 +279,18 @@ $(document).ready(function(){
     });
 });
 $(document).ready(function(){
+    $('.slimScrollAdminProjectTimelinead').slimScroll({
+        height: '300px',
+        railVisible: false,
+        alwaysVisible: false,
+        railColor: 'transparent',
+        color: '#bfbfbf'
+    });
+});
+
+$(document).ready(function(){
     $('.slimScrollHomeTasks').slimScroll({
-        height: '700px',
+        height: '320px',
         railVisible: false,
         alwaysVisible: false,
         railColor: 'transparent',

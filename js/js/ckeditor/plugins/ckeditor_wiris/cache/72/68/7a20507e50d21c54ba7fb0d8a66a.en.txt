@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis p logical or q right parenthesis logical and tilde left parenthesis p logical and q right parenthesis"},"status":"ok"}

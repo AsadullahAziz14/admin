@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket 1 comma 2 comma 3 comma 4 right curly bracket comma space B equals left curly bracket 2 comma 3 right curly bracket space t h e n space S h o w space t h a t space\nleft parenthesis A union B right parenthesis to the power of c equals A to the power of c end exponent intersection B to the power of c."},"status":"ok"}

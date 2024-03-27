@@ -1,0 +1,1 @@
+{"result":{"text":"3.75 open parentheses square root of K h subscript 1 end root plus square root of K h subscript 2 end root close parentheses"},"status":"ok"}

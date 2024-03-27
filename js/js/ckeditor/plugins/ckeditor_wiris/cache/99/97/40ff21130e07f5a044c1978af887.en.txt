@@ -1,0 +1,1 @@
+{"result":{"text":"3 y squared equals negative 2 x squared plus c"},"status":"ok"}

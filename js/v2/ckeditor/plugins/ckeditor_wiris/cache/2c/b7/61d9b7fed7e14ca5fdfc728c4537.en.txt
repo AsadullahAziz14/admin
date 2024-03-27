@@ -1,0 +1,1 @@
+{"result":{"text":"F with rightwards arrow on top equals i with hat on top plus j with hat on top plus k with hat on top"},"status":"ok"}

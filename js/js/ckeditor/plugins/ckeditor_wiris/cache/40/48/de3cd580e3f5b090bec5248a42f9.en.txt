@@ -1,0 +1,1 @@
+{"result":{"text":"I equals negative integral fraction numerator 1 over denominator 1 plus x squared end fraction d x equals\na right parenthesis s e c x\nb right parenthesis tan x plus c\nc right parenthesis minus tan x plus c\nd right parenthesis n o n e"},"status":"ok"}

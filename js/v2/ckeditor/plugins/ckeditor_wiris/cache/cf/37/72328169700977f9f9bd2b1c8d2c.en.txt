@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets table attributes columnalign left end attributes row cell x plus h y equals 2 end cell row cell 4 x plus 8 y equals k end cell end table close"},"status":"ok"}

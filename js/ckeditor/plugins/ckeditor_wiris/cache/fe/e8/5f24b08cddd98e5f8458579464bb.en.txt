@@ -1,0 +1,1 @@
+{"result":{"text":"24 over s to the power of 4"},"status":"ok"}

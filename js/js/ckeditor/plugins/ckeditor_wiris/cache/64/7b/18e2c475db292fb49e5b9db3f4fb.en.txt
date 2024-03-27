@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction minus y equals e to the power of x y squared"},"status":"ok"}

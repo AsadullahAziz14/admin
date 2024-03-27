@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets 20 e to the power of negative 3 t end exponent plus 7 t close curly brackets equals"},"status":"ok"}

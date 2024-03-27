@@ -1,0 +1,1 @@
+{"result":{"text":"v equals square root of T over mu end root"},"status":"ok"}

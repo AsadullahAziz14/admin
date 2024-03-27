@@ -1,0 +1,1 @@
+{"result":{"text":"bold italic r left parenthesis t right parenthesis space equals left parenthesis cos 2 t right parenthesis bold italic i plus left parenthesis 3 sin 2 t right parenthesis bold italic j bold comma bold space t equals 0"},"status":"ok"}

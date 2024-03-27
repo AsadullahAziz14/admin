@@ -1,0 +1,1 @@
+{"result":{"text":"n equals 10 comma space begin inline style sum for blank of end style X equals 20 space space comma space begin inline style sum for blank of end style Y equals 260 space comma space begin inline style sum for blank of end style X Y equals 3490 comma space begin inline style sum for blank of end style X squared equals 3144"},"status":"ok"}

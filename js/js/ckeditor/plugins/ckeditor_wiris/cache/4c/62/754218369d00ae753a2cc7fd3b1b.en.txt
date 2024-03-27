@@ -1,0 +1,1 @@
+{"result":{"text":"Q left parenthesis √ 2 right parenthesis equals left curly bracket a plus b √ 2 comma space a comma b element of Q right curly bracket"},"status":"ok"}

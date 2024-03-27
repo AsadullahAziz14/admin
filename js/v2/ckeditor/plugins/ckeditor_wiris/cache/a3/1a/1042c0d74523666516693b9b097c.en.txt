@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses U intersection A close parentheses union open parentheses B intersection A close parentheses equals A space i s"},"status":"ok"}

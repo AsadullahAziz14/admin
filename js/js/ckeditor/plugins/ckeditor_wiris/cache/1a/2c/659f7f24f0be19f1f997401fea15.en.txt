@@ -1,0 +1,1 @@
+{"result":{"text":"w equals z plus 5 i space"},"status":"ok"}

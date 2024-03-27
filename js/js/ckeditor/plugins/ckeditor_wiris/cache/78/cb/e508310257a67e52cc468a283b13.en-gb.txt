@@ -1,0 +1,1 @@
+{"result":{"text":"i to the power of negative 1 end exponent equals negative i"},"status":"ok"}

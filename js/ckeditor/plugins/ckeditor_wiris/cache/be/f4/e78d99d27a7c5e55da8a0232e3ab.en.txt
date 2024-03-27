@@ -1,0 +1,1 @@
+{"result":{"text":"k x to the power of n minus 1 end exponent"},"status":"ok"}

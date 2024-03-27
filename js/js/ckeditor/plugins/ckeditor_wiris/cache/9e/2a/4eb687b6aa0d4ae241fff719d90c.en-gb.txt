@@ -1,0 +1,1 @@
+{"result":{"text":"A equals open square brackets table row 2 0 row 0 2 end table close square brackets comma space t h e n space A to the power of negative 1 end exponent equals open square brackets table row x 0 row 0 y end table close square brackets comma space x minus y equals"},"status":"ok"}

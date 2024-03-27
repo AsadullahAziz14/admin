@@ -1,0 +1,1 @@
+{"result":{"text":"mu open parentheses large union subscript i equals 1 end subscript superscript n A subscript i close parentheses less or equal than begin inline style sum from i equals 1 to n of end style mu left parenthesis A subscript i right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"y equals ln square root of fraction numerator x squared plus 1 over denominator x end fraction end root space f i n d space fraction numerator d y over denominator d x end fraction comma space b y space u sin g space c h a i n space r u l e. space"},"status":"ok"}

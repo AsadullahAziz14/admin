@@ -568,8 +568,8 @@ if(!LMS_VIEW && !isset($_GET['id']))
 					$attainedCloMarks = [];
 					$attainedPloMarks = [];
 					
-					if(count(STUDENTS) > 0) {
-						foreach (STUDENTS as $stdRollNum => $stdId)  {
+					if(count(STUDENT) > 0) {
+						foreach (STUDENT as $stdRollNum => $stdId)  {
 							$columns = 4;
 							$stdCount++;
 							$srno++;
@@ -1180,9 +1180,9 @@ if(!LMS_VIEW && !isset($_GET['id']))
 	$stdIds = array_keys($attainedCloMarks);
 	$studentIDs = array();
 	foreach ($stdIds as $value) {
-		if(isset(STUDENTS[$value]['id']))
+		if(isset(STUDENT[$value]['id']))
 		{
-			$studentIDs[] = STUDENTS[$value]['id'];
+			$studentIDs[] = STUDENT[$value]['id'];
 		}
 	}
 

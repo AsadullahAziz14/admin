@@ -1,0 +1,1 @@
+{"result":{"text":"f to the power of apostrophe apostrophe left parenthesis negative 2 right parenthesis end exponent"},"status":"ok"}

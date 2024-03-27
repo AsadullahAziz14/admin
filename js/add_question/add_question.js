@@ -49,14 +49,13 @@ function showQuestionOptions(selectElement, questionOptionsContainer, questionnu
 let totalMarks = 0;
 var quesid = 0;
 
-function addQuestion() 
-{
+function addQuestion(id_curs, id_prg) {
   quesid++;
   const questionContainer = document.getElementById('questionContainer');
   const questionCount = questionContainer.childElementCount; // Get the current question count
 
-  var quescontainerCount = document.getElementsByName("ques_Container"); // Get the count of a div
-  var count = quescontainerCount.length;
+  // var quescontainerCount = document.getElementsByName("ques_Container"); // Get the count of a div
+  // var count = quescontainerCount.length;
   
   const container = document.createElement('div');
   container.className = 'form-sep'
@@ -119,13 +118,10 @@ function addQuestion()
   ques_catajaxreq.open('GET', "functions/functions.php",true);
   ques_catajaxreq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   ques_catajaxreq.send();
-  ques_catajaxreq.onreadystatechange = function() 
-  {
-    if (ques_catajaxreq.readyState === 4 && ques_catajaxreq.status === 200) 
-    {
+  ques_catajaxreq.onreadystatechange = function() {
+    if (ques_catajaxreq.readyState === 4 && ques_catajaxreq.status === 200) {
       var options = JSON.parse(ques_catajaxreq.responseText);
-      options.forEach(function(category) 
-      {
+      options.forEach(function(category) {
         const quesCategoryOption = document.createElement('option');
         quesCategoryOption.value = category.id;
         quesCategoryOption.textContent = category.name;
@@ -135,8 +131,7 @@ function addQuestion()
   };
 
   // call to showQuestionOption funtion 
-  quesCatSelect.onchange = function()
-  {
+  quesCatSelect.onchange = function() {
     showQuestionOptions(this, questionStatementContainer, questionCount);
   };
   
@@ -178,7 +173,7 @@ function addQuestion()
 
 
   // Input field to display selected marks
-  const selectedMarksInput = document.getElementById('marks');
+  const selectedMarksInput = document.getElementById('total_marks');
 
   // Event listener for marks selector
   questionMarksSelect.addEventListener('change', function () 
@@ -201,10 +196,10 @@ function addQuestion()
     }
     return (sum);
   }
+  // Question Marks Selector End
 
 
   // CLO Selector Start
-
   const cloSelector = document.createElement('div');
   cloSelector.className = 'col-sm-31';
   cloSelector.style.marginTop = "5px";
@@ -226,18 +221,23 @@ function addQuestion()
   questionCloSelect.appendChild(questionCloOption);
 
   var cloAjaxReq = new XMLHttpRequest();
-  var method = "GET";
+  var method = "POST";
   var url = "include/ajax/get_cloOptions.php";
   var asynchronous = true;
-
   cloAjaxReq.open(method, url, asynchronous);
-  cloAjaxReq.send();
 
-  cloAjaxReq.onreadystatechange = function() 
-  {
+  var data = {
+    id_curs: id_curs,
+    id_prg: id_prg
+  };
+  var jsonData = JSON.stringify(data);
+  cloAjaxReq.send(jsonData);
+
+  cloAjaxReq.onreadystatechange = function() {
     if (cloAjaxReq.readyState === 4 && cloAjaxReq.status === 200) {
       const options = cloAjaxReq.responseText;
       questionCloSelect.innerHTML = options;
+      console.log(cloAjaxReq.responseText);
     }
   };
 
@@ -271,10 +271,7 @@ function addQuestion()
     container.remove();
     // updateQuestionNumbers();
     totalMarks = calculateTotalMarks();
-
     selectedMarksInput.value = totalMarks;
-
-    
   });
 
   deleteButtonContainer.appendChild(deleteButton);
@@ -312,11 +309,8 @@ function addQuestion()
 
 }
 
-
 $(".select2").select2({
-
   placeholder: "Select Any Option"
-
 })
 
 

@@ -1,0 +1,1 @@
+{"result":{"text":"m equals open curly brackets f left parenthesis x right parenthesis divided by x subscript i minus 1 end subscript less than x less than x subscript i close curly brackets"},"status":"ok"}

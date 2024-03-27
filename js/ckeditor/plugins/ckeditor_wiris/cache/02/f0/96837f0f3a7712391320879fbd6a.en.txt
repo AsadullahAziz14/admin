@@ -1,0 +1,1 @@
+{"result":{"text":"S subscript n plus 1 end subscript equals S subscript n space end subscript space f o r space a l l space n equals 0"},"status":"ok"}

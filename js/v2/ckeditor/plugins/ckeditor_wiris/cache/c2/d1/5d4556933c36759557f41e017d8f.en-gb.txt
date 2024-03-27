@@ -1,0 +1,1 @@
+{"result":{"text":"d left parenthesis x comma y right parenthesis less or equal than d left parenthesis x comma _ right parenthesis plus d left parenthesis _ comma y right parenthesis"},"status":"ok"}

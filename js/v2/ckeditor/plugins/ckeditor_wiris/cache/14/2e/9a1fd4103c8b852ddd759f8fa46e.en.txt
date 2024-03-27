@@ -1,0 +1,1 @@
+{"result":{"text":"f to the power of negative 1 end exponent left parenthesis x right parenthesis comma space f to the power of negative 1 end exponent left parenthesis 2 right parenthesis comma space f to the power of negative 1 end exponent left parenthesis negative 1 right parenthesis"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"B y space u sin g space t h e space D e space M o i v r e apostrophe s space T h e o r e m space f i n d space space tan 7 theta"},"status":"ok"}

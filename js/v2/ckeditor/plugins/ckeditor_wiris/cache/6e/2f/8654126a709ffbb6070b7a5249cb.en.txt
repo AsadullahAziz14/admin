@@ -1,0 +1,1 @@
+{"result":{"text":"u left parenthesis x comma y right parenthesis equals e to the power of y c o s x"},"status":"ok"}

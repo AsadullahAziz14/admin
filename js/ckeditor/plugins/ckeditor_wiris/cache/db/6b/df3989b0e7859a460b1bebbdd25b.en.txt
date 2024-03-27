@@ -1,0 +1,1 @@
+{"result":{"text":"limit as t rightwards arrow 0 of r with rightwards arrow on top left parenthesis t right parenthesis equals"},"status":"ok"}

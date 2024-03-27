@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets table attributes columnalign left end attributes row cell x minus y plus 3 z equals 3 end cell row cell negative 2 x plus 2 y minus 6 z equals 6 end cell row cell y minus 5 z equals negative 3 end cell end table close"},"status":"ok"}

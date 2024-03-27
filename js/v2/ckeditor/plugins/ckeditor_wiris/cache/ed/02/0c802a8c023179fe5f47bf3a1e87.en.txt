@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis plus-or-minus 1\nb right parenthesis minus 1\nc right parenthesis 1\nd right parenthesis 0"},"status":"ok"}

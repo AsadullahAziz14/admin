@@ -1,0 +1,1 @@
+{"result":{"text":"a subscript n plus 1 end subscript equals a apostrophe subscript n minus k b subscript n\nb subscript n plus 1 end subscript equals k a subscript n plus b apostrophe subscript n space end subscript minus c subscript n tau\nc subscript n plus 1 end subscript equals b subscript n tau plus c apostrophe subscript n"},"status":"ok"}

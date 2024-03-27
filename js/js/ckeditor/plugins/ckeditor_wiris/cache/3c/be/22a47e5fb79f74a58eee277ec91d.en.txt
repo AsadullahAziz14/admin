@@ -1,0 +1,1 @@
+{"result":{"text":"b right parenthesis space tan to the power of negative 1 end exponent y over x"},"status":"ok"}

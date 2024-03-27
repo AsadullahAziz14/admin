@@ -1,0 +1,1 @@
+{"result":{"text":"space straight F left parenthesis straight x comma straight y comma straight z right parenthesis space equals straight x squared bold i minus 2 bold j plus yz bold k"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar integral subscript a superscript b f d alpha close vertical bar less or equal than M open square brackets alpha left parenthesis b right parenthesis minus alpha left parenthesis a right parenthesis close square brackets"},"status":"ok"}

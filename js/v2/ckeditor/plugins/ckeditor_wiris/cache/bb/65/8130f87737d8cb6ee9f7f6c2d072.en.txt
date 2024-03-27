@@ -1,0 +1,1 @@
+{"result":{"text":"s u p A equals alpha"},"status":"ok"}

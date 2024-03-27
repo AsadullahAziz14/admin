@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction equals negative x over y comma space y left parenthesis 3 right parenthesis equals 4"},"status":"ok"}

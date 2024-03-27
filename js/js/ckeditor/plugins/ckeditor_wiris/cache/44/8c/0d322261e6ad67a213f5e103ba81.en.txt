@@ -1,0 +1,1 @@
+{"result":{"text":"open curly brackets open curly brackets x comma space y element of real numbers squared colon x squared plus y squared less than 5 close curly brackets close curly brackets"},"status":"ok"}

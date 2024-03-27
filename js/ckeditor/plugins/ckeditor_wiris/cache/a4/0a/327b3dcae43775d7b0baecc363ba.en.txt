@@ -1,0 +1,1 @@
+{"result":{"text":"beta element of straight real numbers left parenthesis r e a l space n u m b e r right parenthesis"},"status":"ok"}

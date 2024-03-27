@@ -1,0 +1,1 @@
+{"result":{"text":"a vertical line b x plus c y"},"status":"ok"}

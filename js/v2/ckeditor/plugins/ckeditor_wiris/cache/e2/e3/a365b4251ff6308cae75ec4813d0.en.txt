@@ -1,0 +1,1 @@
+{"result":{"text":"space Sn 2 plus space plus space Hg 2 plus space space rightwards arrow space space Sn 4 plus space plus space Hg space"},"status":"ok"}

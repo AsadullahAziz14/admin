@@ -1,0 +1,1 @@
+{"result":{"text":"Z equals 40 x subscript 1 plus 24 x subscript 2"},"status":"ok"}

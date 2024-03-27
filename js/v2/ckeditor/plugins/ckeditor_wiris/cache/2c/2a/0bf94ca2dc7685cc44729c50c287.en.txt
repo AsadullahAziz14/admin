@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis 2 x cos y right parenthesis d x plus x squared left parenthesis s e c y minus sin y right parenthesis d y equals 0"},"status":"ok"}

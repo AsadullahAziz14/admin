@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets f left parenthesis t right parenthesis close curly brackets"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"y sin y d y equals left parenthesis x cubed plus sin x right parenthesis d x space i s"},"status":"ok"}

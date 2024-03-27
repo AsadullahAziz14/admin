@@ -1,0 +1,1 @@
+{"result":{"text":"t h e space d e r i v a t i v e space fraction numerator d over denominator d x end fraction s e c x equals space _ _ _ _ space i s\na right parenthesis s e c x c o t x\nb right parenthesis s e c x tan x\nc right parenthesis minus s e c x tan x\nd right parenthesis minus s e c x c o t"},"status":"ok"}

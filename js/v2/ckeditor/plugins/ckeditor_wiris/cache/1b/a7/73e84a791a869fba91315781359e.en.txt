@@ -1,0 +1,1 @@
+{"result":{"text":"x to the power of 6 minus 6 x cubed plus 8 equals 0"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"ϕ equals x squared t plus 2 y squared t minus 3 t x z squared minus 2 z squared t"},"status":"ok"}

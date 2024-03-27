@@ -1,0 +1,1 @@
+{"result":{"text":"y equals x y to the power of apostrophe plus 1 minus ln y to the power of apostrophe"},"status":"ok"}

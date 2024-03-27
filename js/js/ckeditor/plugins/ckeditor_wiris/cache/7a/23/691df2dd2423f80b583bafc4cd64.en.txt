@@ -1,0 +1,1 @@
+{"result":{"text":"x less or equal than alpha space f o r space a l l space x element of A\nminus x greater or equal than negative alpha space f o r space a l l space minus x element of negative A\n"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"sum from k equals 1 to infinity of fraction numerator open parentheses negative 1 close parentheses to the power of k over denominator k factorial end fraction x to the power of k"},"status":"ok"}

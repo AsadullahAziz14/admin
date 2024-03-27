@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript r equals a plus 2 b"},"status":"ok"}

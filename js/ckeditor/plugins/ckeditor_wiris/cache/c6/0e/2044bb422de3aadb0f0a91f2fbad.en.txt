@@ -1,0 +1,1 @@
+{"result":{"text":"z with bar on top equals"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"negative y d x plus left parenthesis x plus square root of x y end root right parenthesis d y equals 0 space i s space a"},"status":"ok"}

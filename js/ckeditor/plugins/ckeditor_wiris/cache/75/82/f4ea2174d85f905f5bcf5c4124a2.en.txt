@@ -1,0 +1,1 @@
+{"result":{"text":"Q left parenthesis square root of 2 comma end root space square root of 3 space space right parenthesis end root"},"status":"ok"}

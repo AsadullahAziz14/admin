@@ -1,0 +1,1 @@
+{"result":{"text":"S u p left parenthesis A plus B right parenthesis equals gamma\na plus b less or equal than gamma\ns u p left parenthesis A right parenthesis equals alpha\nalpha less than gamma minus b\nb less than gamma minus alpha\nS u p left parenthesis B right parenthesis equals beta\nbeta less than gamma minus alpha\ngamma equals alpha plus beta\n"},"status":"ok"}

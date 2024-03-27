@@ -1,0 +1,1 @@
+{"result":{"text":"G apostrophe"},"status":"ok"}

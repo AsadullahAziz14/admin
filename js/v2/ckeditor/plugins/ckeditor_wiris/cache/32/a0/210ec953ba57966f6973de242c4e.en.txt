@@ -1,0 +1,1 @@
+{"result":{"text":"v subscript theta equals r space theta to the power of times"},"status":"ok"}

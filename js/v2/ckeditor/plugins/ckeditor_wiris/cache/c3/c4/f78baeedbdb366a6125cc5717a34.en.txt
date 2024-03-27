@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction equals negative 2 minus y plus y squared space comma space y subscript 1 equals 2"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"square root of 2 e to the power of negative i straight pi over 4 end exponent equals"},"status":"ok"}

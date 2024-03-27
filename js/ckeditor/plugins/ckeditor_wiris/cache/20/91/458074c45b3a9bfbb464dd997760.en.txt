@@ -1,0 +1,1 @@
+{"result":{"text":"y equals log subscript x squared end subscript superscript 1 minus x end superscript comma space t h e n space f i n d space fraction numerator d y over denominator d x end fraction"},"status":"ok"}

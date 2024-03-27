@@ -1,0 +1,1 @@
+{"result":{"text":"phi colon G rightwards arrow G apostrophe"},"status":"ok"}

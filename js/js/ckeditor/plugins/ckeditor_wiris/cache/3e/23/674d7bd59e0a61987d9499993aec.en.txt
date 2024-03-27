@@ -1,0 +1,1 @@
+{"result":{"text":"left curly bracket x divided by x element of straight integer numbers logical and space minus 5 less than x less than 5 right curly bracket"},"status":"ok"}

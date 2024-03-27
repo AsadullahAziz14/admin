@@ -1,0 +1,1 @@
+{"result":{"text":"h 𝜊 left parenthesis g 𝜊 f right parenthesis left parenthesis x right parenthesis space equals space left square bracket left parenthesis h 𝜊 g right parenthesis 𝜊 f right square bracket x."},"status":"ok"}

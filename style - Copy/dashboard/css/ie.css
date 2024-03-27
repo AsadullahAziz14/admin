@@ -1,0 +1,12 @@
+
+#dasboard input.button, #dasboard button.button {  margin-right: 4px;  padding: 4px 1px; }
+
+#dasboard .form input:after, #dasboard .form textarea:after, #dasboard .form select:after {
+	visibility: hidden; display: block; font-size: 0;  content: " ";  clear: both;  height: 0;
+}
+
+#dasboard .button span {  float: none;  display: inline; }
+
+#dasboard a.button.no-text {   line-height: 0;  height: 24px; }
+
+#dasboard .main-content > header {   height: 16px; }

@@ -1,0 +1,1 @@
+{"result":{"text":"x apostrophe plus y equals t\n4 x plus y apostrophe equals 0\nx left parenthesis 0 right parenthesis equals 1 comma y left parenthesis 0 right parenthesis equals 2"},"status":"ok"}

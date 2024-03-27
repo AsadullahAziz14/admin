@@ -1,0 +1,1 @@
+{"result":{"text":"integral integral subscript G integral 12 x space y squared space z cubed d v"},"status":"ok"}

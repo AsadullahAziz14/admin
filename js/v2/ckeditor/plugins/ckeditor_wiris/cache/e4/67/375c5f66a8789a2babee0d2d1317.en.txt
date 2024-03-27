@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses A intersection U close parentheses to the power of c intersection A equals empty set"},"status":"ok"}

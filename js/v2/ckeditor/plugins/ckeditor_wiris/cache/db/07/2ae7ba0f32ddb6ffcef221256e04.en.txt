@@ -1,0 +1,1 @@
+{"result":{"text":"S u p left parenthesis negative E right parenthesis equals negative i n f space E"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis x right parenthesis equals A bottom enclose x plus bottom enclose a space space for all space bottom enclose x element of R squared end enclose"},"status":"ok"}

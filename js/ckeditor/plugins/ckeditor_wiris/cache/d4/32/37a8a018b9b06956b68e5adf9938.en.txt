@@ -1,0 +1,1 @@
+{"result":{"text":"empty set colon R rightwards arrow S"},"status":"ok"}

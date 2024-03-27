@@ -1,0 +1,1 @@
+{"result":{"text":"y equals sum from n equals 0 to infinity of c subscript n x to the power of n"},"status":"ok"}

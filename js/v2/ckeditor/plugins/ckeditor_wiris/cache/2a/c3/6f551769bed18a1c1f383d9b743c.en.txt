@@ -1,0 +1,1 @@
+{"result":{"text":"N G left parenthesis H right parenthesis colon equals left curly bracket g element of G colon g H equals H g right curly bracket space i s space"},"status":"ok"}

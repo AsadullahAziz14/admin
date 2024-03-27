@@ -1,0 +1,1 @@
+{"result":{"text":"I f space a vertical line b space a n d space b vertical line a space t h e n"},"status":"ok"}

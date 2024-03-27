@@ -1,0 +1,1 @@
+{"result":{"text":"left curly bracket left parenthesis x comma y right parenthesis colon y equals 1 over x comma 0 less than x less than 1 right curly bracket"},"status":"ok"}

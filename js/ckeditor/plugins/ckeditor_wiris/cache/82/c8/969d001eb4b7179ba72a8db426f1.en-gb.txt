@@ -1,0 +1,1 @@
+{"result":{"text":"z subscript 2 equals negative 2 minus 3 i"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x plus sum from k equals 1 to infinity of fraction numerator open parentheses negative 1 close parentheses to the power of k over denominator 3.4.... left parenthesis 3 k right parenthesis left parenthesis 3 k minus 1 right parenthesis end fraction x to the power of 3 k plus 1 end exponent"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"x cubed i with logical and on top minus 2 x squared y j with logical and on top plus c with rightwards arrow on top"},"status":"ok"}

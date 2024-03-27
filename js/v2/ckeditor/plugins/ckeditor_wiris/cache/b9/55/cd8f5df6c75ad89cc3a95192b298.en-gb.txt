@@ -1,0 +1,1 @@
+{"result":{"text":"vertical line A vertical line equals 2"},"status":"ok"}

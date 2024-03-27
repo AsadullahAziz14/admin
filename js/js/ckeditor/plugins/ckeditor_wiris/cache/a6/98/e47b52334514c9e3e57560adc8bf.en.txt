@@ -1,0 +1,1 @@
+{"result":{"text":"psi equals 3 x squared y minus y cubed"},"status":"ok"}

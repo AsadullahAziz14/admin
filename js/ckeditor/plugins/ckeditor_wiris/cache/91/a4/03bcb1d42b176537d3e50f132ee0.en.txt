@@ -1,0 +1,1 @@
+{"result":{"text":"2 xy plus 6 space straight y cubed straight z plus 3 z"},"status":"ok"}

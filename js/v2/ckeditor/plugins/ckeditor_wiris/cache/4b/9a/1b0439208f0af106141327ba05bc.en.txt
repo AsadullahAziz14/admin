@@ -1,0 +1,1 @@
+{"result":{"text":"tilde left parenthesis tilde p right parenthesis identical to p space"},"status":"ok"}

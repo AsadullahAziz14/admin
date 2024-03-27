@@ -1,0 +1,1 @@
+{"result":{"text":"2 x subscript 1 plus x subscript 2 greater or equal than 10"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"1 right parenthesis space space k equals K space w divided by c\n2 right parenthesis space space k equals square root of K space w divided by c\n3 right parenthesis space space k equals K space square root of w over c end root\n4 right parenthesis space space n o n e"},"status":"ok"}

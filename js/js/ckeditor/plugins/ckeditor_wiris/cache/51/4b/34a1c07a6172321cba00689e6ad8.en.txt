@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction plus p left parenthesis x right parenthesis y equals f left parenthesis x right parenthesis y to the power of n"},"status":"ok"}

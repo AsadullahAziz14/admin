@@ -1,0 +1,1 @@
+{"result":{"text":"x left parenthesis t right parenthesis equals fraction numerator 7 t plus 5 over denominator 4 end fraction"},"status":"ok"}

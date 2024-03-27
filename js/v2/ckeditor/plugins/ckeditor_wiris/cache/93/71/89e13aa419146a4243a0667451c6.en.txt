@@ -1,0 +1,1 @@
+{"result":{"text":"left curly bracket plus-or-minus z right curly bracket"},"status":"ok"}

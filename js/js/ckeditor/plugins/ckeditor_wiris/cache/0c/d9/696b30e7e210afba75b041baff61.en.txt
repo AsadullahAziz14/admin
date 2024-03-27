@@ -1,0 +1,1 @@
+{"result":{"text":"element of straight real numbers\nl e t space i t space b e space alpha\ns u p space A equals alpha\n"},"status":"ok"}

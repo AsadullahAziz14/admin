@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets e to the power of a t space end exponent f left parenthesis t right parenthesis close curly brackets equals"},"status":"ok"}

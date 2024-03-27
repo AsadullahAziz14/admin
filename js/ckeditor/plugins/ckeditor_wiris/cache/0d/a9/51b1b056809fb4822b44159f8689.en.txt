@@ -1,0 +1,1 @@
+{"result":{"text":"a right parenthesis 2 i\nb right parenthesis z plus 2 i\nc right parenthesis 4 i\nd right parenthesis z minus 2 i"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"sin left parenthesis x right parenthesis space a n d space cos left parenthesis x right parenthesis."},"status":"ok"}

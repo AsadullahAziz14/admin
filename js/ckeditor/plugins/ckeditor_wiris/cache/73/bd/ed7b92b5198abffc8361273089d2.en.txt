@@ -1,0 +1,1 @@
+{"result":{"text":"x with hat on top space plus stack 2 y with hat on top space minus z with hat on top"},"status":"ok"}

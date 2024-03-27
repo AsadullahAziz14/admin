@@ -39,7 +39,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 									<select name="id_department" class="form-control" id="id_department" required>
 										<option value="">Select Department</option>';
 										$queryDepartments = $dblms->querylms("SELECT dept_id, dept_name 
-																		FROM ".DEPARTMENTS);
+																		FROM ".DEPTS);
 										while($valueDepartments = mysqli_fetch_array($queryDepartments)) {
 											if($valueDepartments['dept_id'] == $valueDemands['id_department']) {
 												echo '<option value="'.$valueDepartments['dept_id'].'" selected>'.$valueDepartments['dept_name'].'</option>';

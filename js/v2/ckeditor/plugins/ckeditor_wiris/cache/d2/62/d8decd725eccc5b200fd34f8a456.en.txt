@@ -1,0 +1,1 @@
+{"result":{"text":"I f space Z equals 3 minus 5 i space t h e n space vertical line Z vertical line squared space i s"},"status":"ok"}

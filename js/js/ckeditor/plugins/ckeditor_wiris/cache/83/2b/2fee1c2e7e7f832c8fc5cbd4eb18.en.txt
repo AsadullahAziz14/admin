@@ -1,0 +1,1 @@
+{"result":{"text":"space space space space space space left parenthesis D cubed plus 2 D plus D right parenthesis y equals e to the power of negative x end exponent plus cos x plus x squared\n"},"status":"ok"}

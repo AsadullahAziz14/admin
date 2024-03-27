@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar x minus a close vertical bar less than R"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction equals 6 plus 5 y plus y squared"},"status":"ok"}

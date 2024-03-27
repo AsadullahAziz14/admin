@@ -1,0 +1,1 @@
+{"result":{"text":"E v a l u a t e space integral subscript 0 superscript 2 pi end superscript 1 over left parenthesis 5 minus 3 sin theta right parenthesis squared d theta\nB y space u sin g space t h e space c a c u l u s space o f space r e s i d u e s"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"r left parenthesis t right parenthesis equals t vertical line bold italic v vertical line begin bold style left parenthesis fraction numerator v over denominator straight vertical line v straight vertical line end fraction right parenthesis end style space"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"A intersection B to the power of c equals _ _ _ _ _ _"},"status":"ok"}

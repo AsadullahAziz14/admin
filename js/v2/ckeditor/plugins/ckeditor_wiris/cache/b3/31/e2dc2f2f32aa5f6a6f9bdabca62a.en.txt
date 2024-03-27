@@ -1,0 +1,1 @@
+{"result":{"text":"27 x space plus x squared j with hat on top"},"status":"ok"}

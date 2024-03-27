@@ -1,0 +1,1 @@
+{"result":{"text":"y apostrophe left parenthesis t right parenthesis equals cos t plus integral subscript 0 superscript t y left parenthesis tau right parenthesis cos left parenthesis t minus tau right parenthesis d tau comma space y left parenthesis 0 right parenthesis equals 1"},"status":"ok"}

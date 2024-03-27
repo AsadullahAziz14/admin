@@ -1,0 +1,1 @@
+{"result":{"text":"z left parenthesis t right parenthesis equals square root of t"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d x over denominator d t end fraction equals U equals x plus 2 y plus 2 t\nfraction numerator d y over denominator d t end fraction equals V equals 2 y plus t\n\n"},"status":"ok"}

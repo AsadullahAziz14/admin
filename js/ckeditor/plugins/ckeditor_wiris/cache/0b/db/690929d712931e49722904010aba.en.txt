@@ -1,0 +1,1 @@
+{"result":{"text":"M equals S u p open curly brackets f left parenthesis x right parenthesis divided by a less or equal than x less or equal than b close curly brackets"},"status":"ok"}

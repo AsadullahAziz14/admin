@@ -1,0 +1,1 @@
+{"result":{"text":"cos left parenthesis 3 x right parenthesis comma sin left parenthesis 3 x right parenthesis comma tan left parenthesis 3 x right parenthesis"},"status":"ok"}

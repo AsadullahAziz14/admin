@@ -1,0 +1,1 @@
+{"result":{"text":"h left parenthesis t right parenthesis equals negative 16 t squared plus 32 t plus 80"},"status":"ok"}

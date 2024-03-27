@@ -1,0 +1,1 @@
+{"result":{"text":"left curly bracket left parenthesis x comma y right parenthesis colon y equals x right curly bracket"},"status":"ok"}

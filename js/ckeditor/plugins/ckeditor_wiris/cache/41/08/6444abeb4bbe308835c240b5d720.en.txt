@@ -1,0 +1,1 @@
+{"result":{"text":"Z equals space r space cos space theta plus i space r space sin theta space space i s space k n o w n space a s"},"status":"ok"}

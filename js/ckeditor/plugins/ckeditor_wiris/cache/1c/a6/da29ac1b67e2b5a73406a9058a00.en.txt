@@ -1,0 +1,1 @@
+{"result":{"text":"2 fraction numerator d y over denominator d x end fraction plus x squared y equals 2 x plus 3"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"negative c over a"},"status":"ok"}

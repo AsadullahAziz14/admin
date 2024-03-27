@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket a plus i b comma space a element of straight rational numbers space space space comma space b element of straight integer numbers right curly bracket"},"status":"ok"}

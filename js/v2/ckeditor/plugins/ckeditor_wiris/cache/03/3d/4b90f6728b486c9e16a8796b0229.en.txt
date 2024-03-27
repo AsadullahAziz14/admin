@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript b f d alpha equals 0"},"status":"ok"}

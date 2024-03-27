@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses N N subscript i close parentheses to the power of 1 half end exponent"},"status":"ok"}

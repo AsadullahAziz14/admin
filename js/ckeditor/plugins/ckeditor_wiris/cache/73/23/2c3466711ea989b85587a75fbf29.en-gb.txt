@@ -1,0 +1,1 @@
+{"result":{"text":"negative f left parenthesis x plus 2 right parenthesis"},"status":"ok"}

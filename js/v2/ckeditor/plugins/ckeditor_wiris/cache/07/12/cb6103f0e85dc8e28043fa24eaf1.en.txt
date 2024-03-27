@@ -1,0 +1,1 @@
+{"result":{"text":"subset of or equal to K space space o r space K subset of or equal to H"},"status":"ok"}

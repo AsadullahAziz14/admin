@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis D squared minus 4 D plus 4 right parenthesis y equals x e to the power of 2 x end exponent sin 2 x"},"status":"ok"}

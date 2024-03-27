@@ -1,0 +1,1 @@
+{"result":{"text":"integral subscript a superscript b f d alpha equals integral subscript a superscript c f d alpha minus integral subscript c superscript b f d alpha"},"status":"ok"}

@@ -174,10 +174,10 @@ if(LMS_VIEW == 'report' && isset($_GET['id'])) {
           $srno = 0;
           $stdCount = 0;
         
-          if(count(STUDENTS) > 0){
+          if(count(STUDENT) > 0){
             $stdKpiMarksArray = [];
 
-            foreach (STUDENTS as $stdRollnum => $student) {
+            foreach (STUDENT as $stdRollnum => $student) {
               $columns = 4;
               $stdCount++;
               $srno++;

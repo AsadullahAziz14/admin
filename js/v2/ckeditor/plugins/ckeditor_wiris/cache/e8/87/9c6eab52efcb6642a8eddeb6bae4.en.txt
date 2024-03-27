@@ -1,0 +1,1 @@
+{"result":{"text":"y apostrophe plus P left parenthesis x right parenthesis y equals Q left parenthesis x right parenthesis space i s space t h e space s tan d a r d space f o r m space o f"},"status":"ok"}

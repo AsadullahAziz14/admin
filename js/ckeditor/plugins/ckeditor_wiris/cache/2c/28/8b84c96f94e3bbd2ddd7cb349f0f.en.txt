@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis fraction numerator 1 over denominator square root of 2 end fraction minus i fraction numerator 1 over denominator square root of 2 end fraction right parenthesis to the power of 10"},"status":"ok"}

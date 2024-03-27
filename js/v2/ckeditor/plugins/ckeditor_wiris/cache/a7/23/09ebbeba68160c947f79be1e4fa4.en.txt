@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar f left parenthesis x right parenthesis close vertical bar less or equal than M"},"status":"ok"}

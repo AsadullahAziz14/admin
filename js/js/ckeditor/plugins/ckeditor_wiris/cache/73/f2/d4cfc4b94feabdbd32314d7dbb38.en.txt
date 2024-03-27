@@ -1,0 +1,1 @@
+{"result":{"text":"4 x subscript 1 minus 6 x subscript 2 plus 6 x subscript 3 equals 18"},"status":"ok"}

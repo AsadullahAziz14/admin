@@ -1,0 +1,1 @@
+{"result":{"text":"vertical line G vertical line space equals space 6 space a n d space vertical line H vertical line space equals space 3"},"status":"ok"}

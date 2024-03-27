@@ -1,0 +1,1 @@
+{"result":{"text":"equals 3 x subscript 1 plus 4 x subscript 2"},"status":"ok"}

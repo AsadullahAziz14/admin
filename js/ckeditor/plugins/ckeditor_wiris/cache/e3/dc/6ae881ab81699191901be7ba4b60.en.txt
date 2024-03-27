@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator s over denominator s to the power of blank plus k to the power of blank end fraction"},"status":"ok"}

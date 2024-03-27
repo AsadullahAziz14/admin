@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets sin 2 t close curly brackets equals"},"status":"ok"}

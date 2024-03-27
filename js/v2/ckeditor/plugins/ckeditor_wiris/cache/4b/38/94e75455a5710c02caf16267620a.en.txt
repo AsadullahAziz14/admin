@@ -1,0 +1,1 @@
+{"result":{"text":"open square brackets table row cell tan theta end cell cell sin theta end cell row cell cos theta end cell cell s e c theta end cell end table close square brackets"},"status":"ok"}

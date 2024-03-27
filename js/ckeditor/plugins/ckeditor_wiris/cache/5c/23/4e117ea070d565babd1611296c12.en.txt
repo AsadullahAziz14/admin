@@ -1,0 +1,1 @@
+{"result":{"text":"R equals infinity"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"script capital l open curly brackets t to the power of n f left parenthesis t right parenthesis close curly brackets equals"},"status":"ok"}

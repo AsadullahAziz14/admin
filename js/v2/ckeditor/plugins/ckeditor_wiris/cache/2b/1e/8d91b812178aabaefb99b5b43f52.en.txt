@@ -1,0 +1,1 @@
+{"result":{"text":"sum from n equals 1 to infinity of n c subscript n x to the power of n minus 1 end exponent stack negative sum c subscript n with n equals 0 below and infinity on top x to the power of n"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"C left parenthesis b right parenthesis equals left curly bracket r element of R space vertical line space a r equals r a right curly bracket"},"status":"ok"}

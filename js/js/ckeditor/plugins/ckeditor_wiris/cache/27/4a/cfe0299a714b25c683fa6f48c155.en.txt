@@ -1,0 +1,1 @@
+{"result":{"text":"stack top enclose A B end enclose space space plus space top enclose A B C end enclose with bar on top\n"},"status":"ok"}

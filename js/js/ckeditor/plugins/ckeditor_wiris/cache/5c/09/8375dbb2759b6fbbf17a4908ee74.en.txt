@@ -1,0 +1,1 @@
+{"result":{"text":"a with rightwards arrow on top equals 3 i with hat on top plus 2 j with hat on top"},"status":"ok"}

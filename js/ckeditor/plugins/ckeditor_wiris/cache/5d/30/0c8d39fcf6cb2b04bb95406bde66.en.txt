@@ -1,0 +1,1 @@
+{"result":{"text":"gamma less than alpha plus beta rightwards arrow A"},"status":"ok"}

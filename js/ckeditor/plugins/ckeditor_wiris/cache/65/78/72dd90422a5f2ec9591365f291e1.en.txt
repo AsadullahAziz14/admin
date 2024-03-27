@@ -1,0 +1,1 @@
+{"result":{"text":"V subscript r equals 1 over r comma space space space space space V subscript theta equals theta comma space space space space space space space V subscript z equals 1 over z"},"status":"ok"}

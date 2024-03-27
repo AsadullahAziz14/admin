@@ -1,0 +1,1 @@
+{"result":{"text":"y squared equals negative 4 p x"},"status":"ok"}

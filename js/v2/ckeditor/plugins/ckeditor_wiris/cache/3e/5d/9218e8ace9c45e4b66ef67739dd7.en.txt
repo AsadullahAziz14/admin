@@ -1,0 +1,1 @@
+{"result":{"text":"u plus 1 half a left parenthesis 2 n plus 1 right parenthesis"},"status":"ok"}

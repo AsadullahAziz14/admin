@@ -1,0 +1,1 @@
+{"result":{"text":"R squared space t o space R squared"},"status":"ok"}

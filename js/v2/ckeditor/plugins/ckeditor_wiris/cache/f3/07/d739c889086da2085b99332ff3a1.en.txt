@@ -1,0 +1,1 @@
+{"result":{"text":"C space i s space t h e space c i r c l e space a t space open vertical bar z close vertical bar equals 1 space t h e n space integral subscript c fraction numerator e to the power of z over denominator z minus 2 end fraction d z equals..........."},"status":"ok"}

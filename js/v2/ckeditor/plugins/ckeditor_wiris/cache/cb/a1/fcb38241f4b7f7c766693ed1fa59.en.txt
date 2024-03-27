@@ -1,0 +1,1 @@
+{"result":{"text":"1 right parenthesis space nabla squared E plus w squared mu epsilon E equals 0\n2 right parenthesis space space nabla squared E plus w squared mu E equals 0\n3 right parenthesis space space nabla squared E plus w squared epsilon E equals 0\n4 right parenthesis space n o n e"},"status":"ok"}

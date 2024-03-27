@@ -1,0 +1,1 @@
+{"result":{"text":"calligraphic L to the power of negative 1 end exponent open curly brackets fraction numerator negative 2 s plus 6 over denominator s squared plus 4 end fraction close curly brackets\n"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"bevelled fraction numerator straight integer numbers over denominator 8 straight integer numbers end fraction"},"status":"ok"}

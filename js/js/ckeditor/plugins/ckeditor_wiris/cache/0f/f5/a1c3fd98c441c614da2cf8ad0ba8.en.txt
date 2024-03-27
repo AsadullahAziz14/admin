@@ -1,0 +1,1 @@
+{"result":{"text":"3.75 open parentheses square root of 1.334 space cross times space 46.2 end root plus square root of 1.334 space cross times space 10 end root close parentheses"},"status":"ok"}

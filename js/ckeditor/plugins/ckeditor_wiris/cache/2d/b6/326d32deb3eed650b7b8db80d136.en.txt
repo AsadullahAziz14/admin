@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d A over denominator d t end fraction subscript F equals fraction numerator d A over denominator d t end fraction subscript M plus w x A"},"status":"ok"}

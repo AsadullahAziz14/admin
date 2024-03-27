@@ -1,0 +1,1 @@
+{"result":{"text":"a x to the power of 2 n end exponent plus b x to the power of n plus c equals 0"},"status":"ok"}

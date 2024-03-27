@@ -1,0 +1,1 @@
+{"result":{"text":"d left parenthesis x y right parenthesis equals _ _ _ _ _ _ _ _ _ _\na right parenthesis x d x plus y d y\nb right parenthesis x d y minus y d x\nc right parenthesis x d y plus y d x\nd right parenthesis N o n e"},"status":"ok"}

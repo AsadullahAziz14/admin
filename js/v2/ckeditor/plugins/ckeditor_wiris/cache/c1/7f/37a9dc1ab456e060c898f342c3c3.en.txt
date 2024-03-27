@@ -1,0 +1,1 @@
+{"result":{"text":"sin to the power of negative 1 end exponent open parentheses 100 over s close parentheses"},"status":"ok"}

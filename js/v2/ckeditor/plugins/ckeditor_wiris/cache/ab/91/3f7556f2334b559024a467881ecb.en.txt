@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis square root of 5 comma space 60 to the power of o comma 3 right parenthesis"},"status":"ok"}

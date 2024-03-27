@@ -1,0 +1,1 @@
+{"result":{"text":"u subscript t t end subscript minus left parenthesis u subscript x x end subscript plus u subscript y y end subscript plus u subscript z z end subscript right parenthesis equals 0"},"status":"ok"}

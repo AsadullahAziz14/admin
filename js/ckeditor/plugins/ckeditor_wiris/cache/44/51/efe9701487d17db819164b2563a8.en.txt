@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d squared y over denominator d x squared end fraction plus x y open parentheses fraction numerator d y over denominator d x end fraction close parentheses squared equals 0"},"status":"ok"}

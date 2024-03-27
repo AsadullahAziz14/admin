@@ -1,0 +1,1 @@
+{"result":{"text":"A equals open square brackets table row 4 0 6 row x cell negative 3 end cell cell negative 2 end cell row cell negative 6 end cell 1 cell negative 12 end cell end table close square brackets"},"status":"ok"}

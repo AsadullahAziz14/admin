@@ -1,0 +1,1 @@
+{"result":{"text":"stack left parenthesis A intersection B right parenthesis with bar on top space _ _ _ _ _ _ _ _ space A with bar on top intersection B with bar on top"},"status":"ok"}

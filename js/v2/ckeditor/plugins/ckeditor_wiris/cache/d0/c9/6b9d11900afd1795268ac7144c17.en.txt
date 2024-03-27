@@ -1,0 +1,1 @@
+{"result":{"text":"f colon space A rightwards arrow B"},"status":"ok"}

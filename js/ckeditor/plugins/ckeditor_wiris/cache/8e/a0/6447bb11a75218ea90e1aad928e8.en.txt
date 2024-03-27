@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis x right parenthesis equals ln x squared comma space f apostrophe left parenthesis 2 right parenthesis equals ?"},"status":"ok"}

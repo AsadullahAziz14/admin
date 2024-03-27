@@ -1,0 +1,1 @@
+{"result":{"text":"gamma equals C subscript p over C subscript v space P V to the power of gamma equals s o n s tan t space space T V to the power of gamma minus 1 end exponent"},"status":"ok"}

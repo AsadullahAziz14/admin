@@ -1,0 +1,1 @@
+{"result":{"text":"1 over left parenthesis s minus 3 right parenthesis to the power of 5"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket left parenthesis m comma n right parenthesis comma m comma n element of straight real numbers right curly bracket space w i t h space u s u a l space m e t r i c space o n space straight real numbers squared"},"status":"ok"}

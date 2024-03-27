@@ -1,0 +1,1 @@
+{"result":{"text":"x squared minus 2 space space i s space r e d u c i b l e space p o l y n o m i a l space i n"},"status":"ok"}

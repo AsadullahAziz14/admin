@@ -1,0 +1,1 @@
+{"result":{"text":"A space d i f f e r e n t i a l space e q u a t i o n space fraction numerator d y over denominator d x end fraction equals fraction numerator x to the power of 10 plus y to the power of 10 over denominator x squared plus y squared end fraction space i s space _ _ _ _ _ _ _ _ _ _ _ _ _"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left square bracket G space colon space H right square bracket space equals space"},"status":"ok"}

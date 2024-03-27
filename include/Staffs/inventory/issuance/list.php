@@ -65,13 +65,13 @@ if(!LMS_VIEW && !isset($_GET['id'])) {
 						echo '<td style="vertical-align: middle;" nowrap="nowrap">'.$valueIssuanceItemJunction['item_title'].'</td>';
 						
 						$queryEmployees = $dblms->querylms("Select emply_id, emply_name
-															From ".EMPLOYEES."
+															From ".EMPLYS."
 															Where emply_id IN (".$valueIssuance['issuance_to'].")
 														");
 						$valueEmployees = mysqli_fetch_array($queryEmployees);
 						echo '<td style="vertical-align: middle;" nowrap="nowrap">'.$valueEmployees['emply_name'].'</td>';
 						$queryEmployees = $dblms->querylms("Select emply_id, emply_name
-															From ".EMPLOYEES."
+															From ".EMPLYS."
 															Where emply_id IN (".$valueIssuance['issuance_by'].")
 														");
 						$valueEmployees = mysqli_fetch_array($queryEmployees);

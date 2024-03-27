@@ -1,0 +1,1 @@
+{"result":{"text":"left curly bracket x colon x element of P comma 3 less than x less than 9 right curly bracket"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"t to the power of negative 1 end exponent left parenthesis x right parenthesis equals A to the power of negative 1 end exponent left parenthesis x right parenthesis minus A to the power of negative 1 end exponent left parenthesis a right parenthesis space comma space space space for all space x comma a element of space R squared"},"status":"ok"}

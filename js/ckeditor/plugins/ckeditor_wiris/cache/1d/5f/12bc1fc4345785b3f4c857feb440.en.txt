@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction equals y left parenthesis x y cubed minus 1 right parenthesis space i s space a"},"status":"ok"}

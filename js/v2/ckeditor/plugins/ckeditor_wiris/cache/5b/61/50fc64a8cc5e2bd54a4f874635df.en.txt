@@ -1,0 +1,1 @@
+{"result":{"text":"c u r l fraction numerator left parenthesis r minus r stretchy right parenthesis over denominator blank end fraction"},"status":"ok"}

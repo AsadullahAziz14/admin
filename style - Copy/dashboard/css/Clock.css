@@ -1,0 +1,10 @@
+﻿
+#dasboard #clockHolder { width:70px !important; margin:0px auto 0px auto; position:relative; top:0px; left:0px; }
+
+#dasboard #sec { display:block; position:absolute; }
+
+#dasboard #min { display:block; position:absolute; }
+
+#dasboard #hour { display:block; position:absolute; }
+
+#dasboard .rotatingWrapper { position:absolute; width:70px !important; height:70px !important; top:0px; left:0px; }

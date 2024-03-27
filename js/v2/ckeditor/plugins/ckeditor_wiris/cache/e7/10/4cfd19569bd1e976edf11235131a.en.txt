@@ -1,0 +1,1 @@
+{"result":{"text":"u left parenthesis x right parenthesis equals x minus 1 over 6 x cubed plus integral subscript 0 superscript x left parenthesis x minus t right parenthesis space u left parenthesis t right parenthesis d t"},"status":"ok"}

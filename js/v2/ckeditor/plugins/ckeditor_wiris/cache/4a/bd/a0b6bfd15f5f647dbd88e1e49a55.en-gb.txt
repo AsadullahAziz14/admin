@@ -1,0 +1,1 @@
+{"result":{"text":"B equals A plus A to the power of T"},"status":"ok"}

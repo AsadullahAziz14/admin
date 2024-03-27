@@ -1,0 +1,1 @@
+{"result":{"text":"open square brackets fraction numerator d y over denominator d x end fraction close square brackets to the power of 3 over 2 end exponent equals fraction numerator d squared y over denominator d x squared end fraction"},"status":"ok"}

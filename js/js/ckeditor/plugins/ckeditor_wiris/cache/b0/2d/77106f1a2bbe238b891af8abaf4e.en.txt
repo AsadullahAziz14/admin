@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis z right parenthesis equals e to the power of bevelled 1 over z squared end exponent space a t space z equals 0 space i s"},"status":"ok"}

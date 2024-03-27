@@ -1,0 +1,1 @@
+{"result":{"text":"sum from k equals 0 to infinity of x to the power of k open square brackets open parentheses k plus 1 close parentheses c subscript k plus 1 end subscript plus c subscript k close square brackets"},"status":"ok"}

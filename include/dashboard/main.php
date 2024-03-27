@@ -264,7 +264,7 @@ echo '
 //-----------------------------------------
 	$sqllmscoms  = $dblms->querylms("SELECT COUNT(e.id) AS totalworks, d.dept_name, d.dept_nameur, d.dept_id    
 											FROM ".EMOBE_PLOSYEES." e 
-										  	INNER JOIN ".DEPARTMENTS." d ON d.dept_id = e.id_dept 
+										  	INNER JOIN ".DEPTS." d ON d.dept_id = e.id_dept 
 										  	WHERE e.status = '1' AND e.id_campus = '1'
 											GROUP BY e.id_dept ORDER BY d.dept_name ASC");
 //-----------------------------------------
@@ -358,7 +358,7 @@ echo '
 //-----------------------------------------
 	$sqllmscomsf  = $dblms->querylms("SELECT COUNT(e.id) AS totalworks, d.dept_name, d.dept_nameur, d.dept_id    
 											FROM ".EMOBE_PLOSYEES." e 
-										  	INNER JOIN ".DEPARTMENTS." d ON d.dept_id = e.id_dept 
+										  	INNER JOIN ".DEPTS." d ON d.dept_id = e.id_dept 
 										  	WHERE e.status = '1' AND e.id_campus = '2'
 											GROUP BY e.id_dept ORDER BY d.dept_name ASC");
 //-----------------------------------------

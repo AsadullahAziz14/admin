@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d y over denominator d x end fraction equals fraction numerator x left parenthesis x squared plus 1 right parenthesis over denominator 4 y cubed end fraction comma space y left parenthesis 0 right parenthesis equals negative fraction numerator 1 over denominator square root of 2 end fraction"},"status":"ok"}

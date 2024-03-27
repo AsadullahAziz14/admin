@@ -1,0 +1,1 @@
+{"result":{"text":"v equals ln space u"},"status":"ok"}

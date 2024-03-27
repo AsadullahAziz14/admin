@@ -20,7 +20,7 @@ if (!LMS_VIEW && isset($_GET['id'])) {
 								<select id="issuance_to" class="form-control" name="issuance_to" required>
 									<option value="">Select</option>';
 									$queryEmployees  = $dblms->querylms("SELECT emply_id, emply_name
-																			FROM ".EMPLOYEES." 
+																			FROM ".EMPLYS." 
 																		");
                						while($valueEmployees = mysqli_fetch_array($queryEmployees)) {
 										if($valueEmployees['emply_id'] == $valueIssuance['issuance_to']) {

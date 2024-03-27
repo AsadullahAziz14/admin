@@ -1,0 +1,1 @@
+{"result":{"text":"w equals fraction numerator z plus 2 over denominator z minus 7 end fraction"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"f element of R left parenthesis alpha subscript 1 divided by alpha subscript 2 right parenthesis"},"status":"ok"}

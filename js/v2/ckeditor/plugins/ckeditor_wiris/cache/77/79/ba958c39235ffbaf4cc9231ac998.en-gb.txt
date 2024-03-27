@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis cos theta plus i sin theta right parenthesis to the power of n equals"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"T h e space D i f f e r e n t i a l space e q u a t i o n space fraction numerator d squared y over denominator d x squared end fraction plus x y left parenthesis fraction numerator d y over denominator d x end fraction right parenthesis squared equals 0 space h a v e space a space d e g r e e\n"},"status":"ok"}

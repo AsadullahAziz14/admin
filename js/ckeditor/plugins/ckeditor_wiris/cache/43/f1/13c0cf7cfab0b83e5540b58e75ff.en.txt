@@ -1,0 +1,1 @@
+{"result":{"text":"A left parenthesis n right parenthesis colon 1 plus 3 plus 5 plus... plus left parenthesis 2 n minus 1 right parenthesis equals n squared"},"status":"ok"}

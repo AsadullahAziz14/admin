@@ -1,0 +1,1 @@
+{"result":{"text":"x fraction numerator d y over denominator d x end fraction plus 3 y equals x cubed y squared comma space space space space space space space y left parenthesis 1 right parenthesis equals 2"},"status":"ok"}

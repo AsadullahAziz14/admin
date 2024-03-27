@@ -1,0 +1,1 @@
+{"result":{"text":"1 minus x plus 1 half x squared minus fraction numerator 1 over denominator 3 cross times 2 end fraction x cubed plus..."},"status":"ok"}

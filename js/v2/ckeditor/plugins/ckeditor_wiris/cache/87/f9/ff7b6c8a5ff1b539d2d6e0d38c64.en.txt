@@ -1,0 +1,1 @@
+{"result":{"text":"open parentheses z subscript 1 over z subscript 2 close parentheses equals"},"status":"ok"}

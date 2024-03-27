@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top left parenthesis t right parenthesis space equals space t squared i with rightwards arrow on top space plus space e to the power of t space j with rightwards arrow on top space minus space left parenthesis 2 space cos space pi t right parenthesis k with rightwards arrow on top"},"status":"ok"}

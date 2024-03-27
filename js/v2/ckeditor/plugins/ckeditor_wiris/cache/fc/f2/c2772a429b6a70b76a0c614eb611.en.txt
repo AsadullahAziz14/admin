@@ -1,0 +1,1 @@
+{"result":{"text":"a less or equal than b space m e a n s space\na right parenthesis a less than b\nb right parenthesis a equals b\nc right parenthesis a less or equal than b space\nd right parenthesis space n o n e"},"status":"ok"}

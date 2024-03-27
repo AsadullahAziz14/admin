@@ -1,0 +1,1 @@
+{"result":{"text":"open vertical bar Z minus 1 close vertical bar equals open vertical bar Z minus 3 close vertical bar equals open vertical bar Z minus iota close vertical bar space"},"status":"ok"}

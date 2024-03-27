@@ -1,0 +1,1 @@
+{"result":{"text":"V equals 3 t i plus x z j plus t y squared k"},"status":"ok"}

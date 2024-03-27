@@ -1,0 +1,1 @@
+{"result":{"text":"t equals t subscript 1 space a n d space t equals t subscript 2"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"for all space 𝛼 space 𝜖 space 𝑆 space there exists space 𝛼 hat left parenthesis negative 1 right parenthesis space space 𝜖 space 𝑆 space s. t space space 𝛼 plus left parenthesis negative 𝛼 right parenthesis equals 𝑒 equals left parenthesis negative 𝛼 right parenthesis plus 𝛼"},"status":"ok"}

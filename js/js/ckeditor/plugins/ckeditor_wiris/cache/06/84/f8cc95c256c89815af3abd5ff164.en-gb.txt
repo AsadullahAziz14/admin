@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket left parenthesis negative 1 right parenthesis to the power of n over n comma n element of straight natural numbers right curly bracket"},"status":"ok"}

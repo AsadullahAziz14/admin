@@ -1,0 +1,1 @@
+{"result":{"text":"i f space f left parenthesis x right parenthesis equals x to the power of 7 plus 5 over 7 comma space t h e n space f i n d space f to the power of negative 1 end exponent left parenthesis x right parenthesis space a n d space a l s o space c h e c k space g i v e n space f u n c t i o n space i s space e v e n space o r space o d d ?"},"status":"ok"}

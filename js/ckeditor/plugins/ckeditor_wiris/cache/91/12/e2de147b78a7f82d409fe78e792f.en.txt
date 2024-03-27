@@ -1,0 +1,1 @@
+{"result":{"text":"x equals negative a cos square root of lambda t"},"status":"ok"}

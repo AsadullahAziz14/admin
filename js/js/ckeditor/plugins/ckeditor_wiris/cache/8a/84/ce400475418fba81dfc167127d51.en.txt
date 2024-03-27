@@ -1,0 +1,1 @@
+{"result":{"text":"I f space C space i s space a space c i r c l e space open vertical bar z close vertical bar equals 5 comma space t h e n space integral subscript c fraction numerator sin 3 z over denominator open parentheses z plus begin display style pi over 2 end style close parentheses end fraction d z equals..............."},"status":"ok"}

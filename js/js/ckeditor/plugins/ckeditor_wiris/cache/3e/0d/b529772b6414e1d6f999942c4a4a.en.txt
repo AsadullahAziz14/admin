@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis 4 comma straight pi over 3 comma straight pi over 6 right parenthesis"},"status":"ok"}

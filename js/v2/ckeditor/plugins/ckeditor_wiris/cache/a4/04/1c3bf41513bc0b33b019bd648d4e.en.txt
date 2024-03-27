@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis Z right parenthesis equals vertical line Z vertical line"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis straight integer numbers comma plus comma cross times right parenthesis"},"status":"ok"}

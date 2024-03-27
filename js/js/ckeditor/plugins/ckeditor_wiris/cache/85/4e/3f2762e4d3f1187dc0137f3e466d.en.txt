@@ -1,0 +1,1 @@
+{"result":{"text":"L tilde 1 m space a n d space R subscript D tilde 10 to the power of negative 10 end exponent"},"status":"ok"}

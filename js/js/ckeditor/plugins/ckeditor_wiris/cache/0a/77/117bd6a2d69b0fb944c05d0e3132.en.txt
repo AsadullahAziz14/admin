@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator d squared r over denominator d t squared end fraction space i s"},"status":"ok"}

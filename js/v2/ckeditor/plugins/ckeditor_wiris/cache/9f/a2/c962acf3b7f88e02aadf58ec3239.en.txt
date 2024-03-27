@@ -1,0 +1,1 @@
+{"result":{"text":"2 cross times 2"},"status":"ok"}

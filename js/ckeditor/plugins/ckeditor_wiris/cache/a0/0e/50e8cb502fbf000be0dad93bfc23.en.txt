@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis 2.5 right parenthesis plus left parenthesis negative 2.5 right parenthesis equals 0"},"status":"ok"}

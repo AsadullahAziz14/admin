@@ -1,0 +1,1 @@
+{"result":{"text":"sum from i equals 1 to n of open vertical bar f left parenthesis s subscript i right parenthesis minus f left parenthesis t subscript i right parenthesis close vertical bar increment alpha subscript i greater than element of"},"status":"ok"}

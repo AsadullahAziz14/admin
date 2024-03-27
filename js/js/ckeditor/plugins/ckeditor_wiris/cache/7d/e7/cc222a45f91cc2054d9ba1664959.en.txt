@@ -1,0 +1,1 @@
+{"result":{"text":"s squared F left parenthesis s right parenthesis minus s f left parenthesis 0 right parenthesis minus f apostrophe left parenthesis o right parenthesis"},"status":"ok"}

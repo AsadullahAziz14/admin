@@ -1,0 +1,1 @@
+{"result":{"text":"P equals open curly brackets x subscript 0 comma x subscript 1 comma x subscript 2 comma... close curly brackets"},"status":"ok"}

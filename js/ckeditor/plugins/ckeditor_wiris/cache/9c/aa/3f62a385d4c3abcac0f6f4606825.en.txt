@@ -1,0 +1,1 @@
+{"result":{"text":"A equals left curly bracket 1 comma space 2 comma space 3 comma space 4 right curly bracket comma space t h e n space open vertical bar A close vertical bar equals _ _ _ _ _"},"status":"ok"}

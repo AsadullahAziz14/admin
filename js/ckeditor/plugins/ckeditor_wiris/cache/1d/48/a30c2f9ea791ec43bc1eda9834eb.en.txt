@@ -1,0 +1,1 @@
+{"result":{"text":"r o o t space o f space e q u a t i o n space fraction numerator d to the power of 4 y over denominator d x to the power of 4 end fraction plus y equals 0 space i s"},"status":"ok"}

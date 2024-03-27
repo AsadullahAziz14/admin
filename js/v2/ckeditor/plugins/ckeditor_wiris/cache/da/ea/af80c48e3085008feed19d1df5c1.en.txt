@@ -1,0 +1,1 @@
+{"result":{"text":"f left parenthesis x right parenthesis equals 100 x plus 5000"},"status":"ok"}

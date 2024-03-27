@@ -1,0 +1,1 @@
+{"result":{"text":"left parenthesis x minus 1 right parenthesis cubed fraction numerator d y over denominator d x end fraction plus 4 left parenthesis x minus 1 right parenthesis squared y equals x plus 1"},"status":"ok"}

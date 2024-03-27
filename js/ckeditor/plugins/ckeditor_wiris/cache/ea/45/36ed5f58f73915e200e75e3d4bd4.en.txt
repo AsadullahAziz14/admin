@@ -1,0 +1,1 @@
+{"result":{"text":"L left parenthesis P subscript 1 comma f comma alpha right parenthesis greater than U left parenthesis P subscript 2 comma f comma alpha right parenthesis"},"status":"ok"}

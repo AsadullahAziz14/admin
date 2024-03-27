@@ -1,0 +1,1 @@
+{"result":{"text":"t subscript 1 plus t subscript 2 equals fraction numerator 2 u over denominator g end fraction space space space space space space a n d space space space space space space space space t subscript 1 space t subscript 2 equals fraction numerator 2 h over denominator g end fraction"},"status":"ok"}

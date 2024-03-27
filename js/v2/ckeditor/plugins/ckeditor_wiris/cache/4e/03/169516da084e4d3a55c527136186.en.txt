@@ -1,0 +1,1 @@
+{"result":{"text":"increment S equals fraction numerator increment Q over denominator T subscript 2 end fraction minus fraction numerator increment Q over denominator T 1 end fraction"},"status":"ok"}

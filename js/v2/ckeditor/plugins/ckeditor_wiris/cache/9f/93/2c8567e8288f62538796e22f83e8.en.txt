@@ -1,0 +1,1 @@
+{"result":{"text":"u equals 2 x y comma v equals a squared plus x squared minus y squared"},"status":"ok"}

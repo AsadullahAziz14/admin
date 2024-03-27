@@ -1,0 +1,1 @@
+{"result":{"text":"vertical line Z space – space 1 vertical line equals vertical line Z space – space 3 vertical line equals vertical line Z space – space i space vertical line space"},"status":"ok"}

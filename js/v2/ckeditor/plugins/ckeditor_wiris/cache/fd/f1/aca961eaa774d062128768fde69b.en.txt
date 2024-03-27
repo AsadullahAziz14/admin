@@ -1,0 +1,1 @@
+{"result":{"text":"u left parenthesis x right parenthesis equals f left parenthesis x right parenthesis plus lambda integral subscript a superscript x k left parenthesis x comma t right parenthesis space e to the power of u left parenthesis t right parenthesis end exponent space d t"},"status":"ok"}

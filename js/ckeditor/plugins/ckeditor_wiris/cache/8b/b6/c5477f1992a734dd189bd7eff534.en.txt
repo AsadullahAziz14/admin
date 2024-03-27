@@ -1,0 +1,1 @@
+{"result":{"text":"T equals fraction numerator square root of lambda over denominator 3 pi end fraction"},"status":"ok"}

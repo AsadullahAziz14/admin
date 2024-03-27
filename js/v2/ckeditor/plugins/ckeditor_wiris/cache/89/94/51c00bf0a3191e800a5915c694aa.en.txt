@@ -1,0 +1,1 @@
+{"result":{"text":"tan to the power of negative 1 end exponent x y"},"status":"ok"}

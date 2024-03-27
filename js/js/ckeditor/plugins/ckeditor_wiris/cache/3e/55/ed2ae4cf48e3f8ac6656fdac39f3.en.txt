@@ -1,0 +1,1 @@
+{"result":{"text":"i right parenthesis space A intersection D space space space space space i i right parenthesis space space space D divided by A space space space space space space i i i right parenthesis space space space space C U D"},"status":"ok"}

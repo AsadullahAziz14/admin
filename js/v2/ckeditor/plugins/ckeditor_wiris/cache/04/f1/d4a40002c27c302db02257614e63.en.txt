@@ -1,0 +1,1 @@
+{"result":{"text":"q subscript s subscript 2 end subscript equals P subscript 2 minus 3"},"status":"ok"}

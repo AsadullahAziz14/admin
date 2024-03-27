@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top equals 3 cos t i with rightwards arrow on top plus t j with rightwards arrow on top plus sin t k with rightwards arrow on top"},"status":"ok"}

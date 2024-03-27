@@ -1,0 +1,1 @@
+{"result":{"text":"x to the power of 1 fifth end exponent"},"status":"ok"}
